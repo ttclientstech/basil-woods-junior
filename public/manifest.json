@@ -1,0 +1,29 @@
+{
+  "name": "Basil Woods Juniors Chennai",
+  "short_name": "BWJ Chennai",
+  "description": "Award-winning preschool and daycare in Chennai offering holistic child development through play-based learning",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ff8c42",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/src/assets/BWJ Logos (1).png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/src/assets/BWJ Logos (1).png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "kids", "preschool"],
+  "lang": "en-IN",
+  "dir": "ltr",
+  "scope": "/",
+  "prefer_related_applications": false
+}
