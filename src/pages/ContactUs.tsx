@@ -5,82 +5,13 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
-  MapPin,
-  Phone,
-  Mail,
-  Clock,
-  Send,
-  MessageCircle,
-  Calendar,
-  Navigation,
+  MapPin, Phone, Mail, Clock, Send, MessageCircle, Calendar, Navigation, Heart, Star, Stamp
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { FaWhatsapp } from "react-icons/fa";
 import { useSEO } from "@/hooks/useSEO";
-
-/* Waves with separator tones */
-const WaveTop = ({ fill = "#f2ede6" }) => (
-  <div className="absolute top-0 left-0 w-full overflow-hidden leading-none rotate-180">
-    <svg
-      className="relative block w-full h-[60px]"
-      viewBox="0 0 1440 320"
-      preserveAspectRatio="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        fill={fill}
-        d="M0,256L48,240C96,224,192,192,288,170.7C384,149,480,139,576,154.7C672,171,768,213,864,208C960,203,1056,149,1152,117.3C1248,85,1344,75,1392,69.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-      />
-    </svg>
-  </div>
-);
-
-const WaveBottom = ({ fill = "#efe8df" }) => (
-  <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-    <svg
-      className="relative block w-full h-[60px]"
-      viewBox="0 0 1440 320"
-      preserveAspectRatio="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        fill={fill}
-        d="M0,256L48,240C96,224,192,192,288,170.7C384,149,480,139,576,154.7C672,171,768,213,864,208C960,203,1056,149,1152,117.3C1248,85,1344,75,1392,69.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-      />
-    </svg>
-  </div>
-);
-
-/* Theme tone mapper (uses your CSS variables) */
-const toneFor = (key: string) => {
-  switch (key) {
-    case "orange":
-      return {
-        bg: "hsl(var(--light-orange))",
-        fg: "hsl(var(--premium-orange))",
-      };
-    case "green":
-      return { bg: "hsl(var(--light-teal))", fg: "hsl(var(--premium-teal))" };
-    case "pink":
-      return { bg: "hsl(var(--light-pink))", fg: "hsl(var(--premium-pink))" };
-    case "purple":
-      return {
-        bg: "hsl(var(--neutral-50))",
-        fg: "hsl(var(--premium-purple))",
-      };
-    case "blue":
-      return {
-        bg: "hsl(var(--neutral-50))",
-        fg: "hsl(var(--premium-purple))",
-      };
-    default:
-      return {
-        bg: "hsl(var(--light-orange))",
-        fg: "hsl(var(--premium-orange))",
-      };
-  }
-};
+import { motion } from "framer-motion";
 
 /* -------- Google Forms -> Google Sheets -------- */
 const FORM_ACTION =
@@ -105,19 +36,13 @@ const ContactUsPage: React.FC = () => {
   });
 
   const [submitting, setSubmitting] = React.useState(false);
-  const [submitStatus, setSubmitStatus] = React.useState<
-    null | "success" | "error"
-  >(null);
+  const [submitStatus, setSubmitStatus] = React.useState<null | "success" | "error">(null);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setSubmitting(true);
     setSubmitStatus(null);
-
-    // Capture the form element BEFORE any await
     const formEl = e.currentTarget as HTMLFormElement;
-
-    // Build FormData from the captured element
     const fd = new FormData(formEl);
 
     try {
@@ -126,14 +51,10 @@ const ContactUsPage: React.FC = () => {
         mode: "no-cors",
         body: fd,
       });
-
       setSubmitStatus("success");
-
-      // Safely reset using captured ref
       if (formEl && typeof formEl.reset === "function") {
         formEl.reset();
       }
-
       window.alert("Submitted Successfully");
     } catch (err) {
       console.error(err);
@@ -146,415 +67,175 @@ const ContactUsPage: React.FC = () => {
 
   const contactInfo = [
     {
-      title: "Visit Our Campus",
-      description: "Come see our beautiful learning environment",
+      title: "Visit Us",
+      desc: "No. 10, Vinod Illam, 2nd St, RBI Colony, Thiruvanmiyur, Chennai",
       icon: MapPin,
-      details:
-        "No. 10, Vinod Illam, 2nd St, RBI Colony, Thiruvanmiyur, Chennai, Tamil Nadu 600041",
-      tone: "blue",
+      color: "bg-blue-100",
+      textColor: "text-blue-600",
+      rotate: "rotate-1"
     },
     {
       title: "Call Us",
-      description: "Speak with our admissions team",
+      desc: "+91 8056179108",
       icon: Phone,
-      details: "+91 8056179108",
-      tone: "green",
+      color: "bg-green-100",
+      textColor: "text-green-600",
+      rotate: "-rotate-1"
     },
     {
       title: "Email Us",
-      description: "Send us your questions anytime",
+      desc: "Info.chennai@basilwoods.in",
       icon: Mail,
-      details: "Info.chennai@basilwoods.in",
-      tone: "purple",
+      color: "bg-purple-100",
+      textColor: "text-purple-600",
+      rotate: "rotate-2"
     },
     {
-      title: "School Hours",
-      description: "Monday to Friday",
+      title: "Hours",
+      desc: "Mon - Fri: 8:30 AM - 3:30 PM",
       icon: Clock,
-      details: "8:30 AM - 3:30 PM",
-      tone: "orange",
+      color: "bg-orange-100",
+      textColor: "text-orange-600",
+      rotate: "-rotate-2"
     },
   ];
 
   const faqs = [
-    { question: "What curriculum do you follow?", answer: "We follow Cambridge curriculum." },
-    {
-      question: "How do you ensure children’s safety?",
-      answer:
-        "Safety is our priority with CCTV-monitored premises, secure entry/exit, child-safe infrastructure, and trained staff in first aid.",
-    },
-    {
-      question: "Do you conduct outdoor/play activities?",
-      answer:
-        "Yes, children enjoy daily outdoor play, physical activities, and seasonal events that promote motor skills and teamwork.",
-    },
-    {
-      question: "How do you keep parents informed?",
-      answer:
-        "We share regular updates through parent-teacher meetings, and digital communication platforms.",
-    },
-    {
-      question: "Do you celebrate festivals and special days?",
-      answer:
-        "Yes, we celebrate cultural, traditional, and value-based events to help children appreciate diversity and joy in learning.",
-    },
-    {
-      question: "Are trial classes available?",
-      answer:
-        "Yes, parents may request a trial class to help their child experience our environment before enrollment.",
-    },
-    {
-      question: "What age groups do you accept?",
-      answer: "Age group 2 years to 6 years",
-    },
-    {
-      question: "Do you provide meals and snacks?",
-      answer: "We provide breakfast & mid morning snacks, Outside food is not allowed. Parents can opt for lunch or evening snacks with extended daycare",
-    },
-    {
-      question: "Do you offer extended care hours?",
-      answer: "Early drop off starts from 8.30 am to 7.30 pm",
-    }
-  ];
-
-  const quickActions = [
-    {
-      title: "Schedule a Tour",
-      description: "Visit our campus and meet our team",
-      icon: Calendar,
-      tone: "orange",
-    },
-    {
-      title: "Download Brochure",
-      description: "Get detailed information about our programs",
-      icon: Navigation,
-      tone: "green",
-    },
-    {
-      title: "Start Application",
-      description: "Begin the admission process online",
-      icon: Send,
-      tone: "purple",
-    },
-    {
-      title: "Chat with Us",
-      description: "Get instant answers to your questions",
-      icon: MessageCircle,
-      tone: "pink",
-    },
+    { q: "What curriculum?", a: "We follow the Cambridge curriculum." },
+    { q: "Safety measures?", a: "CCTV, secure entry, and trained staff." },
+    { q: "Outdoor play?", a: "Daily outdoor activities and motor skills." },
+    { q: "Parent updates?", a: "Regular meetings and digital updates." },
+    { q: "Meals provided?", a: "Breakfast & snacks provided. Lunch optional." },
+    { q: "Age groups?", a: "2 years to 6 years." },
   ];
 
   return (
-    <div className="min-h-screen bg-section-1">
+    <div className="min-h-screen bg-[#fffdf5] font-sans">
       <Header />
 
-      {/* HERO */}
-      <section className="py-16 md:py-20 bg-section-1 relative overflow-hidden">
-        {/* subtle shapes */}
-        <div className="absolute top-16 right-8 w-10 h-10 bg-gradient-primary rounded-full opacity-25" />
-        <div className="absolute bottom-16 left-12 w-8 h-8 bg-gradient-secondary rounded-full opacity-25" />
-        <div className="absolute top-1/3 left-1/5 w-6 h-6 bg-gradient-accent rounded-xl opacity-20" />
+      {/* HERO - "The Welcome Desk" */}
+      <section className="relative pt-32 pb-20 overflow-hidden bg-pink-50">
+        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
 
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center max-w-4xl mx-auto">
-            <Badge className="bg-gradient-to-r from-orange-500 to-pink-500 text-white px-5 py-2.5 rounded-full border-none font-medium text-xs md:text-sm mb-4 inline-block">
-              📞 Contact Us
-            </Badge>
-            <h1 className="text-[30px] md:text-[40px] font-bold text-neutral-700 leading-[1.15] mb-3">
-              Let&apos;s Start Your Child&apos;s
-              <span className="block bg-gradient">Learning Journey Together</span>
-            </h1>
-            <p className="text-base md:text-lg text-neutral-600 leading-relaxed max-w-2xl mx-auto">
-              We’re here to answer questions and help discover how Basil Woods Juniors can nurture growth.
-            </p>
-          </div>
+        {/* Floating Elements */}
+        <motion.div className="absolute top-20 right-10 text-pink-400 opacity-60" animate={{ y: [0, -10, 0], rotate: [0, 5, 0] }} transition={{ duration: 4, repeat: Infinity }}>
+          <MessageCircle className="w-16 h-16 fill-current" />
+        </motion.div>
+        <motion.div className="absolute bottom-20 left-10 text-orange-400 opacity-60" animate={{ y: [0, 10, 0], rotate: [0, -5, 0] }} transition={{ duration: 5, repeat: Infinity }}>
+          <Mail className="w-16 h-16 fill-current" />
+        </motion.div>
+
+        <div className="container mx-auto px-4 relative z-10 text-center">
+          <Badge className="bg-white text-pink-600 border-2 border-pink-400 px-4 py-1 text-sm font-bold rounded-full mb-6 shadow-sm">
+            <Heart className="w-4 h-4 mr-2 inline fill-current" />
+            We'd Love to Hear From You
+          </Badge>
+          <h1 className="text-5xl md:text-7xl font-black text-[hsl(var(--brand-dark-green))] mb-6 font-handwriting leading-tight">
+            Say <span className="text-[hsl(var(--premium-orange))]">Hello!</span>
+          </h1>
+          <p className="text-xl text-neutral-600 max-w-2xl mx-auto font-medium">
+            Whether you have a question or want to schedule a visit, our doors are always open.
+          </p>
         </div>
-
-        <WaveBottom fill="#f6eee7" />
       </section>
 
-      {/* CONTACT INFO */}
-      <section className="py-14 md:py-16 bg-section-2 relative overflow-hidden">
-        <WaveTop fill="#f6eee7" />
+      {/* CONTACT INFO - "Signposts" */}
+      <section className="py-20 bg-white border-b-8 border-neutral-100">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-10">
-            <Badge className="bg-blue-100 text-[hsl(var(--premium-purple))] px-4 py-2 rounded-full font-medium mb-3">
-              Get in Touch
-            </Badge>
-            <h2 className="text-2xl md:text-3xl font-bold text-neutral-800 mb-2">
-              Contact Information
-            </h2>
-            <p className="text-neutral-700 text-base md:text-lg max-w-2xl mx-auto">
-              Multiple ways to reach us and get the information needed
-            </p>
-          </div>
-
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {contactInfo.map((info, i) => {
-              const tone = toneFor(info.tone);
               const Icon = info.icon;
               return (
-                <Card
+                <motion.div
                   key={i}
-                  className="bg-white rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition-all hover:-translate-y-[2px] border border-[hsl(var(--neutral-100))]"
+                  whileHover={{ y: -5, rotate: 0 }}
+                  className={`bg-white p-6 rounded-xl shadow-md border-2 border-neutral-100 transform ${info.rotate} transition-all text-center group`}
                 >
-                  <div
-                    className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-3"
-                    style={{ backgroundColor: tone.bg, color: tone.fg }}
-                  >
-                    <Icon
-                      className="w-8 h-8"
-                      stroke="currentColor"
-                      fill="none"
-                      strokeWidth={2}
-                    />
+                  <div className={`w-14 h-14 mx-auto mb-4 rounded-full ${info.color} flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                    <Icon className={`w-7 h-7 ${info.textColor}`} />
                   </div>
-                  <h3 className="font-bold text-neutral-800 mb-1.5">
-                    {info.title}
-                  </h3>
-                  <p className="text-neutral-700 text-sm mb-2">
-                    {info.description}
-                  </p>
-                  <p className="font-semibold text-neutral-800 text-sm">
-                    {info.details}
-                  </p>
-                </Card>
+                  <h3 className="font-bold text-lg text-neutral-800 mb-2">{info.title}</h3>
+                  <p className="text-sm text-neutral-600 font-medium">{info.desc}</p>
+                </motion.div>
               );
             })}
           </div>
         </div>
-        <WaveBottom fill="#e9f2ef" />
       </section>
 
-      {/* FORM + MAP */}
-      <section className="py-14 md:py-16 bg-section-3 relative overflow-hidden">
-        <WaveTop fill="#e9f2ef" />
+      {/* FORM & MAP - "Postcard & Treasure Map" */}
+      <section className="py-20 bg-[#fdfbf7]">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* FORM */}
-            <div>
-              <Badge className="bg-green-100 text-[hsl(var(--premium-teal))] px-4 py-2 rounded-full font-medium mb-3">
-                Send Message
-              </Badge>
-              <h2 className="text-2xl md:3xl font-bold text-neutral-800 mb-4">
-                Send Us a Message
-              </h2>
-              <p className="text-neutral-700 mb-6">
-                Fill out the form and we’ll reply within 24 hours.
-              </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
 
-              <Card
-                className="
-                  relative bg-white rounded-2xl p-6 md:p-7 shadow-sm
-                  border border-[hsl(var(--neutral-100))]
-                  hover:shadow-md transition-shadow
-                "
-                style={{
-                  boxShadow:
-                    "inset 0 0 0 1px hsl(var(--neutral-100)), 0 2px 10px rgba(0,0,0,0.02)",
-                }}
-              >
-                {/* Decorative thin orange top border ribbon */}
-                <span
-                  className="absolute left-0 top-0 h-1 w-full"
-                  style={{ backgroundColor: "hsl(var(--premium-orange))" }}
-                />
+            {/* FORM - "The Postcard" */}
+            <div className="relative bg-white p-8 md:p-10 rounded-sm shadow-xl border border-neutral-200 transform -rotate-1">
+              {/* Stamp */}
+              <div className="absolute top-6 right-6 w-20 h-24 bg-neutral-50 border-4 border-dotted border-neutral-300 flex flex-col items-center justify-center transform rotate-3 opacity-80">
+                <Stamp className="w-8 h-8 text-neutral-400 mb-1" />
+                <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest">Postage</span>
+              </div>
 
-                <form className="space-y-5" onSubmit={handleSubmit}>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-neutral-700 mb-2">
-                        Parent&apos;s Name *
-                      </label>
-                      <Input
-                        name={FIELDS.parentName}
-                        required
-                        className="
-                          rounded-xl
-                          border-[hsl(var(--neutral-100))]
-                          focus:border-[hsl(var(--premium-orange))]
-                          focus:ring-[hsl(var(--premium-orange))]
-                          focus:ring-2
-                        "
-                        style={{ boxShadow: "0 0 0 0 rgba(0,0,0,0)" }}
-                        placeholder="Your full name"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-neutral-700 mb-2">
-                        Phone Number *
-                      </label>
-                      <Input
-                        name={FIELDS.phone}
-                        required
-                        className="
-                          rounded-xl
-                          border-[hsl(var(--neutral-100))]
-                          focus:border-[hsl(var(--premium-orange))]
-                          focus:ring-[hsl(var(--premium-orange))]
-                          focus:ring-2
-                        "
-                        placeholder="Your phone number"
-                      />
-                    </div>
+              <h2 className="text-3xl font-black text-neutral-800 font-handwriting mb-6">Drop Us a Line</h2>
+
+              <form className="space-y-5 relative z-10" onSubmit={handleSubmit}>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="space-y-1">
+                    <label className="text-xs font-bold uppercase tracking-wider text-neutral-400">Parent's Name</label>
+                    <Input name={FIELDS.parentName} required className="border-0 border-b-2 border-neutral-200 rounded-none px-0 focus-visible:ring-0 focus-visible:border-[hsl(var(--premium-orange))] bg-transparent" placeholder="John Doe" />
                   </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">
-                      Email Address *
-                    </label>
-                    <Input
-                      type="email"
-                      name={FIELDS.email}
-                      required
-                      className="
-                        rounded-xl
-                        border-[hsl(var(--neutral-100))]
-                        focus:border-[hsl(var(--premium-orange))]
-                        focus:ring-[hsl(var(--premium-orange))]
-                        focus:ring-2
-                      "
-                      placeholder="your.email@example.com"
-                    />
+                  <div className="space-y-1">
+                    <label className="text-xs font-bold uppercase tracking-wider text-neutral-400">Phone</label>
+                    <Input name={FIELDS.phone} required className="border-0 border-b-2 border-neutral-200 rounded-none px-0 focus-visible:ring-0 focus-visible:border-[hsl(var(--premium-orange))] bg-transparent" placeholder="+91 98765 43210" />
                   </div>
+                </div>
 
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-neutral-700 mb-2">
-                        Child&apos;s Name
-                      </label>
-                      <Input
-                        name={FIELDS.childName}
-                        className="
-                          rounded-xl
-                          border-[hsl(var(--neutral-100))]
-                          focus:border-[hsl(var(--premium-orange))]
-                          focus:ring-[hsl(var(--premium-orange))]
-                          focus:ring-2
-                        "
-                        placeholder="Child's name"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-neutral-700 mb-2">
-                        Child&apos;s Age
-                      </label>
-                      <Input
-                        name={FIELDS.childAge}
-                        className="
-                          rounded-xl
-                          border-[hsl(var(--neutral-100))]
-                          focus:border-[hsl(var(--premium-orange))]
-                          focus:ring-[hsl(var(--premium-orange))]
-                          focus:ring-2
-                        "
-                        placeholder="Age in months/years"
-                      />
-                    </div>
+                <div className="space-y-1">
+                  <label className="text-xs font-bold uppercase tracking-wider text-neutral-400">Email</label>
+                  <Input type="email" name={FIELDS.email} required className="border-0 border-b-2 border-neutral-200 rounded-none px-0 focus-visible:ring-0 focus-visible:border-[hsl(var(--premium-orange))] bg-transparent" placeholder="john@example.com" />
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="space-y-1">
+                    <label className="text-xs font-bold uppercase tracking-wider text-neutral-400">Child's Name</label>
+                    <Input name={FIELDS.childName} className="border-0 border-b-2 border-neutral-200 rounded-none px-0 focus-visible:ring-0 focus-visible:border-[hsl(var(--premium-orange))] bg-transparent" placeholder="Junior Doe" />
                   </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">
-                      Program Interest
-                    </label>
-                    <select
-                      name={FIELDS.program}
-                      className="
-                        w-full rounded-xl p-3
-                        border-[hsl(var(--neutral-100))]
-                        focus:border-[hsl(var(--premium-orange))]
-                        focus:ring-[hsl(var(--premium-orange))]
-                        focus:ring-2
-                        bg-white
-                      "
-                      defaultValue=""
-                    >
-                      <option value="" disabled>
-                        Select a program
-                      </option>
-                      <option>Toddlers (2 - 3 years)</option>
-                      <option>Mont 1 (3 - 4 years)</option>
-                      <option>Mont 2 (4 - 5 years)</option>
-                      <option>Mont 3 (5 - 6 years)</option>
-                    </select>
+                  <div className="space-y-1">
+                    <label className="text-xs font-bold uppercase tracking-wider text-neutral-400">Child's Age</label>
+                    <Input name={FIELDS.childAge} className="border-0 border-b-2 border-neutral-200 rounded-none px-0 focus-visible:ring-0 focus-visible:border-[hsl(var(--premium-orange))] bg-transparent" placeholder="3 Years" />
                   </div>
+                </div>
 
-                  <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">
-                      Message
-                    </label>
-                    <Textarea
-                      name={FIELDS.message}
-                      className="
-                        rounded-xl min-h-[120px]
-                        border-[hsl(var(--neutral-100))]
-                        focus:border-[hsl(var(--premium-orange))]
-                        focus:ring-[hsl(var(--premium-orange))]
-                        focus:ring-2
-                      "
-                      placeholder="Tell us your questions..."
-                    />
-                  </div>
+                <div className="space-y-1">
+                  <label className="text-xs font-bold uppercase tracking-wider text-neutral-400">Program</label>
+                  <select name={FIELDS.program} className="w-full border-0 border-b-2 border-neutral-200 rounded-none px-0 py-2 focus:ring-0 focus:border-[hsl(var(--premium-orange))] bg-transparent text-sm">
+                    <option value="" disabled selected>Select a program</option>
+                    <option>Toddlers (2 - 3 years)</option>
+                    <option>Mont 1 (3 - 4 years)</option>
+                    <option>Mont 2 (4 - 5 years)</option>
+                    <option>Mont 3 (5 - 6 years)</option>
+                  </select>
+                </div>
 
-                  {/* Submit button with orange outline hover */}
-                  <Button
-                    className="
-                      w-full rounded-xl py-3.5 font-semibold
-                      shadow-sm hover:shadow-md transition-all disabled:opacity-70
-                      border-2
-                    "
-                    style={{
-                      backgroundColor: "hsl(var(--premium-orange))",
-                      color: "white",
-                      borderColor: "hsl(var(--premium-orange))",
-                    }}
-                    type="submit"
-                    disabled={submitting}
-                  >
-                    <Send className="w-5 h-5 mr-2" />
-                    {submitting ? "Sending..." : "Send Message"}
-                  </Button>
+                <div className="space-y-1">
+                  <label className="text-xs font-bold uppercase tracking-wider text-neutral-400">Message</label>
+                  <Textarea name={FIELDS.message} className="border-0 border-b-2 border-neutral-200 rounded-none px-0 min-h-[100px] focus-visible:ring-0 focus-visible:border-[hsl(var(--premium-orange))] bg-transparent resize-none" placeholder="How can we help?" />
+                </div>
 
-                  {/* Thin orange outline container accent at bottom */}
-                  <div
-                    className="rounded-xl h-2 mt-2"
-                    style={{
-                      background:
-                        "repeating-linear-gradient(90deg, hsl(var(--premium-orange)) 0 8px, transparent 8px 16px)",
-                      opacity: 0.35,
-                    }}
-                  />
-
-                  {/* Optional inline status */}
-                  {submitStatus === "success" && (
-                    <p
-                      className="text-center text-sm"
-                      style={{ color: "hsl(var(--premium-teal))" }}
-                    >
-                      Submitted Successfully
-                    </p>
-                  )}
-                  {submitStatus === "error" && (
-                    <p className="text-center text-sm text-red-600">
-                      Something went wrong. Please try again.
-                    </p>
-                  )}
-                </form>
-              </Card>
+                <Button className="w-full bg-[hsl(var(--premium-orange))] hover:bg-orange-600 text-white font-bold py-6 rounded-xl shadow-md mt-4" type="submit" disabled={submitting}>
+                  <Send className="w-5 h-5 mr-2" />
+                  {submitting ? "Sending..." : "Send Postcard"}
+                </Button>
+              </form>
             </div>
 
-            {/* MAP + QUICK ACTIONS */}
-            <div>
-              <Badge className="bg-purple-100 text-[hsl(var(--premium-purple))] px-4 py-2 rounded-full font-medium mb-3">
-                Location
-              </Badge>
-              <h2 className="text-2xl md:text-3xl font-bold text-neutral-800 mb-4">
-                Find Us
-              </h2>
-
-              {/* Google Map preview (embedded) */}
-              <Card className="rounded-2xl overflow-hidden shadow-sm border border-[hsl(var(--neutral-100))] mb-8">
-                <div className="w-full h-64">
+            {/* MAP - "Treasure Map" */}
+            <div className="space-y-8">
+              <div className="relative bg-[#fff9e6] p-4 rounded-2xl border-4 border-dashed border-orange-300 shadow-lg transform rotate-1">
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-orange-400 rounded-full flex items-center justify-center text-white font-bold shadow-sm z-10">
+                  <MapPin />
+                </div>
+                <div className="rounded-xl overflow-hidden h-80 border-2 border-orange-200">
                   <iframe
                     title="Basil Woods Juniors - Thiruvanmiyur, Chennai"
                     src="https://www.google.com/maps?q=Basil%20Woods%20Juniors%20Thiruvanmiyur%20Chennai&output=embed"
@@ -565,159 +246,61 @@ const ContactUsPage: React.FC = () => {
                     style={{ border: 0 }}
                   />
                 </div>
-                <div className="p-4 border-t border-[hsl(var(--neutral-100))] flex items-center justify-between gap-3">
-                  <div className="text-neutral-700 text-sm">
-                    No. 10, Vinod Illam, 2nd St, RBI Colony, Thiruvanmiyur, Chennai, Tamil Nadu 600041
-                  </div>
-                  <a
-                    href="https://maps.app.goo.gl/nnFyyj4U24w3mUAD6"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Button
-                      className="rounded-xl px-5 py-2 font-semibold shadow-sm hover:shadow-md"
-                      style={{
-                        backgroundColor: "hsl(var(--premium-purple))",
-                        color: "white",
-                      }}
-                    >
-                      Get Directions
-                    </Button>
-                  </a>
+                <div className="mt-4 text-center">
+                  <p className="font-handwriting text-xl text-orange-800 font-bold">X Marks the Spot!</p>
+                  <p className="text-sm text-orange-700">Come visit our learning paradise.</p>
                 </div>
-              </Card>
+              </div>
 
+              {/* Quick Actions */}
               <div className="grid grid-cols-2 gap-4">
-                {quickActions.map((a, i) => {
-                  const tone = toneFor(a.tone);
-                  const Icon = a.icon;
+                {[
+                  { title: "Schedule Tour", icon: Calendar, color: "bg-purple-500" },
+                  { title: "Download Brochure", icon: Navigation, color: "bg-green-500" },
+                  { title: "WhatsApp Us", icon: MessageCircle, color: "bg-green-600" },
+                  { title: "Get Directions", icon: MapPin, color: "bg-blue-500" },
+                ].map((action, i) => {
+                  const Icon = action.icon;
                   return (
-                    <Card
-                      key={i}
-                      className="bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-all hover:-translate-y-[2px] border border-[hsl(var(--neutral-100))] cursor-pointer"
-                    >
-                      <div
-                        className="w-12 h-12 rounded-xl flex items-center justify-center mb-3 text-white"
-                        style={{ backgroundColor: tone.fg }}
-                      >
-                        <Icon className="w-6 h-6" />
-                      </div>
-                      <h3 className="font-bold text-neutral-800 mb-1 text-sm">
-                        {a.title}
-                      </h3>
-                      <p className="text-neutral-700 text-xs leading-relaxed">
-                        {a.description}
-                      </p>
-                    </Card>
+                    <Button key={i} className={`${action.color} hover:opacity-90 text-white h-auto py-4 rounded-xl flex flex-col items-center gap-2 shadow-sm`}>
+                      <Icon className="w-6 h-6" />
+                      <span className="text-xs font-bold">{action.title}</span>
+                    </Button>
                   );
                 })}
               </div>
             </div>
+
           </div>
         </div>
-        <WaveBottom fill="#eee7fa" />
       </section>
 
-      {/* FAQ */}
-      <section className="py-14 md:py-16 bg-section-4 relative overflow-hidden">
-        <WaveTop fill="#eee7fa" />
+      {/* FAQ - "Info Kiosk" */}
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-10">
-            <Badge className="bg-yellow-100 text-[hsl(var(--premium-yellow))] px-4 py-2 rounded-full font-medium mb-3">
-              FAQ
-            </Badge>
-            <h2 className="text-2xl md:text-3xl font-bold text-neutral-800 mb-2">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-neutral-700 text-base md:text-lg max-w-2xl mx-auto">
-              Quick answers about programs and admissions
-            </p>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-black text-neutral-800 font-handwriting mb-2">Info Kiosk</h2>
+            <p className="text-neutral-600">Quick answers to common questions</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {faqs.map((f, i) => (
-              <Card
+              <motion.div
                 key={i}
-                className="rounded-2xl p-6 shadow-sm border border-[hsl(var(--neutral-100))] bg-white hover:shadow-md transition-all hover:-translate-y-[2px]"
+                whileHover={{ scale: 1.02 }}
+                className="bg-neutral-50 p-6 rounded-xl border-l-4 border-[hsl(var(--premium-orange))] shadow-sm"
               >
-                <h3 className="font-bold text-neutral-800 mb-2">{f.question}</h3>
-                <p className="text-neutral-700 text-sm leading-relaxed">
-                  {f.answer}
-                </p>
-              </Card>
+                <h3 className="font-bold text-lg text-neutral-800 mb-2 flex items-start gap-2">
+                  <span className="text-[hsl(var(--premium-orange))]">Q.</span> {f.q}
+                </h3>
+                <p className="text-neutral-600 text-sm pl-6">{f.a}</p>
+              </motion.div>
             ))}
           </div>
         </div>
-        <WaveBottom fill="#e3e9fb" />
       </section>
 
-      {/* CTA */}
-      <section className="py-14 md:py-16 bg-section-2 relative overflow-hidden">
-        <WaveTop fill="#e3e9fb" />
-        <div className="container mx-auto px-4">
-          <div className="relative max-w-4xl mx-auto rounded-3xl overflow-hidden p-8 md:p-10 text-center shadow-sm border border-[hsl(var(--neutral-100))] bg-white">
-            <div
-              className="pointer-events-none absolute -top-10 -right-8 w-32 h-32 rounded-full"
-              style={{ backgroundColor: "hsl(var(--light-teal))" }}
-            />
-            <div
-              className="pointer-events-none absolute -bottom-10 -left-8 w-28 h-28 rounded-full"
-              style={{ backgroundColor: "hsl(var(--light-pink))" }}
-            />
-
-            <div className="relative z-10">
-              <h2 className="text-2xl md:text-3xl font-bold mb-3 text-neutral-900">
-                Ready to Visit Our Campus?
-              </h2>
-              <p className="text-base md:text-lg mb-6 text-neutral-800 max-w-2xl mx-auto">
-                Schedule a personalized tour and see why families choose Basil Woods Juniors.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <Button
-                  className="rounded-xl px-6 py-3 font-bold shadow-sm hover:shadow-md transition-all"
-                  style={{
-                    backgroundColor: "hsl(var(--premium-orange))",
-                    color: "white",
-                  }}
-                  onClick={() => {
-                    window.open(
-                      "https://wa.me/918056179108?text=Hello%20Basil%20Woods%20Juniors%20Chennai!%20I%E2%80%99d%20like%20to%20schedule%20a%20campus%20visit.",
-                      "_blank",
-                      "noopener,noreferrer"
-                    );
-                  }}
-                >
-                  <FaWhatsapp className="w-5 h-5 mr-2" />
-                  Contact Us
-                </Button>
-                <Button
-                  variant="outline"
-                  className="rounded-xl px-6 py-3 font-bold transition-all border-2 hover:bg-white"
-                  style={{
-                    borderColor: "hsl(var(--premium-orange))",
-                    color: "hsl(var(--premium-orange))",
-                  }}
-                  onClick={() => (window.location.href = "tel:+918056179108")}
-                >
-                  <Phone className="w-5 h-5 mr-2" />
-                  Call Now
-                </Button>
-              </div>
-              <p className="mt-4 text-xs text-neutral-600">
-                We’ll contact back by phone/email.
-              </p>
-            </div>
-          </div>
-        </div>
-        <WaveBottom fill="#f6eee7" />
-      </section>
-
-      {/* Footer */}
-      <footer className="relative bg-[#f4f7ff]">
-        <WaveTop fill="#f6eee7" />
-        <Footer />
-      </footer>
+      <Footer />
     </div>
   );
 };

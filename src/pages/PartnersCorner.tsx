@@ -4,435 +4,358 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
   Download, Users, Calendar, BookOpen, Heart, Star, Award, Target, Lightbulb, Shield,
+  FileText, MessageCircle, Mail, Phone, MapPin
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-
-/* Separator waves with separator tones */
-const WaveTop = ({ fill = "#f2ede6", className = "" }) => (
-  <div className={`absolute top-0 left-0 w-full overflow-hidden leading-none rotate-180 ${className}`}>
-    <svg className="relative block w-full h-[60px]" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path
-        fill={fill}
-        d="M0,256L48,240C96,224,192,192,288,170.7C384,149,480,139,576,154.7C672,171,768,213,864,208C960,203,1056,149,1152,117.3C1248,85,1344,75,1392,69.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-      />
-    </svg>
-  </div>
-);
-
-const WaveBottom = ({ fill = "#efe8df", className = "" }) => (
-  <div className={`absolute bottom-0 left-0 w-full overflow-hidden leading-none ${className}`}>
-    <svg className="relative block w-full h-[60px]" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path
-        fill={fill}
-        d="M0,256L48,240C96,224,192,192,288,170.7C384,149,480,139,576,154.7C672,171,768,213,864,208C960,203,1056,149,1152,117.3C1248,85,1344,75,1392,69.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-      />
-    </svg>
-  </div>
-);
-
-/* Theme tone mapper (uses your CSS variables) */
-const toneFor = (key) => {
-  switch (key) {
-    case "orange":
-      return { bg: "hsl(var(--light-orange))", fg: "hsl(var(--premium-orange))" };
-    case "green":
-      return { bg: "hsl(var(--light-teal))", fg: "hsl(var(--premium-teal))" };
-    case "pink":
-      return { bg: "hsl(var(--light-pink))", fg: "hsl(var(--premium-pink))" };
-    case "purple":
-      return { bg: "hsl(var(--neutral-50))", fg: "hsl(var(--premium-purple))" };
-    case "blue":
-      return { bg: "hsl(var(--neutral-50))", fg: "hsl(var(--premium-purple))" };
-    case "yellow":
-      return { bg: "hsl(var(--light-orange))", fg: "hsl(var(--premium-yellow))" };
-    case "red":
-      return { bg: "hsl(var(--neutral-50))", fg: "hsl(var(--destructive))" };
-    default:
-      return { bg: "hsl(var(--light-orange))", fg: "hsl(var(--premium-orange))" };
-  }
-};
+import { motion } from "framer-motion";
+import { FaWhatsapp } from 'react-icons/fa';
+import { useSEO } from "@/hooks/useSEO";
 
 const PartnersCornerPage = () => {
+  useSEO({
+    title: "Partners Corner - Resources for Parents",
+    description: "A dedicated space for our parent community. Access handbooks, parenting tips, event calendars, and support resources to partner in your child's learning journey.",
+    keywords: "parent resources, preschool handbook, parenting tips, school events Chennai, parent support, Basil Woods parents",
+    canonical: "https://www.basilwoodschennai.in/partners"
+  });
+
   const parentResources = [
     {
       title: "Parent Handbook",
       description: "Complete guide to our programs, policies, and procedures",
       icon: BookOpen,
-      color: "blue",
+      color: "bg-blue-100",
+      tabColor: "bg-blue-200",
+      textColor: "text-blue-800",
       downloadUrl: "#",
     },
     {
-      title: "Development Milestones",
+      title: "Milestones Guide",
       description: "Age-appropriate milestones and what to expect",
       icon: Target,
-      color: "green",
+      color: "bg-green-100",
+      tabColor: "bg-green-200",
+      textColor: "text-green-800",
       downloadUrl: "#",
     },
     {
-      title: "Home Learning Activities",
+      title: "Home Activities",
       description: "Fun activities to continue learning at home",
       icon: Lightbulb,
-      color: "yellow",
+      color: "bg-yellow-100",
+      tabColor: "bg-yellow-200",
+      textColor: "text-yellow-800",
       downloadUrl: "#",
     },
     {
-      title: "Safety Guidelines",
-      description: "Our comprehensive safety protocols and procedures",
+      title: "Safety Protocols",
+      description: "Our comprehensive safety guidelines",
       icon: Shield,
-      color: "red",
+      color: "bg-red-100",
+      tabColor: "bg-red-200",
+      textColor: "text-red-800",
       downloadUrl: "#",
     },
   ];
 
   const parentTips = [
     {
-      title: "Preparing for First Day",
-      tips: [
-        "Visit the school together before the first day",
-        "Practice separation gradually at home",
-        "Create a positive morning routine",
-        "Pack comfort items if needed",
-      ],
+      title: "First Day Ready",
+      tips: ["Visit together first", "Practice goodbyes", "Morning routine", "Comfort item"],
+      color: "bg-yellow-100",
+      rotate: "rotate-1"
     },
     {
-      title: "Supporting Learning at Home",
-      tips: [
-        "Read together daily",
-        "Encourage creative play",
-        "Limit screen time",
-        "Create learning opportunities in daily activities",
-      ],
+      title: "Learning at Home",
+      tips: ["Read daily", "Creative play", "Limit screens", "Count everything"],
+      color: "bg-pink-100",
+      rotate: "-rotate-2"
     },
     {
-      title: "Building Independence",
-      tips: [
-        "Encourage self-help skills",
-        "Allow age-appropriate choices",
-        "Practice patience with mistakes",
-        "Celebrate small achievements",
-      ],
+      title: "Independence",
+      tips: ["Self-help skills", "Offer choices", "Be patient", "Celebrate wins"],
+      color: "bg-blue-100",
+      rotate: "rotate-2"
     },
   ];
 
   const events = [
     {
-      title: "Parent-Teacher Conference",
-      date: "March 15, 2024",
-      time: "2:00 PM - 5:00 PM",
-      description: "Individual meetings to discuss your child's progress",
+      title: "Parent Meet",
+      date: "Mar 15",
+      time: "2:00 PM",
+      desc: "Discussing progress",
+      color: "border-orange-500"
     },
     {
       title: "Family Fun Day",
-      date: "March 22, 2024",
-      time: "10:00 AM - 2:00 PM",
-      description: "Games, activities, and lunch for the whole family",
+      date: "Mar 22",
+      time: "10:00 AM",
+      desc: "Games & lunch",
+      color: "border-green-500"
     },
     {
-      title: "Cultural Celebration",
-      date: "April 5, 2024",
-      time: "11:00 AM - 1:00 PM",
-      description: "Celebrating diverse cultures with performances and food",
+      title: "Culture Fest",
+      date: "Apr 05",
+      time: "11:00 AM",
+      desc: "Performances",
+      color: "border-purple-500"
     },
     {
-      title: "Graduation Ceremony",
-      date: "May 20, 2024",
-      time: "10:00 AM - 12:00 PM",
-      description: "Celebrating our graduating students' achievements",
+      title: "Graduation",
+      date: "May 20",
+      time: "10:00 AM",
+      desc: "Ceremony",
+      color: "border-blue-500"
     },
   ];
 
   const testimonials = [
     {
-      text:
-        "The parent resources and communication from Basil Woods has been exceptional. We always feel informed and supported.",
+      text: "The parent resources and communication from Basil Woods has been exceptional. We always feel informed.",
       parent: "Priya Sharma",
-      child: "Ananya (4 years)",
+      child: "Ananya (4y)",
+      color: "bg-white"
     },
     {
-      text:
-        "The family events create such a wonderful community feeling. Our daughter loves showing us her classroom and friends.",
+      text: "The family events create such a wonderful community feeling. Our daughter loves showing us her classroom.",
       parent: "Rajesh Kumar",
-      child: "Arjun (3.5 years)",
+      child: "Arjun (3.5y)",
+      color: "bg-white"
     },
     {
-      text:
-        "The development updates and home learning suggestions have helped us support our twins' growth effectively.",
+      text: "The development updates and home learning suggestions have helped us support our twins' growth.",
       parent: "Lakshmi Raman",
-      child: "Meera & Karthik (twins, 4.5 years)",
+      child: "Meera & Karthik",
+      color: "bg-white"
     },
   ];
 
   return (
-    <div className="min-h-screen bg-section-1">
+    <div className="min-h-screen bg-[#fffdf5] font-sans">
       <Header />
 
-      {/* HERO */}
-      <section className="relative overflow-hidden bg-section-1 min-h-[calc(60vh-var(--header-h))] flex items-center py-12 md:py-16">
-        <WaveTop fill="#f2ede6" />
-        {/* subtle shapes */}
-        <div className="absolute top-16 right-8 w-12 h-12 bg-gradient-primary rounded-2xl opacity-30" />
-        <div className="absolute bottom-16 left-12 w-10 h-10 bg-gradient-secondary rounded-full opacity-30" />
-        <div className="absolute top-1/3 left-1/5 w-8 h-8 bg-gradient-accent rounded-xl opacity-25" />
+      {/* HERO - "The Family Room" */}
+      <section className="relative pt-32 pb-20 overflow-hidden bg-orange-50">
+        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/notebook.png')]" />
 
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center max-w-4xl mx-auto">
-            <Badge className="bg-gradient-primary text-white px-5 py-2.5 rounded-full border-none font-medium text-xs md:text-sm mb-4 inline-block">
-              👨‍👩‍👧‍👦 Partner's Corner
-            </Badge>
-            <h1 className="text-[28px] md:text-[40px] font-bold text-neutral-700 leading-[1.15] mb-3">
-              Supporting Families
-              <span className="block text-gradient">Every Step of the Way</span>
-            </h1>
-            <p className="text-base md:text-lg text-neutral-600 leading-relaxed max-w-2xl mx-auto">
-              Resources, events, and support to help partner in a joyful learning journey.
-            </p>
-          </div>
+        {/* Floating Doodles */}
+        <motion.div className="absolute top-20 left-10 text-pink-400 opacity-60" animate={{ y: [0, -10, 0], rotate: [0, 5, 0] }} transition={{ duration: 4, repeat: Infinity }}>
+          <Heart className="w-16 h-16 fill-current" />
+        </motion.div>
+        <motion.div className="absolute bottom-20 right-10 text-blue-400 opacity-60" animate={{ y: [0, 10, 0], rotate: [0, -5, 0] }} transition={{ duration: 5, repeat: Infinity }}>
+          <Users className="w-16 h-16 fill-current" />
+        </motion.div>
+
+        <div className="container mx-auto px-4 relative z-10 text-center">
+          <Badge className="bg-white text-orange-600 border-2 border-orange-400 px-4 py-1 text-sm font-bold rounded-full mb-6 shadow-sm">
+            <Heart className="w-4 h-4 mr-2 inline fill-current" />
+            Partners Corner
+          </Badge>
+          <h1 className="text-5xl md:text-7xl font-black text-[hsl(var(--brand-dark-green))] mb-6 font-handwriting leading-tight">
+            Partners in <span className="text-[hsl(var(--premium-orange))]">Parenting</span>
+          </h1>
+          <p className="text-xl text-neutral-600 max-w-2xl mx-auto font-medium">
+            Resources, events, and support to help us partner together in your child's joyful learning journey.
+          </p>
         </div>
-        <WaveBottom fill="#f6eee7" />
       </section>
 
-      {/* RESOURCES */}
-      <section className="py-14 md:py-16 bg-section-2 relative overflow-hidden">
-        <WaveTop fill="#f6eee7" />
+      {/* RESOURCES - "The Bookshelf" */}
+      <section className="py-20 bg-[#fdfbf7] border-b-8 border-orange-100">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-10">
-            <Badge className="bg-gradient-secondary text-white px-4 py-2 rounded-full font-medium mb-3">
-              Resources
-            </Badge>
-            <h2 className="text-2xl md:text-3xl font-bold text-neutral-800 mb-2">Parent Resources</h2>
-            <p className="text-neutral-700 text-base md:text-lg max-w-2xl mx-auto">
-              Helpful guides and materials to support your parenting journey
-            </p>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-black text-neutral-800 font-handwriting mb-2">Resource Library</h2>
+            <p className="text-neutral-600">Helpful guides for your parenting journey</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {parentResources.map((resource, idx) => {
-              const tone = toneFor(resource.color);
               const Icon = resource.icon;
               return (
-                <Card
+                <motion.div
                   key={idx}
-                  className="rounded-2xl p-6 text-center shadow-sm border border-[hsl(var(--neutral-100))] bg-white hover:shadow-md transition-all hover:-translate-y-[2px]"
+                  whileHover={{ y: -10 }}
+                  className="relative group cursor-pointer"
                 >
-                  <div
-                    className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4"
-                    style={{ backgroundColor: tone.bg, color: tone.fg }}
-                  >
-                    <Icon className="w-8 h-8" stroke="currentColor" fill="none" strokeWidth={2} />
+                  {/* Folder Tab */}
+                  <div className={`absolute -top-3 left-0 w-1/2 h-8 ${resource.tabColor} rounded-t-lg border-x-2 border-t-2 border-black/5 z-0`} />
+
+                  {/* Folder Body */}
+                  <div className={`relative ${resource.color} p-6 pt-8 rounded-b-xl rounded-tr-xl shadow-lg border-2 border-black/5 z-10 h-full flex flex-col`}>
+                    <div className="mb-4 bg-white/50 w-12 h-12 rounded-full flex items-center justify-center">
+                      <Icon className={`w-6 h-6 ${resource.textColor}`} />
+                    </div>
+                    <h3 className={`font-bold text-lg ${resource.textColor} mb-2 leading-tight`}>{resource.title}</h3>
+                    <p className="text-sm text-neutral-700 mb-4 flex-grow">{resource.description}</p>
+                    <Button className={`w-full bg-white hover:bg-white/80 ${resource.textColor} font-bold border border-black/5 shadow-sm`}>
+                      <Download className="w-4 h-4 mr-2" />
+                      Download
+                    </Button>
                   </div>
-                  <h3 className="font-bold text-neutral-800 mb-2">{resource.title}</h3>
-                  <p className="text-neutral-700 text-sm mb-4 leading-relaxed">{resource.description}</p>
-                  <Button
-                    className="rounded-xl px-5 py-2.5 font-semibold shadow-sm hover:shadow-md transition-all"
-                    style={{ backgroundColor: tone.fg, color: "white" }}
-                  >
-                    <Download className="w-4 h-4 mr-2" />
-                    Download
-                  </Button>
-                </Card>
+                </motion.div>
               );
             })}
           </div>
         </div>
-        <WaveBottom fill="#e9f2ef" />
       </section>
 
-      {/* TIPS */}
-      <section className="py-14 md:py-16 bg-section-3 relative overflow-hidden">
-        <WaveTop fill="#e9f2ef" />
+      {/* TIPS - "The Notice Board" */}
+      <section className="py-20 bg-[url('https://www.transparenttextures.com/patterns/cork-board.png')] border-y-8 border-yellow-800/20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-10">
-            <Badge className="bg-gradient-accent text-white px-4 py-2 rounded-full font-medium mb-3">
-              Tips & Guidance
-            </Badge>
-            <h2 className="text-2xl md:text-3xl font-bold text-neutral-800 mb-2">Parenting Tips</h2>
-            <p className="text-neutral-700 text-base md:text-lg max-w-2xl mx-auto">
-              Expert advice to help support development at home
-            </p>
+          <div className="text-center mb-12">
+            <div className="inline-block bg-white px-6 py-2 shadow-md transform rotate-1 border border-neutral-200">
+              <h2 className="text-3xl font-black text-neutral-800 font-handwriting">Parenting Tips</h2>
+            </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {parentTips.map((section, index) => (
-              <Card key={index} className="rounded-2xl p-6 shadow-sm border border-[hsl(var(--neutral-100))] bg-white hover:shadow-md transition-all hover:-translate-y-[2px]">
-                <div className="flex items-center gap-3 mb-4">
-                  <div
-                    className="w-8 h-8 rounded-full flex items-center justify-center"
-                    style={{ backgroundColor: "hsl(var(--light-orange))", color: "hsl(var(--premium-orange))" }}
-                  >
-                    <Heart className="w-4 h-4" stroke="currentColor" fill="none" strokeWidth={2} />
-                  </div>
-                  <h3 className="font-bold text-neutral-800">{section.title}</h3>
-                </div>
-                <ul className="space-y-2.5">
-                  {section.tips.map((tip, tipIndex) => (
-                    <li key={tipIndex} className="flex items-start gap-2">
-                      <div
-                        className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
-                        style={{ backgroundColor: "hsl(var(--premium-orange))" }}
-                      />
-                      <span className="text-neutral-700 text-sm leading-relaxed">{tip}</span>
+          <div className="grid md:grid-cols-3 gap-8">
+            {parentTips.map((tip, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className={`relative ${tip.color} p-6 shadow-[4px_4px_8px_rgba(0,0,0,0.15)] transform ${tip.rotate} hover:scale-105 transition-transform duration-300`}
+              >
+                {/* Pin */}
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-red-500 shadow-sm border border-red-600 z-20" />
+
+                <h3 className="font-handwriting text-2xl font-bold text-neutral-800 mb-4 border-b-2 border-black/10 pb-2">
+                  {tip.title}
+                </h3>
+                <ul className="space-y-2">
+                  {tip.tips.map((t, i) => (
+                    <li key={i} className="flex items-start gap-2 font-handwriting text-lg text-neutral-700">
+                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-neutral-400" />
+                      {t}
                     </li>
                   ))}
                 </ul>
-              </Card>
+              </motion.div>
             ))}
           </div>
         </div>
-        <WaveBottom fill="#eee7fa" />
       </section>
 
-      {/* EVENTS */}
-      <section className="py-14 md:py-16 bg-section-4 relative overflow-hidden">
-        <WaveTop fill="#eee7fa" />
+      {/* EVENTS - "The Calendar" */}
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-10">
-            <Badge className="bg-gradient-primary text-white px-4 py-2 rounded-full font-medium mb-3">
-              Events
-            </Badge>
-            <h2 className="text-2xl md:text-3xl font-bold text-neutral-800 mb-2">Upcoming Events</h2>
-            <p className="text-neutral-700 text-base md:text-lg max-w-2xl mx-auto">
-              Join us for special events and family activities
-            </p>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-black text-[hsl(var(--brand-dark-green))] font-handwriting mb-2">Upcoming Events</h2>
+            <p className="text-neutral-600">Mark your calendars!</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {events.map((event, idx) => (
-              <Card
+              <motion.div
                 key={idx}
-                className="rounded-2xl p-6 shadow-sm border border-[hsl(var(--neutral-100))] bg-white hover:shadow-md transition-all hover:-translate-y-[2px]"
+                whileHover={{ y: -5 }}
+                className="relative bg-white rounded-lg shadow-md border border-neutral-200 overflow-hidden group"
               >
-                <div className="flex items-start gap-4">
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ backgroundColor: "hsl(var(--light-orange))", color: "hsl(var(--premium-orange))" }}
-                  >
-                    <Calendar className="w-6 h-6" stroke="currentColor" fill="none" strokeWidth={2} />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-bold text-neutral-800 text-lg mb-1">{event.title}</h3>
-                    <div className="flex flex-wrap items-center gap-3 mb-2 text-sm font-medium" style={{ color: "hsl(var(--premium-orange))" }}>
-                      <span>{event.date}</span>
-                      <span>{event.time}</span>
-                    </div>
-                    <p className="text-neutral-700 text-sm leading-relaxed">{event.description}</p>
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-        <WaveBottom fill="#e9eefc" />
-      </section>
-
-      {/* TESTIMONIALS */}
-      <section className="py-14 md:py-16 bg-section-1 relative overflow-hidden">
-        <WaveTop fill="#e9eefc" />
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-10">
-            <Badge className="bg-gradient-secondary text-white px-4 py-2 rounded-full font-medium mb-3">
-              Testimonials
-            </Badge>
-            <h2 className="text-2xl md:text-3xl font-bold text-neutral-800 mb-2">What Parents Say</h2>
-            <p className="text-neutral-700 text-base md:text-lg max-w-2xl mx-auto">Hear from our parent community</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {testimonials.map((t, idx) => (
-              <Card key={idx} className="rounded-2xl p-6 shadow-sm border border-[hsl(var(--neutral-100))] bg-white hover:shadow-md transition-all hover:-translate-y-[2px]">
-                <div className="flex gap-1 mb-4" style={{ color: "hsl(var(--premium-yellow))" }}>
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4" stroke="currentColor" fill="currentColor" strokeWidth={0} />
+                {/* Spiral Binding */}
+                <div className="absolute top-0 left-0 w-full h-4 flex justify-evenly z-20">
+                  {[...Array(6)].map((_, i) => (
+                    <div key={i} className="w-2 h-4 bg-neutral-300 rounded-full border border-neutral-400" />
                   ))}
                 </div>
-                <blockquote className="text-neutral-700 mb-4 italic leading-relaxed">
-                  “{t.text}”
-                </blockquote>
-                <div className="border-t border-[hsl(var(--neutral-100))] pt-4">
-                  <div className="font-semibold text-neutral-800">{t.parent}</div>
-                  <div className="text-sm" style={{ color: "hsl(var(--premium-orange))" }}>
-                    Parent of {t.child}
-                  </div>
+
+                {/* Date Header */}
+                <div className={`pt-6 pb-3 px-4 bg-neutral-50 border-b-2 ${event.color} text-center`}>
+                  <div className="text-xs font-bold uppercase tracking-widest text-neutral-500">Date</div>
+                  <div className="text-xl font-black text-neutral-800">{event.date}</div>
                 </div>
-              </Card>
+
+                {/* Body */}
+                <div className="p-4 text-center">
+                  <h3 className="font-bold text-lg text-neutral-800 mb-1 group-hover:text-[hsl(var(--premium-orange))] transition-colors">
+                    {event.title}
+                  </h3>
+                  <div className="text-sm font-medium text-neutral-500 mb-2">{event.time}</div>
+                  <p className="text-sm text-neutral-600 italic">{event.desc}</p>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
-        <WaveBottom fill="#f6eee7" />
       </section>
 
-      {/* CONTACT/SUPPORT CTA */}
-      {/* CONTACT/SUPPORT CTA — subtle, high-contrast on light card, on-brand buttons */}
-      <section className="py-14 md:py-16 bg-section-2 relative overflow-hidden">
-        <WaveTop fill="#f6eee7" />
-
+      {/* TESTIMONIALS - "Community Voices" */}
+      <section className="py-20 bg-blue-50 relative overflow-hidden">
         <div className="container mx-auto px-4">
-          <div
-            className="
-        relative max-w-4xl mx-auto rounded-3xl overflow-hidden
-        p-8 md:p-10 text-center shadow-sm
-        border border-[hsl(var(--neutral-100))] bg-white
-      "
-          >
-            {/* soft brand tint corners */}
-            <div
-              className="pointer-events-none absolute -top-10 -right-8 w-32 h-32 rounded-full"
-              style={{ backgroundColor: "hsl(var(--light-orange))" }}
-            />
-            <div
-              className="pointer-events-none absolute -bottom-10 -left-8 w-28 h-28 rounded-full"
-              style={{ backgroundColor: "hsl(var(--light-pink))" }}
-            />
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-black text-neutral-800 font-handwriting mb-2">Community Voices</h2>
+            <p className="text-neutral-600">Hear from our Basil Woods family</p>
+          </div>
 
-            <div className="relative z-10">
-              <h2 className="text-2xl md:text-3xl font-bold mb-3 text-neutral-900">
-                Need Support or Have Questions?
-              </h2>
-              <p className="text-base md:text-lg mb-6 text-neutral-800 max-w-2xl mx-auto">
-                Our parent support team is here to help every step of the way.
-              </p>
+          <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((t, idx) => (
+              <div key={idx} className="flex flex-col">
+                {/* Bubble */}
+                <div className="bg-white p-6 rounded-2xl shadow-sm border-2 border-blue-100 relative mb-6 flex-grow">
+                  <p className="text-neutral-700 italic leading-relaxed">"{t.text}"</p>
+                  {/* Tail */}
+                  <div className="absolute -bottom-3 left-8 w-6 h-6 bg-white border-b-2 border-r-2 border-blue-100 transform rotate-45" />
+                </div>
 
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                {/* Primary: warm brand button */}
-                <Button
-                  className="rounded-xl px-6 py-3 font-bold shadow-sm hover:shadow-md transition-all"
-                  style={{ backgroundColor: "hsl(var(--premium-orange))", color: "white" }}
-                >
-                  <Users className="w-5 h-5 mr-2" />
-                  Contact Parent Support
-                </Button>
+                {/* Author */}
+                <div className="flex items-center gap-3 px-4">
+                  <div className="w-10 h-10 rounded-full bg-blue-200 flex items-center justify-center text-blue-600 font-bold text-lg">
+                    {t.parent.charAt(0)}
+                  </div>
+                  <div>
+                    <div className="font-bold text-neutral-800">{t.parent}</div>
+                    <div className="text-xs font-bold text-blue-500 uppercase">{t.child}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-                {/* Secondary: outlined in brand color */}
-                <Button
-                  variant="outline"
-                  className="rounded-xl px-6 py-3 font-bold transition-all border-2 hover:bg-white"
-                  style={{
-                    borderColor: "hsl(var(--premium-orange))",
-                    color: "hsl(var(--premium-orange))",
-                  }}
-                >
-                  <Calendar className="w-5 h-5 mr-2" />
-                  Schedule Meeting
-                </Button>
+      {/* CTA - "The Envelope" */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto relative">
+            {/* Envelope Flap Effect (Visual only) */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[50px] border-l-transparent border-r-[50px] border-r-transparent border-t-[50px] border-t-orange-100/50 z-0" />
+
+            <div className="relative bg-white border-2 border-orange-100 rounded-xl p-10 text-center shadow-xl">
+              {/* Stamp */}
+              <div className="absolute top-4 right-4 w-16 h-20 bg-orange-50 border-2 border-dashed border-orange-300 flex items-center justify-center transform rotate-6">
+                <Heart className="w-8 h-8 text-orange-400 fill-current" />
               </div>
 
-              {/* reassurance */}
-              <p className="mt-4 text-xs text-neutral-600">
-                Response within 1 business day.
+              <h2 className="text-3xl md:text-4xl font-black text-neutral-900 mb-4 font-handwriting">Get in Touch</h2>
+              <p className="text-lg text-neutral-600 mb-8 font-medium">
+                Have questions or need support? We're just a message away.
               </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button
+                  onClick={() => window.open(`https://wa.me/918056179108`, "_blank")}
+                  className="bg-green-500 hover:bg-green-600 text-white font-bold py-6 px-8 rounded-xl text-lg shadow-md"
+                >
+                  <FaWhatsapp className="w-6 h-6 mr-2" />
+                  Parent Support
+                </Button>
+                <Button
+                  variant="outline"
+                  className="border-2 border-[hsl(var(--premium-orange))] text-[hsl(var(--premium-orange))] hover:bg-orange-50 font-bold py-6 px-8 rounded-xl text-lg"
+                  onClick={() => (window.location.href = "tel:+918056179108")}
+                >
+                  <Phone className="w-6 h-6 mr-2" />
+                  Call School
+                </Button>
+              </div>
             </div>
           </div>
         </div>
-
-        <WaveBottom fill="#e3e9fb" />
       </section>
 
-
-      {/* Footer */}
-      <footer className="relative bg-[#f4f7ff]">
-        <WaveTop fill="#e3e9fb" />
-        <Footer />
-      </footer>
+      <Footer />
     </div>
   );
 };

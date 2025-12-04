@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Pencil, Star, Heart, Sun } from "lucide-react";
 
 const Preloader = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -19,128 +20,103 @@ const Preloader = () => {
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-gradient-to-br from-white via-[hsl(var(--light-orange))] to-[hsl(var(--light-teal))]"
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#fffdf5]"
         >
-          <div className="relative flex flex-col items-center gap-6">
-            {/* Animated Logo/Icon */}
-            <div className="relative">
-              {/* Bouncing Ball Animation */}
-              <motion.div
-                className="w-20 h-20 rounded-full bg-gradient-primary shadow-2xl"
-                animate={{
-                  y: [0, -40, 0],
-                  scale: [1, 1.1, 1],
-                }}
-                transition={{
-                  duration: 1,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
+          {/* Background Texture */}
+          <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/notebook.png')]" />
 
-              {/* Decorative circles */}
-              <motion.div
-                className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-[hsl(var(--premium-purple))] opacity-60"
-                animate={{
-                  scale: [1, 1.3, 1],
-                  rotate: [0, 180, 360],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
+          <div className="relative flex flex-col items-center">
 
-              <motion.div
-                className="absolute -bottom-2 -left-2 w-6 h-6 rounded-full bg-[hsl(var(--premium-teal))] opacity-60"
-                animate={{
-                  scale: [1, 1.4, 1],
-                  rotate: [360, 180, 0],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 0.3,
-                }}
-              />
-            </div>
+            {/* Drawing Animation Container */}
+            <div className="relative w-64 h-40 flex items-center justify-center">
 
-            {/* Loading Text */}
-            <div className="flex flex-col items-center gap-2">
-              <motion.h2
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="text-2xl font-bold text-[hsl(var(--brand-dark-green))]"
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
-                Basil Woods Juniors
-              </motion.h2>
-
-              {/* Animated Dots */}
-              <div className="flex gap-1.5">
-                {[0, 1, 2].map((i) => (
-                  <motion.div
-                    key={i}
-                    className="w-2.5 h-2.5 rounded-full bg-[hsl(var(--premium-orange))]"
-                    animate={{
-                      scale: [1, 1.5, 1],
-                      opacity: [0.3, 1, 0.3],
-                    }}
-                    transition={{
-                      duration: 1,
-                      repeat: Infinity,
-                      delay: i * 0.2,
-                    }}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* Fun Spinning Crayon */}
-            <motion.div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 pointer-events-none"
-              animate={{
-                rotate: 360,
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-            >
-              {/* Rainbow circle segments */}
-              {[
-                { color: "--premium-orange", rotate: 0 },
-                { color: "--premium-yellow", rotate: 60 },
-                { color: "--premium-green", rotate: 120 },
-                { color: "--premium-teal", rotate: 180 },
-                { color: "--premium-purple", rotate: 240 },
-                { color: "--premium-pink", rotate: 300 },
-              ].map((segment, i) => (
-                <motion.div
-                  key={i}
-                  className="absolute w-2 h-10 rounded-full opacity-30"
-                  style={{
-                    backgroundColor: `hsl(var(${segment.color}))`,
-                    top: "50%",
-                    left: "50%",
-                    transformOrigin: "center center",
-                    transform: `translate(-50%, -50%) rotate(${segment.rotate}deg) translateY(-50px)`,
-                  }}
-                  animate={{
-                    scale: [1, 1.2, 1],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    delay: i * 0.1,
-                  }}
+              {/* SVG Path for "Drawing" Effect */}
+              <svg width="200" height="100" viewBox="0 0 200 100" className="absolute overflow-visible">
+                <motion.path
+                  d="M 20 80 Q 50 20 80 80 T 140 80 T 180 50"
+                  fill="none"
+                  stroke="hsl(var(--premium-orange))"
+                  strokeWidth="6"
+                  strokeLinecap="round"
+                  strokeDasharray="0 1"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }}
                 />
-              ))}
+              </svg>
+
+              {/* Moving Pencil */}
+              <motion.div
+                className="absolute"
+                animate={{
+                  x: [0, 60, 120, 160, 120, 60, 0],
+                  y: [30, -30, 30, 0, 30, -30, 30],
+                  rotate: [-10, 10, -10, 0, -10, 10, -10]
+                }}
+                transition={{ duration: 3, ease: "easeInOut", repeat: Infinity }}
+              >
+                <div className="relative">
+                  <Pencil className="w-12 h-12 text-[hsl(var(--brand-dark-green))] fill-[hsl(var(--premium-yellow))]" />
+                  {/* Pencil Tip Glow */}
+                  <div className="absolute bottom-0 left-0 w-3 h-3 bg-[hsl(var(--premium-orange))] rounded-full blur-sm opacity-50" />
+                </div>
+              </motion.div>
+
+              {/* Popping Doodles */}
+              <motion.div
+                className="absolute -top-4 left-10 text-[hsl(var(--premium-pink))]"
+                animate={{ scale: [0, 1, 0], opacity: [0, 1, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, delay: 0.2 }}
+              >
+                <Heart className="w-8 h-8 fill-current" />
+              </motion.div>
+
+              <motion.div
+                className="absolute top-0 right-20 text-[hsl(var(--premium-yellow))]"
+                animate={{ scale: [0, 1, 0], opacity: [0, 1, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, delay: 0.8 }}
+              >
+                <Star className="w-8 h-8 fill-current" />
+              </motion.div>
+
+              <motion.div
+                className="absolute bottom-0 right-10 text-[hsl(var(--premium-teal))]"
+                animate={{ scale: [0, 1, 0], opacity: [0, 1, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, delay: 1.2 }}
+              >
+                <Sun className="w-8 h-8 fill-current" />
+              </motion.div>
+
+            </div>
+
+            {/* Handwritten Text */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="mt-8 text-center"
+            >
+              <h2 className="text-3xl font-black text-[hsl(var(--brand-dark-green))] font-handwriting mb-2">
+                Getting Ready...
+              </h2>
+              <div className="flex gap-2 justify-center">
+                <motion.div
+                  className="w-3 h-3 rounded-full bg-[hsl(var(--premium-orange))]"
+                  animate={{ scale: [1, 1.5, 1] }}
+                  transition={{ duration: 0.6, repeat: Infinity, delay: 0 }}
+                />
+                <motion.div
+                  className="w-3 h-3 rounded-full bg-[hsl(var(--premium-pink))]"
+                  animate={{ scale: [1, 1.5, 1] }}
+                  transition={{ duration: 0.6, repeat: Infinity, delay: 0.2 }}
+                />
+                <motion.div
+                  className="w-3 h-3 rounded-full bg-[hsl(var(--premium-teal))]"
+                  animate={{ scale: [1, 1.5, 1] }}
+                  transition={{ duration: 0.6, repeat: Infinity, delay: 0.4 }}
+                />
+              </div>
             </motion.div>
           </div>
         </motion.div>

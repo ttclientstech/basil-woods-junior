@@ -21,7 +21,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 13% 18%;
 
-    --primary: 25 100% 63%;             /* Bright Orange - Main brand color */
+    --primary: 25 100% 63%;
+    /* Bright Orange - Main brand color */
     --primary-foreground: 0 0% 98%;
 
     --secondary: 220 14% 96%;
@@ -30,7 +31,8 @@
     --muted: 220 14% 96%;
     --muted-foreground: 220 9% 46%;
 
-    --accent: 25 100% 63%;              /* Bright Orange accent */
+    --accent: 25 100% 63%;
+    /* Bright Orange accent */
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84% 60%;
@@ -38,25 +40,40 @@
 
     --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --ring: 25 100% 63%;                /* Bright Orange ring/focus */
+    --ring: 25 100% 63%;
+    /* Bright Orange ring/focus */
 
     /* Premium Color Palette - Updated from BWJ Logo */
-    --premium-orange: 25 100% 63%;        /* Bright Orange from JUNIORS text & sun rays */
-    --brand-dark-green: 145 37% 26%;      /* Dark Green from BASIL WOODS text */
-    --premium-teal: 183 50% 54%;          /* Cyan from PRESCHOOL & DAY CARE */
-    --premium-pink: 330 81% 60%;          /* Playful Pink accent */
-    --premium-yellow: 45 93% 47%;         /* Sunshine Yellow */
-    --premium-purple: 258 90% 66%;        /* Purple from flower icons */
-    --premium-green: 142 71% 45%;         /* Nature Green */
+    --premium-orange: 25 100% 63%;
+    /* Bright Orange from JUNIORS text & sun rays */
+    --brand-dark-green: 145 37% 26%;
+    /* Dark Green from BASIL WOODS text */
+    --premium-teal: 183 50% 54%;
+    /* Cyan from PRESCHOOL & DAY CARE */
+    --premium-pink: 330 81% 60%;
+    /* Playful Pink accent */
+    --premium-yellow: 45 93% 47%;
+    /* Sunshine Yellow */
+    --premium-purple: 258 90% 66%;
+    /* Purple from flower icons */
+    --premium-green: 142 71% 45%;
+    /* Nature Green */
 
     /* Premium Light Tones - Updated */
-    --light-orange: 25 100% 95%;          /* Soft orange background */
-    --light-teal: 183 50% 95%;            /* Soft cyan background */
-    --light-pink: 330 81% 95%;            /* Soft pink background */
-    --light-purple: 258 90% 95%;          /* Soft purple background */
-    --light-green: 142 71% 95%;           /* Soft green background */
-    --light-dark-green: 145 37% 92%;      /* Soft dark green background */
-    --light-gray: 220 14% 96%;            /* Neutral background */
+    --light-orange: 25 100% 95%;
+    /* Soft orange background */
+    --light-teal: 183 50% 95%;
+    /* Soft cyan background */
+    --light-pink: 330 81% 95%;
+    /* Soft pink background */
+    --light-purple: 258 90% 95%;
+    /* Soft purple background */
+    --light-green: 142 71% 95%;
+    /* Soft green background */
+    --light-dark-green: 145 37% 92%;
+    /* Soft dark green background */
+    --light-gray: 220 14% 96%;
+    /* Neutral background */
 
 
     /* Premium Neutral Tones */
@@ -144,6 +161,7 @@
     @apply bg-background text-foreground;
     font-family: var(--font-body);
     line-height: 1.6;
+    overflow-x: hidden;
   }
 
   h1,
@@ -453,11 +471,11 @@
 
   .bg-gradient-rainbow {
     background: linear-gradient(135deg,
-      hsl(var(--premium-orange)),
-      hsl(var(--premium-yellow)),
-      hsl(var(--premium-green)),
-      hsl(var(--premium-teal)),
-      hsl(var(--premium-purple)));
+        hsl(var(--premium-orange)),
+        hsl(var(--premium-yellow)),
+        hsl(var(--premium-green)),
+        hsl(var(--premium-teal)),
+        hsl(var(--premium-purple)));
   }
 
   /* Section Backgrounds - Enhanced */

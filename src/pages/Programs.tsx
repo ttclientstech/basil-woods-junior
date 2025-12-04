@@ -100,7 +100,7 @@ const ProgramsPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#fffdf5] font-sans overflow-x-hidden">
+    <div className="min-h-screen bg-[#fffdf5] font-sans">
       <Header />
 
       {/* HERO - "Explorer's Guide" */}
