@@ -5,13 +5,11 @@ import {
   MapPin,
   Phone,
   Mail,
-  Facebook,
-  Instagram,
-  Youtube,
   Star,
   Heart,
   ArrowRight
 } from "lucide-react";
+import { RiFacebookCircleFill, RiInstagramFill, RiYoutubeFill } from "react-icons/ri";
 
 const Footer = () => {
   const quickLinks = [
@@ -135,9 +133,9 @@ const Footer = () => {
             {/* Social Buttons */}
             <div className="flex gap-4">
               {[
-                { icon: Facebook, href: "https://www.facebook.com/people/Basil-Woods-Juniors-International-Pre-School-Day-Care-Chennai/61576063646448/?checkpoint_src=any", color: "text-blue-600" },
-                { icon: Instagram, href: "https://www.instagram.com/basilwoodsjuniors_chennai", color: "text-pink-600" },
-                { icon: Youtube, href: "https://www.youtube.com/@BWJChennai", color: "text-red-600" }
+                { icon: RiFacebookCircleFill, href: "https://www.facebook.com/people/Basil-Woods-Juniors-International-Pre-School-Day-Care-Chennai/61576063646448/?checkpoint_src=any", color: "text-blue-600" },
+                { icon: RiInstagramFill, href: "https://www.instagram.com/basilwoodsjuniors_chennai", color: "text-pink-600" },
+                { icon: RiYoutubeFill, href: "https://www.youtube.com/@BWJChennai", color: "text-red-600" }
               ].map((social, i) => (
                 <motion.a
                   key={i}
