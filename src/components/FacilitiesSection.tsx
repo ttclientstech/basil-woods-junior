@@ -1,166 +1,199 @@
 import React from "react";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Camera, MapPin, Car, Shield, Heart, Calendar, School, Trees, Drama, BookOpen, Palette, ShieldCheck } from "lucide-react";
+import { motion } from "framer-motion";
+import { School, Trees, Drama, BookOpen, Palette, ShieldCheck, Star } from "lucide-react";
 import picture1 from "@/assets/Images/Picture5.webp";
 import picture2 from "@/assets/Images/Picture3.webp";
-
-const WaveTop = ({ fill = "#e9eefc" }) => (
-  <div className="absolute top-0 left-0 w-full overflow-hidden leading-none rotate-180">
-    <svg className="relative block w-full h-[60px]" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path fill={fill} d="M0,256L48,240C96,224,192,192,288,170.7C384,149,480,139,576,154.7C672,171,768,213,864,208C960,203,1056,149,1152,117.3C1248,85,1344,75,1392,69.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z" />
-    </svg>
-  </div>
-);
-
-const WaveBottom = ({ fill = "#e3e9fb" }) => (
-  <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-    <svg className="relative block w-full h-[60px]" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path fill={fill} d="M0,256L48,240C96,224,192,192,288,170.7C384,149,480,139,576,154.7C672,171,768,213,864,208C960,203,1056,149,1152,117.3C1248,85,1344,75,1392,69.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z" />
-    </svg>
-  </div>
-);
+import WaveDivider from "@/components/ui/wave-divider";
 
 const FacilitiesSection = () => {
   const facilities = [
     {
       icon: School,
-      title: "Inspiring Learning Spaces",
-      desc: "Spacious, airy classrooms with child-friendly furniture and a vibrant environment that inspires curiosity.",
-      features: ["Bright natural lighting", "Child-safe furniture & materials", "Ergonomic learning corners"],
+      title: "Inspiring Spaces",
+      desc: "Spacious, airy classrooms with child-friendly furniture.",
+      features: ["Natural lighting", "Child-safe furniture", "Learning corners"],
+      color: "bg-yellow-50",
+      borderColor: "border-yellow-400",
+      shadow: "shadow-yellow-400",
+      rotation: "rotate-1"
     },
     {
       icon: Trees,
-      title: "Outdoor Exploration Zones",
-      desc: "Green play areas with safe equipment and sensory corners for exploration and movement.",
-      features: ["Safe climbing structures", "Shady garden spots", "Butterfly & sensory gardens"],
+      title: "Outdoor Zones",
+      desc: "Green play areas with safe equipment and sensory corners.",
+      features: ["Climbing structures", "Garden spots", "Sensory paths"],
+      color: "bg-green-50",
+      borderColor: "border-green-400",
+      shadow: "shadow-green-400",
+      rotation: "-rotate-1"
     },
     {
       icon: Drama,
-      title: "Performance & Expression Stage",
-      desc: "A simple stage for music, dance, role-play, and storytelling to build confidence.",
-      features: ["Mini stage", "Audio & music setup", "Costume & props"],
+      title: "Performance Stage",
+      desc: "A stage for music, dance, role-play, and storytelling.",
+      features: ["Mini stage", "Audio setup", "Costume props"],
+      color: "bg-pink-50",
+      borderColor: "border-pink-400",
+      shadow: "shadow-pink-400",
+      rotation: "rotate-2"
     },
     {
       icon: BookOpen,
-      title: "Engaging Reading Corners",
-      desc: "Cozy library spaces with picture books and early readers for quiet discovery.",
-      features: ["Age-appropriate storybooks", "Interactive kits", "Comfortable nooks"],
+      title: "Reading Corners",
+      desc: "Cozy library spaces with picture books for quiet discovery.",
+      features: ["Storybooks", "Interactive kits", "Comfortable nooks"],
+      color: "bg-blue-50",
+      borderColor: "border-blue-400",
+      shadow: "shadow-blue-400",
+      rotation: "-rotate-2"
     },
     {
       icon: Palette,
-      title: "Creative Arts Studio",
+      title: "Creative Studio",
       desc: "A tidy art space to explore colors, textures, and expression.",
       features: ["Child-safe supplies", "Display walls", "Easy-clean stations"],
+      color: "bg-orange-50",
+      borderColor: "border-orange-400",
+      shadow: "shadow-orange-400",
+      rotation: "rotate-1"
     },
     {
       icon: ShieldCheck,
-      title: "Safe & Secure Campus",
+      title: "Safe Campus",
       desc: "Comprehensive safety measures for peace of mind.",
-      features: ["24/7 CCTV", "Secure entry", "On-site medical kit"],
+      features: ["24/7 CCTV", "Secure entry", "Medical kit"],
+      color: "bg-teal-50",
+      borderColor: "border-teal-400",
+      shadow: "shadow-teal-400",
+      rotation: "-rotate-1"
     },
   ];
 
   return (
-    <section className="py-14 md:py-16 bg-section-3 relative overflow-hidden">
-      <WaveTop fill="#e9eefc" />
+    <section className="py-20 md:py-24 bg-[hsl(var(--section-3))] relative overflow-hidden">
+      <WaveDivider position="top" fill="#f6eee7" variant={3} />
 
-      {/* very soft shapes */}
-      <div className="absolute top-16 right-8 w-10 h-10 rounded-2xl opacity-15" style={{ backgroundColor: "hsl(var(--premium-yellow))" }} />
-      <div className="absolute bottom-16 left-12 w-8 h-8 rounded-full opacity-15" style={{ backgroundColor: "hsl(var(--premium-teal))" }} />
+      {/* Background Texture */}
+      <div className="absolute inset-0 pointer-events-none opacity-5"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        }}
+      />
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
-        <div className="text-center max-w-4xl mx-auto mb-10 md:mb-12">
-          <Badge className="px-4 py-2 rounded-full font-medium mb-3 text-white inline-flex items-center gap-2"
-            style={{ background: "linear-gradient(135deg, hsl(var(--premium-orange)), hsl(var(--premium-pink)))" }}>
-            <School className="w-4 h-4" />
-            Our Chennai Campus
-          </Badge>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-neutral-800 leading-tight mb-2">
-            Thoughtfully Designed Learning Spaces
+        <div className="text-center max-w-4xl mx-auto mb-16">
+          <motion.div
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-block bg-white border-2 border-black px-6 py-2 rounded-full shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-4 transform rotate-2"
+          >
+            <span className="font-bold text-neutral-800 flex items-center gap-2">
+              <School className="w-5 h-5 text-orange-500" />
+              Our Chennai Campus
+            </span>
+          </motion.div>
+          <h2 className="text-4xl md:text-6xl font-black text-neutral-900 leading-tight mb-4 font-handwriting">
+            Our Happy Spaces
           </h2>
-          <p className="text-neutral-700 text-base md:text-lg">
-            Where culture meets modern safety—calm, organized, and child-centered.
+          <p className="text-lg text-neutral-700 font-medium max-w-2xl mx-auto">
+            Thoughtfully designed environments where curiosity meets safety.
           </p>
         </div>
 
-        {/* Photos — reduced effects */}
-        <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-12">
-          {/* First Card */}
-          <div className="relative group">
-            <img
-              src={picture1}
-              alt="Child engaging in creative activity"
-              className="w-full h-[300px] object-cover rounded-2xl shadow-sm border border-[hsl(var(--neutral-100))] transition-all hover:shadow-md"
-            />
-            <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-sm">
-              <h4
-                className="font-semibold mb-1"
-                style={{ color: "hsl(var(--premium-teal))" }}
-              >
-                Creative Exploration
-              </h4>
-              <p className="text-neutral-700 text-sm">
-                Hands-on activities that encourage curiosity, focus, and imaginative
-                learning.
-              </p>
-            </div>
-          </div>
+        {/* Photo Scrapbook */}
+        <div className="grid md:grid-cols-2 gap-12 mb-20 max-w-5xl mx-auto">
+          {[
+            { img: picture1, title: "Creative Exploration", rotate: "-rotate-2", tape: "top-right" },
+            { img: picture2, title: "Collaborative Learning", rotate: "rotate-2", tape: "top-left" }
+          ].map((item, idx) => (
+            <motion.div
+              key={idx}
+              className={`relative group ${item.rotate}`}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.2 }}
+              whileHover={{ scale: 1.02, rotate: 0, transition: { duration: 0.2 } }}
+            >
+              {/* Tape Effect */}
+              <div className={`absolute -top-4 ${item.tape === 'top-left' ? '-left-4' : '-right-4'} w-32 h-8 bg-yellow-100/80 backdrop-blur-sm border border-white/50 shadow-sm transform ${item.tape === 'top-left' ? '-rotate-12' : 'rotate-12'} z-20 pointer-events-none`} />
 
-          {/* Second Card */}
-          <div className="relative group">
-            <img
-              src={picture2}
-              alt="Teacher with children in group learning"
-              className="w-full h-[300px] object-cover rounded-2xl shadow-sm border border-[hsl(var(--neutral-100))] transition-all hover:shadow-md"
-            />
-            <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-sm">
-              <h4
-                className="font-semibold mb-1"
-                style={{ color: "hsl(var(--premium-purple))" }}
-              >
-                Collaborative Learning
-              </h4>
-              <p className="text-neutral-700 text-sm">
-                Children learn together in guided group sessions, building teamwork and
-                communication.
-              </p>
-            </div>
-          </div>
+              <div className="bg-white p-3 pb-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.15)] border-4 border-white transform transition-transform">
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  className="w-full h-[300px] object-cover border border-neutral-100"
+                />
+                <div className="absolute bottom-4 left-0 right-0 text-center">
+                  <span className="font-handwriting text-2xl text-neutral-800 font-bold bg-white/80 px-4 py-1 rounded-sm">
+                    {item.title}
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
 
-        {/* Facilities — toned down */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
-          {facilities.map((f, i) => {
-            const IconComponent = f.icon;
-            return (
-              <Card key={i} className="p-6 rounded-2xl bg-white shadow-sm border border-[hsl(var(--neutral-100))] transition-all hover:shadow-md hover:-translate-y-[2px]">
-                <div
-                  className="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-4"
-                  style={{ backgroundColor: "hsl(var(--neutral-50))" }}
-                >
-                  <IconComponent className="w-7 h-7" style={{ color: "hsl(var(--premium-orange))" }} strokeWidth={2} />
-                </div>
-                <h3 className="font-bold text-neutral-800 text-center mb-2">{f.title}</h3>
-                <p className="text-neutral-700 text-center mb-4 leading-relaxed text-sm">{f.desc}</p>
+        {/* Facilities Grid - Notebook Style */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {facilities.map((f, i) => (
+            <motion.div
+              key={i}
+              className={`relative group ${f.rotation}`}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              whileHover={{ y: -5, rotate: 0, transition: { duration: 0.2 } }}
+            >
+              <div
+                className={`h-full bg-white border-2 border-black p-6 relative overflow-hidden`}
+                style={{
+                  boxShadow: `6px 6px 0px 0px rgba(0,0,0,1)`
+                }}
+              >
+                {/* Notebook Lines Background */}
+                <div className="absolute inset-0 pointer-events-none opacity-50"
+                  style={{
+                    backgroundImage: `linear-gradient(#e5e7eb 1px, transparent 1px)`,
+                    backgroundSize: '100% 24px',
+                    marginTop: '24px'
+                  }}
+                />
 
-                <ul className="space-y-2">
-                  {f.features.map((feat, idx) => (
-                    <li key={idx} className="flex items-center gap-3">
-                      <span className="inline-block w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "hsl(var(--premium-orange))" }} />
-                      <span className="text-sm text-neutral-700">{feat}</span>
-                    </li>
-                  ))}
-                </ul>
-              </Card>
-            );
-          })}
+                {/* Header Strip */}
+                <div className={`absolute top-0 left-0 right-0 h-2 ${f.color.replace('50', '400')}`} />
+
+                <div className="relative z-10">
+                  <div className={`w-14 h-14 rounded-full border-2 border-black ${f.color} flex items-center justify-center mb-4 shadow-sm`}>
+                    <f.icon className="w-7 h-7 text-neutral-800" strokeWidth={2} />
+                  </div>
+
+                  <h3 className="font-black text-xl text-neutral-800 mb-2 uppercase tracking-tight">
+                    {f.title}
+                  </h3>
+                  <p className="text-neutral-700 font-medium mb-4 leading-relaxed font-handwriting text-lg">
+                    {f.desc}
+                  </p>
+
+                  <ul className="space-y-2">
+                    {f.features.map((feat, idx) => (
+                      <li key={idx} className="flex items-center gap-2">
+                        <Star className="w-4 h-4 fill-yellow-400 text-black" />
+                        <span className="text-sm font-bold text-neutral-600">{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
 
-      <WaveBottom fill="#e3e9fb" />
+      <WaveDivider position="bottom" fill="#e3e9fb" variant={4} />
     </section>
   );
 };

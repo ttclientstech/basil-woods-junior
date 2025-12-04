@@ -1,24 +1,23 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import React from "react";
+import { motion } from "framer-motion";
 import logo from "/BWJ Logos.png";
-
 import {
   MapPin,
   Phone,
   Mail,
-  Clock,
   Facebook,
   Instagram,
   Youtube,
+  Star,
   Heart,
-  Star
+  ArrowRight
 } from "lucide-react";
 
 const Footer = () => {
   const quickLinks = [
     { name: "About Us", href: "/about" },
     { name: "Programs", href: "/programs" },
-    { name: "Admissions", href: "/building" }, 
+    { name: "Admissions", href: "/building" },
     { name: "Gallery", href: "/gallery" },
     { name: "Parent Resources", href: "/partners" },
     { name: "Contact", href: "/contact" }
@@ -39,143 +38,128 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-[#fffdf5] text-white-chalk">
-      {/* Main Footer Content */}
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-4 gap-8">
-
-          {/* School Info */}
-          <div className="md:col-span-1">
-            <div className="flex items-center gap-3 mb-4">
-              {/* Logo */}
-              <div className="flex items-center">
-                <img
-                  src={logo}
-                  alt="Basil Woods Juniors Logo"
-                  className="w-14 h-14 transition-transform duration-300"
-                />
-              </div>
-              <div>
-                <h3 className="text-lg font-bold font-playground">BASIL WOODS</h3>
-                <p className="text-sm">JUNIORS CHENNAI</p>
-              </div>
-            </div>
-
-            <p className="text-sm text-white-chalk/80 mb-4 leading-relaxed">
-              You really can change the world if you care enough
-            </p>
-
-            {/* Contact Info */}
-            <div className="space-y-2 text-sm">
-              <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-playground-yellow" />
-                <span>Chennai, Tamil Nadu</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-playground-yellow" />
-                <span>+91 8056179108</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-playground-yellow" />
-                <span>Info.chennai@basilwoods.in</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-bold text-lg mb-4 text-playground-yellow font-playground">Quick Links</h4>
-            <div className="space-y-2">
-              {quickLinks.map((link, index) => (
-                <a
-                  key={index}
-                  href={link.href}
-                  className="block text-white-chalk/80 hover:text-playground-yellow transition-colors text-sm"
-                >
-                  {link.name}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Programs */}
-          <div>
-            <h4 className="font-bold text-lg mb-4 text-playground-yellow font-playground">Programs</h4>
-            <div className="space-y-2">
-              {programs.map((program, index) => (
-                <a
-                  key={index}
-                  href={program.href}
-                  className="block text-white-chalk/80 hover:text-playground-yellow transition-colors text-sm"
-                >
-                  {program.name}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Resources */}
-          <div>
-            <h4 className="font-bold text-lg mb-4 text-playground-yellow font-playground">Resources</h4>
-            <div className="space-y-2 mb-6">
-              {resources.map((resource, index) => (
-                <a
-                  key={index}
-                  href={resource.href}
-                  className="block text-white-chalk/80 hover:text-playground-yellow transition-colors text-sm"
-                >
-                  {resource.name}
-                </a>
-              ))}
-            </div>
-
-            {/* Social Media */}
-            <div>
-              <h5 className="font-semibold mb-3 text-playground-yellow">Follow Us</h5>
-              <div className="flex gap-3">
-                <a
-                  href="https://www.facebook.com/people/Basil-Woods-Juniors-International-Pre-School-Day-Care-Chennai/61576063646448/?checkpoint_src=any"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-8 h-8 bg-white-chalk/20 hover:bg-playground-yellow hover:text-playground-blue rounded-playground flex items-center justify-center transition-all"
-                >
-                  <Facebook className="w-4 h-4" />
-                </a>
-                <a
-                  href="https://www.instagram.com/basilwoodsjuniors_chennai"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-8 h-8 bg-white-chalk/20 hover:bg-playground-yellow hover:text-playground-blue rounded-playground flex items-center justify-center transition-all"
-                >
-                  <Instagram className="w-4 h-4" />
-                </a>
-                <a
-                  href="https://www.youtube.com/@BWJChennai"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-8 h-8 bg-white-chalk/20 hover:bg-playground-yellow hover:text-playground-blue rounded-playground flex items-center justify-center transition-all"
-                >
-                  <Youtube className="w-4 h-4" />
-                </a>
-              </div>
-            </div>
-
-          </div>
+    <footer className="bg-[hsl(var(--brand-dark-green))] text-white relative overflow-hidden pt-20 pb-10">
+      {/* Background Doodles */}
+      <div className="absolute inset-0 pointer-events-none opacity-10">
+        <div className="absolute top-10 left-10 text-white transform -rotate-12">
+          <Star className="w-12 h-12" strokeWidth={1.5} />
         </div>
+        <div className="absolute bottom-20 right-10 text-white transform rotate-12">
+          <Heart className="w-16 h-16" strokeWidth={1.5} />
+        </div>
+        <div className="absolute top-1/2 left-1/4 w-4 h-4 bg-yellow-400 rounded-full" />
+        <div className="absolute bottom-1/3 right-1/3 w-3 h-3 bg-pink-400 rounded-full" />
       </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-white-chalk/20 bg-playground-blue/80">
-        <div className="container mx-auto px-4 py-4">
-          <div className="md:flex md:items-center md:justify-between text-sm">
-            <div className="text-center md:text-left mb-2 md:mb-0">
-              <p className="text-white-chalk/80">
-                © 2024 Basil Woods Juniors Chennai. All rights reserved.
-              </p>
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="grid md:grid-cols-4 gap-12 mb-16">
+
+          {/* Brand Column */}
+          <div className="md:col-span-1 space-y-6">
+            <motion.div
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              className="inline-block bg-white p-4 rounded-full border-4 border-dashed border-neutral-300 shadow-[0px_0px_0px_4px_rgba(255,255,255,0.2)]"
+            >
+              <img
+                src={logo}
+                alt="Basil Woods Juniors Logo"
+                className="w-20 h-20 object-contain"
+              />
+            </motion.div>
+
+            <div>
+              <h3 className="text-2xl font-black font-handwriting text-yellow-400 mb-2">BASIL WOODS</h3>
+              <p className="text-sm font-bold tracking-widest uppercase text-white/80">Juniors Chennai</p>
             </div>
 
-            <div className="flex items-center justify-center md:justify-end gap-2 text-white-chalk/80">
-              <span>Made By Talentronaut Team</span>
+            <p className="text-white/80 text-sm leading-relaxed font-medium">
+              "You really can change the world if you care enough."
+            </p>
+
+            <div className="space-y-4 pt-4">
+              <div className="flex items-start gap-3 group">
+                <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center group-hover:bg-yellow-400 group-hover:text-black transition-colors">
+                  <MapPin className="w-4 h-4" />
+                </div>
+                <span className="text-sm text-white/90 leading-tight pt-1">Chennai, Tamil Nadu</span>
+              </div>
+              <div className="flex items-center gap-3 group">
+                <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center group-hover:bg-green-400 group-hover:text-black transition-colors">
+                  <Phone className="w-4 h-4" />
+                </div>
+                <span className="text-sm text-white/90">+91 8056179108</span>
+              </div>
+              <div className="flex items-center gap-3 group">
+                <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center group-hover:bg-pink-400 group-hover:text-black transition-colors">
+                  <Mail className="w-4 h-4" />
+                </div>
+                <span className="text-sm text-white/90">Info.chennai@basilwoods.in</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Links Columns */}
+          {[
+            { title: "Quick Links", links: quickLinks, color: "text-yellow-400" },
+            { title: "Programs", links: programs, color: "text-pink-400" },
+            { title: "Resources", links: resources, color: "text-teal-400" }
+          ].map((section, idx) => (
+            <div key={idx}>
+              <h4 className={`font-black text-xl mb-6 font-handwriting ${section.color} border-b-2 border-white/10 pb-2 inline-block`}>
+                {section.title}
+              </h4>
+              <ul className="space-y-3">
+                {section.links.map((link, i) => (
+                  <li key={i}>
+                    <a
+                      href={link.href}
+                      className="group flex items-center gap-2 text-white/80 hover:text-white transition-colors"
+                    >
+                      <ArrowRight className={`w-4 h-4 ${section.color} transform group-hover:translate-x-1 transition-transform`} />
+                      <span className="text-sm font-medium">{link.name}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+
+        </div>
+
+        {/* Socials & Bottom Bar */}
+        <div className="border-t-2 border-dashed border-white/20 pt-10">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+
+            {/* Social Buttons */}
+            <div className="flex gap-4">
+              {[
+                { icon: Facebook, href: "https://www.facebook.com/people/Basil-Woods-Juniors-International-Pre-School-Day-Care-Chennai/61576063646448/?checkpoint_src=any", color: "text-blue-600" },
+                { icon: Instagram, href: "https://www.instagram.com/basilwoodsjuniors_chennai", color: "text-pink-600" },
+                { icon: Youtube, href: "https://www.youtube.com/@BWJChennai", color: "text-red-600" }
+              ].map((social, i) => (
+                <motion.a
+                  key={i}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -4 }}
+                  whileTap={{ y: 0 }}
+                  className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)] transition-all border-2 border-transparent hover:border-white/50"
+                >
+                  <social.icon className={`w-6 h-6 ${social.color}`} />
+                </motion.a>
+              ))}
+            </div>
+
+            <div className="text-center md:text-right">
+              <p className="text-white/60 text-sm mb-1">
+                © 2024 Basil Woods Juniors Chennai.
+              </p>
+              <p className="text-white/40 text-xs flex items-center justify-center md:justify-end gap-1">
+                Made with <Heart className="w-3 h-3 fill-red-500 text-red-500" /> by Talentronaut Team
+              </p>
             </div>
           </div>
         </div>

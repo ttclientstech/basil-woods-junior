@@ -1,8 +1,8 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Download, PlayCircle, Play } from "lucide-react";
+import { Download, Play, Sparkles, Star } from "lucide-react";
 
-/* Local waves so the component is self-contained */
 const WaveTop = ({ fill = "#e9eefc" }) => (
   <div className="absolute top-0 left-0 w-full overflow-hidden leading-none rotate-180">
     <svg className="relative block w-full h-[60px]" viewBox="0 0 1440 320" preserveAspectRatio="none">
@@ -38,78 +38,103 @@ const CTA: React.FC<CTAProps> = ({
   title = "Ready to Begin Your Child's Adventure?",
   description = "Choose the perfect program for a nurturing, joyful learning journey.",
   primaryLabel = "Download Brochure",
-  secondaryLabel = "Watch Program Video",
+  secondaryLabel = "Watch Story",
   onPrimaryClick,
   showWaves = true,
 }) => {
   return (
-    <section className="py-14 md:py-16 bg-section-4 relative overflow-hidden">
+    <section className="py-20 md:py-24 bg-[hsl(var(--section-4))] relative overflow-hidden">
       {showWaves && <WaveTop fill="#e3e9fb" />}
 
-      <div className="container mx-auto px-4">
-        <div
-          className="
-            relative max-w-4xl mx-auto rounded-3xl overflow-hidden
-            p-8 md:p-10 text-center shadow-sm
-            border border-[hsl(var(--neutral-100))] bg-white
-          "
+      {/* Background Pattern */}
+      <div className="absolute inset-0 pointer-events-none opacity-10"
+        style={{
+          backgroundImage: `radial-gradient(circle, #000 1px, transparent 1px)`,
+          backgroundSize: '30px 30px'
+        }}
+      />
+
+      <div className="container mx-auto px-4 relative z-10">
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ type: "spring", bounce: 0.4 }}
+          className="max-w-4xl mx-auto relative"
         >
-          {/* soft brand tints */}
+          {/* Decorative Floating Elements */}
+          <motion.div
+            animate={{ y: [0, -10, 0], rotate: [0, 10, 0] }}
+            transition={{ duration: 4, repeat: Infinity }}
+            className="absolute -top-8 -right-8 z-20 text-yellow-400 hidden md:block"
+          >
+            <Star className="w-16 h-16 fill-yellow-400 stroke-black stroke-2" />
+          </motion.div>
+
+          <motion.div
+            animate={{ y: [0, 10, 0], rotate: [0, -10, 0] }}
+            transition={{ duration: 5, repeat: Infinity }}
+            className="absolute -bottom-6 -left-6 z-20 text-pink-400 hidden md:block"
+          >
+            <Sparkles className="w-12 h-12 fill-pink-400 stroke-black stroke-2" />
+          </motion.div>
+
+          {/* Main Ticket Container */}
           <div
-            className="pointer-events-none absolute -top-10 -right-8 w-32 h-32 rounded-full"
-            style={{ backgroundColor: "hsl(var(--light-teal))" }}
-          />
-          <div
-            className="pointer-events-none absolute -bottom-10 -left-8 w-28 h-28 rounded-full"
-            style={{ backgroundColor: "hsl(var(--light-pink))" }}
-          />
+            className="bg-white rounded-[2.5rem] p-8 md:p-12 text-center border-4 border-black relative overflow-hidden transform rotate-1"
+            style={{ boxShadow: "12px 12px 0px 0px rgba(0,0,0,1)" }}
+          >
+            {/* Dashed Border Inner */}
+            <div className="absolute inset-4 border-2 border-dashed border-neutral-300 rounded-[2rem] pointer-events-none" />
 
-          <div className="relative z-10">
-            <h2 className="text-2xl md:text-3xl font-bold mb-3 text-neutral-900">
-              {title}
-            </h2>
-            <p className="text-base md:text-lg mb-6 text-neutral-800 max-w-2xl mx-auto">
-              {description}
-            </p>
+            <div className="relative z-10">
+              <div className="inline-block bg-yellow-300 px-4 py-1 rounded-full border-2 border-black font-bold text-sm mb-6 transform -rotate-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                ADMISSIONS OPEN 2025-26
+              </div>
 
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <a
-                href="/brochure.pdf"
-                download
-              >
-                <Button
-                  className="rounded-xl px-6 py-3 font-bold shadow-sm hover:shadow-md transition-all"
-                  style={{ backgroundColor: "hsl(var(--premium-orange))", color: "white" }}
+              <h2 className="text-3xl md:text-5xl font-black text-neutral-900 mb-6 leading-tight font-handwriting">
+                {title}
+              </h2>
+
+              <p className="text-lg md:text-xl text-neutral-700 font-medium mb-10 max-w-2xl mx-auto leading-relaxed">
+                {description}
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <a href="/brochure.pdf" download className="w-full sm:w-auto">
+                  <motion.button
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95, y: 0 }}
+                    className="w-full sm:w-auto bg-[hsl(var(--premium-orange))] text-white font-black text-lg px-8 py-4 rounded-2xl border-2 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center gap-3 transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-1 active:translate-y-1"
+                  >
+                    <Download className="w-6 h-6" strokeWidth={3} />
+                    {primaryLabel}
+                  </motion.button>
+                </a>
+
+                <a
+                  href="https://www.youtube.com/watch?v=w4WyoDOi460"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto"
                 >
-                  <Download className="w-5 h-5 mr-2" />
-                  {primaryLabel}
-                </Button>
-              </a>
+                  <motion.button
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95, y: 0 }}
+                    className="w-full sm:w-auto bg-white text-neutral-900 font-black text-lg px-8 py-4 rounded-2xl border-2 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center gap-3 transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-1 active:translate-y-1"
+                  >
+                    <Play className="w-6 h-6 fill-black" />
+                    {secondaryLabel}
+                  </motion.button>
+                </a>
+              </div>
 
-
-              {/* Secondary */}
-              <a
-                href="https://www.youtube.com/watch?v=w4WyoDOi460"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button
-                  variant="outline"
-                  className="rounded-xl px-6 py-3 font-bold transition-all border-2 hover:bg-white"
-                  style={{ borderColor: "hsl(var(--premium-orange))", color: "hsl(var(--premium-orange))" }}
-                >
-                  <Play className="w-5 h-5 mr-2" />
-                  Watch Story
-                </Button>
-              </a>
-
+              <p className="mt-8 text-sm font-bold text-neutral-500 uppercase tracking-wide">
+                No signup needed to preview
+              </p>
             </div>
-
-            <p className="mt-4 text-xs text-neutral-600">
-              No signup needed to preview the brochure.
-            </p>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {showWaves && <WaveBottom fill="#fffdf5" />}
