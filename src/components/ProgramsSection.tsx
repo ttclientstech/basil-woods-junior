@@ -1,121 +1,131 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Card } from "@/components/ui/card";
 import WaveDivider from "@/components/ui/wave-divider";
 import { Sunrise, MessageCircle, BookOpen, Drama, Bus, Footprints, Palette, Leaf } from "lucide-react";
 
 const ProgramsSection = () => {
-  const playgroundActivities = [
-    { title: "Activity Period",      description: "Our little ones transition smoothly from home to school, setting the mood for all the learning and excitement ahead!", icon: Sunrise, gradient: "gradient-swing" },
-    { title: "Circle Time",          description: "Confidence blooms through speaking, listening, and social skills with fun-filled morning discussions.",                    icon: MessageCircle, gradient: "gradient-slide" },
-    { title: "Phonics & Language",   description: "Children learn letter sounds, reading, and writing the fun 'Jolly Phonics' way!",                                      icon: BookOpen, gradient: "gradient-seesaw" },
-    { title: "Puppets & Story Time", description: "Stories come alive with friendly puppets, building vocabulary and sparking imagination.",                                icon: Drama, gradient: "gradient-swing" },
-    { title: "Field Trips",          description: "Hands-on learning through carefully planned trips, creating lasting memories.",                                         icon: Bus, gradient: "gradient-slide" },
-    { title: "Outdoor Play",         description: "30 minutes of sunshine, sand play, and structured games to keep kids active and happy.",                                icon: Footprints, gradient: "gradient-seesaw" },
-    { title: "Theme Time",           description: "A fresh theme each month keeps children engaged across diverse topics.",                                                 icon: Palette, gradient: "gradient-swing" },
-    { title: "Art, Craft & Gardening", description: "From creative crafts to planting seeds — learning by doing in joyful ways.",                                          icon: Leaf, gradient: "gradient-slide" },
+  const activities = [
+    { title: "Activity Period", description: "Our little ones transition smoothly from the home environment to school, with teachers setting the mood for all the learning and excitement that lies ahead!", icon: Sunrise },
+    { title: "Circle Time", description: "Our kids grow in confidence, speaking, listening, thinking and social skills through fun-filled discussions at circle time every morning", icon: MessageCircle },
+    { title: "Phonics/Language", description: "Our children learn letter sounds, reading and writing the fun way- the 'Jolly Phonics' way!", icon: BookOpen },
+    { title: "Puppets/Story Time", description: "Our tiny tots enter the fascinating world of stories with friendly puppets while building vocabulary and imagination", icon: Drama },
+    { title: "Field Trips", description: "Learning happens best when it's experiential and hands-on. Our children enjoy learning and make lots of memories with carefully planned trips and visits.", icon: Bus },
+    { title: "Outdoor Play", description: "Our kids grow in confidence, speaking, listening, thinking and social skills through fun-filled discussions at circle time every morning", icon: Footprints },
+    { title: "Theme Time", description: "Our children learn letter sounds, reading and writing the fun way- the 'Jolly Phonics' way!", icon: Palette },
+    { title: "Art & Craft", description: "Our little ones explore the creative genius within with theme-based art and craft activities.", icon: Leaf },
   ];
 
-  // Map gradient keys to your utilities
-  const gradientClass = (g) =>
-    g === "gradient-swing" ? "bg-gradient-primary"
-    : g === "gradient-slide" ? "bg-gradient-secondary"
-    : "bg-gradient-accent";
-
   return (
-    <section className="py-14 md:py-16 bg-section-4 relative overflow-hidden">
-      <WaveDivider position="top" fill="#e9f2ef" variant={3} />
-
-      {/* subtle shapes with floating animations */}
-      <motion.div
-        className="absolute top-20 right-8 w-12 h-12 rounded-2xl opacity-25"
-        style={{ backgroundColor: "hsl(var(--premium-yellow) / 0.2)" }}
-        animate={{ y: [0, -15, 0], rotate: [0, 5, 0] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute bottom-20 left-12 w-8 h-8 rounded-full opacity-25"
-        style={{ backgroundColor: "hsl(var(--premium-teal) / 0.2)" }}
-        animate={{ scale: [1, 1.2, 1], y: [0, 10, 0] }}
-        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute top-1/2 left-8 w-6 h-6 rounded-2xl opacity-20"
-        style={{ backgroundColor: "hsl(var(--premium-pink) / 0.2)" }}
-        animate={{ rotate: [0, 180, 360] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-      />
+    <section className="py-20 bg-white relative overflow-hidden">
+      <WaveDivider position="top" fill="#f6eee7" variant={1} />
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
-        <motion.div
-          className="text-center max-w-4xl mx-auto mb-10 md:mb-12"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="px-4 py-2 rounded-full inline-block mb-4 text-white"
-               style={{ background: "linear-gradient(135deg, hsl(var(--premium-orange)), hsl(var(--premium-pink)))" }}>
-            🌟 A Day at Basil Woods Juniors
-          </div>
-
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-neutral-800 leading-tight mb-3">
-            Every Day is Filled with
-            <span className="block" style={{ color: "hsl(var(--premium-pink))" }}>Joy, Learning & Discovery</span>
+        <div className="text-center mb-16 md:mb-24">
+          <h3 className="text-orange-500 font-medium mb-2">A sneak peek into a day at Basil Woods</h3>
+          <h2 className="text-3xl md:text-5xl font-black text-[hsl(var(--brand-dark-green))] font-handwriting">
+            It's a good day at Basil Woods Juniors everyday!
           </h2>
-
-          <p className="text-neutral-700 text-base md:text-lg leading-relaxed">
-            From circle time to outdoor play — each moment is designed to make learning rich, real, and relevant.
-          </p>
-        </motion.div>
-
-        {/* Activities Grid with Staggered Animation */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-7 max-w-7xl mx-auto">
-          {playgroundActivities.map((activity, index) => (
-            <motion.div
-              key={index}
-              className={`${index % 2 === 1 ? "lg:mt-6" : ""} group`}
-              initial={{ opacity: 0, y: 50, scale: 0.9 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{
-                duration: 0.5,
-                delay: index * 0.1,
-                ease: "easeOut"
-              }}
-            >
-              <Card className="p-6 md:p-7 text-center h-full rounded-2xl border border-[hsl(var(--neutral-100))] bg-white shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer">
-                <motion.div
-                  className={`${gradientClass(activity.gradient)} w-16 h-16 md:w-20 md:h-20 rounded-3xl flex items-center justify-center mx-auto mb-5 shadow-sm`}
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  {React.createElement(activity.icon, { className: "w-8 h-8 md:w-10 md:h-10 text-white", strokeWidth: 2 })}
-                </motion.div>
-
-                <h3 className="font-bold text-lg md:text-xl text-neutral-800 mb-3 transition-colors">
-                  {activity.title}
-                </h3>
-
-                <p className="text-neutral-700 text-sm md:text-base leading-relaxed">
-                  {activity.description}
-                </p>
-
-                {/* underline indicator */}
-                <div className="mt-5 pt-4 border-t border-[hsl(var(--neutral-100))]">
-                  <div className="w-full h-[2px] bg-[hsl(var(--neutral-100))] rounded-full overflow-hidden">
-                    <div className="h-[2px] rounded-full w-0 transition-all duration-500 ease-out group-hover:w-full"
-                         style={{ backgroundColor: "hsl(var(--premium-orange))" }} />
-                  </div>
-                </div>
-              </Card>
-            </motion.div>
-          ))}
         </div>
-      </div>
 
-      <WaveDivider position="bottom" fill="#e9f2ef" variant={4} />
+        {/* Desktop Zigzag Layout */}
+        <div className="hidden lg:block relative max-w-6xl mx-auto">
+          {/* SVG Connector Line */}
+          <svg className="absolute top-0 left-0 w-full h-full pointer-events-none z-0" viewBox="0 0 1000 600" preserveAspectRatio="none">
+            <path
+              d="M150,100 C300,100 300,250 500,250 C700,250 700,100 850,100
+                 M850,100 C950,100 950,400 850,400
+                 M850,400 C700,400 700,550 500,550 C300,550 300,400 150,400"
+              fill="none"
+              stroke="#cbd5e1"
+              strokeWidth="2"
+              strokeDasharray="8 8"
+              className="opacity-50"
+            />
+          </svg>
+
+          <div className="grid grid-cols-4 gap-y-24 gap-x-8 relative z-10">
+            {activities.map((item, index) => {
+              // Determine position based on zigzag pattern
+              // Row 1: 0, 1, 2, 3 (Top aligned)
+              // Row 2: 7, 6, 5, 4 (Bottom aligned, reversed visual order)
+
+              // Actually, looking at the image, it's more like:
+              // 1 (Top) - 2 (Middle) - 3 (Top) - 4 (Middle) ... snake like.
+
+              // Let's use a simpler alternating offset for the "Wave" look
+              const isEven = index % 2 === 0;
+              const isSecondRow = index >= 4;
+
+              return (
+                <motion.div
+                  key={index}
+                  className={`flex flex-col items-center text-center ${isSecondRow ? 'mt-12' : ''}`}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.15 }}
+                >
+                  {/* Organic Blob Icon */}
+                  <div
+                    className="w-24 h-24 bg-[#F4A261] flex items-center justify-center mb-6 shadow-lg transform hover:scale-110 transition-transform duration-300"
+                    style={{
+                      borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
+                      boxShadow: "inset -5px -5px 20px rgba(0,0,0,0.1)"
+                    }}
+                  >
+                    <item.icon className="w-10 h-10 text-white" strokeWidth={1.5} />
+                  </div>
+
+                  <h3 className="text-xl font-bold text-[hsl(var(--brand-dark-green))] mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-neutral-600 leading-relaxed max-w-[220px]">
+                    {item.description}
+                  </p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Mobile Vertical Timeline Layout */}
+        <div className="lg:hidden relative">
+          <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-orange-200 border-l-2 border-dashed border-orange-300" />
+
+          <div className="space-y-12">
+            {activities.map((item, index) => (
+              <motion.div
+                key={index}
+                className="relative pl-20"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                {/* Connector Dot */}
+                <div
+                  className="absolute left-0 top-0 w-12 h-12 bg-[#F4A261] flex items-center justify-center z-10"
+                  style={{ borderRadius: "50% 50% 50% 0" }}
+                >
+                  <item.icon className="w-6 h-6 text-white" />
+                </div>
+
+                <div className="bg-white p-5 rounded-2xl shadow-sm border border-neutral-100">
+                  <h3 className="text-lg font-bold text-[hsl(var(--brand-dark-green))] mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-neutral-600 leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+      <WaveDivider position="bottom" fill="#f6eee7" variant={2} />
     </section>
   );
 };
