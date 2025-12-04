@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Phone, MapPin, Menu, X, Calendar } from "lucide-react";
+import { Phone, MapPin, Menu, X, Calendar, MessageCircle } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -37,21 +37,21 @@ const Header = () => {
 
   return (
     <>
-      {/* Top Bar - Dark & Premium */}
-      <div className="bg-[hsl(var(--brand-dark-green))] text-white py-2 hidden md:block relative z-50">
-        <div className="container mx-auto px-4 flex justify-between items-center text-xs font-medium tracking-wide">
+      {/* Top Bar - Chalkboard Style */}
+      <div className="bg-[hsl(var(--brand-dark-green))] text-white py-2 hidden md:block relative z-50 border-b-4 border-yellow-400">
+        <div className="container mx-auto px-4 flex justify-between items-center text-xs font-bold tracking-wide font-handwriting">
           <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2 opacity-90 hover:opacity-100 transition-opacity cursor-pointer">
-              <Phone className="w-3.5 h-3.5 text-[hsl(var(--premium-orange))]" />
+            <div className="flex items-center gap-2 hover:text-yellow-300 transition-colors cursor-pointer">
+              <Phone className="w-4 h-4 text-yellow-400" />
               <span>+91 8056179108</span>
             </div>
-            <div className="flex items-center gap-2 opacity-90 hover:opacity-100 transition-opacity cursor-pointer">
-              <MapPin className="w-3.5 h-3.5 text-[hsl(var(--premium-teal))]" />
+            <div className="flex items-center gap-2 hover:text-yellow-300 transition-colors cursor-pointer">
+              <MapPin className="w-4 h-4 text-green-400" />
               <span>Chennai, Tamil Nadu</span>
             </div>
           </div>
           <div className="flex items-center gap-4">
-            <span className="bg-white/10 px-3 py-0.5 rounded-full text-[10px] uppercase tracking-wider">
+            <span className="bg-white/10 px-3 py-1 rounded-full border border-white/20 uppercase tracking-wider">
               Admissions Open 2025-26
             </span>
           </div>
@@ -60,45 +60,48 @@ const Header = () => {
 
       {/* Main Header */}
       <header
-        className={`sticky top-0 z-40 transition-all duration-300 border-b ${scrolled
-            ? "bg-white/90 backdrop-blur-lg shadow-md border-neutral-200/50 py-2"
-            : "bg-white border-transparent py-4"
+        className={`sticky top-0 z-40 transition-all duration-300 ${scrolled
+          ? "bg-white/95 backdrop-blur-md shadow-md py-2 border-b-2 border-neutral-100"
+          : "bg-white py-4 border-b-2 border-transparent"
           }`}
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
 
-            {/* Logo */}
+            {/* Logo - Sticker Style */}
             <Link to="/" className="relative z-50 group">
-              <motion.img
-                src={logo}
-                alt="Basil Woods Juniors"
-                className={`transition-all duration-300 ${scrolled ? "w-14 h-14" : "w-16 h-16 md:w-20 md:h-20"}`}
-                whileHover={{ scale: 1.05 }}
+              <motion.div
+                className="bg-white rounded-full p-2 border-2 border-dashed border-neutral-300 shadow-sm group-hover:border-orange-400 transition-colors"
+                whileHover={{ scale: 1.05, rotate: -2 }}
                 transition={{ type: "spring", stiffness: 300 }}
-              />
+              >
+                <img
+                  src={logo}
+                  alt="Basil Woods Juniors"
+                  className={`transition-all duration-300 object-contain ${scrolled ? "w-12 h-12" : "w-16 h-16 md:w-20 md:h-20"}`}
+                />
+              </motion.div>
             </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-1 bg-neutral-100/50 p-1.5 rounded-full border border-neutral-200/50">
+            {/* Desktop Navigation - Tab Style */}
+            <nav className="hidden lg:flex items-center gap-2">
               {navItems.map((item) => {
                 const isActive = location.pathname === item.path;
                 return (
                   <Link
                     key={item.path}
                     to={item.path}
-                    className="relative px-4 py-2 text-sm font-medium rounded-full transition-colors"
+                    className="relative"
                   >
-                    {isActive && (
-                      <motion.div
-                        layoutId="nav-pill"
-                        className="absolute inset-0 bg-white rounded-full shadow-sm border border-neutral-200/50"
-                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                      />
-                    )}
-                    <span className={`relative z-10 ${isActive ? "text-[hsl(var(--brand-dark-green))]" : "text-neutral-600 hover:text-neutral-900"}`}>
+                    <motion.div
+                      className={`px-4 py-2 rounded-xl text-sm font-bold transition-all border-2 ${isActive
+                        ? "bg-yellow-100 border-black text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+                        : "border-transparent text-neutral-600 hover:bg-neutral-50 hover:border-neutral-200"
+                        }`}
+                      whileHover={!isActive ? { y: -2 } : {}}
+                    >
                       {item.name}
-                    </span>
+                    </motion.div>
                   </Link>
                 );
               })}
@@ -106,25 +109,27 @@ const Header = () => {
 
             {/* Actions */}
             <div className="flex items-center gap-3">
-              <Button
+              <motion.button
                 onClick={handleWhatsAppRedirect}
-                className="hidden md:flex bg-[hsl(var(--premium-green))] hover:bg-[hsl(var(--brand-dark-green))] text-white rounded-full px-5 shadow-lg shadow-green-500/20 transition-all hover:scale-105"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="hidden md:flex bg-green-500 text-white rounded-full p-3 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] border-2 border-black hover:bg-green-400 transition-colors"
               >
-                <FaWhatsapp className="w-4 h-4 mr-2" />
-                Chat with Us
-              </Button>
+                <FaWhatsapp className="w-5 h-5" />
+              </motion.button>
 
-              <Button
-                variant="outline"
-                className="hidden md:flex border-[hsl(var(--premium-orange))] text-[hsl(var(--premium-orange))] hover:bg-[hsl(var(--premium-orange))] hover:text-white rounded-full px-5 transition-all"
+              <motion.button
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95, y: 0 }}
+                className="hidden md:flex bg-white text-[hsl(var(--premium-orange))] font-bold rounded-xl px-5 py-2.5 border-2 border-[hsl(var(--premium-orange))] shadow-[4px_4px_0px_0px_hsl(var(--premium-orange))] hover:shadow-[6px_6px_0px_0px_hsl(var(--premium-orange))] transition-all items-center gap-2"
               >
-                <Calendar className="w-4 h-4 mr-2" />
-                Book a Visit
-              </Button>
+                <Calendar className="w-4 h-4" />
+                <span>Book a Visit</span>
+              </motion.button>
 
               {/* Mobile Menu Toggle */}
               <button
-                className="lg:hidden p-2 rounded-full bg-neutral-100 text-neutral-800 hover:bg-neutral-200 transition-colors"
+                className="lg:hidden p-2 rounded-lg bg-yellow-100 text-black border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
               >
                 {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -134,16 +139,23 @@ const Header = () => {
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay - Notebook Style */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-30 bg-white pt-24 px-4 lg:hidden overflow-y-auto"
+            className="fixed inset-0 z-30 bg-[#fffdf5] pt-28 px-6 lg:hidden overflow-y-auto"
+            style={{
+              backgroundImage: `linear-gradient(#e5e7eb 1px, transparent 1px)`,
+              backgroundSize: '100% 40px'
+            }}
           >
-            <div className="flex flex-col gap-2">
+            {/* Red Margin Line */}
+            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-red-300/50" />
+
+            <div className="flex flex-col gap-6 pl-8 translate-y-1  relative z-10">
               {navItems.map((item, idx) => (
                 <motion.div
                   key={item.path}
@@ -154,9 +166,9 @@ const Header = () => {
                   <Link
                     to={item.path}
                     onClick={() => setIsMenuOpen(false)}
-                    className={`block p-4 rounded-xl text-lg font-medium transition-colors ${location.pathname === item.path
-                        ? "bg-[hsl(var(--premium-orange))/10] text-[hsl(var(--premium-orange))]"
-                        : "text-neutral-600 hover:bg-neutral-50"
+                    className={`block text-2xl font-handwriting font-bold transition-colors ${location.pathname === item.path
+                      ? "text-[hsl(var(--premium-orange))]"
+                      : "text-neutral-700 hover:text-black"
                       }`}
                   >
                     {item.name}
@@ -164,13 +176,20 @@ const Header = () => {
                 </motion.div>
               ))}
 
-              <div className="mt-6 flex flex-col gap-3">
+              <div className="mt-8 flex flex-col gap-4">
                 <Button
                   onClick={handleWhatsAppRedirect}
-                  className="w-full bg-[hsl(var(--premium-green))] text-white py-6 rounded-xl text-lg"
+                  className="w-full bg-green-500 text-white font-bold py-6 rounded-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-1 active:translate-y-1 transition-all text-lg"
                 >
-                  <FaWhatsapp className="w-5 h-5 mr-2" />
+                  <FaWhatsapp className="w-6 h-6 mr-2" />
                   Chat on WhatsApp
+                </Button>
+
+                <Button
+                  className="w-full bg-white text-[hsl(var(--premium-orange))] font-bold py-6 rounded-xl border-2 border-[hsl(var(--premium-orange))] shadow-[4px_4px_0px_0px_hsl(var(--premium-orange))] active:shadow-none active:translate-x-1 active:translate-y-1 transition-all text-lg"
+                >
+                  <Calendar className="w-6 h-6 mr-2" />
+                  Book a Visit
                 </Button>
               </div>
             </div>
