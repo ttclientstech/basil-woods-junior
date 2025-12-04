@@ -1,96 +1,130 @@
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { Star } from "lucide-react";
+import { motion, useScroll } from "framer-motion";
+import { Star, Quote, Pin } from "lucide-react";
 
 const playgroundTestimonials = [
   {
-    text: "Our programs focus on each child's development in social-emotional growth, gross and fine motor skills, language and literacy, mathematics",
-    name: "JANE COOPER",
-    rating: 5
+    text: "Our daughter absolutely loves coming to Basil Woods! The caring teachers and engaging activities have made her more confident.",
+    name: "Priya Sharma",
+    role: "Parent",
+    rating: 5,
+    color: "bg-yellow-50",
+    shadow: "shadow-yellow-400",
+    rotation: "rotate-1"
   },
   {
-    text: "Our programs focus on each child's development in social-emotional growth, gross and fine motor skills, language and literacy, mathematics",
-    name: "MEWE THOMAS",
-    rating: 5
+    text: "The focus on values along with academics is what sets this school apart. We are so happy with our decision.",
+    name: "Rahul Verma",
+    role: "Parent",
+    rating: 5,
+    color: "bg-blue-50",
+    shadow: "shadow-blue-400",
+    rotation: "-rotate-2"
   },
   {
-    text: "Our programs focus on each child's development in social-emotional growth, gross and fine motor skills, language and literacy, mathematics",
-    name: "ALEXANDER SMITH",
-    rating: 5
+    text: "A wonderful environment for kids to grow. The infrastructure is top-notch and the staff is incredibly supportive.",
+    name: "Anita Desai",
+    role: "Parent",
+    rating: 5,
+    color: "bg-green-50",
+    shadow: "shadow-green-400",
+    rotation: "rotate-2"
   },
   {
-    text: "Our programs focus on each child's development in social-emotional growth, gross and fine motor skills, language and literacy, mathematics",
-    name: "SARAH JOHNSON",
-    rating: 5
+    text: "My son has learned so much in just a few months. The 'Culture Connect' program is truly unique and amazing.",
+    name: "Vikram Singh",
+    role: "Parent",
+    rating: 5,
+    color: "bg-pink-50",
+    shadow: "shadow-pink-400",
+    rotation: "-rotate-1"
   }
 ];
 
 export default function Testimonials() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollXProgress } = useScroll({ container: containerRef });
 
   return (
-    <section className="py-16 md:py-24 bg-white relative overflow-hidden">
-      {/* Background Grid Pattern (Optional, based on image hint) */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
+    <section className="py-20 md:py-24 bg-white relative overflow-hidden">
+      {/* Background Pattern: Dot Grid */}
+      <div className="absolute inset-0 pointer-events-none opacity-10"
         style={{
-          backgroundImage: `linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)`,
-          backgroundSize: '40px 40px'
+          backgroundImage: `radial-gradient(#000 1px, transparent 1px)`,
+          backgroundSize: '24px 24px'
         }}
       />
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
         <motion.div
-          className="text-center md:text-left mb-12 md:mb-16 ml-4"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
         >
-          <h3 className="text-xl md:text-2xl font-handwriting text-[hsl(var(--brand-dark-green))] mb-2" style={{ fontFamily: 'var(--font-heading)', color: '#1A5D1A' }}>
+          <div className="inline-block bg-[hsl(var(--premium-orange))] text-white px-6 py-2 rounded-full border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-4 font-bold transform -rotate-2">
             Parents Feedback
-          </h3>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-black uppercase tracking-tight leading-none">
-            WHAT DO PARENTS <br className="hidden md:block" /> SAY ABOUT US?
+          </div>
+          <h2 className="text-4xl md:text-6xl font-black text-neutral-900 uppercase tracking-tight">
+            What Do Parents <br /> Say About Us?
           </h2>
         </motion.div>
 
-        {/* Horizontal Scroll Container */}
+        {/* Testimonials Grid/Scroll */}
         <div
           ref={containerRef}
-          className="flex overflow-x-auto gap-6 pb-12 px-4 snap-x snap-mandatory hide-scrollbar"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          className="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 pb-12 px-4 snap-x snap-mandatory hide-scrollbar md:overflow-visible"
         >
           {playgroundTestimonials.map((t, index) => (
             <motion.div
               key={index}
-              className="flex-shrink-0 w-[85vw] md:w-[450px] snap-center"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
+              className={`flex-shrink-0 w-[85vw] md:w-auto snap-center relative group ${t.rotation}`}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ rotate: 0, scale: 1.05, transition: { duration: 0.2 } }}
             >
+              {/* Pin Icon */}
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-20 text-red-500 drop-shadow-md">
+                <Pin className="w-8 h-8 fill-red-500 text-red-700" />
+              </div>
+
               <div
-                className="h-full rounded-[2rem] p-8 md:p-10 flex flex-col justify-between transition-transform duration-300 hover:-translate-y-2"
+                className={`h-full rounded-none p-8 flex flex-col justify-between border-2 border-black bg-white relative transition-all duration-200`}
                 style={{
-                  backgroundColor: index % 2 === 0 ? '#FFE4D6' : '#D6F5E8' // Peach and Mint
+                  boxShadow: `8px 8px 0px 0px rgba(0,0,0,1)`
                 }}
               >
-                <div>
-                  <div className="flex gap-1 mb-6">
+                {/* Colored Top Strip */}
+                <div className={`absolute top-0 left-0 right-0 h-4 border-b-2 border-black ${t.color.replace('50', '200')}`} />
+
+                <div className="mt-4">
+                  <div className="flex gap-1 mb-4">
                     {[...Array(t.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-black stroke-[1.5px]" />
                     ))}
                   </div>
 
-                  <p className="text-lg md:text-xl text-neutral-800 font-medium italic leading-relaxed mb-8">
-                    “{t.text}”
+                  <Quote className="w-8 h-8 text-neutral-300 mb-2 rotate-180" />
+
+                  <p className="text-lg text-neutral-800 font-medium leading-relaxed font-handwriting mb-6">
+                    "{t.text}"
                   </p>
                 </div>
 
-                <div className="font-black text-lg md:text-xl uppercase tracking-wide text-black">
-                  {t.name}
+                <div className="flex items-center gap-3 pt-4 border-t-2 border-dashed border-neutral-200">
+                  <div className={`w-10 h-10 rounded-full border-2 border-black flex items-center justify-center font-bold ${t.color.replace('50', '200')}`}>
+                    {t.name.charAt(0)}
+                  </div>
+                  <div>
+                    <div className="font-black text-sm uppercase tracking-wide text-neutral-900">
+                      {t.name}
+                    </div>
+                    <div className="text-xs font-bold text-neutral-500 uppercase">
+                      {t.role}
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>
