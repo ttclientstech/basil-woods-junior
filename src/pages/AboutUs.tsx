@@ -1,58 +1,24 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Star, Heart, Calendar, Phone, Target, Lightbulb, Shield } from "lucide-react";
+import { Star, Heart, Calendar, Phone, Target, Lightbulb, Shield, Award, Pin, MapPin, Sparkles } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
+import { motion } from "framer-motion";
+import { FaWhatsapp } from 'react-icons/fa';
 
-/* Import award logos from your assets folder (update filenames if different) */
+/* Import award logos */
 import awardISM from "@/assets/Awards/indias_school_merit.png";
 import awardISA from "@/assets/Awards/international_school.png";
 import awardECA from "@/assets/Awards/early_childhood_association.png";
 import suvyaktaImg from "@/assets/Mentors/suvyakta-narasimha-dasa.jpeg";
 import schoolimg from "@/assets/Images/Exterior1.webp";
 
-
-import { FaWhatsapp } from 'react-icons/fa';
-
-
-const phoneNumber = "918056179108"; // ✅ Use full number with country code
+const phoneNumber = "918056179108";
 const handleWhatsAppRedirect = () => {
   window.open(`https://wa.me/${phoneNumber}`, "_blank");
 };
-
-const WaveTop = ({ fill = "#fffdf5", className = "" }) => (
-  <div className={`absolute top-0 left-0 w-full overflow-hidden leading-none rotate-180 ${className}`}>
-    <svg
-      className="relative block w-full h-[60px]"
-      viewBox="0 0 1440 320"
-      preserveAspectRatio="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        fill={fill}
-        d="M0,256L48,240C96,224,192,192,288,170.7C384,149,480,139,576,154.7C672,171,768,213,864,208C960,203,1056,149,1152,117.3C1248,85,1344,75,1392,69.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-      />
-    </svg>
-  </div>
-);
-
-const WaveBottom = ({ fill = "#fffdf5", className = "" }) => (
-  <div className={`absolute bottom-0 left-0 w-full overflow-hidden leading-none ${className}`}>
-    <svg
-      className="relative block w-full h-[60px]"
-      viewBox="0 0 1440 320"
-      preserveAspectRatio="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        fill={fill}
-        d="M0,256L48,240C96,224,192,192,288,170.7C384,149,480,139,576,154.7C672,171,768,213,864,208C960,203,1056,149,1152,117.3C1248,85,1344,75,1392,69.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-      />
-    </svg>
-  </div>
-);
 
 const AboutUsPage = () => {
   useSEO({
@@ -71,32 +37,40 @@ const AboutUsPage = () => {
 
   const values = [
     {
-      icon: <Heart className="w-7 h-7" />,
+      icon: <Heart className="w-8 h-8" />,
       title: "Love & Care",
       description: "Every child receives individual attention in a nurturing environment",
-      color: "text-pink-500",
-      bg: "bg-pink-50"
+      color: "text-pink-600",
+      bg: "bg-pink-100",
+      border: "border-pink-400",
+      shadow: "shadow-pink-200"
     },
     {
-      icon: <Target className="w-7 h-7" />,
+      icon: <Target className="w-8 h-8" />,
       title: "Excellence",
       description: "Maintaining highest standards in early childhood education",
-      color: "text-orange-500",
-      bg: "bg-orange-50"
+      color: "text-orange-600",
+      bg: "bg-orange-100",
+      border: "border-orange-400",
+      shadow: "shadow-orange-200"
     },
     {
-      icon: <Lightbulb className="w-7 h-7" />,
+      icon: <Lightbulb className="w-8 h-8" />,
       title: "Innovation",
       description: "Creative teaching methods that make learning joyful",
-      color: "text-yellow-500",
-      bg: "bg-yellow-50"
+      color: "text-yellow-600",
+      bg: "bg-yellow-100",
+      border: "border-yellow-400",
+      shadow: "shadow-yellow-200"
     },
     {
-      icon: <Shield className="w-7 h-7" />,
+      icon: <Shield className="w-8 h-8" />,
       title: "Safety",
       description: "Secure environment where children can explore freely",
-      color: "text-green-500",
-      bg: "bg-green-50"
+      color: "text-green-600",
+      bg: "bg-green-100",
+      border: "border-green-400",
+      shadow: "shadow-green-200"
     }
   ];
 
@@ -124,505 +98,304 @@ const AboutUsPage = () => {
     },
     {
       name: "His Grace Suvyakta Narasimha Dasa",
-      role: "Governing Body Member of Worldwide Hare Krishna Movement Group",
+      role: "Governing Body Member",
       experience: "President - Hare Krishna Movement Chennai",
       specialty: "Leadership & Spiritual Guidance",
       image: suvyaktaImg
     }
   ];
 
-  /* Awards data for new section */
   const awards = [
     {
       img: awardISM,
       title: "India's School Merit Awards",
-      desc:
-        "Selected as one among the top preschool-cum-daycare centres in India by Education Today for the second consecutive year.",
-      border: "hsl(var(--premium-orange))",
+      desc: "Top preschool-cum-daycare centre in India by Education Today.",
+      color: "bg-orange-50",
+      pinColor: "text-red-500"
     },
     {
       img: awardISA,
       title: "International School Awards",
-      desc:
-        "Two nominations at the International School Awards, Dubai for 2018–19.",
-      border: "hsl(var(--premium-purple))",
+      desc: "Nominated at International School Awards, Dubai.",
+      color: "bg-blue-50",
+      pinColor: "text-blue-500"
     },
     {
       img: awardECA,
       title: "Early Childhood Association",
-      desc:
-        "Member of the Early Childhood Association, India. Audited and certified for quality delivery.",
-      border: "hsl(var(--premium-teal))",
+      desc: "Certified member for quality delivery.",
+      color: "bg-green-50",
+      pinColor: "text-green-500"
     },
   ];
 
   return (
-    <div className="min-h-screen bg-section-1">
+    <div className="min-h-screen bg-[#fffdf5] font-sans">
       <Header />
 
-      {/* HERO (bg-section-1) */}
-      <section
-        className="
-          relative overflow-hidden bg-section-1
-          min-h-[calc(100vh-var(--header-h))]
-          flex items-center
-          py-10 md:py-12
-        ">
-        {/* Subtle shapes */}
-        <div className="absolute top-10 left-6 w-10 h-10 bg-gradient-to-br from-orange-200 to-orange-300 rounded-2xl opacity-40" />
-        <div className="absolute bottom-16 right-8 w-8 h-8 bg-gradient-to-br from-teal-200 to-teal-300 rounded-full opacity-40" />
-        <div className="absolute top-1/3 left-1/5 w-6 h-6 bg-gradient-to-br from-pink-200 to-pink-300 rounded-xl opacity-40" />
+      {/* HERO SECTION - "The Story Begins" */}
+      <section className="relative pt-32 pb-20 overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-20 right-10 w-32 h-32 bg-yellow-200 rounded-full blur-3xl opacity-50" />
+          <div className="absolute bottom-10 left-10 w-40 h-40 bg-pink-200 rounded-full blur-3xl opacity-50" />
 
-        <div className="container mx-auto px-4 relative z-10 w-full">
-          <div className="text-center max-w-4xl mx-auto">
-            <Badge className="bg-gradient-warm text-white px-5 py-2.5 rounded-full border-none font-medium text-xs md:text-sm mb-4 inline-block">
-              🌟 About Basil Woods Juniors
-            </Badge>
-
-            <h1 className="text-[28px] md:text-[40px] font-bold text-neutral-600 leading-[1.15] font-heading mb-4">
-              Nurturing Young Minds with
-              <span className="block text-gradient">Love & Excellence</span>
-            </h1>
-
-            <p className="text-base md:text-lg text-neutral-500 leading-relaxed mb-6 max-w-3xl mx-auto">
-              For over 15 years, we've been creating magical learning experiences where children grow academically, emotionally, and culturally in a safe, nurturing environment.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button
-                className="rounded-xl px-6 py-3 font-bold shadow-sm hover:shadow-md transition-all"
-                style={{ backgroundColor: "hsl(var(--premium-orange))", color: "white" }}
-                onClick={handleWhatsAppRedirect}
-              >
-                <FaWhatsapp className="w-5 h-5" />
-                Contact Us
-              </Button>
-            </div>
-          </div>
+          {/* Floating Icons */}
+          <motion.div
+            className="absolute top-1/4 left-10 text-orange-400"
+            animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
+            transition={{ duration: 4, repeat: Infinity }}
+          >
+            <Star className="w-12 h-12 fill-current" />
+          </motion.div>
+          <motion.div
+            className="absolute bottom-1/4 right-10 text-teal-400"
+            animate={{ y: [0, 20, 0], rotate: [0, -10, 0] }}
+            transition={{ duration: 5, repeat: Infinity }}
+          >
+            <Heart className="w-10 h-10 fill-current" />
+          </motion.div>
         </div>
 
-        {/* Bottom wave into next section (bg-section-2 peach) */}
-        <WaveBottom fill="#feeee7" />
+        <div className="container mx-auto px-4 relative z-10 text-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="inline-block relative"
+          >
+            <div className="absolute -inset-4 bg-white/50 blur-xl rounded-full" />
+            <h1 className="relative text-5xl md:text-7xl font-black text-[hsl(var(--brand-dark-green))] mb-6 font-handwriting leading-tight">
+              Nurturing Young Minds <br />
+              <span className="text-[hsl(var(--premium-orange))]">with Love & Excellence</span>
+            </h1>
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="text-xl md:text-2xl text-neutral-600 max-w-3xl mx-auto leading-relaxed font-medium"
+          >
+            For over 15 years, we've been creating magical learning experiences where children grow academically, emotionally, and culturally.
+          </motion.p>
+        </div>
       </section>
 
-      {/* AWARDS — NEW SECTION placed ABOVE "Our Journey" (bg-section-5 for contrast) */}
-      <section className="relative overflow-hidden bg-section-4 py-12 md:py-14">
-        <WaveTop fill="#feeee7" />
-
+      {/* AWARDS SECTION - "The Corkboard" */}
+      <section className="py-20 bg-[url('https://www.transparenttextures.com/patterns/cork-board.png')] relative border-y-8 border-yellow-700/20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-8">
-            <Badge className="bg-gradient-secondary text-white px-3.5 py-1.5 rounded-full font-medium text-xs mb-3 inline-block">
-              Our Awards
-            </Badge>
-            <h2 className="text-2xl md:text-3xl font-bold text-neutral-600 font-heading mb-2">
-              Recognition & Memberships
-            </h2>
-            <p className="text-neutral-600 text-base max-w-2xl mx-auto">
-              Celebrating our commitment to quality, care, and values-first early education
-            </p>
+          <div className="text-center mb-12">
+            <div className="inline-block bg-white px-6 py-2 rounded-lg shadow-md border border-neutral-200 transform -rotate-2">
+              <h2 className="text-3xl font-black text-neutral-800 font-handwriting">Our Wall of Fame</h2>
+            </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-8">
             {awards.map((a, i) => (
-              <Card
+              <motion.div
                 key={i}
-                className="bg-white p-6 rounded-2xl shadow-sm border border-[hsl(var(--neutral-100))] hover:shadow-md hover:-translate-y-[2px] transition-all"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.2 }}
+                className={`relative ${a.color} p-6 rounded-sm shadow-[4px_4px_8px_rgba(0,0,0,0.2)] transform hover:scale-105 transition-transform duration-300`}
+                style={{ rotate: i % 2 === 0 ? '2deg' : '-2deg' }}
               >
-                <div
-                  className="rounded-xl p-4 mb-5 border"
-                  style={{ borderColor: a.border, backgroundColor: "hsl(var(--neutral-50))" }}
-                >
-                  <img src={a.img} alt={a.title} className="mx-auto h-28 object-contain" />
+                {/* Pin */}
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
+                  <Pin className={`w-8 h-8 ${a.pinColor} fill-current drop-shadow-md`} />
                 </div>
-                <h3 className="text-center font-bold text-neutral-800 mb-2">{a.title}</h3>
-                <p className="text-sm text-neutral-700 text-center leading-relaxed">{a.desc}</p>
-              </Card>
+
+                <div className="mt-4 bg-white p-4 border border-neutral-200 shadow-inner">
+                  <img src={a.img} alt={a.title} className="h-24 mx-auto object-contain mb-4" />
+                  <h3 className="font-bold text-center text-neutral-800 mb-2">{a.title}</h3>
+                  <p className="text-sm text-center text-neutral-600 leading-snug font-handwriting">{a.desc}</p>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
-
-        <WaveBottom fill="#feeee7" />
       </section>
 
-      {/* OUR STORY (bg-section-2) */}
-      <section className="relative overflow-hidden bg-section-2 py-12 md:py-14">
-        {/* Top wave from prev section already rendered */}
-        <WaveTop fill="#feeee7" />
-
-        {/* Shapes */}
-        <div className="absolute top-16 right-8 w-10 h-10 bg-orange-100 rounded-xl opacity-50" />
-        <div className="absolute bottom-16 left-12 w-7 h-7 bg-teal-100 rounded-full opacity-50" />
-
+      {/* OUR STORY - "The Scrapbook" */}
+      <section className="py-20 bg-[#f4f1ea] relative overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-pink-100 rounded-3xl rotate-2 scale-105 shadow-md opacity-15" />
-              <img
-                src={schoolimg}
-                alt="Children learning at Basil Woods"
-                className="relative w-full h-[300px] sm:h-[340px] md:h-[360px] lg:h-[380px] object-cover rounded-3xl shadow-md border-3 border-white z-10"
-              />
-              <div className="absolute -top-3 -right-3 w-14 h-14 bg-gradient-primary rounded-2xl flex items-center justify-center shadow-md z-20">
-                <Heart className="w-7 h-7 text-white" />
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Taped Photo */}
+            <motion.div
+              initial={{ opacity: 0, rotate: -5 }}
+              whileInView={{ opacity: 1, rotate: -2 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-32 h-8 bg-yellow-100/80 backdrop-blur-sm border border-white/50 shadow-sm transform rotate-1 z-20" />
+              <div className="bg-white p-4 pb-16 shadow-xl border-4 border-white">
+                <img src={schoolimg} alt="School Exterior" className="w-full rounded-sm" />
+                <div className="absolute bottom-6 left-0 right-0 text-center">
+                  <span className="font-handwriting text-2xl text-neutral-600">Where it all began...</span>
+                </div>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="space-y-4">
-              <Badge className="bg-gradient-secondary text-white px-3.5 py-1.5 rounded-full font-medium text-xs inline-block">
+            {/* Handwritten Text */}
+            <div className="space-y-6">
+              <Badge className="bg-orange-100 text-orange-700 border-2 border-orange-400 px-4 py-1 text-sm font-bold rounded-full">
                 Our Journey
               </Badge>
-              <h2 className="text-2xl md:text-3xl font-bold text-neutral-600 font-heading">
-                Early Learning with Values & Excellence
+              <h2 className="text-4xl font-black text-[hsl(var(--brand-dark-green))] font-handwriting">
+                Early Learning with <br /> Values & Excellence
               </h2>
-              <p className="text-neutral-600 leading-relaxed text-base">
-                ‘Basil Woods’ is an early learning initiative of the National Institute of Value Education (NIVE)
-                to inculcate universal values and ethics along with imparting physical and cognitive learning in
-                the formative years of early childhood development.
-              </p>
-              <p className="text-neutral-600 leading-relaxed">
-                Basil Woods currently runs preschools and daycare centers across Bangalore and Hyderabad,
-                providing children with a nurturing environment that blends modern educational practices with
-                timeless values.
-              </p>
+              <div className="prose prose-lg text-neutral-700 font-medium leading-relaxed">
+                <p>
+                  ‘Basil Woods’ is an early learning initiative of the National Institute of Value Education (NIVE) to inculcate universal values and ethics along with imparting physical and cognitive learning.
+                </p>
+                <p>
+                  We currently run preschools and daycare centers across Bangalore and Hyderabad, providing children with a nurturing environment that blends modern educational practices with timeless values.
+                </p>
+              </div>
 
-              <div className="grid grid-cols-2 gap-3 pt-2">
-                <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-5 rounded-2xl border border-orange-200 hover:-translate-y-[1px] hover:shadow-sm transition-all">
-                  <div className="text-2xl font-bold text-orange-600 mb-0.5">500+</div>
-                  <div className="text-xs text-neutral-500">Happy Families</div>
+              <div className="flex gap-4 pt-4">
+                <div className="bg-white px-6 py-3 rounded-xl border-2 border-teal-400 shadow-[4px_4px_0px_0px_hsl(var(--premium-teal))]">
+                  <span className="block text-3xl font-black text-teal-600">15+</span>
+                  <span className="text-sm font-bold text-neutral-500">Years Excellence</span>
                 </div>
-                <div className="bg-gradient-to-br from-teal-50 to-teal-100 p-5 rounded-2xl border border-teal-200 hover:-translate-y-[1px] hover:shadow-sm transition-all">
-                  <div className="text-2xl font-bold text-teal-600 mb-0.5">15+</div>
-                  <div className="text-xs text-neutral-500">Years Excellence</div>
+                <div className="bg-white px-6 py-3 rounded-xl border-2 border-orange-400 shadow-[4px_4px_0px_0px_hsl(var(--premium-orange))]">
+                  <span className="block text-3xl font-black text-orange-600">500+</span>
+                  <span className="text-sm font-bold text-neutral-500">Happy Families</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-        {/* Bottom wave into next (bg-section-3 mint/teal) */}
-        <WaveBottom fill="#feeee7" />
       </section>
 
-      {/* MILESTONES (bg-section-3) */}
-      <section className="relative overflow-hidden bg-section-3 py-12 md:py-14">
-        <WaveTop fill="#feeee7" />
-
-        <div className="absolute top-16 right-8 w-10 h-10 bg-teal-100 rounded-full" />
-        <div className="absolute bottom-16 left-12 w-7 h-7 bg-orange-100 rounded-full" />
-
+      {/* MILESTONES - "The Winding Path" */}
+      <section className="py-20 bg-white relative overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-8">
-            <Badge className="bg-gradient-accent text-white px-3.5 py-1.5 rounded-full font-medium text-xs mb-3 inline-block">
-              Our Journey
-            </Badge>
-            <h2 className="text-2xl md:text-3xl font-bold text-neutral-600 font-heading mb-2">
-              Key Milestones
-            </h2>
-            <p className="text-neutral-600 text-base max-w-2xl mx-auto">
-              Important moments that shaped our educational journey
-            </p>
-          </div>
+          <h2 className="text-4xl font-black text-center text-[hsl(var(--brand-dark-green))] mb-16 font-handwriting">Our Key Milestones</h2>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {milestones.map((milestone, index) => (
-              <Card
-                key={index}
-                className="bg-white/95 backdrop-blur-md p-5 text-center rounded-2xl border border-neutral-100 shadow-sm hover:shadow-md hover:-translate-y-[2px] transition-all"
-              >
-                <div className="text-3xl mb-3">{milestone.icon}</div>
-                <div className="text-2xl font-bold text-gradient mb-1 font-heading">
-                  {milestone.year}
-                </div>
-                <h3 className="font-bold text-neutral-700 mb-1 font-heading">
-                  {milestone.title}
-                </h3>
-                <p className="text-neutral-600 text-sm leading-relaxed">
-                  {milestone.description}
-                </p>
-              </Card>
-            ))}
+          <div className="relative">
+            {/* Dashed Line (Desktop) */}
+            <div className="hidden md:block absolute top-1/2 left-0 w-full h-1 border-t-4 border-dashed border-neutral-200 -translate-y-1/2" />
+
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+              {milestones.map((m, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.2 }}
+                  className="relative group"
+                >
+                  <div className="bg-white p-6 rounded-2xl border-2 border-neutral-100 shadow-lg hover:-translate-y-2 transition-transform duration-300 text-center relative z-10">
+                    <div className="text-4xl mb-4">{m.icon}</div>
+                    <div className="text-2xl font-black text-[hsl(var(--premium-orange))] mb-2">{m.year}</div>
+                    <h3 className="font-bold text-neutral-800 mb-2">{m.title}</h3>
+                    <p className="text-sm text-neutral-600">{m.description}</p>
+                  </div>
+                  {/* Connector Dot */}
+                  <div className="hidden md:block absolute top-1/2 left-1/2 w-4 h-4 bg-[hsl(var(--brand-dark-green))] rounded-full -translate-x-1/2 -translate-y-1/2 border-4 border-white shadow-sm z-20" />
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
-
-        <WaveBottom fill="#f9f5ff" />
       </section>
 
-      {/* VALUES (bg-section-4) */}
-      <section className="relative overflow-hidden bg-section-4 py-12 md:py-14">
-        <WaveTop fill="#f9f5ff" />
-
-        <div className="absolute top-1/2 left-8 w-5 h-5 bg-premium-pink/20 rounded-full" />
-
+      {/* VALUES - "Building Blocks" */}
+      <section className="py-20 bg-[hsl(var(--section-4))]">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-8">
-            <Badge className="bg-gradient-primary text-white px-3.5 py-1.5 rounded-full font-medium text-xs mb-3 inline-block">
+          <div className="text-center mb-12">
+            <Badge className="bg-pink-100 text-pink-700 border-2 border-pink-400 px-4 py-1 text-sm font-bold rounded-full mb-4">
               Our Values
             </Badge>
-            <h2 className="text-2xl md:text-3xl font-bold text-neutral-600 font-heading mb-2">
-              What Drives Us
-            </h2>
-            <p className="text-neutral-600 text-base max-w-2xl mx-auto">
-              The core principles that guide everything we do
-            </p>
+            <h2 className="text-4xl font-black text-neutral-800 font-handwriting">What Drives Us</h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-            {values.map((value, index) => (
-              <Card
-                key={index}
-                className="bg-white/95 backdrop-blur-md p-5 text-center rounded-2xl border border-neutral-100 shadow-sm hover:shadow-md hover:-translate-y-[2px] transition-all"
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {values.map((v, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ y: -5 }}
+                className={`bg-white p-6 rounded-2xl border-2 ${v.border} shadow-[8px_8px_0px_0px_rgba(0,0,0,0.05)]`}
               >
-                <div className={`w-14 h-14 ${value.bg} rounded-2xl flex items-center justify-center mx-auto mb-3 ${value.color}`}>
-                  {value.icon}
+                <div className={`w-16 h-16 ${v.bg} rounded-xl flex items-center justify-center mb-4 border-2 ${v.border} text-neutral-800`}>
+                  {v.icon}
                 </div>
-                <h3 className="font-bold text-neutral-700 mb-2 font-heading">
-                  {value.title}
-                </h3>
-                <p className="text-neutral-600 text-sm leading-relaxed">
-                  {value.description}
-                </p>
-              </Card>
+                <h3 className={`text-xl font-black ${v.color} mb-3`}>{v.title}</h3>
+                <p className="text-neutral-600 font-medium leading-relaxed">{v.description}</p>
+              </motion.div>
             ))}
           </div>
         </div>
-
-        <WaveBottom fill="#f4f7ff" />
       </section>
 
-      {/* TEAM (bg-section-amber) */}
-      <section className="relative overflow-hidden py-10 md:py-14"
-        style={{ background: "linear-gradient(180deg, #FFF7ED 0%, #FFF1E6 100%)" }}  // warm cream -> peach
-      >
-        <WaveTop fill="#f4f7ff" />
-
-        <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-8">
-          {/* Portrait with dual-brand frame, soft shadow, and caption */}
-          <div className="flex-shrink-0 w-full lg:w-1/3">
-            <div className="relative">
-              {/* glow ring */}
-              <div
-                className="absolute -inset-2 rounded-3xl"
-                style={{
-                  background:
-                    "conic-gradient(from 180deg, rgba(254,215,170,.35), rgba(255,237,213,.2), rgba(209,250,229,.2))",
-                  filter: "blur(16px)",
-                }}
-              />
-              {/* framed image */}
-              <div
-                className="relative rounded-2xl overflow-hidden border-[6px] shadow-sm"
-                style={{ borderColor: "hsl(var(--premium-teal))", boxShadow: "inset 0 0 0 6px hsl(var(--premium-orange))" }}
-              >
-                <img
-                  src="https://www.forthepleasureoflordkrishna.com/wp-content/uploads/2019/07/Srila-Prabhupada-Vyasadeva-1024x768.jpg"
-                  alt="Srila Prabhupada"
-                  className="w-full h-[280px] md:h-[320px] object-cover"
-                />
-              </div>
-              <p className="mt-3 text-center text-neutral-700 text-sm">
-                Founder-Acharya of ISKCON
-              </p>
-            </div>
-          </div>
-
-          {/* Bio Text with accent bar and readable measure */}
-          <div className="w-full lg:w-2/3 text-neutral-700 text-sm md:text-base space-y-3 max-w-2xl">
-            <div className="flex items-center gap-3">
-              <span
-                className="inline-block h-6 w-1.5 rounded-full"
-                style={{ backgroundColor: "hsl(var(--premium-orange))" }}
-              />
-              <h3 className="text-2xl md:text-3xl font-extrabold text-neutral-800">
-                His Divine Grace A.C.
-              </h3>
-            </div>
-            <h3
-              className="text-2xl md:text-3xl font-extrabold"
-              style={{ color: "hsl(var(--premium-orange))" }}
-            >
-              Bhaktivedanta Swami Prabhupada
-            </h3>
-
-            <div className="bg-white/70 backdrop-blur-sm border rounded-xl p-4 md:p-5 shadow-sm"
-              style={{ borderColor: "hsl(var(--neutral-100))" }}>
-              <p className="leading-relaxed">
-                Srila Prabhupada (born Abhay Charan De in Calcutta in 1896) was a devoted scholar and spiritual teacher
-                who founded the International Society for Krishna Consciousness (ISKCON) in 1966. At age 69, he journeyed
-                to the West with his translations of sacred Vedic texts and a vision to share Krishna consciousness—ultimately
-                establishing 100+ centers worldwide, translating 70+ volumes of Vedic literature, and inspiring a global
-                devotional movement.
-              </p>
-            </div>
-
-            {/* Subtle badges */}
-            <div className="flex flex-wrap gap-2">
-              <span className="px-3 py-1 rounded-full text-xs font-semibold"
-                style={{ backgroundColor: "hsl(var(--light-teal))", color: "hsl(var(--premium-teal))" }}>
-                Scholar
-              </span>
-              <span className="px-3 py-1 rounded-full text-xs font-semibold"
-                style={{ backgroundColor: "hsl(var(--light-orange))", color: "hsl(var(--premium-orange))" }}>
-                Visionary Leader
-              </span>
-              <span className="px-3 py-1 rounded-full text-xs font-semibold"
-                style={{ backgroundColor: "hsl(var(--light-pink))", color: "hsl(var(--premium-pink))" }}>
-                Global Mentor
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <WaveBottom fill="#f2ffe1ff" />
-      </section>
-
-      {/* Section 2 – Mentors (cool-teal contrast) */}
-      <section className="relative overflow-hidden py-10 md:py-14"
-        style={{ background: "linear-gradient(180deg, #ECFDF5 0%, #E6FAF3 100%)" }}  // mint -> light teal
-      >
-        <WaveTop fill="#f2ffe1ff" />
-
-        <div className="container mx-auto px-4 text-center mb-8">
-          <Badge
-            className="px-3.5 py-1.5 rounded-full font-medium text-xs mb-2"
-            style={{
-              backgroundColor: "hsl(var(--light-teal))",
-              color: "hsl(var(--premium-teal))",
-              border: "1px solid hsl(var(--premium-teal))",
-            }}
-          >
-            The Basil Woods Advantage
-          </Badge>
-          <h2 className="text-2xl md:text-3xl font-extrabold text-neutral-800">
-            Our Mentors
-          </h2>
-          <p className="mt-1 text-neutral-600 text-sm md:text-base">
-            Leaders who guide our values-first learning
-          </p>
-        </div>
-
-        {/* Single row mentors with balanced widths and elegant cards */}
+      {/* MENTORS - "Portrait Wall" */}
+      <section className="py-20 bg-[#fff7ed] border-t-4 border-orange-200">
         <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-6">
-            {team.map((member, index) => (
-              <div
-                key={index}
-                className="w-[260px] sm:w-[240px] md:w-[260px] lg:w-[240px]
-                     rounded-2xl overflow-hidden shadow-sm hover:shadow-md
-                     transition-transform hover:-translate-y-1 flex flex-col"
-                style={{
-                  backgroundColor: "#ffffff",
-                  border: "1px solid hsl(var(--neutral-100))",
-                }}
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-black text-neutral-800 font-handwriting mb-4">Our Mentors</h2>
+            <p className="text-neutral-600 font-medium">Leaders who guide our values-first learning</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {team.map((member, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="bg-white p-4 rounded-lg shadow-md border-4 border-neutral-200"
               >
-                {/* Header stripe with avatar panel */}
-                <div className="relative">
-                  <div
-                    className="h-2 w-full"
-                    style={{ backgroundColor: "hsl(var(--premium-orange))" }}
-                  />
-                  <div className="px-4 pt-4 pb-0"
-                    style={{ backgroundColor: "#183A8A" /* deeper blue for contrast */ }}>
-                    <div className="rounded-lg overflow-hidden w-full ring-1 ring-white/20">
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        className="w-full h-[150px] object-cover"
-                      />
-                    </div>
-                  </div>
+                <div className="aspect-[3/4] overflow-hidden rounded-sm border border-neutral-100 mb-4 bg-neutral-100">
+                  <img src={member.image} alt={member.name} className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" />
                 </div>
-
-                {/* Content */}
-                <div className="p-4 flex flex-col grow">
-                  <h4 className="text-center font-bold text-neutral-900 leading-snug">
-                    {member.name}
-                  </h4>
-                  <div className="text-center text-sm font-medium"
-                    style={{ color: "hsl(var(--premium-purple))" }}>
-                    {member.role}
-                  </div>
-                  <div className="mt-2 text-center text-xs text-neutral-700 min-h-[36px]">
-                    {member.experience || member.specialty}
-                  </div>
-
-                  {/* Tag pills */}
-                  <div className="mt-2 flex flex-wrap gap-1 justify-center">
-                    <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold"
-                      style={{ backgroundColor: "hsl(var(--light-orange))", color: "hsl(var(--premium-orange))" }}>
-                      Mentor
-                    </span>
-                    <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold"
-                      style={{ backgroundColor: "hsl(var(--light-teal))", color: "hsl(var(--premium-teal))" }}>
-                      Guidance
-                    </span>
-                  </div>
+                <div className="text-center">
+                  <h3 className="font-bold text-neutral-900 leading-tight mb-1">{member.name}</h3>
+                  <p className="text-xs font-bold text-orange-600 uppercase tracking-wide mb-2">{member.role}</p>
+                  <p className="text-xs text-neutral-500 italic">{member.specialty}</p>
                 </div>
-
-                {/* Scalloped footer echoing reference style */}
-                <div
-                  className="h-3 w-full"
-                  style={{
-                    background:
-                      "radial-gradient(circle at 10px -8px, transparent 10px, rgba(246,181,101,0.15) 11px) repeat-x",
-                    backgroundSize: "20px 12px",
-                  }}
-                />
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
-
-        <WaveBottom fill="#f8ebe3ff" />
       </section>
 
-      {/* CTA — standard card with brand buttons */}
-      <section className="py-14 md:py-16 bg-section-3 relative overflow-hidden">
-        <WaveTop fill="#f8ebe3ff" />
+      {/* CTA - "Ticket Style" */}
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="relative max-w-4xl mx-auto rounded-3xl overflow-hidden p-8 md:p-10 text-center shadow-sm border border-[hsl(var(--neutral-100))] bg-white">
-            <div className="pointer-events-none absolute -top-10 -right-8 w-32 h-32 rounded-full" style={{ backgroundColor: "hsl(var(--light-teal))" }} />
-            <div className="pointer-events-none absolute -bottom-10 -left-8 w-28 h-28 rounded-full" style={{ backgroundColor: "hsl(var(--light-pink))" }} />
+          <div className="max-w-4xl mx-auto relative">
+            <div className="absolute inset-0 bg-[hsl(var(--premium-orange))] rounded-3xl transform rotate-1 opacity-20" />
+            <div className="relative bg-white border-4 border-dashed border-[hsl(var(--premium-orange))] rounded-3xl p-10 text-center shadow-[12px_12px_0px_0px_hsl(var(--premium-orange))]">
+              <h2 className="text-3xl md:text-4xl font-black text-neutral-900 mb-4 font-handwriting">Ready to Visit Our Campus?</h2>
+              <p className="text-lg text-neutral-600 mb-8 font-medium">Schedule a personalized tour and see why families choose Basil Woods Juniors.</p>
 
-            <div className="relative z-10">
-              <h2 className="text-2xl md:text-3xl font-bold mb-3 text-neutral-900">Ready to Visit Our Campus?</h2>
-              <p className="text-base md:text-lg mb-6 text-neutral-800 max-w-2xl mx-auto">
-                Schedule a personalized tour and see why families choose Basil Woods Juniors.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
-                  className="rounded-xl px-6 py-3 font-bold shadow-sm hover:shadow-md transition-all"
-                  style={{ backgroundColor: "hsl(var(--premium-orange))", color: "white" }}
                   onClick={handleWhatsAppRedirect}
+                  className="bg-green-500 hover:bg-green-600 text-white font-bold py-6 px-8 rounded-xl text-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]"
                 >
-                  <FaWhatsapp className="w-5 h-5" />
-                  Contact Us
+                  <FaWhatsapp className="w-6 h-6 mr-2" />
+                  Chat on WhatsApp
                 </Button>
                 <Button
                   variant="outline"
-                  className="rounded-xl px-6 py-3 font-bold transition-all border-2 hover:bg-white"
-                  style={{
-                    borderColor: "hsl(var(--premium-orange))",
-                    color: "hsl(var(--premium-orange))",
-                  }}
+                  className="border-2 border-[hsl(var(--premium-orange))] text-[hsl(var(--premium-orange))] hover:bg-orange-50 font-bold py-6 px-8 rounded-xl text-lg"
                   onClick={() => (window.location.href = "tel:+918056179108")}
                 >
-                  <Phone className="w-5 h-5 mr-2" />
+                  <Phone className="w-6 h-6 mr-2" />
                   Call Now
                 </Button>
               </div>
-              <p className="mt-4 text-xs text-neutral-600">We’ll Contact you by phone/email.</p>
             </div>
           </div>
         </div>
-        <WaveBottom fill="#f4f7ff" />
       </section>
 
-      {/* Footer with wave top */}
-      <footer className="relative bg-[#f4f7ff]">
-        <WaveTop fill="#f4f7ff" />
-        <Footer />
-      </footer>
+      <Footer />
     </div>
   );
 };
