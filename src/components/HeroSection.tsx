@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Play, Sparkles, Star, Sun, Cloud, Heart, ArrowRight, Bird, Calendar } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { FaWhatsapp } from 'react-icons/fa';
+import VideoModal from "@/components/ui/video-modal";
 
 /* Import images */
 import picture1 from "../assets/Images/Hero1.png";
@@ -18,6 +19,7 @@ const handleWhatsAppRedirect = () => {
 
 const HeroSection = () => {
   const navigate = useNavigate();
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
   const images = [picture1, picture2, picture3];
   const [active, setActive] = useState(0);
   const { scrollY } = useScroll();
@@ -33,12 +35,12 @@ const HeroSection = () => {
   }, [images.length]);
 
   return (
-    <section className="relative min-h-[90vh] flex items-center bg-[hsl(var(--light-orange))] overflow-hidden pt-24 pb-12 md:pt-0 md:pb-0">
+    <section className="relative min-h-[90vh] flex items-center bg-[hsl(var(--light-orange))] overflow-hidden pt-12 pb-12 md:pt-0 md:pb-0">
 
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute top-20 left-10 text-[hsl(var(--premium-yellow))]"
+          className="absolute top-20 hidden md:block left-10 text-[hsl(var(--premium-yellow))]"
           animate={{ rotate: 360 }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
           style={{ y: y2 }}
@@ -47,7 +49,7 @@ const HeroSection = () => {
         </motion.div>
 
         <motion.div
-          className="absolute top-40 right-20 text-white"
+          className="absolute top-44 md:top-40 right-20 text-white"
           animate={{ x: [0, 20, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           style={{ y: y1 }}
@@ -69,6 +71,13 @@ const HeroSection = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
+        {/* Branch Name Header */}
+        <div className="text-center mb-8 lg:mb-12">
+          <h2 className="text-5xl md:hidden font-black text-[hsl(var(--brand-dark-green))] font-handwriting transform -rotate-1">
+            Basil Woods Juniors <span className="text-[hsl(var(--premium-orange))]">@Thiruvanmiyur</span>
+          </h2>
+        </div>
+
         <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20">
 
           {/* Left Content */}
@@ -122,7 +131,7 @@ const HeroSection = () => {
               </motion.button>
 
               <motion.button
-                onClick={() => window.open("https://www.youtube.com/watch?v=w4WyoDOi460", "_blank")}
+                onClick={() => setIsVideoOpen(true)}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95, y: 0 }}
                 className="w-full sm:w-auto bg-white text-[hsl(var(--brand-dark-green))] text-xl font-black px-8 py-4 rounded-2xl border-2 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center gap-3 transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-1 active:translate-y-1"
@@ -207,6 +216,14 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
+
+      {/* Video Modal */}
+      <VideoModal
+        isOpen={isVideoOpen}
+        onClose={() => setIsVideoOpen(false)}
+        videoUrl="https://www.youtube.com/watch?v=w4WyoDOi460"
+        title="Experience Basil Woods Juniors"
+      />
     </section>
   );
 };

@@ -1,131 +1,105 @@
 import React from "react";
 import { motion } from "framer-motion";
 import WaveDivider from "@/components/ui/wave-divider";
-import { Sunrise, MessageCircle, BookOpen, Drama, Bus, Footprints, Palette, Leaf } from "lucide-react";
+import { Sunrise, MessageCircle, BookOpen, Drama, Bus, Footprints, Palette, Leaf, Star, Heart } from "lucide-react";
 
 const ProgramsSection = () => {
   const activities = [
-    { title: "Activity Period", description: "Our little ones transition smoothly from the home environment to school, with teachers setting the mood for all the learning and excitement that lies ahead!", icon: Sunrise },
-    { title: "Circle Time", description: "Our kids grow in confidence, speaking, listening, thinking and social skills through fun-filled discussions at circle time every morning", icon: MessageCircle },
-    { title: "Phonics/Language", description: "Our children learn letter sounds, reading and writing the fun way- the 'Jolly Phonics' way!", icon: BookOpen },
-    { title: "Puppets/Story Time", description: "Our tiny tots enter the fascinating world of stories with friendly puppets while building vocabulary and imagination", icon: Drama },
-    { title: "Field Trips", description: "Learning happens best when it's experiential and hands-on. Our children enjoy learning and make lots of memories with carefully planned trips and visits.", icon: Bus },
-    { title: "Outdoor Play", description: "Our kids grow in confidence, speaking, listening, thinking and social skills through fun-filled discussions at circle time every morning", icon: Footprints },
-    { title: "Theme Time", description: "Our children learn letter sounds, reading and writing the fun way- the 'Jolly Phonics' way!", icon: Palette },
-    { title: "Art & Craft", description: "Our little ones explore the creative genius within with theme-based art and craft activities.", icon: Leaf },
+    { title: "Activity Period", description: "Transitioning from home to school with excitement!", icon: Sunrise, color: "bg-yellow-100", border: "border-yellow-400", text: "text-yellow-700" },
+    { title: "Circle Time", description: "Building confidence through fun morning discussions.", icon: MessageCircle, color: "bg-blue-100", border: "border-blue-400", text: "text-blue-700" },
+    { title: "Phonics Fun", description: "Learning reading and writing the 'Jolly Phonics' way.", icon: BookOpen, color: "bg-pink-100", border: "border-pink-400", text: "text-pink-700" },
+    { title: "Story Time", description: "Entering the world of imagination with friendly puppets.", icon: Drama, color: "bg-purple-100", border: "border-purple-400", text: "text-purple-700" },
+    { title: "Field Trips", description: "Experiential learning through carefully planned visits.", icon: Bus, color: "bg-green-100", border: "border-green-400", text: "text-green-700" },
+    { title: "Outdoor Play", description: "Developing physical skills and social bonds in the sun.", icon: Footprints, color: "bg-orange-100", border: "border-orange-400", text: "text-orange-700" },
+    { title: "Theme Time", description: "Exploring new concepts through interactive themes.", icon: Palette, color: "bg-teal-100", border: "border-teal-400", text: "text-teal-700" },
+    { title: "Art & Craft", description: "Unleashing creativity with hands-on masterpieces.", icon: Leaf, color: "bg-red-100", border: "border-red-400", text: "text-red-700" },
   ];
 
   return (
-    <section className="py-20 bg-white relative overflow-hidden">
+    <section className="py-24 bg-[#fff8f0] relative overflow-hidden">
       <WaveDivider position="top" fill="#f6eee7" variant={1} />
 
+      {/* Background Doodles */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-10 transform -rotate-12 text-orange-200 opacity-60">
+          <Star className="w-24 h-24 fill-current" strokeWidth={1.5} />
+        </div>
+        <div className="absolute bottom-40 right-10 transform rotate-12 text-teal-200 opacity-60">
+          <Heart className="w-32 h-32 fill-current" strokeWidth={1.5} />
+        </div>
+        <div className="absolute top-1/3 right-1/4 transform rotate-45 text-pink-200 opacity-40">
+          <Star className="w-16 h-16 fill-current" />
+        </div>
+        <div className="absolute bottom-20 left-1/4 transform -rotate-12 text-yellow-200 opacity-50">
+          <div className="w-20 h-20 rounded-full bg-current" />
+        </div>
+
+        {/* Dashed Path Background (Abstract) */}
+        <svg className="absolute top-0 left-0 w-full h-full opacity-20" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <path d="M0,50 Q25,0 50,50 T100,50" fill="none" stroke="#F4A261" strokeWidth="1" strokeDasharray="4 4" />
+        </svg>
+      </div>
+
       <div className="container mx-auto px-4 relative z-10">
+
         {/* Header */}
-        <div className="text-center mb-16 md:mb-24">
-          <h3 className="text-orange-500 font-medium mb-2">A sneak peek into a day at Basil Woods</h3>
-          <h2 className="text-3xl md:text-5xl font-black text-[hsl(var(--brand-dark-green))] font-handwriting">
-            It's a good day at Basil Woods Juniors everyday!
+        <div className="text-center mb-20">
+          <motion.div
+            initial={{ scale: 0, rotate: -5 }}
+            whileInView={{ scale: 1, rotate: 0 }}
+            viewport={{ once: true }}
+            className="inline-block bg-white border-2 border-black px-6 py-2 rounded-full shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-4 transform -rotate-2"
+          >
+            <span className="font-bold text-neutral-800 text-sm uppercase tracking-widest">A Day in the Life</span>
+          </motion.div>
+          <h2 className="text-4xl md:text-6xl font-black text-[hsl(var(--brand-dark-green))] font-handwriting leading-tight">
+            Every Day is a <span className="text-[hsl(var(--premium-orange))]">New Adventure!</span>
           </h2>
         </div>
 
-        {/* Desktop Zigzag Layout */}
-        <div className="hidden lg:block relative max-w-6xl mx-auto">
-          {/* SVG Connector Line */}
-          <svg className="absolute top-0 left-0 w-full h-full pointer-events-none z-0" viewBox="0 0 1000 600" preserveAspectRatio="none">
-            <path
-              d="M150,100 C300,100 300,250 500,250 C700,250 700,100 850,100
-                 M850,100 C950,100 950,400 850,400
-                 M850,400 C700,400 700,550 500,550 C300,550 300,400 150,400"
-              fill="none"
-              stroke="#cbd5e1"
-              strokeWidth="2"
-              strokeDasharray="8 8"
-              className="opacity-50"
-            />
-          </svg>
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+          {activities.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, type: "spring", bounce: 0.4 }}
+              whileHover={{ y: -10, rotate: index % 2 === 0 ? 2 : -2 }}
+              className="group relative"
+            >
+              {/* Connector Line (Desktop) */}
+              {index < activities.length - 1 && (
+                <div className={`hidden lg:block absolute top-1/2 -right-8 w-16 h-1 border-t-4 border-dashed border-orange-300 z-0 ${(index + 1) % 4 === 0 ? 'hidden' : '' // Hide on last item of row
+                  }`} />
+              )}
 
-          <div className="grid grid-cols-4 gap-y-24 gap-x-8 relative z-10">
-            {activities.map((item, index) => {
-              // Determine position based on zigzag pattern
-              // Row 1: 0, 1, 2, 3 (Top aligned)
-              // Row 2: 7, 6, 5, 4 (Bottom aligned, reversed visual order)
+              {/* Card */}
+              <div className={`relative ${item.color} border-2 border-black rounded-3xl p-6 h-full shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-shadow group-hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] z-10 flex flex-col items-center text-center`}>
 
-              // Actually, looking at the image, it's more like:
-              // 1 (Top) - 2 (Middle) - 3 (Top) - 4 (Middle) ... snake like.
-
-              // Let's use a simpler alternating offset for the "Wave" look
-              const isEven = index % 2 === 0;
-              const isSecondRow = index >= 4;
-
-              return (
-                <motion.div
-                  key={index}
-                  className={`flex flex-col items-center text-center ${isSecondRow ? 'mt-12' : ''}`}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.15 }}
-                >
-                  {/* Organic Blob Icon */}
-                  <div
-                    className="w-24 h-24 bg-[#F4A261] flex items-center justify-center mb-6 shadow-lg transform hover:scale-110 transition-transform duration-300"
-                    style={{
-                      borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
-                      boxShadow: "inset -5px -5px 20px rgba(0,0,0,0.1)"
-                    }}
-                  >
-                    <item.icon className="w-10 h-10 text-white" strokeWidth={1.5} />
-                  </div>
-
-                  <h3 className="text-xl font-bold text-[hsl(var(--brand-dark-green))] mb-3">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-neutral-600 leading-relaxed max-w-[220px]">
-                    {item.description}
-                  </p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Mobile Vertical Timeline Layout */}
-        <div className="lg:hidden relative">
-          <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-orange-200 border-l-2 border-dashed border-orange-300" />
-
-          <div className="space-y-12">
-            {activities.map((item, index) => (
-              <motion.div
-                key={index}
-                className="relative pl-20"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                {/* Connector Dot */}
-                <div
-                  className="absolute left-0 top-0 w-12 h-12 bg-[#F4A261] flex items-center justify-center z-10"
-                  style={{ borderRadius: "50% 50% 50% 0" }}
-                >
-                  <item.icon className="w-6 h-6 text-white" />
+                {/* Icon Sticker */}
+                <div className={`w-16 h-16 bg-white border-2 border-black rounded-2xl flex items-center justify-center mb-4 transform -rotate-3 group-hover:rotate-3 transition-transform duration-300 shadow-sm`}>
+                  <item.icon className={`w-8 h-8 ${item.text}`} strokeWidth={2} />
                 </div>
 
-                <div className="bg-white p-5 rounded-2xl shadow-sm border border-neutral-100">
-                  <h3 className="text-lg font-bold text-[hsl(var(--brand-dark-green))] mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-neutral-600 leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                <h3 className="text-xl font-black text-neutral-800 mb-2 font-handwriting">
+                  {item.title}
+                </h3>
+
+                <p className="text-sm text-neutral-700 font-medium leading-relaxed">
+                  {item.description}
+                </p>
+
+                {/* Decorative Tape */}
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-12 h-4 bg-white/50 border border-black/10 transform rotate-2 backdrop-blur-sm" />
+              </div>
+            </motion.div>
+          ))}
         </div>
 
       </div>
-      <WaveDivider position="bottom" fill="#f6eee7" variant={2} />
+      <WaveDivider position="bottom" fill="#f6eee7" variant={3} />
     </section>
   );
 };

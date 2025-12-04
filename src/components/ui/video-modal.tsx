@@ -49,47 +49,51 @@ const VideoModal: React.FC<VideoModalProps> = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-5xl w-[95vw] p-0 bg-black border-none overflow-hidden">
+      <DialogContent className="max-w-4xl w-[90vw] p-0 bg-transparent border-none shadow-none sm:max-w-5xl">
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
+              initial={{ opacity: 0, scale: 0.8, rotate: -2 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              exit={{ opacity: 0, scale: 0.8, rotate: 2 }}
+              transition={{ type: "spring", duration: 0.5, bounce: 0.3 }}
               className="relative"
             >
-              {/* Close Button */}
+              {/* Close Button - Playful Style */}
               <DialogClose asChild>
                 <button
                   onClick={onClose}
-                  className="absolute -top-10 right-0 z-50 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-all duration-200 hover:scale-110 group"
+                  className="absolute -top-6 -right-6 z-50 w-12 h-12 rounded-full bg-red-400 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center transition-transform hover:scale-110 hover:rotate-90 active:scale-95 active:shadow-none active:translate-x-1 active:translate-y-1"
                   aria-label="Close video"
                 >
-                  <X className="w-6 h-6 text-white group-hover:rotate-90 transition-transform duration-200" />
+                  <X className="w-8 h-8 text-white stroke-[3]" />
                 </button>
               </DialogClose>
 
-              {/* Video Container - 16:9 Aspect Ratio */}
-              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-                <iframe
-                  className="absolute top-0 left-0 w-full h-full rounded-lg"
-                  src={embedUrl}
-                  title={title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  style={{ border: 'none' }}
-                />
-              </div>
+              {/* Main Container */}
+              <div className="bg-white rounded-3xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] overflow-hidden relative">
 
-              {/* Optional Title Bar */}
-              {title && (
-                <div className="bg-gradient-to-t from-black/80 to-transparent p-4 absolute bottom-0 left-0 right-0">
-                  <p className="text-white font-semibold text-sm md:text-base">
-                    {title}
-                  </p>
+                {/* Video Container - 16:9 Aspect Ratio */}
+                <div className="relative w-full bg-black" style={{ paddingBottom: '56.25%' }}>
+                  <iframe
+                    className="absolute top-0 left-0 w-full h-full"
+                    src={embedUrl}
+                    title={title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    style={{ border: 'none' }}
+                  />
                 </div>
-              )}
+
+                {/* Title Bar */}
+                {title && (
+                  <div className="p-4 bg-white border-t-4 border-black flex items-center justify-center">
+                    <h3 className="text-xl md:text-2xl font-black text-[hsl(var(--brand-dark-green))] font-handwriting text-center">
+                      {title}
+                    </h3>
+                  </div>
+                )}
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
