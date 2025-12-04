@@ -1,168 +1,154 @@
 import React from "react";
-import { Card } from "@/components/ui/card";
-import { Building2, Building, MapPin, BookOpen, Trophy, GraduationCap, Sprout, Star } from "lucide-react";
 import { motion } from "framer-motion";
-
-/*
-USPSection — aligned with site standard
-- Section bg: bg-section-3 (after Programs section-2)
-- WaveTop: #e9f2ef (from previous)
-- WaveBottom: #eee7fa (into next section-4)
-- Clean cards, neutral typography, subtle brand tints
-*/
-
-const WaveTop = ({ fill = "#e9f2ef" }) => (
-  <div className="absolute top-0 left-0 w-full overflow-hidden leading-none rotate-180">
-    <svg className="relative block w-full h-[60px]" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path
-        fill={fill}
-        d="M0,256L48,240C96,224,192,192,288,170.7C384,149,480,139,576,154.7C672,171,768,213,864,208C960,203,1056,149,1152,117.3C1248,85,1344,75,1392,69.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-      />
-    </svg>
-  </div>
-);
-
-const WaveBottom = ({ fill = "#eee7fa" }) => (
-  <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-    <svg className="relative block w-full h-[60px]" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path
-        fill={fill}
-        d="M0,256L48,240C96,224,192,192,288,170.7C384,149,480,139,576,154.7C672,171,768,213,864,208C960,203,1056,149,1152,117.3C1248,85,1344,75,1392,69.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-      />
-    </svg>
-  </div>
-);
-
-// Gradient mapper -> your existing utilities
-const gradientClass = (g) =>
-  g === "gradient-swing" ? "bg-gradient-primary"
-    : g === "gradient-slide" ? "bg-gradient-secondary"
-      : g === "gradient-seesaw" ? "bg-gradient-accent"
-        : "bg-gradient-primary";
+import { Building2, Building, MapPin, BookOpen, Trophy, GraduationCap, Sprout, Star, Heart } from "lucide-react";
+import WaveDivider from "@/components/ui/wave-divider";
 
 const USPSection = () => {
   const stats = [
-    { number: "11", label: "Preschools", icon: Building2, gradient: "gradient-slide" },
-    { number: "6", label: "Cities", icon: Building, gradient: "gradient-swing" },
-    { number: "4", label: "States", icon: MapPin, gradient: "gradient-seesaw" },
+    { number: "11", label: "Preschools", icon: Building2, color: "bg-orange-400", shadow: "shadow-orange-600" },
+    { number: "6", label: "Cities", icon: Building, color: "bg-teal-400", shadow: "shadow-teal-600" },
+    { number: "4", label: "States", icon: MapPin, color: "bg-pink-400", shadow: "shadow-pink-600" },
   ];
 
   const advantages = [
     {
       title: "Well-Researched Curriculum",
-      description: "An engaging, scientifically designed curriculum by reputed academicians, blending innovation with foundational values.",
+      description: "Scientifically designed by experts, blending innovation with foundational values.",
       icon: BookOpen,
-      gradient: "gradient-slide",
+      color: "bg-yellow-100",
+      borderColor: "border-yellow-400",
+      shadowColor: "shadow-yellow-400",
+      iconColor: "text-yellow-600"
     },
     {
-      title: "Award-Winning Preschool Program",
-      description: "Selected among India's top preschool-cum-daycare centres by Education Today for two consecutive years.",
+      title: "Award-Winning Program",
+      description: "Recognized among India's top preschools by Education Today for excellence.",
       icon: Trophy,
-      gradient: "gradient-swing",
+      color: "bg-blue-100",
+      borderColor: "border-blue-400",
+      shadowColor: "shadow-blue-400",
+      iconColor: "text-blue-600"
     },
     {
-      title: "Experienced Academicians",
-      description: "Teachers and facilitators specializing in early childhood education with decades of combined experience.",
+      title: "Expert Academicians",
+      description: "Facilitators with decades of experience in early childhood education.",
       icon: GraduationCap,
-      gradient: "gradient-seesaw",
+      color: "bg-green-100",
+      borderColor: "border-green-400",
+      shadowColor: "shadow-green-400",
+      iconColor: "text-green-600"
     },
     {
       title: "Holistic Development",
-      description: "A comprehensive approach nurturing physical, emotional, intellectual, and cultural growth through the 4Q model.",
+      description: "Nurturing physical, emotional, and intellectual growth through our 4Q model.",
       icon: Sprout,
-      gradient: "gradient-sandbox",
+      color: "bg-purple-100",
+      borderColor: "border-purple-400",
+      shadowColor: "shadow-purple-400",
+      iconColor: "text-purple-600"
     },
   ];
 
   return (
-    <section className="py-14 md:py-16 bg-section-3 relative overflow-hidden">
-      <WaveTop fill="#e9f2ef" />
+    <section className="py-20 bg-[hsl(var(--section-3))] relative overflow-hidden">
+      <WaveDivider position="top" fill="#f6eee7" variant={2} />
 
-      {/* soft shapes */}
-      <div className="absolute top-20 right-8 w-10 h-10 rounded-2xl opacity-25" style={{ backgroundColor: "hsl(var(--premium-yellow) / 0.2)" }} />
-      <div className="absolute bottom-20 left-12 w-8 h-8 rounded-full opacity-25" style={{ backgroundColor: "hsl(var(--premium-teal) / 0.2)" }} />
-      <div className="absolute top-1/2 left-8 w-6 h-6 rounded-2xl opacity-20" style={{ backgroundColor: "hsl(var(--premium-pink) / 0.2)" }} />
+      {/* Background Doodles */}
+      <div className="absolute inset-0 pointer-events-none opacity-10">
+        <div className="absolute top-20 left-10 w-20 h-20 border-4 border-orange-400 rounded-full" />
+        <div className="absolute bottom-40 right-10 w-16 h-16 bg-teal-400 rotate-12 rounded-xl" />
+        <div className="absolute top-1/3 right-1/4 w-4 h-4 bg-pink-500 rounded-full" />
+      </div>
 
       <div className="container mx-auto px-4 relative z-10">
+
         {/* Header */}
-        <motion.div
-          className="text-center max-w-4xl mx-auto mb-12 md:mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-        >
+        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
           <motion.div
-            className="px-5 py-2.5 rounded-full inline-flex items-center gap-2 mb-6 text-white shadow-lg shadow-orange-500/20"
-            style={{ background: "linear-gradient(135deg, hsl(var(--premium-orange)), hsl(var(--premium-pink)))" }}
-            whileHover={{ scale: 1.05 }}
+            initial={{ scale: 0, rotate: -10 }}
+            whileInView={{ scale: 1, rotate: 0 }}
+            viewport={{ once: true }}
+            className="inline-block bg-white border-2 border-neutral-800 px-6 py-2 rounded-full shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-6 transform -rotate-2"
           >
-            <Star className="w-4 h-4 fill-white" />
-            <span className="font-bold tracking-wide text-sm uppercase">Our Impact</span>
+            <span className="font-bold text-neutral-800 flex items-center gap-2">
+              <Star className="w-4 h-4 fill-yellow-400 text-neutral-800" />
+              Why Parents Trust Us
+            </span>
           </motion.div>
 
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-neutral-800 leading-tight mb-6 tracking-tight">
-            Where Vision Meets <br className="hidden md:block" />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[hsl(var(--premium-orange))] to-[hsl(var(--premium-pink))]">
-              Experience
+          <h2 className="text-4xl md:text-6xl font-black text-neutral-800 leading-tight mb-6">
+            Where Vision Meets <br />
+            <span className="relative inline-block">
+              <span className="relative z-10 text-white px-2">Experience</span>
+              <span className="absolute inset-0 bg-[hsl(var(--premium-orange))] transform -rotate-2 rounded-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] -z-0"></span>
             </span>
           </h2>
 
-          <p className="text-neutral-600 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
-            Spreading our wings across India to enable a <span className="font-bold text-[hsl(var(--premium-teal))]">smarter generation</span> of children.
-          </p>
-        </motion.div>
-
-        {/* Stats */}
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8 mb-12 max-w-4xl mx-auto">
-          {stats.map((stat, i) => {
-            const IconComponent = stat.icon;
-            return (
-              <Card key={i} className="text-center rounded-2xl p-6 shadow-sm border border-[hsl(var(--neutral-100))] bg-white hover:shadow-md transition-all hover:-translate-y-[2px]">
-                <div className={`${gradientClass(stat.gradient)} w-16 h-16 md:w-20 md:h-20 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white`}>
-                  <IconComponent className="w-8 h-8 md:w-10 md:h-10" strokeWidth={2} />
-                </div>
-                <div className="text-4xl md:text-5xl font-bold mb-1.5 text-neutral-800">{stat.number}</div>
-                <div className="text-base md:text-lg font-semibold" style={{ color: "hsl(var(--premium-purple))" }}>
-                  {stat.label}
-                </div>
-              </Card>
-            );
-          })}
-        </div>
-
-        {/* Advantages */}
-        <div className="text-center mb-8">
-          <h3 className="text-2xl md:text-3xl font-bold mb-2" style={{ color: "hsl(var(--premium-teal))" }}>
-            The Basil Woods Advantage
-          </h3>
-          <p className="text-neutral-700 text-base md:text-lg">
-            Delivering excellence in early childhood education for over 15 years.
+          <p className="text-lg md:text-xl text-neutral-700 font-medium">
+            Spreading our wings across India to enable a smarter generation.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-          {advantages.map((adv, i) => {
-            const IconComponent = adv.icon;
-            return (
-              <Card
-                key={i}
-                className="flex gap-4 rounded-2xl p-6 shadow-sm border border-[hsl(var(--neutral-100))] bg-white hover:shadow-md transition-all hover:-translate-y-[2px]"
+        {/* Floating Stats Badges */}
+        <div className="flex flex-wrap justify-center gap-8 md:gap-16 mb-20">
+          {stats.map((stat, i) => (
+            <motion.div
+              key={i}
+              className={`relative w-32 h-32 md:w-40 md:h-40 rounded-full ${stat.color} border-4 border-neutral-800 flex flex-col items-center justify-center text-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]`}
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              animate={{ y: [0, -10, 0] }}
+              // @ts-ignore
+              transition={{ duration: 3, repeat: Infinity, delay: i * 0.5, ease: "easeInOut" }}
+            >
+              <stat.icon className="w-8 h-8 mb-1" strokeWidth={2.5} />
+              <span className="text-3xl md:text-4xl text-[hsl(var(--premium-orange))] font-black">{stat.number}</span>
+              <span className="text-xs md:text-sm font-bold text-[hsl(var(--premium-orange))] uppercase tracking-wide">{stat.label}</span>
+
+              {/* Shine effect */}
+              <div className="absolute top-4 right-4 w-6 h-6 bg-white/30 rounded-full" />
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Advantages Grid - Handcrafted Cards */}
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {advantages.map((adv, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 + i * 0.1 }}
+              whileHover={{ y: 4, x: 4, transition: { duration: 0.1 } }}
+              className="group"
+            >
+              <div
+                className={`relative h-full bg-white border-4 ${adv.borderColor} rounded-3xl p-8 transition-all duration-100`}
               >
-                <div className={`${gradientClass(adv.gradient)} w-14 h-14 md:w-16 md:h-16 rounded-2xl flex items-center justify-center flex-shrink-0 text-white`}>
-                  <IconComponent className="w-7 h-7 md:w-8 md:h-8" strokeWidth={2} />
-                </div>
-                <div>
-                  <h4 className="text-lg md:text-xl font-bold text-neutral-800 mb-2">{adv.title}</h4>
-                  <p className="text-neutral-700 leading-relaxed text-sm md:text-base">{adv.description}</p>
-                </div>
-              </Card>
-            );
-          })}
-        </div>
-      </div>
+                {/* Colored Shadow via pseudo-element */}
+                <div className={`absolute inset-0 rounded-3xl border-4 ${adv.borderColor} translate-x-2 translate-y-2 -z-10 ${adv.color}`} />
 
-      <WaveBottom fill="#eee7fa" />
+                {/* Floating Icon */}
+                <div className={`w-16 h-16 ${adv.color} border-2 ${adv.borderColor} rounded-2xl flex items-center justify-center mb-6 transform -rotate-3 group-hover:rotate-3 transition-transform`}>
+                  <adv.icon className={`w-8 h-8 ${adv.iconColor}`} strokeWidth={2.5} />
+                </div>
+
+                <h3 className="text-xl font-black text-neutral-800 mb-3">
+                  {adv.title}
+                </h3>
+                <p className="text-neutral-600 font-medium leading-relaxed">
+                  {adv.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+      </div>
+      <WaveDivider position="bottom" fill="#eee7fa" variant={3} />
     </section>
   );
 };
