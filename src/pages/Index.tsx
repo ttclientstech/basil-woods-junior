@@ -1,5 +1,7 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
+
+import DayInLifeSection from "@/components/DayInLifeSection";
 import AboutSection from "@/components/AboutSection";
 import ProgramsSection from "@/components/ProgramsSection";
 import USPSection from "@/components/USPSection";
@@ -24,6 +26,8 @@ const Index = () => {
       <Preloader />
       <Header />
       <HeroSection />
+
+      <DayInLifeSection />
       <AboutSection />
       <ProgramsSection />
       <USPSection />

@@ -6,9 +6,9 @@ import mainImage from "../assets/Images/About.png";
 const AboutSection = () => {
   const features = [
     { name: "Culture Connect", icon: Palette, color: "bg-orange-100 text-orange-600", border: "border-orange-400", rotate: "rotate-2" },
-    { name: "Nature Learning", icon: Leaf, color: "bg-green-100 text-green-600", border: "border-green-400", rotate: "-rotate-1" },
-    { name: "Holistic Curriculum", icon: BookOpen, color: "bg-blue-100 text-blue-600", border: "border-blue-400", rotate: "rotate-1" },
-    { name: "Creative Adventures", icon: Sparkles, color: "bg-pink-100 text-pink-600", border: "border-pink-400", rotate: "-rotate-2" },
+    { name: "Nature Learning", icon: Leaf, color: "bg-green-100 text-green-600", border: "border-orange-400", rotate: "-rotate-1" },
+    { name: "Holistic Curriculum", icon: BookOpen, color: "bg-blue-100 text-blue-600", border: "border-orange-400", rotate: "rotate-1" },
+    { name: "Creative Adventures", icon: Sparkles, color: "bg-pink-100 text-pink-600", border: "border-orange-400", rotate: "-rotate-2" },
   ];
 
   return (

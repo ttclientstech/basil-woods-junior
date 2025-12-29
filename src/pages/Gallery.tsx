@@ -29,10 +29,11 @@ const GalleryPage = () => {
   });
 
   const chips = [
-    { name: "All", color: "bg-neutral-800 text-white" },
-    { name: "Classroom Activities", mapTo: ["Classroom", "Learning"], color: "bg-pink-500 text-white" },
+    { name: "All", color: "bg-green-500 text-white"  },
+    { name: "Classroom Activities", mapTo: ["Classroom", "Learning"], color: "bg-green-500 text-white" },
     { name: "Outdoor Play", mapTo: ["Activities", "Play", "Environment", "Campus"], color: "bg-green-500 text-white" },
-    { name: "Art & Crafts", mapTo: ["Creativity"], color: "bg-orange-500 text-white" },
+    { name: "Art & Crafts", mapTo: ["Creativity"], color: "bg-green-500 text-white" },
+    { name: "Celebrations & Events", mapTo: ["Celebration", "Event"], color: "bg-green-500 text-white" },
   ];
 
   const galleryImages = [
@@ -45,6 +46,9 @@ const GalleryPage = () => {
     { src: picture3, title: "Art & Craft", category: "Creativity", description: "Children expressing through art", rotate: "rotate-2" },
     { src: picture5, title: "Learning by Doing", category: "Classroom", description: "Hands-on activities for better learning", rotate: "-rotate-1" },
     { src: tulsi, title: "Nature & Values", category: "Environment", description: "Teaching respect for plants and nature", rotate: "rotate-1" },
+    { src: picture1, title: "Festival Celebration", category: "Celebration", description: "Joyful traditional celebrations", rotate: "rotate-2" },
+    { src: picture3, title: "Annual Day", category: "Event", description: "Showcasing talents on stage", rotate: "-rotate-2" },
+    { src: interior2, title: "Grandparents Day", category: "Celebration", description: "Honoring our roots and family", rotate: "rotate-1" },
   ];
 
   const achievements = [

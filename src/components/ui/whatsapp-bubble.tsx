@@ -9,10 +9,10 @@ export default function Bubble() {
         href="https://wa.me/918056179108"
         target="_blank"
         rel="noopener noreferrer"
-        className="rounded-full bg-primary text-white p-4 shadow-lg hover:scale-105 transition-transform block"
-        aria-label="WhatsApp Bubble"
+        className="flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg hover:scale-110 hover:shadow-xl transition-all duration-300"
+        aria-label="Chat on WhatsApp"
       >
-        <FaWhatsapp  className="w-6 h-6" />
+        <FaWhatsapp className="h-8 w-8" />
       </a>
     </div>
   )

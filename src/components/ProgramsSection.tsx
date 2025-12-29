@@ -3,16 +3,27 @@ import { motion } from "framer-motion";
 import WaveDivider from "@/components/ui/wave-divider";
 import { Sunrise, MessageCircle, BookOpen, Drama, Bus, Footprints, Palette, Leaf, Star, Heart } from "lucide-react";
 
+/* Import Images for Cards */
+import imgActivity from "@/assets/Images/Picture1.webp";
+import imgCircle from "@/assets/Images/Interior5.webp";
+import imgPhonics from "@/assets/Images/Picture2.webp";
+import imgStory from "@/assets/Images/Interior13.webp";
+import imgField from "@/assets/Images/Exterior1.webp";
+import imgOutdoor from "@/assets/Images/Picture3.webp";
+import imgTheme from "@/assets/Images/Picture5.webp";
+import imgArt from "@/assets/Images/Interior6.webp";
+
+
 const ProgramsSection = () => {
   const activities = [
-    { title: "Activity Period", description: "Transitioning from home to school with excitement!", icon: Sunrise, color: "bg-yellow-100", border: "border-yellow-400", text: "text-yellow-700" },
-    { title: "Circle Time", description: "Building confidence through fun morning discussions.", icon: MessageCircle, color: "bg-blue-100", border: "border-blue-400", text: "text-blue-700" },
-    { title: "Phonics Fun", description: "Learning reading and writing the 'Jolly Phonics' way.", icon: BookOpen, color: "bg-pink-100", border: "border-pink-400", text: "text-pink-700" },
-    { title: "Story Time", description: "Entering the world of imagination with friendly puppets.", icon: Drama, color: "bg-purple-100", border: "border-purple-400", text: "text-purple-700" },
-    { title: "Field Trips", description: "Experiential learning through carefully planned visits.", icon: Bus, color: "bg-green-100", border: "border-green-400", text: "text-green-700" },
-    { title: "Outdoor Play", description: "Developing physical skills and social bonds in the sun.", icon: Footprints, color: "bg-orange-100", border: "border-orange-400", text: "text-orange-700" },
-    { title: "Theme Time", description: "Exploring new concepts through interactive themes.", icon: Palette, color: "bg-teal-100", border: "border-teal-400", text: "text-teal-700" },
-    { title: "Art & Craft", description: "Unleashing creativity with hands-on masterpieces.", icon: Leaf, color: "bg-red-100", border: "border-red-400", text: "text-red-700" },
+    { title: "Activity Period", description: "Transitioning from home to school with excitement!", image: imgActivity, color: "bg-yellow-100", border: "border-yellow-400", text: "text-yellow-700" },
+    { title: "Circle Time", description: "Building confidence through fun morning discussions.", image: imgCircle, color: "bg-blue-100", border: "border-blue-400", text: "text-blue-700" },
+    { title: "Phonics Fun", description: "Learning reading and writing the 'Jolly Phonics' way.", image: imgPhonics, color: "bg-pink-100", border: "border-pink-400", text: "text-pink-700" },
+    { title: "Story Time", description: "Entering the world of imagination with friendly puppets.", image: imgStory, color: "bg-purple-100", border: "border-purple-400", text: "text-purple-700" },
+    { title: "Field Trips", description: "Experiential learning through carefully planned visits.", image: imgField, color: "bg-green-100", border: "border-green-400", text: "text-green-700" },
+    { title: "Outdoor Play", description: "Developing physical skills and social bonds in the sun.", image: imgOutdoor, color: "bg-orange-100", border: "border-orange-400", text: "text-orange-700" },
+    { title: "Theme Time", description: "Exploring new concepts through interactive themes.", image: imgTheme, color: "bg-teal-100", border: "border-teal-400", text: "text-teal-700" },
+    { title: "Art & Craft", description: "Unleashing creativity with hands-on masterpieces.", image: imgArt, color: "bg-red-100", border: "border-red-400", text: "text-red-700" },
   ];
 
   return (
@@ -76,18 +87,18 @@ const ProgramsSection = () => {
               )}
 
               {/* Card */}
-              <div className={`relative ${item.color} border-2 border-black rounded-3xl p-6 h-full shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-shadow group-hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] z-10 flex flex-col items-center text-center`}>
+              <div className={`relative bg-white border-2 border-black rounded-3xl p-6 h-full min-h-[320px] shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-shadow group-hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] z-10 flex flex-col items-center text-center justify-between overflow-hidden`}>
 
-                {/* Icon Sticker */}
-                <div className={`w-16 h-16 bg-white border-2 border-black rounded-2xl flex items-center justify-center mb-4 transform -rotate-3 group-hover:rotate-3 transition-transform duration-300 shadow-sm`}>
-                  <item.icon className={`w-8 h-8 ${item.text}`} strokeWidth={2} />
+                {/* Image Sticker */}
+                <div className={`w-28 h-28 bg-white border-2 border-black rounded-2xl overflow-hidden mb-4 transform -rotate-3 group-hover:rotate-3 transition-transform duration-300 shadow-sm relative`}>
+                  <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
                 </div>
 
                 <h3 className="text-xl font-black text-neutral-800 mb-2 font-handwriting">
                   {item.title}
                 </h3>
 
-                <p className="text-sm text-neutral-700 font-medium leading-relaxed">
+                <p className="text-sm text-neutral-700 font-medium leading-relaxed mb-4">
                   {item.description}
                 </p>
 

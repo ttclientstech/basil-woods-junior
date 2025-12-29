@@ -5,9 +5,9 @@ import WaveDivider from "@/components/ui/wave-divider";
 
 const USPSection = () => {
   const stats = [
-    { number: "11", label: "Preschools", icon: Building2, color: "bg-orange-400", shadow: "shadow-orange-600" },
-    { number: "6", label: "Cities", icon: Building, color: "bg-teal-400", shadow: "shadow-teal-600" },
-    { number: "4", label: "States", icon: MapPin, color: "bg-pink-400", shadow: "shadow-pink-600" },
+    { number: "1500+", label: "Happy Students", icon: GraduationCap, color: "bg-orange-400", shadow: "shadow-orange-600" },
+    { number: "15+", label: "Years Experience", icon: BookOpen, color: "bg-teal-400", shadow: "shadow-teal-600" },
+    { number: "11", label: "Preschools", icon: Building2, color: "bg-pink-400", shadow: "shadow-pink-600" },
   ];
 
   const advantages = [
@@ -25,8 +25,8 @@ const USPSection = () => {
       description: "Recognized among India's top preschools by Education Today for excellence.",
       icon: Trophy,
       color: "bg-blue-100",
-      borderColor: "border-blue-400",
-      shadowColor: "shadow-blue-400",
+      borderColor: "border-yellow-400",
+      shadowColor: "shadow-yellow-400",
       iconColor: "text-blue-600"
     },
     {
@@ -34,8 +34,8 @@ const USPSection = () => {
       description: "Facilitators with decades of experience in early childhood education.",
       icon: GraduationCap,
       color: "bg-green-100",
-      borderColor: "border-green-400",
-      shadowColor: "shadow-green-400",
+      borderColor: "border-yellow-400",
+      shadowColor: "shadow-yellow-400",
       iconColor: "text-green-600"
     },
     {
@@ -64,17 +64,7 @@ const USPSection = () => {
 
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
-          <motion.div
-            initial={{ scale: 0, rotate: -10 }}
-            whileInView={{ scale: 1, rotate: 0 }}
-            viewport={{ once: true }}
-            className="inline-block bg-white border-2 border-neutral-800 px-6 py-2 rounded-full shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-6 transform -rotate-2"
-          >
-            <span className="font-bold text-neutral-800 flex items-center gap-2">
-              <Star className="w-4 h-4 fill-yellow-400 text-neutral-800" />
-              Why Parents Trust Us
-            </span>
-          </motion.div>
+
 
           <h2 className="text-4xl md:text-6xl font-black text-neutral-800 leading-tight mb-6">
             Where Vision Meets <br />
@@ -94,19 +84,13 @@ const USPSection = () => {
           {stats.map((stat, i) => (
             <motion.div
               key={i}
-              className={`relative w-32 h-32 md:w-40 md:h-40 rounded-full ${stat.color} border-4 border-neutral-800 flex flex-col items-center justify-center text-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]`}
+              className={`relative w-40 h-40 md:w-48 md:h-48 rounded-full bg-white border-4 border-black flex flex-col items-center justify-center text-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform hover:scale-105`}
               initial={{ y: 20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1, transition: { delay: i * 0.1, duration: 0.5 } }}
               viewport={{ once: true }}
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 3, repeat: Infinity, delay: i * 0.5, ease: "easeInOut" }}
             >
-              <stat.icon className="w-8 h-8 mb-1" strokeWidth={2.5} />
-              <span className="text-3xl md:text-4xl text-[hsl(var(--premium-orange))] font-black">{stat.number}</span>
-              <span className="text-xs md:text-sm font-bold text-[hsl(var(--premium-orange))] uppercase tracking-wide">{stat.label}</span>
-
-              {/* Shine effect */}
-              <div className="absolute top-4 right-4 w-6 h-6 bg-white/30 rounded-full" />
+              <span className="text-4xl md:text-5xl text-[#F97316] font-black leading-none mb-1">{stat.number}</span>
+              <span className="text-xs md:text-sm font-bold text-[#F97316] uppercase tracking-wide px-2 leading-tight">{stat.label}</span>
             </motion.div>
           ))}
         </div>

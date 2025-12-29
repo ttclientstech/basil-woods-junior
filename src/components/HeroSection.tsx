@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Play, Sparkles, Star, Sun, Cloud, Heart, ArrowRight, Bird, Calendar } from "lucide-react";
+import { Play, Sparkles, Star, Sun, Cloud, Heart, ArrowRight, Bird, Calendar, Music, Pencil, BookOpen, Palette, Puzzle } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { FaWhatsapp } from 'react-icons/fa';
 import VideoModal from "@/components/ui/video-modal";
@@ -35,35 +35,73 @@ const HeroSection = () => {
   }, [images.length]);
 
   return (
-    <section className="relative min-h-[90vh] flex items-center bg-[hsl(var(--light-orange))] overflow-hidden pt-12 pb-12 md:pt-0 md:pb-0">
+    <section className="relative min-h-[90vh] flex items-center bg-gradient-hero overflow-hidden pt-12 pb-12 md:pt-0 md:pb-0">
+
+      {/* Marquee Banner */}
+      <div className="absolute top-0 w-full bg-[hsl(var(--premium-yellow))] overflow-hidden py-2 border-b-2 border-black z-30">
+        <motion.div
+          className="flex whitespace-nowrap"
+          initial={{ x: "100%" }}
+          animate={{ x: "-100%" }}
+          transition={{ duration: 30, ease: "linear", repeat: Infinity }}
+        >
+          {Array(2).fill(null).map((_, i) => (
+            <div key={i} className="flex items-center gap-8 px-4 text-black font-bold text-sm md:text-base font-handwriting tracking-wide">
+              <span>Basil Woods Juniors International preschool & Day care @ Thiruvanmiyur, Chennai</span>
+              {/* <span className="text-[hsl(var(--premium-orange))] font-extrabold">•</span> */}
+              <span className="uppercase text-[hsl(var(--brand-dark-green))]">Admissions Open</span>
+              {/* <span className="text-[hsl(var(--premium-orange))] font-extrabold">•</span> */}
+            </div>
+          ))}
+        </motion.div>
+      </div>
 
       {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Animated Background Elements - Emerging Vectors */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         <motion.div
           className="absolute top-20 hidden md:block left-10 text-[hsl(var(--premium-yellow))]"
           animate={{ rotate: 360 }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
           style={{ y: y2 }}
         >
-          <Sun className="w-20 h-20 fill-current  stroke-2" />
+          <Sun className="w-20 h-20 fill-current stroke-2" />
         </motion.div>
 
-        <motion.div
-          className="absolute top-44 md:top-40 right-20 text-white"
-          animate={{ x: [0, 20, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          style={{ y: y1 }}
-        >
-          <Cloud className="w-24 h-24 fill-white stroke-[hsl(var(--premium-green))] stroke-2" />
-        </motion.div>
-
-        <motion.div
-          className="absolute top-1/4 left-1/3 text-blue-400"
-          animate={{ x: [0, 40, 0], y: [0, -20, 0] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <Bird className="w-10 h-10 stroke-2" />
-        </motion.div>
+        {/* Floating Icons Array */}
+        {[
+          { Icon: Bird, color: "text-blue-400", x: "20%", delay: 0, scale: 1 },
+          { Icon: Cloud, color: "text-[hsl(var(--premium-pink))]", x: "80%", delay: 2, scale: 1.5 },
+          { Icon: Star, color: "text-yellow-400", x: "50%", delay: 1, scale: 0.8 },
+          { Icon: Heart, color: "text-red-400", x: "10%", delay: 3, scale: 1.2 },
+          { Icon: Music, color: "text-purple-400", x: "90%", delay: 1.5, scale: 1.1 },
+          { Icon: Pencil, color: "text-orange-400", x: "30%", delay: 2.5, scale: 0.9 },
+          { Icon: BookOpen, color: "text-green-400", x: "70%", delay: 0.5, scale: 1.3 },
+          { Icon: Palette, color: "text-indigo-400", x: "40%", delay: 3.5, scale: 1 },
+          { Icon: Puzzle, color: "text-teal-400", x: "60%", delay: 1.8, scale: 1.2 },
+        ].map((item, index) => (
+          <motion.div
+            key={index}
+            className={`absolute -bottom-20 ${item.color} opacity-40 hover:opacity-100 transition-opacity duration-300 pointer-events-auto cursor-pointer`}
+            style={{ left: item.x }}
+            initial={{ y: 100, opacity: 0 }}
+            animate={{
+              y: [-100, -800], // Float up
+              x: [0, Math.sin(index) * 50, 0], // Gentle sway
+              rotate: [0, 360],
+              opacity: [0, 0.6, 0]
+            }}
+            transition={{
+              duration: 15 + index * 2,
+              repeat: Infinity,
+              delay: item.delay,
+              ease: "linear",
+            }}
+            whileHover={{ scale: item.scale * 1.5, rotate: 0, opacity: 1, y: -500 }} // Interactive pop
+          >
+            <item.Icon className="w-16 h-16 md:w-24 md:h-24 stroke-[1.5px] fill-current/20" />
+          </motion.div>
+        ))}
 
         {/* Blobs */}
         <div className="absolute -top-20 -right-20 w-96 h-96 bg-[hsl(var(--premium-pink)/0.1)] rounded-full blur-3xl" />
@@ -90,7 +128,7 @@ const HeroSection = () => {
             >
               <div className="bg-white text-[hsl(var(--premium-orange))] px-6 py-2 rounded-full text-sm font-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-2 border-black mb-6 inline-flex items-center gap-2 transform -rotate-2">
                 <Sparkles className="w-4 h-4" />
-                ADMISSIONS OPEN 2025-26
+                ADMISSIONS OPEN
               </div>
             </motion.div>
 
@@ -195,8 +233,8 @@ const HeroSection = () => {
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               >
-                <div className="bg-pink-100 p-3 rounded-full border-2 border-black">
-                  <Heart className="w-6 h-6 text-pink-500 fill-current" />
+                <div className="bg-[hsl(var(--light-pink))] p-3 rounded-full border-2 border-black">
+                  <Star className="w-6 h-6 text-yellow-400 fill-yellow-400" />
                 </div>
                 <div>
                   <div className="text-xs text-neutral-500 font-black uppercase tracking-wider">Rated #1</div>
@@ -210,7 +248,7 @@ const HeroSection = () => {
                 animate={{ rotate: [0, 180, 0], scale: [1, 1.2, 1] }}
                 transition={{ duration: 5, repeat: Infinity }}
               >
-                <Star className="w-20 h-20 fill-[hsl(var(--premium-yellow))] stroke-black stroke-2" />
+                <Star className="w-20 h-20 fill-yellow-400 stroke-black stroke-2" />
               </motion.div>
             </motion.div>
           </div>

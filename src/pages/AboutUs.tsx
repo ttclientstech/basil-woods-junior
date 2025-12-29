@@ -67,9 +67,9 @@ const AboutUsPage = () => {
       icon: <Shield className="w-8 h-8" />,
       title: "Safety",
       description: "Secure environment where children can explore freely",
-      color: "text-green-600",
-      bg: "bg-green-100",
-      border: "border-green-400",
+      color: "text-black-600",
+      bg: "bg-yellow-100",
+      border: "border-yellow-400",
       shadow: "shadow-green-200"
     }
   ];
@@ -305,7 +305,7 @@ const AboutUsPage = () => {
       </section>
 
       {/* VALUES - "Building Blocks" */}
-      <section className="py-20 bg-[hsl(var(--section-4))]">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <Badge className="bg-pink-100 text-pink-700 border-2 border-pink-400 px-4 py-1 text-sm font-bold rounded-full mb-4">

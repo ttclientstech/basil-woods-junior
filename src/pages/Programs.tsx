@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
-  Clock, Users, Star, Calendar, Download, PlayCircle,
+  Clock, Users, Star, Calendar, Download, PlayCircle, Play,
   BookOpen, Palette, Music, Globe, Compass, Map, Binoculars, MapPin, CheckCircle2
 } from "lucide-react";
 import Header from "@/components/Header";
@@ -11,6 +11,7 @@ import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
 import { motion } from "framer-motion";
 import { FaWhatsapp } from 'react-icons/fa';
+import VideoModal from "@/components/ui/video-modal";
 
 /* Import Images */
 import program1 from "../assets/Images/Program1.png";
@@ -19,6 +20,8 @@ import program3 from "../assets/Images/Program3.png";
 import program4 from "../assets/Images/Program4.png";
 
 const ProgramsPage = () => {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+
   useSEO({
     title: "Programs - Age-Perfect Learning for 2-6 Years",
     description: "Explore our age-appropriate preschool programs: Toddlers (2-3 yrs), Mont1 (3-4 yrs), Mont2 (4-5 yrs), Mont3 (5-6 yrs). Play-based curriculum with cultural activities, art, music, outdoor play, and Montessori methods in Chennai.",
@@ -82,10 +85,10 @@ const ProgramsPage = () => {
   ];
 
   const specialPrograms = [
-    { name: "Cultural Heritage", icon: Globe, color: "bg-orange-50", border: "border-orange-300", text: "text-orange-700" },
-    { name: "Creative Arts", icon: Palette, color: "bg-purple-50", border: "border-purple-300", text: "text-purple-700" },
-    { name: "Music & Movement", icon: Music, color: "bg-green-50", border: "border-green-300", text: "text-green-700" },
-    { name: "Reading Club", icon: BookOpen, color: "bg-blue-50", border: "border-blue-300", text: "text-blue-700" },
+    { name: "Cultural Heritage", icon: Globe, color: "bg-yellow-50", border: "border-yellow-300", text: "text-yellow-700" },
+    { name: "Creative Arts", icon: Palette, color: "bg-yellow-50", border: "border-yellow-300", text: "text-yellow-700" },
+    { name: "Music & Movement", icon: Music, color: "bg-yellow-50", border: "border-yellow-300", text: "text-yellow-700" },
+    { name: "Reading Club", icon: BookOpen, color: "bg-yellow-50", border: "border-yellow-300", text: "text-yellow-700" },
   ];
 
   const dailySchedule = [
@@ -209,7 +212,7 @@ const ProgramsPage = () => {
                   <div className={`w-32 h-32 rounded-full ${p.color} border-4 border-dashed ${p.border} flex items-center justify-center shadow-[0px_8px_0px_0px_rgba(0,0,0,0.1)] mb-4`}>
                     <Icon className={`w-12 h-12 ${p.text}`} />
                   </div>
-                  <h3 className="text-xl font-black text-white font-handwriting drop-shadow-sm">{p.name}</h3>
+                  <h3 className="text-xl font-black text-[hsl(var(--brand-dark-green))] font-handwriting drop-shadow-sm">{p.name}</h3>
                 </motion.div>
               );
             })}
@@ -220,33 +223,45 @@ const ProgramsPage = () => {
       {/* DAILY SCHEDULE - "Clipboard" */}
       <section className="py-20 bg-[#f4f7ff]">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto relative">
+          <div className="max-w-4xl mx-auto relative">
             {/* Clipboard Clip */}
             <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-32 h-12 bg-neutral-800 rounded-t-xl z-20 flex items-center justify-center">
               <div className="w-20 h-4 bg-neutral-600 rounded-full" />
             </div>
 
-            <div className="bg-white p-8 pt-16 rounded-3xl shadow-xl border-2 border-neutral-200 relative">
+            <div className="bg-white p-4 md:p-8 pt-16 rounded-3xl shadow-xl border-2 border-neutral-200 relative overflow-hidden">
               <h2 className="text-3xl font-black text-center text-neutral-800 mb-8 font-handwriting underline decoration-wavy decoration-teal-400">
                 A Day in the Life
               </h2>
 
-              <div className="space-y-4">
-                {dailySchedule.map((item, i) => (
-                  <div key={i} className="flex items-center gap-4 p-3 border-b border-neutral-100 last:border-0 hover:bg-blue-50 transition-colors rounded-lg">
-                    <div className="text-2xl">{item.icon}</div>
-                    <div className="flex-1">
-                      <div className="font-bold text-neutral-800">{item.activity}</div>
-                      <div className="text-sm text-neutral-500 font-mono">{item.time}</div>
-                    </div>
-                    <div className="w-6 h-6 rounded-full border-2 border-neutral-300" />
+              <div className="relative aspect-video rounded-2xl overflow-hidden group cursor-pointer border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all" onClick={() => setIsVideoOpen(true)}>
+                <img
+                  src={program4}
+                  alt="A Day in Basil Woods Juniors"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                  <div className="w-20 h-14 bg-red-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <Play className="w-8 h-8 text-white fill-current ml-1" />
                   </div>
-                ))}
+                </div>
+                <div className="absolute bottom-6 left-6 text-white text-left">
+                  <p className="font-bold text-lg">Watch Video</p>
+                  <p className="text-sm opacity-90">Experience our daily routine</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Video Modal */}
+      <VideoModal
+        isOpen={isVideoOpen}
+        onClose={() => setIsVideoOpen(false)}
+        videoUrl="https://www.youtube.com/watch?v=w4WyoDOi460"
+        title="A Day in the Life at Basil Woods Juniors"
+      />
 
       {/* CTA - "Boarding Pass" */}
       <section className="py-20 bg-white">

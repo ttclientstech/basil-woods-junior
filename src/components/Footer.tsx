@@ -81,7 +81,7 @@ const Footer = () => {
                 <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center group-hover:bg-yellow-400 group-hover:text-black transition-colors">
                   <MapPin className="w-4 h-4" />
                 </div>
-                <span className="text-sm text-white/90 leading-tight pt-1">Chennai, Tamil Nadu</span>
+                <span className="text-sm text-white/90 leading-tight pt-1">No. 10, Vinod Illam, 2nd St, RBI Colony, Thiruvanmiyur, Chennai, Tamil Nadu 600041</span>
               </div>
               <div className="flex items-center gap-3 group">
                 <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center group-hover:bg-green-400 group-hover:text-black transition-colors">

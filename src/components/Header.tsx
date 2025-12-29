@@ -1,9 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { Phone, MapPin, Menu, X, Calendar, MessageCircle } from "lucide-react";
+import { Phone, MapPin, Menu, X, Calendar, MessageCircle, Palette } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "/BWJ Logos.png";
+import Cambridge from "../assets/Images/Cambridge.jpeg"
+import logo3 from "../assets/Images/Logo3.png"
+import HKM from "../assets/Images/Logo3.png" // Placeholder for HKM Logo
 import { FaWhatsapp } from "react-icons/fa";
 
 const Header = () => {
@@ -27,8 +30,6 @@ const Header = () => {
     window.open(`https://wa.me/${phoneNumber}`, "_blank");
   };
 
-
-
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
@@ -49,13 +50,13 @@ const Header = () => {
               <span>+91 8056179108</span>
             </div>
             <div className="flex items-center gap-2 hover:text-yellow-300 transition-colors cursor-pointer">
-              <MapPin className="w-4 h-4 text-green-400" />
+              <Palette className="w-4 h-4 text-green-400" />
               <span>Chennai, Tamil Nadu</span>
             </div>
           </div>
           <div className="flex items-center gap-4">
             <span className="bg-white/10 px-3 py-1 rounded-full border border-white/20 uppercase tracking-wider">
-              Admissions Open 2025-26
+              Admissions Open
             </span>
           </div>
         </div>
@@ -71,20 +72,35 @@ const Header = () => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
 
-            {/* Logo - Sticker Style */}
-            <Link to="/" className="relative z-50 group">
-              <motion.div
-                className="bg-white rounded-full p-2 border-2 border-dashed border-neutral-300 shadow-sm group-hover:border-orange-400 transition-colors"
-                whileHover={{ scale: 1.05, rotate: -2 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <img
+            {/* Logo Section */}
+            <div className="flex items-center gap-4 md:gap-6 relative z-50">
+              <Link to="/" className="block">
+                <motion.img
                   src={logo}
                   alt="Basil Woods Juniors"
-                  className={`transition-all duration-300 object-contain ${scrolled ? "w-12 h-12" : "w-16 h-16 md:w-20 md:h-20"}`}
+                  className={`transition-all duration-300 object-contain ${scrolled ? "w-20" : "w-32 md:w-48"}`}
+                  whileHover={{ scale: 1.05 }}
                 />
-              </motion.div>
-            </Link>
+              </Link>
+
+              {/* Partner Logos */}
+              <div className="items-center gap-3 md:gap-4 border-l-2 border-neutral-300 pl-4">
+                <Link to="/" className="block">
+                  <img
+                    src={Cambridge}
+                    alt="Cambridge"
+                    className={`transition-all duration-300 object-contain ${scrolled ? "w-10" : "w-14 md:w-20"}`}
+                  />
+                </Link>
+                <Link to="/" className="block">
+                  <img
+                    src={logo3}
+                    alt="Culture Connect"
+                    className={`transition-all duration-300 object-contain ${scrolled ? "w-10" : "w-14 md:w-20"}`}
+                  />
+                </Link>
+              </div>
+            </div>
 
             {/* Desktop Navigation - Tab Style */}
             <nav className="hidden lg:flex items-center gap-2">
@@ -116,7 +132,8 @@ const Header = () => {
                 onClick={handleWhatsAppRedirect}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="hidden md:flex bg-green-500 text-white rounded-full p-3 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] border-2 border-black hover:bg-green-400 transition-colors"
+                className="hidden md:flex bg-[#25D366] text-white rounded-full p-3 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] border-2 border-black hover:bg-[#20bd5a] transition-colors"
+                title="Chat on WhatsApp"
               >
                 <FaWhatsapp className="w-5 h-5" />
               </motion.button>
