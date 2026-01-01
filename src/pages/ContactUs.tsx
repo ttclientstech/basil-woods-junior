@@ -112,7 +112,7 @@ const ContactUsPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#fffdf5] font-sans overflow-hidden">
+    <div className="min-h-screen bg-[#fffdf5] font-sans">
       <Header />
 
       {/* HERO SECTION - Standardized */}
