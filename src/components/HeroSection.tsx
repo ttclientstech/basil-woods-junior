@@ -22,6 +22,13 @@ const HeroSection = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   const heroContent = [
     {
+      titlePrefix: "Where Little",
+      highlight: "Minds Bloom",
+      description: "A magical place where learning meets play. We nurture curiosity, creativity, and confidence in every child.",
+      image: picture3,
+      color: "bg-[hsl(var(--premium-pink))]"
+    },
+    {
       titlePrefix: "Preschool in",
       highlight: "Thiruvanmiyur",
       description: "Award-winning independent preschool offering Montessori & play-based learning. We nurture curiosity, creativity, and confidence in every child.",
@@ -30,7 +37,7 @@ const HeroSection = () => {
     },
     {
       titlePrefix: "Nurturing",
-      highlight: "Future Leaders",
+      highlight: "Future Leader",
       description: "Building strong foundations through a blend of modern education and traditional Indian values.",
       image: picture2,
       color: "bg-[hsl(var(--premium-orange))]"

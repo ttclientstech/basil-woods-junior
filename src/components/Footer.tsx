@@ -22,10 +22,10 @@ const Footer = () => {
   ];
 
   const programs = [
-    { name: "Toddlers (2-3 years)", href: "/programs" },
-    { name: "Mont 1 (3-4 years)", href: "/programs" },
-    { name: "Mont 2 (4-5 years)", href: "/programs" },
-    { name: "Mont 3 (5-6 years)", href: "/programs" }
+    { name: "Toddlers (2-3 years)", href: "/programs#toddlers" },
+    { name: "Mont 1 (3-4 years)", href: "/programs#mont1" },
+    { name: "Mont 2 (4-5 years)", href: "/programs#mont2" },
+    { name: "Mont 3 (5-6 years)", href: "/programs#mont3" }
   ];
 
   const resources = [

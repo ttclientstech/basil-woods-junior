@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -22,6 +23,17 @@ import program4 from "../assets/Images/Program4.png";
 
 const ProgramsPage = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const { hash } = useLocation();
+
+  // Handle scroll to hash on load/change
+  useEffect(() => {
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [hash]);
 
   useSEO({
     title: "Programs - Age-Perfect Learning for 2-6 Years",
@@ -174,6 +186,7 @@ const ProgramsPage = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
                 className={`flex flex-col md:flex-row gap-8 items-center ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}
+                id={program.name.toLowerCase().replace(/\s+/g, '')}
               >
                 {/* Postcard Image */}
                 <div className="w-full md:w-1/2 relative group">

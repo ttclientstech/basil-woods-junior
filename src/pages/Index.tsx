@@ -26,8 +26,6 @@ const Index = () => {
       <Preloader />
       <Header />
       <HeroSection />
-
-     
       <AboutSection />
       <ProgramsSection />
       <USPSection />

@@ -299,7 +299,7 @@ const AboutUsPage = () => {
                   <stop offset="100%" stopColor="#64b5f6" />
                 </linearGradient>
               </defs>
-              <path
+              <motion.path
                 d="M 100,200 C 250,200 250,100 350,100 C 450,100 450,300 550,300 C 650,300 650,100 750,100 C 850,100 850,200 900,200"
                 fill="none"
                 stroke="url(#pathGradient)"
@@ -307,11 +307,21 @@ const AboutUsPage = () => {
                 strokeLinecap="round"
                 strokeDasharray="12 12"
                 className="opacity-60"
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 4, ease: "easeInOut" }}
               />
             </svg>
 
             {/* Mobile Vertical Line */}
-            <div className="md:hidden absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-green-200 via-orange-200 to-blue-200 rounded-full" />
+            <motion.div
+              className="md:hidden absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-green-200 via-orange-200 to-blue-200 rounded-full origin-top"
+              initial={{ scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 3 }}
+            />
 
             <div className="grid grid-cols-1 md:grid-cols-4 relative z-10 gap-12 md:gap-0">
               {milestones.map((m, i) => {
@@ -322,10 +332,10 @@ const AboutUsPage = () => {
                 return (
                   <motion.div
                     key={i}
-                    initial={{ opacity: 0, scale: 0.8, y: 50 }}
+                    initial={{ opacity: 0, scale: 0.5, y: 50 }}
                     whileInView={{ opacity: 1, scale: 1, y: 0 }}
                     viewport={{ once: true, margin: "-50px" }}
-                    transition={{ delay: i * 0.2, duration: 0.6, type: "spring" }}
+                    transition={{ delay: i * 1, duration: 0.8, type: "spring", bounce: 0.4 }} // 1s delay staggered to match the 4s path duration
                     className={`relative pl-20 md:pl-0 flex flex-col items-center ${desktopClass} group`}
                   >
                     {/* Floating Card */}
@@ -365,7 +375,12 @@ const AboutUsPage = () => {
                     </div>
 
                     {/* Connecting Dot to Path (Desktop only visual) */}
-                    <div className="hidden md:block absolute top-[50%] left-1/2 -translate-x-1/2 w-4 h-4 bg-white border-4 border-[#8d6e63] rounded-full z-0 opacity-0" />
+                    <motion.div
+                      className="hidden md:block absolute top-[50%] left-1/2 -translate-x-1/2 w-4 h-4 bg-white border-4 border-[#8d6e63] rounded-full z-0"
+                      initial={{ scale: 0, opacity: 0 }}
+                      whileInView={{ scale: 1, opacity: 1 }}
+                      transition={{ delay: i * 1, duration: 0.3 }}
+                    />
                   </motion.div>
                 );
               })}

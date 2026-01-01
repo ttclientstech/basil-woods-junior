@@ -5,8 +5,10 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
   MapPin, Phone, Mail, Clock, Send, MessageCircle, Calendar, Navigation, Heart, Star, PhoneCall,
-  Cloud, Sun, Sparkles, Plane
+  Cloud, Sun, Sparkles, Plane, Download
 } from "lucide-react";
+
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { FaWhatsapp } from "react-icons/fa";
@@ -360,6 +362,88 @@ const ContactUsPage: React.FC = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Quick Action Buttons */}
+      <section className="pb-20 mt-12 relative z-30">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+            {/* Schedule Tour - Blue */}
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="h-full">
+              <Button
+                onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
+                className="w-full h-full min-h-[100px] bg-[#3b82f6] hover:bg-[#2563eb] text-white rounded-2xl shadow-lg flex flex-col items-center justify-center gap-2 py-6"
+              >
+                <Calendar className="w-8 h-8 mb-1" />
+                <span className="text-lg font-bold">Schedule Tour</span>
+              </Button>
+            </motion.div>
+
+            {/* Download Brochure - Green */}
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="h-full">
+              <Button className="w-full h-full min-h-[100px] bg-[#22c55e] hover:bg-[#16a34a] text-white rounded-2xl shadow-lg flex flex-col items-center justify-center gap-2 py-6">
+                <Send className="w-8 h-8 mb-1 -rotate-45" />
+                <span className="text-lg font-bold">Brochure</span>
+              </Button>
+            </motion.div>
+
+            {/* WhatsApp Us - Green */}
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="h-full">
+              <Button
+                onClick={() => window.open(`https://wa.me/918056179108`, "_blank")}
+                className="w-full h-full min-h-[100px] bg-[#22c55e] hover:bg-[#16a34a] text-white rounded-2xl shadow-lg flex flex-col items-center justify-center gap-2 py-6"
+              >
+                <FaWhatsapp className="w-8 h-8 mb-1" />
+                <span className="text-lg font-bold">WhatsApp</span>
+              </Button>
+            </motion.div>
+
+            {/* Get Directions - Blue */}
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="h-full">
+              <Button
+                onClick={() => window.open("https://www.google.com/maps/search/?api=1&query=No.+10,+Vinod+Illam,+2nd+St,+RBI+Colony,+Thiruvanmiyur,+Chennai,+Tamil+Nadu+600041", "_blank")}
+                className="w-full h-full min-h-[100px] bg-[#3b82f6] hover:bg-[#2563eb] text-white rounded-2xl shadow-lg flex flex-col items-center justify-center gap-2 py-6"
+              >
+                <MapPin className="w-8 h-8 mb-1" />
+                <span className="text-lg font-bold">Directions</span>
+              </Button>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Info Kiosk Section */}
+      <section className="pb-20 relative bg-white z-30">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-black text-neutral-800 font-handwriting mb-3">Info Kiosk</h2>
+            <p className="text-neutral-500 text-sm tracking-wide">Quick answers to common questions</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              { q: "What curriculum?", a: "We follow the Cambridge curriculum." },
+              { q: "Safety measures?", a: "CCTV, secure entry, and trained staff." },
+              { q: "Outdoor play?", a: "Daily outdoor activities and motor skills." },
+              { q: "Parent updates?", a: "Regular meetings and digital updates." },
+              { q: "Meals provided?", a: "Breakfast & snacks provided. Lunch optional." },
+              { q: "Age groups?", a: "2 years to 6 years." },
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ scale: 1.02 }}
+                className="bg-[#fffcf6] border-l-[6px] border-[#fdba74] p-8 rounded-r-2xl shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:shadow-lg transition-all"
+              >
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-xl font-black text-neutral-800 flex items-center gap-3">
+                    <span className="text-[#fb923c] text-2xl">Q.</span> {item.q}
+                  </h3>
+                  <p className="text-neutral-500 font-medium text-sm ml-9 leading-relaxed">{item.a}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

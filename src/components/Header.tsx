@@ -80,7 +80,7 @@ const Header = () => {
                 <motion.img
                   src={logo}
                   alt="Basil Woods Juniors"
-                  className={`transition-all duration-300 object-contain ${scrolled ? "w-20 md:w-24" : "w-28 md:w-36 lg:w-44"}`}
+                  className={`transition-all duration-300 object-contain ${scrolled ? "w-20 md:w-28" : "w-28 md:w-36 lg:w-48"}`}
                   whileHover={{ scale: 1.05 }}
                 />
               </Link>
@@ -90,12 +90,12 @@ const Header = () => {
 
               {/* 2. Culture Connect Logo */}
               <Link to="/" className="block">
-                  <img
-                    src={logo3}
-                    alt="ISKCON"
-                    className={`transition-all duration-300 object-contain ${scrolled ? "w-20 md:w-28" : "w-24 md:w-24 lg:w-28"}`}
-                  />
-                </Link>
+                <img
+                  src={logo3}
+                  alt="ISKCON"
+                  className={`transition-all duration-300 object-contain ${scrolled ? "w-20 md:w-28" : "w-24 md:w-24 lg:w-28"}`}
+                />
+              </Link>
 
               {/* 3. Stacked: Cambridge & ISKCON */}
               <div className="flex flex-col gap-6">
@@ -106,14 +106,14 @@ const Header = () => {
                     className={`transition-all duration-300 object-contain ${scrolled ? "w-20 md:w-28" : "w-24 md:w-24 lg:w-64"}`}
                   />
                 </Link>
-                 <Link to="/" className="block">
-                <img
-                  src={HKM}
-                  alt="Culture Connect"
-                  className={`transition-all duration-300 object-contain ${scrolled ? "w-20 md:w-28" : "w-24 md:w-24 lg:w-64"}`}
-                />
-              </Link>
-                
+                <Link to="/" className="block">
+                  <img
+                    src={HKM}
+                    alt="Culture Connect"
+                    className={`transition-all duration-300 object-contain ${scrolled ? "w-20 md:w-28" : "w-24 md:w-24 lg:w-64"}`}
+                  />
+                </Link>
+
               </div>
             </div>
 

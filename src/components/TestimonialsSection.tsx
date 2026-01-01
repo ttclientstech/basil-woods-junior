@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
 import { motion, useScroll } from "framer-motion";
-import { Star, Quote, Pin } from "lucide-react";
+import { Star, Quote, Pin, Cloud, Heart, Sun, Bird, Music, Pencil, BookOpen, Palette, Puzzle } from "lucide-react";
 
 
 import Testimonial1 from "@/assets/Images/test 2.jpg";
-import Testimonial2 from "@/assets/Images/test 2.jpg";
-import Testimonial3 from "@/assets/Images/test 2.jpg";
-import Testimonial4 from "@/assets/Images/test 2.jpg";
+import Testimonial2 from "@/assets/Images/test3.webp";
+import Testimonial3 from "@/assets/Images/test4.webp";
+import Testimonial4 from "@/assets/Images/test1.webp";
 
 const playgroundTestimonials = [
   {
@@ -55,14 +55,63 @@ export default function Testimonials() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section className="py-20 md:py-24 bg-white relative overflow-hidden">
-      {/* Background Pattern: Dot Grid */}
+    <section className="py-20 md:py-24 bg-blue-50 relative overflow-hidden">
+      {/* Background Pattern: Dot Grid & Vectors */}
       <div className="absolute inset-0 pointer-events-none opacity-10"
         style={{
           backgroundImage: `radial-gradient(#000 1px, transparent 1px)`,
           backgroundSize: '24px 24px'
         }}
       />
+
+      {/* Animated Background Elements - Just like HeroSection */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <motion.div
+          className="absolute top-20 hidden md:block left-10 text-[hsl(var(--premium-yellow))]"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        >
+          <Sun className="w-20 h-20 fill-current stroke-2" />
+        </motion.div>
+
+        {/* Floating Icons Array */}
+        {[
+          { Icon: Bird, color: "text-blue-400", x: "20%", delay: 0, scale: 1 },
+          { Icon: Cloud, color: "text-[hsl(var(--premium-pink))]", x: "80%", delay: 2, scale: 1.5 },
+          { Icon: Star, color: "text-yellow-400", x: "50%", delay: 1, scale: 0.8 },
+          { Icon: Heart, color: "text-red-400", x: "10%", delay: 3, scale: 1.2 },
+          { Icon: Music, color: "text-purple-400", x: "90%", delay: 1.5, scale: 1.1 },
+          { Icon: Pencil, color: "text-orange-400", x: "30%", delay: 2.5, scale: 0.9 },
+          { Icon: BookOpen, color: "text-green-400", x: "70%", delay: 0.5, scale: 1.3 },
+          { Icon: Palette, color: "text-indigo-400", x: "40%", delay: 3.5, scale: 1 },
+          { Icon: Puzzle, color: "text-teal-400", x: "60%", delay: 1.8, scale: 1.2 },
+        ].map((item, index) => (
+          <motion.div
+            key={index}
+            className={`absolute -bottom-20 ${item.color} opacity-40 pointer-events-none`}
+            style={{ left: item.x }}
+            initial={{ y: 100, opacity: 0 }}
+            animate={{
+              y: [-100, -800], // Float up
+              x: [0, Math.sin(index) * 50, 0], // Gentle sway
+              rotate: [0, 360],
+              opacity: [0, 0.6, 0]
+            }}
+            transition={{
+              duration: 15 + index * 2,
+              repeat: Infinity,
+              delay: item.delay,
+              ease: "linear",
+            }}
+          >
+            <item.Icon className="w-16 h-16 md:w-24 md:h-24 stroke-[1.5px] fill-current/20" />
+          </motion.div>
+        ))}
+
+        {/* Blobs */}
+        <div className="absolute -top-20 -right-20 w-80 h-80 bg-[hsl(var(--premium-pink)/0.1)] rounded-full blur-3xl opacity-60" />
+        <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-[hsl(var(--premium-teal)/0.1)] rounded-full blur-3xl opacity-60" />
+      </div>
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
