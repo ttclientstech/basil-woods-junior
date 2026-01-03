@@ -8,7 +8,7 @@ const AboutSection = () => {
   const features = [
     { name: "Culture Connect", icon: Palette, color: "bg-orange-100 text-orange-600", border: "border-orange-400", rotate: "rotate-2", description: "Immersing children in India's rich heritage through stories and festivals." },
     { name: "Nature Learning", icon: Leaf, color: "bg-yellow-100 text-yellow-600", border: "border-orange-400", rotate: "-rotate-1", description: "Outdoor activities that foster love and respect for the environment." },
-    { name: "Values-Based Learning", icon: Heart, color: "bg-green-100 text-green-600", border: "border-orange-400", rotate: "rotate-1", description: "Instilling core values like empathy, gratitude, and honesty early on." },
+    { name: "Values-Based Learning", icon: Heart, color: "bg-yellow-100 text-yellow-600", border: "border-orange-400", rotate: "rotate-1", description: "Instilling core values like empathy, gratitude, and honesty early on." },
     { name: "Creative Adventures", icon: Sparkles, color: "bg-pink-100 text-pink-600", border: "border-orange-400", rotate: "-rotate-2", description: "Encouraging self-expression through art, music, and imaginative play." },
   ];
 
