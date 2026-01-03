@@ -56,13 +56,7 @@ export default function Testimonials() {
 
   return (
     <section className="py-12 md:py-24 bg-blue-50 relative overflow-hidden">
-      {/* Background Pattern: Dot Grid & Vectors */}
-      <div className="absolute inset-0 pointer-events-none opacity-10"
-        style={{
-          backgroundImage: `radial-gradient(#000 1px, transparent 1px)`,
-          backgroundSize: '24px 24px'
-        }}
-      />
+
 
       {/* Animated Background Elements - Just like HeroSection */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">

@@ -6,10 +6,10 @@ import mainImage from "../assets/Images/About.png";
 
 const AboutSection = () => {
   const features = [
-    { name: "Culture Connect", icon: Palette, color: "bg-orange-100 text-orange-600", border: "border-orange-400", rotate: "rotate-2" },
-    { name: "Nature Learning", icon: Leaf, color: "bg-yellow-100 text-yellow-600", border: "border-orange-400", rotate: "-rotate-1" },
-    { name: "Holistic Curriculum", icon: BookOpen, color: "bg-yellow-100 text-yellow-600", border: "border-orange-400", rotate: "rotate-1" },
-    { name: "Creative Adventures", icon: Sparkles, color: "bg-pink-100 text-pink-600", border: "border-orange-400", rotate: "-rotate-2" },
+    { name: "Culture Connect", icon: Palette, color: "bg-orange-100 text-orange-600", border: "border-orange-400", rotate: "rotate-2", description: "Immersing children in India's rich heritage through stories and festivals." },
+    { name: "Nature Learning", icon: Leaf, color: "bg-yellow-100 text-yellow-600", border: "border-orange-400", rotate: "-rotate-1", description: "Outdoor activities that foster love and respect for the environment." },
+    { name: "Values-Based Learning", icon: Heart, color: "bg-green-100 text-green-600", border: "border-orange-400", rotate: "rotate-1", description: "Instilling core values like empathy, gratitude, and honesty early on." },
+    { name: "Creative Adventures", icon: Sparkles, color: "bg-pink-100 text-pink-600", border: "border-orange-400", rotate: "-rotate-2", description: "Encouraging self-expression through art, music, and imaginative play." },
   ];
 
   return (
@@ -124,10 +124,13 @@ const AboutSection = () => {
                     transition={{ delay: 0.4 + i * 0.1 }}
                     whileHover={{ scale: 1.05, rotate: 0, zIndex: 10 }}
                   >
-                    <div className={`p-3 rounded-xl ${f.color} border-2 border-current`}>
+                    <div className={`p-3 rounded-xl ${f.color} border-2 border-current shrink-0`}>
                       <IconComponent className="w-6 h-6" />
                     </div>
-                    <span className="font-black text-neutral-800 text-lg">{f.name}</span>
+                    <div>
+                      <span className="font-black text-neutral-800 text-lg block leading-tight mb-1">{f.name}</span>
+                      <p className="text-sm text-neutral-600 font-medium leading-snug">{f.description}</p>
+                    </div>
                   </motion.div>
                 );
               })}

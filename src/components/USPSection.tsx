@@ -43,7 +43,7 @@ const USPSection = () => {
   const advantages = [
     {
       title: "Well-Researched Curriculum",
-      description: "Scientifically designed by experts, blending innovation with foundational values.",
+      description: "Scientifically designed by experts, our curriculum seamlessly blends ancient Vedic wisdom with modern Montessori methods to foster innovation, critical thinking, and strong foundational values.",
       icon: BookOpen,
       color: "bg-yellow-100",
       borderColor: "border-yellow-400",
@@ -52,7 +52,7 @@ const USPSection = () => {
     },
     {
       title: "Award-Winning Program",
-      description: "Recognized among India's top preschools by Education Today for excellence.",
+      description: "Consistently recognized among India's top preschools by Education Today, achieving excellence in early childhood education through our unwavering commitment to quality, safety, and holistic growth.",
       icon: Trophy,
       color: "bg-yellow-100",
       borderColor: "border-yellow-400",
@@ -61,7 +61,7 @@ const USPSection = () => {
     },
     {
       title: "Expert Academicians",
-      description: "Facilitators with decades of experience in early childhood education.",
+      description: "Our team consists of passionate facilitators and subject matter experts with decades of combined experience, dedicated to nurturing young minds with patience, love, and professional expertise.",
       icon: GraduationCap,
       color: "bg-yellow-100",
       borderColor: "border-yellow-400",
@@ -70,7 +70,7 @@ const USPSection = () => {
     },
     {
       title: "Holistic Development",
-      description: "Nurturing physical, emotional, and intellectual growth through our 4Q model.",
+      description: "We focus on the complete child—nurturing Physical (PQ), Intellectual (IQ), Emotional (EQ), and Spiritual (SQ) quotients—to build well-rounded individuals ready for the future.",
       icon: Sprout,
       color: "bg-purple-100",
       borderColor: "border-purple-400",
