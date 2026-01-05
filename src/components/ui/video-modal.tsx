@@ -52,7 +52,7 @@ const VideoModal: React.FC<VideoModalProps & { isVertical?: boolean }> = ({
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className={`
-        ${isVertical ? 'w-auto max-h-[90vh]' : 'max-w-4xl w-[90vw]'} 
+        ${isVertical ? 'w-auto max-h-[98vh]' : 'max-w-4xl w-[90vw]'} 
         p-0 bg-transparent border-none shadow-none 
         flex flex-col items-center justify-center
         outline-none
@@ -64,7 +64,7 @@ const VideoModal: React.FC<VideoModalProps & { isVertical?: boolean }> = ({
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
               exit={{ opacity: 0, scale: 0.8, rotate: 2 }}
               transition={{ type: "spring", duration: 0.5, bounce: 0.3 }}
-              className={`relative ${isVertical ? 'max-h-[85vh] w-auto aspect-[9/16]' : 'w-full'}`}
+              className={`relative ${isVertical ? 'max-h-[92vh] w-auto aspect-[9/16]' : 'w-full'}`}
             >
               {/* Close Button - Playful Style */}
               <DialogClose asChild>
