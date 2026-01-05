@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Play, Sparkles, Star, Heart, ArrowRight, Calendar, Music, Palette, Puzzle } from "lucide-react";
 import { DoodleSun, DoodleCloud, DoodleBird, DoodlePencil, DoodleBook, DoodleRocket, DoodleBulb } from "@/components/ui/doodles";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, animate, useInView } from "framer-motion";
 import { FaWhatsapp } from 'react-icons/fa';
 import VideoModal from "@/components/ui/video-modal";
 
@@ -17,6 +17,8 @@ const phoneNumber = "918056179108";
 const handleWhatsAppRedirect = () => {
   window.open(`https://wa.me/${phoneNumber}`, "_blank");
 };
+
+import { AnimatedCounter } from "@/components/ui/animated-counter";
 
 const HeroSection = () => {
   const navigate = useNavigate();
@@ -72,7 +74,7 @@ const HeroSection = () => {
       <div className="absolute top-0 w-full bg-[hsl(var(--premium-yellow))] overflow-hidden py-2 border-b-2 border-black z-30">
         <motion.div
           className="flex whitespace-nowrap"
-          initial={{ x: "100%" }}
+          initial={{ x: 0 }}
           animate={{ x: "-100%" }}
           transition={{ duration: 30, ease: "linear", repeat: Infinity }}
         >
@@ -148,7 +150,11 @@ const HeroSection = () => {
         {/* Branch Name Header */}
         <div className="text-center mb-6 lg:mb-12">
           <h2 className="text-3xl md:hidden font-black text-[hsl(var(--brand-dark-green))] font-handwriting transform -rotate-1">
-            Basil Woods Juniors <span className="text-[hsl(var(--premium-orange))]">@Thiruvanmiyur</span>
+            Basil Woods Juniors <br />
+            <span className="relative inline-block mt-2 px-2">
+              <span className="relative z-10 text-white">@Thiruvanmiyur</span>
+              <span className="absolute inset-0 bg-[hsl(var(--premium-orange))] transform -rotate-2 border-2 border-black rounded-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] z-0"></span>
+            </span>
           </h2>
         </div>
 
@@ -234,6 +240,8 @@ const HeroSection = () => {
               </motion.button>
             </motion.div>
 
+
+
             {/* Trust Indicators */}
             <motion.div
               className="pt-4 md:pt-8 flex items-center justify-center lg:justify-start gap-4 md:gap-8"
@@ -242,12 +250,16 @@ const HeroSection = () => {
               transition={{ duration: 0.6, delay: 0.6 }}
             >
               <div className="text-center lg:text-left">
-                <div className="text-2xl md:text-3xl font-black text-[hsl(var(--brand-dark-green))] font-handwriting">15+</div>
+                <div className="text-2xl md:text-3xl font-black text-[hsl(var(--brand-dark-green))] font-handwriting flex items-center justify-center lg:justify-start gap-1">
+                  <AnimatedCounter to={15} delay={0.5} />+
+                </div>
                 <div className="text-xs md:text-sm text-neutral-600 font-bold uppercase tracking-wide">Years of Joy</div>
               </div>
               <div className="w-0.5 h-8 md:h-12 bg-black/10 rotate-12" />
               <div className="text-center lg:text-left">
-                <div className="text-2xl md:text-3xl font-black text-[hsl(var(--brand-dark-green))] font-handwriting">500+</div>
+                <div className="text-2xl md:text-3xl font-black text-[hsl(var(--brand-dark-green))] font-handwriting flex items-center justify-center lg:justify-start gap-1">
+                  <AnimatedCounter to={500} delay={0.5} />+
+                </div>
                 <div className="text-xs md:text-sm text-neutral-600 font-bold uppercase tracking-wide">Happy Families</div>
               </div>
             </motion.div>

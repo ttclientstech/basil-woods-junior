@@ -107,7 +107,7 @@ const Header = () => {
                     className={`transition-all duration-300 object-contain ${scrolled ? "w-16 md:w-28" : "w-20 md:w-32 lg:w-40 xl:w-64"}`}
                   />
                 </Link>
-                <Link to="/" className="block">
+                <Link to="https://hkm-landing-test-2.vercel.app/" className="block">
                   <img
                     src={HKM}
                     alt="Culture Connect"

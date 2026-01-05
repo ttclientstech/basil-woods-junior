@@ -21,6 +21,36 @@ import picture3 from "../assets/Images/Picture3.webp";
 import picture5 from "../assets/Images/Picture5.webp";
 import tulsi from "../assets/Images/tulsi.webp";
 
+// Children's Day
+import cd2 from "../assets/Images/ChildrendayWorkShop/2.png";
+import cd8 from "../assets/Images/ChildrendayWorkShop/8.png";
+import cd10 from "../assets/Images/ChildrendayWorkShop/10.png";
+import cd12 from "../assets/Images/ChildrendayWorkShop/12.png";
+
+// Dossara
+import das1 from "../assets/Images/Dassara/1.JPG";
+import das2 from "../assets/Images/Dassara/2.JPG";
+import das5 from "../assets/Images/Dassara/5.JPG";
+import das6 from "../assets/Images/Dassara/6.JPG";
+
+// Free Play
+import fp1 from "../assets/Images/Free Day Play/1.png";
+import fp2 from "../assets/Images/Free Day Play/2.png";
+import fp3 from "../assets/Images/Free Day Play/3.png";
+import fp4 from "../assets/Images/Free Day Play/4.png";
+
+// Beach Events
+import beach1 from "../assets/Images/beach events/1.JPG";
+import beach2 from "../assets/Images/beach events/2.JPG";
+import beach3 from "../assets/Images/beach events/3.jpeg";
+import beach4 from "../assets/Images/beach events/4.jpeg";
+
+// Art & Crafts
+import art12 from "../assets/Images/arts/12.png";
+import art9 from "../assets/Images/arts/9.png";
+import art2396 from "../assets/Images/arts/IMG_2396.JPG";
+import art2400 from "../assets/Images/arts/IMG_2400.JPG";
+
 const GalleryPage = () => {
   useSEO({
     title: "Gallery - See Our Campus & Happy Children",
@@ -34,7 +64,7 @@ const GalleryPage = () => {
     { name: "Classroom Activities", mapTo: ["Classroom", "Learning"], color: "bg-green-500 text-white" },
     { name: "Outdoor Play", mapTo: ["Activities", "Play", "Environment", "Campus"], color: "bg-green-500 text-white" },
     { name: "Art & Crafts", mapTo: ["Creativity"], color: "bg-green-500 text-white" },
-    { name: "Celebrations & Events", mapTo: ["Celebration", "Event"], color: "bg-green-500 text-white" },
+    { name: "Celebrations & Events", mapTo: ["Celebration", "Event", "ChildrensDay", "Dassara", "FreePlay", "BeachDay"], color: "bg-green-500 text-white" },
   ];
 
   const galleryImages = [
@@ -50,6 +80,36 @@ const GalleryPage = () => {
     { src: picture1, title: "Festival Celebration", category: "Celebration", description: "Joyful traditional celebrations", rotate: "rotate-2" },
     { src: picture3, title: "Annual Day", category: "Event", description: "Showcasing talents on stage", rotate: "-rotate-2" },
     { src: interior2, title: "Grandparents Day", category: "Celebration", description: "Honoring our roots and family", rotate: "rotate-1" },
+
+    // Children's Day
+    { src: cd2, title: "Fun Workshop", category: "ChildrensDay", description: "Creative learning workshop", rotate: "rotate-2" },
+    { src: cd8, title: "Art Time", category: "ChildrensDay", description: "Expressing through colors", rotate: "-rotate-1" },
+    { src: cd10, title: "Group Fun", category: "ChildrensDay", description: "Learning together with joy", rotate: "rotate-1" },
+    { src: cd12, title: "Happy Smiles", category: "ChildrensDay", description: "Celebrating childhood", rotate: "-rotate-2" },
+
+    // Dossara
+    { src: das1, title: "Dossara Celebration", category: "Dassara", description: "Traditional festivities", rotate: "rotate-2" },
+    { src: das2, title: "Cultural Dress", category: "Dassara", description: "Kids in traditional attire", rotate: "-rotate-1" },
+    { src: das5, title: "Festival Joy", category: "Dassara", description: "Celebrating culture and values", rotate: "rotate-1" },
+    { src: das6, title: "Divine Moments", category: "Dassara", description: "Seeking blessings", rotate: "-rotate-2" },
+
+    // Free Play
+    { src: fp1, title: "Free Play Time", category: "FreePlay", description: "Unstructured fun and games", rotate: "rotate-2" },
+    { src: fp2, title: "Playground Fun", category: "FreePlay", description: "Active outdoor play", rotate: "-rotate-1" },
+    { src: fp3, title: "Buddies", category: "FreePlay", description: "Making new friends", rotate: "rotate-1" },
+    { src: fp4, title: "Happy Moments", category: "FreePlay", description: "Joy of playing together", rotate: "-rotate-2" },
+
+    // Beach Day
+    { src: beach1, title: "Beach Day Out", category: "BeachDay", description: "Fun day at the beach", rotate: "rotate-2" },
+    { src: beach2, title: "Sand Castles", category: "BeachDay", description: "Building creativity with sand", rotate: "-rotate-1" },
+    { src: beach3, title: "Splash Time", category: "BeachDay", description: "Enjoying the waves", rotate: "rotate-1" },
+    { src: beach4, title: "Beach Games", category: "BeachDay", description: "Active games by the shore", rotate: "-rotate-2" },
+
+    // Art & Crafts
+    { src: art12, title: "Creative Art", category: "Creativity", description: "Expressing through art", rotate: "rotate-2" },
+    { src: art9, title: "Fun Crafts", category: "Creativity", description: "Hands-on crafting", rotate: "-rotate-1" },
+    { src: art2396, title: "Artistic Joy", category: "Creativity", description: "Joy of creating", rotate: "rotate-1" },
+    { src: art2400, title: "Masterpiece", category: "Creativity", description: "Proud of their work", rotate: "-rotate-2" },
   ];
 
   const achievements = [
@@ -60,14 +120,48 @@ const GalleryPage = () => {
   ];
 
   const [activeChip, setActiveChip] = React.useState<string>("All");
+  const [activeSubChip, setActiveSubChip] = React.useState<string>("All Events");
+
+
+
+  const eventSubChips = [
+    { name: "All Events", mapTo: ["Celebration", "Event", "ChildrensDay", "Dassara", "FreePlay", "BeachDay"], color: "bg-blue-500 text-white" },
+    { name: "Children's Day", mapTo: ["ChildrensDay"], color: "bg-green-500 text-white" },
+    { name: "Dassara", mapTo: ["Dassara"], color: "bg-green-500 text-white" },
+    { name: "Free Day Play", mapTo: ["FreePlay"], color: "bg-green-500 text-white" },
+    { name: "Beach Events", mapTo: ["BeachDay"], color: "bg-green-500 text-white" },
+  ];
+
+  // Reset sub-chip when main chip changes
+  React.useEffect(() => {
+    if (activeChip !== "Celebrations & Events") {
+      setActiveSubChip("All Events");
+    }
+  }, [activeChip]);
 
   const filteredImages = React.useMemo(() => {
-    if (activeChip === "All") return galleryImages;
-    const chip = chips.find((c) => c.name === activeChip);
-    if (!chip) return galleryImages;
-    const mapTo = chip.mapTo || [activeChip];
-    return galleryImages.filter((img) => mapTo.includes(img.category));
-  }, [activeChip]);
+    let images = galleryImages;
+
+    // 1. Filter by Main Category
+    if (activeChip !== "All") {
+      const chip = chips.find((c) => c.name === activeChip);
+      if (chip) {
+        const mapTo = chip.mapTo || [activeChip];
+        images = images.filter((img) => mapTo.includes(img.category));
+      }
+    }
+
+    // 2. Filter by Sub Category (if in Events)
+    if (activeChip === "Celebrations & Events" && activeSubChip !== "All Events") {
+      const subChip = eventSubChips.find((c) => c.name === activeSubChip);
+      if (subChip) {
+        const mapTo = subChip.mapTo || [activeSubChip];
+        images = images.filter((img) => mapTo.includes(img.category));
+      }
+    }
+
+    return images;
+  }, [activeChip, activeSubChip]);
 
   return (
     <div className="min-h-screen bg-[#fffdf5] font-sans">
@@ -123,21 +217,46 @@ const GalleryPage = () => {
         <div className="container mx-auto px-4">
 
           {/* Filters - "Paint Splashes" */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {chips.map((chip) => (
-              <motion.button
-                key={chip.name}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setActiveChip(chip.name)}
-                className={`px-6 py-2 rounded-full font-bold shadow-md border-2 border-white transition-all ${activeChip === chip.name
-                  ? `${chip.color} ring-4 ring-white/50`
-                  : "bg-white text-neutral-600 hover:bg-neutral-50"
-                  }`}
+          <div className="flex flex-col items-center gap-6 mb-12">
+            {/* Main Filters */}
+            <div className="flex flex-wrap justify-center gap-4">
+              {chips.map((chip) => (
+                <motion.button
+                  key={chip.name}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setActiveChip(chip.name)}
+                  className={`px-6 py-2 rounded-full font-bold shadow-md border-2 border-white transition-all ${activeChip === chip.name
+                    ? `${chip.color} ring-4 ring-white/50`
+                    : "bg-white text-neutral-600 hover:bg-neutral-50"
+                    }`}
+                >
+                  {chip.name}
+                </motion.button>
+              ))}
+            </div>
+
+            {/* Sub Filters for Events */}
+            {activeChip === "Celebrations & Events" && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="flex flex-wrap justify-center gap-3"
               >
-                {chip.name}
-              </motion.button>
-            ))}
+                {eventSubChips.map((chip) => (
+                  <button
+                    key={chip.name}
+                    onClick={() => setActiveSubChip(chip.name)}
+                    className={`px-4 py-1.5 rounded-full text-sm font-bold border-2 transition-all ${activeSubChip === chip.name
+                      ? "bg-green-500 text-white border-green-500"
+                      : "bg-white/50 text-neutral-600 border-neutral-200 hover:bg-white"
+                      }`}
+                  >
+                    {chip.name}
+                  </button>
+                ))}
+              </motion.div>
+            )}
           </div>
 
           {/* Grid - "Framed Photos" */}

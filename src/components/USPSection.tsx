@@ -1,43 +1,18 @@
 
-import React, { useEffect, useRef } from "react";
-import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
+import React, { useRef } from "react";
+import { motion } from "framer-motion";
 import { Building2, Building, MapPin, BookOpen, Trophy, GraduationCap, Sprout, Star, Heart } from "lucide-react";
 import WaveDivider from "@/components/ui/wave-divider";
-
-const Counter = ({ value, duration = 2 }: { value: number, duration?: number }) => {
-  const ref = useRef<HTMLSpanElement>(null);
-  const motionValue = useMotionValue(0);
-  const springValue = useSpring(motionValue, {
-    damping: 60,
-    stiffness: 100,
-  });
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  useEffect(() => {
-    if (isInView) {
-      motionValue.set(value);
-    }
-  }, [isInView, value, motionValue]);
-
-  useEffect(() => {
-    return springValue.on("change", (latest) => {
-      if (ref.current) {
-        ref.current.textContent = Math.floor(latest).toLocaleString();
-      }
-    });
-  }, [springValue]);
-
-  return <span ref={ref} />;
-};
+import { AnimatedCounter } from "@/components/ui/animated-counter";
 
 import { StarDoodle, DoodleCloud, DoodleSun, DoodlePencil, DoodleSparkle, DoodleRocket } from "@/components/ui/doodles";
 
 
 const USPSection = () => {
   const stats = [
-    { value: 1500, suffix: "+", label: "Happy Students", icon: GraduationCap, color: "bg-orange-400", shadow: "shadow-orange-600" },
-    { value: 15, suffix: "+", label: "Years Experience", icon: BookOpen, color: "bg-teal-400", shadow: "shadow-teal-600" },
-    { value: 11, suffix: "", label: "Preschools", icon: Building2, color: "bg-pink-400", shadow: "shadow-pink-600" },
+    { value: 11, suffix: "", label: "Preschools" },
+    { value: 6, suffix: "", label: "Cities" },
+    { value: 4, suffix: "", label: "States" },
   ];
 
   const advantages = [
@@ -148,16 +123,16 @@ const USPSection = () => {
           {stats.map((stat, i) => (
             <motion.div
               key={i}
-              className={`relative w-40 h-40 md:w-48 md:h-48 rounded-full bg-white border-4 border-black flex flex-col items-center justify-center text-center shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform hover:scale-105 mx-auto`}
+              className={`relative w-40 h-40 md:w-56 md:h-56 rounded-full bg-white border-4 border-black flex flex-col items-center justify-center text-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform hover:scale-105 mx-auto`}
               initial={{ y: 20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1, transition: { delay: i * 0.1, duration: 0.5 } }}
               viewport={{ once: true }}
             >
-              <div className="text-4xl md:text-5xl text-[#F97316] font-black leading-none mb-1 flex items-baseline justify-center">
-                <Counter value={stat.value} />
-                <span>{stat.suffix}</span>
+              <div className="text-5xl md:text-7xl text-[#EA580C] font-black leading-none mb-2 md:mb-3 flex items-baseline justify-center font-handwriting">
+                <AnimatedCounter to={stat.value} duration={2} delay={0.2 * i} />
+                {stat.suffix && <span>{stat.suffix}</span>}
               </div>
-              <span className="text-xs md:text-sm font-bold text-[#F97316] uppercase tracking-wide px-2 leading-tight">{stat.label}</span>
+              <span className="text-sm md:text-lg font-black text-[#F97316] uppercase tracking-wide px-2 leading-tight">{stat.label}</span>
             </motion.div>
           ))}
         </div>

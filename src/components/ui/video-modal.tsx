@@ -45,7 +45,8 @@ const VideoModal: React.FC<VideoModalProps> = ({
     return `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
   };
 
-  const embedUrl = getYouTubeEmbedUrl(videoUrl);
+  const isYouTube = (url: string) => url.includes('youtube.com') || url.includes('youtu.be');
+  const embedUrl = isYouTube(videoUrl) ? getYouTubeEmbedUrl(videoUrl) : videoUrl;
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -75,14 +76,25 @@ const VideoModal: React.FC<VideoModalProps> = ({
 
                 {/* Video Container - 16:9 Aspect Ratio */}
                 <div className="relative w-full bg-black" style={{ paddingBottom: '56.25%' }}>
-                  <iframe
-                    className="absolute top-0 left-0 w-full h-full"
-                    src={embedUrl}
-                    title={title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    style={{ border: 'none' }}
-                  />
+                  {isYouTube(videoUrl) ? (
+                    <iframe
+                      className="absolute top-0 left-0 w-full h-full"
+                      src={embedUrl}
+                      title={title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      style={{ border: 'none' }}
+                    />
+                  ) : (
+                    <video
+                      className="absolute top-0 left-0 w-full h-full object-cover"
+                      src={embedUrl}
+                      title={title}
+                      controls
+                      autoPlay
+                      playsInline
+                    />
+                  )}
                 </div>
 
                 {/* Title Bar */}

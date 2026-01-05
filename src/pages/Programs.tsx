@@ -24,6 +24,8 @@ import program3 from "../assets/Images/Program3.png";
 import program4 from "../assets/Images/Program4.png";
 import boySchoolImg from "@/assets/Images/boyschool.webp";
 import calendarImg from "@/assets/Images/calender.png";
+import dayLifeVideo from "../assets/Images/daylife.mp4";
+import dayLifeThumbnail from "../assets/Images/Exterior1.webp";
 
 const ProgramsPage = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
@@ -306,7 +308,7 @@ const ProgramsPage = () => {
 
               <div className="relative aspect-video rounded-2xl overflow-hidden group cursor-pointer border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all" onClick={() => setIsVideoOpen(true)}>
                 <img
-                  src={program4}
+                  src={dayLifeThumbnail}
                   alt="A Day in Basil Woods Juniors"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   width={1280}
@@ -332,7 +334,7 @@ const ProgramsPage = () => {
       <VideoModal
         isOpen={isVideoOpen}
         onClose={() => setIsVideoOpen(false)}
-        videoUrl="https://www.youtube.com/watch?v=w4WyoDOi460"
+        videoUrl={dayLifeVideo}
         title="A Day in the Life at Basil Woods Juniors"
       />
 
