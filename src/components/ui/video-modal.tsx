@@ -18,11 +18,12 @@ interface VideoModalProps {
  * Video Modal Component
  * Displays YouTube videos in a responsive modal with smooth animations
  */
-const VideoModal: React.FC<VideoModalProps> = ({
+const VideoModal: React.FC<VideoModalProps & { isVertical?: boolean }> = ({
   isOpen,
   onClose,
   videoUrl,
-  title = "Watch Video"
+  title = "Watch Video",
+  isVertical = false
 }) => {
   // Extract video ID from URL if full URL is provided
   const getYouTubeEmbedUrl = (url: string): string => {
@@ -50,7 +51,12 @@ const VideoModal: React.FC<VideoModalProps> = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl w-[90vw] p-0 bg-transparent border-none shadow-none sm:max-w-5xl">
+      <DialogContent className={`
+        ${isVertical ? 'w-auto max-h-[90vh]' : 'max-w-4xl w-[90vw]'} 
+        p-0 bg-transparent border-none shadow-none 
+        flex flex-col items-center justify-center
+        outline-none
+      `}>
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -58,27 +64,27 @@ const VideoModal: React.FC<VideoModalProps> = ({
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
               exit={{ opacity: 0, scale: 0.8, rotate: 2 }}
               transition={{ type: "spring", duration: 0.5, bounce: 0.3 }}
-              className="relative"
+              className={`relative ${isVertical ? 'max-h-[85vh] w-auto aspect-[9/16]' : 'w-full'}`}
             >
               {/* Close Button - Playful Style */}
               <DialogClose asChild>
                 <button
                   onClick={onClose}
-                  className="absolute -top-6 -right-6 z-50 w-12 h-12 rounded-full bg-red-400 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center transition-transform hover:scale-110 hover:rotate-90 active:scale-95 active:shadow-none active:translate-x-1 active:translate-y-1"
+                  className="absolute -top-4 -right-4 z-50 w-10 h-10 md:w-12 md:h-12 rounded-full bg-red-400 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center transition-transform hover:scale-110 hover:rotate-90 active:scale-95 active:shadow-none active:translate-x-1 active:translate-y-1"
                   aria-label="Close video"
                 >
-                  <X className="w-8 h-8 text-white stroke-[3]" />
+                  <X className="w-6 h-6 md:w-8 md:h-8 text-white stroke-[3]" />
                 </button>
               </DialogClose>
 
               {/* Main Container */}
-              <div className="bg-white rounded-3xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] overflow-hidden relative">
+              <div className="bg-white rounded-3xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] overflow-hidden relative flex flex-col h-full w-full">
 
-                {/* Video Container - 16:9 Aspect Ratio */}
-                <div className="relative w-full bg-black" style={{ paddingBottom: '56.25%' }}>
+                {/* Video Container */}
+                <div className={`relative bg-black w-full ${isVertical ? 'flex-1 min-h-0' : 'aspect-video'}`}>
                   {isYouTube(videoUrl) ? (
                     <iframe
-                      className="absolute top-0 left-0 w-full h-full"
+                      className="w-full h-full"
                       src={embedUrl}
                       title={title}
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -87,7 +93,7 @@ const VideoModal: React.FC<VideoModalProps> = ({
                     />
                   ) : (
                     <video
-                      className="absolute top-0 left-0 w-full h-full object-cover"
+                      className="w-full h-full object-cover"
                       src={embedUrl}
                       title={title}
                       controls
@@ -99,8 +105,8 @@ const VideoModal: React.FC<VideoModalProps> = ({
 
                 {/* Title Bar */}
                 {title && (
-                  <div className="p-4 bg-white border-t-4 border-black flex items-center justify-center">
-                    <h3 className="text-xl md:text-2xl font-black text-[hsl(var(--brand-dark-green))] font-handwriting text-center">
+                  <div className="p-3 md:p-4 bg-white border-t-4 border-black flex items-center justify-center shrink-0">
+                    <h3 className="text-lg md:text-2xl font-black text-[hsl(var(--brand-dark-green))] font-handwriting text-center line-clamp-1">
                       {title}
                     </h3>
                   </div>

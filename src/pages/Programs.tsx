@@ -336,6 +336,7 @@ const ProgramsPage = () => {
         onClose={() => setIsVideoOpen(false)}
         videoUrl={dayLifeVideo}
         title="A Day in the Life at Basil Woods Juniors"
+        isVertical={true}
       />
 
       {/* CTA - "Boarding Pass" */}

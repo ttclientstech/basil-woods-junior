@@ -45,6 +45,15 @@ import beach2 from "../assets/Images/beach events/2.JPG";
 import beach3 from "../assets/Images/beach events/3.jpeg";
 import beach4 from "../assets/Images/beach events/4.jpeg";
 
+// Outdoor Play
+import outdoor1 from "../assets/Images/outdoor/1.jpg";
+import outdoor2 from "../assets/Images/outdoor/2.jpeg";
+
+// Classroom Activities
+import class1 from "../assets/Images/classroom/1.jpg";
+import class2 from "../assets/Images/classroom/2.JPG";
+import class3 from "../assets/Images/classroom/3.JPG";
+
 // Art & Crafts
 import art12 from "../assets/Images/arts/12.png";
 import art9 from "../assets/Images/arts/9.png";
@@ -104,6 +113,15 @@ const GalleryPage = () => {
     { src: beach2, title: "Sand Castles", category: "BeachDay", description: "Building creativity with sand", rotate: "-rotate-1" },
     { src: beach3, title: "Splash Time", category: "BeachDay", description: "Enjoying the waves", rotate: "rotate-1" },
     { src: beach4, title: "Beach Games", category: "BeachDay", description: "Active games by the shore", rotate: "-rotate-2" },
+
+    // Outdoor Play
+    { src: outdoor1, title: "Green Campus", category: "Play", description: "Exploring our lush green campus", rotate: "rotate-2" },
+    { src: outdoor2, title: "Outdoor Fun", category: "Play", description: "Engaging in outdoor activities", rotate: "-rotate-1" },
+
+    // Classroom Activities
+    { src: class1, title: "Engaged Learning", category: "Classroom", description: "Focused on learning activities", rotate: "rotate-1" },
+    { src: class2, title: "Group Session", category: "Classroom", description: "Collaborative learning environment", rotate: "-rotate-2" },
+    { src: class3, title: "Interactive Class", category: "Classroom", description: "Participating in class activities", rotate: "rotate-2" },
 
     // Art & Crafts
     { src: art12, title: "Creative Art", category: "Creativity", description: "Expressing through art", rotate: "rotate-2" },
