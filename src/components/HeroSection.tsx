@@ -12,6 +12,7 @@ import VideoModal from "@/components/ui/video-modal";
 import picture1 from "../assets/Images/Hero1.png";
 import picture2 from "../assets/Images/Hero2.png";
 import picture3 from "../assets/Images/Hero3.png";
+import happyBoyImg from "../assets/Images/demo.png";
 
 const phoneNumber = "918056179108";
 const handleWhatsAppRedirect = () => {
@@ -162,6 +163,16 @@ const HeroSection = () => {
 
           {/* Left Content */}
           <div className="flex-1 text-center lg:text-left space-y-4 md:space-y-8 relative">
+            {/* Mobile Happy Boy - Left of Badge */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5 }}
+              className="absolute -top-2 left-4 w-20 z-20 pointer-events-none block md:hidden"
+            >
+              <img src={happyBoyImg} alt="Happy School Boy" className="w-full h-auto drop-shadow-md transform scale-x-[-1]" />
+            </motion.div>
+
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -214,7 +225,7 @@ const HeroSection = () => {
             </div>
 
             <motion.div
-              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 md:gap-6 pt-6 lg:pt-24"
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 md:gap-6 pt-6 lg:pt-24 relative"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -238,6 +249,31 @@ const HeroSection = () => {
                 <Play className="w-5 h-5 md:w-6 md:h-6 fill-current" />
                 Watch Video
               </motion.button>
+
+              {/* Decorative Vector Image - Happy Boy (Repositioned) */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0, rotate: 20, y: 20 }}
+                animate={{
+                  opacity: 1,
+                  scale: 1,
+                  rotate: 0,
+                  y: [0, -10, 0] // Continuous floating motion
+                }}
+                transition={{
+                  opacity: { duration: 0.6, delay: 0.6 },
+                  scale: { duration: 0.6, delay: 0.6, type: "spring", bounce: 0.5 },
+                  rotate: { duration: 0.6, delay: 0.6 },
+                  y: {
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 1.2 // Start floating after entrance
+                  }
+                }}
+                className="absolute hidden md:block lg:block -right-10 md:-right-28 bottom-0 w-40 md:w-64 md:w-72 z-20 pointer-events-none"
+              >
+                <img src={happyBoyImg} alt="Happy School Boy" className="w-full h-auto drop-shadow-xl filter hover:brightness-110 transition-all duration-300" />
+              </motion.div>
             </motion.div>
 
 

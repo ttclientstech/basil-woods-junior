@@ -4,6 +4,7 @@ import { Palette, Leaf, BookOpen, Sparkles, Star, Heart, Award, Pin } from "luci
 import { DoodleReadingBoy } from "@/components/ui/doodles";
 import mainImage from "../assets/Images/About.png";
 
+
 const AboutSection = () => {
   const features = [
     { name: "Culture Connect", icon: Palette, color: "bg-orange-100 text-orange-600", border: "border-orange-400", rotate: "rotate-2", description: "Immersing children in India's rich heritage through stories and festivals." },
@@ -108,6 +109,8 @@ const AboutSection = () => {
               <p className="text-xl text-neutral-700 leading-relaxed font-medium font-handwriting">
                 A perfect parenting partner offering a transformative early learning experience — blending world-class infrastructure, expert facilitators, and innovative curriculum with foundational Indian values.
               </p>
+
+             
             </div>
 
             {/* Feature Stickers */}

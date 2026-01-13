@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Building2, Building, MapPin, BookOpen, Trophy, GraduationCap, Sprout, Star, Heart } from "lucide-react";
 import WaveDivider from "@/components/ui/wave-divider";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
-
+import playingChildrenImg from "../assets/Images/boyplay.png";
 import { StarDoodle, DoodleCloud, DoodleSun, DoodlePencil, DoodleSparkle, DoodleRocket } from "@/components/ui/doodles";
 
 
@@ -160,6 +160,27 @@ const USPSection = () => {
             />
           </svg>
         </div>
+
+        {/* Decorative Vector Image - Playing Children */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8, rotate: 10, y: 0 }}
+          whileInView={{
+            opacity: 1,
+            scale: 1,
+            rotate: 0,
+            y: [0, -15, 0]
+          }}
+          viewport={{ once: true }}
+          transition={{
+            opacity: { duration: 0.8, delay: 0.5 },
+            scale: { duration: 0.8, delay: 0.5, type: "spring" },
+            rotate: { duration: 0.8, delay: 0.5 },
+            y: { duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }
+          }}
+          className="absolute -right-8 w-32 md:w-64 lg:w-80 z-20 block lg:block pointer-events-none transform translate-x-4 md:translate-x-12 top-0 md:top-auto"
+        >
+          <img src={playingChildrenImg} alt="Kids Playing" className="w-full h-auto drop-shadow-xl" />
+        </motion.div>
 
         {/* Advantages Grid - Handcrafted Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 gap-y-16 max-w-5xl mx-auto relative z-10">

@@ -2,6 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Download, Play, Sparkles, Star } from "lucide-react";
+import boyVectorImg from "@/assets/Images/boy.png";
+import girlVectorImg from "@/assets/Images/girl.png";
 
 const WaveTop = ({ fill = "#e9eefc" }) => (
   <div className="absolute top-0 left-0 w-full overflow-hidden leading-none rotate-180">
@@ -134,11 +136,41 @@ const CTA: React.FC<CTAProps> = ({
               </p>
             </div>
           </div>
+
+          {/* Girl Vector - Left */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="absolute -bottom-16 -left-4 md:-bottom-10 md:-left-72 z-20 pointer-events-none block xl:block"
+          >
+            <img
+              src={girlVectorImg}
+              alt="School Girl"
+              className="w-[100px] md:w-[350px] lg:w-[400px] h-auto drop-shadow-lg mix-blend-multiply transform scale-x-[-1]"
+            />
+          </motion.div>
+
+          {/* Boy Vector - Right */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="absolute -bottom-16 -right-4 md:-bottom-10 md:-right-72 z-20 pointer-events-none block xl:block"
+          >
+            <img
+              src={boyVectorImg}
+              alt="School Boy"
+              className="w-[100px] md:w-[350px] lg:w-[400px] h-auto drop-shadow-lg mix-blend-multiply"
+            />
+          </motion.div>
         </motion.div>
-      </div>
+      </div >
 
       {showWaves && <WaveBottom fill="#fffdf5" />}
-    </section>
+    </section >
   );
 };
 

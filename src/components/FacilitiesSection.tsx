@@ -6,7 +6,7 @@ import picture2 from "@/assets/Images/Picture3.webp";
 import busImg from "@/assets/Images/bus.png";
 
 import { DoodleRocket, DoodleSun, DoodleCloud, DoodlePencil, DoodleBook, DoodleSparkle, DoodleBird } from "@/components/ui/doodles";
-import computerImg from "@/assets/Images/computer.png";
+import astronomyKidsImg from "@/assets/Images/astro.png";
 import WaveDivider from "@/components/ui/wave-divider";
 
 const FacilitiesSection = () => {
@@ -81,7 +81,7 @@ const FacilitiesSection = () => {
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Sun */}
         <motion.div
-          className="absolute top-[5%] left-[5%] text-yellow-500"
+          className="absolute top-[5%] right-[5%] text-yellow-500"
           animate={{ rotate: 360 }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         >
@@ -257,11 +257,11 @@ const FacilitiesSection = () => {
       </motion.div> */}
 
       <motion.div
-        className="absolute top-40 right-10 z-20 pointer-events-none hidden xl:block"
+        className="absolute -top-5 -left-5 md:top-10 md:-left-5 z-20 pointer-events-none block xl:block"
         animate={{ y: [0, -15, 0], rotate: [0, 5, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       >
-        <img src={computerImg} alt="Computer" className="w-32 drop-shadow-md" />
+        <img src={astronomyKidsImg} alt="Astronomy Kids" className="w-[150px] md:w-[400px] drop-shadow-md mix-blend-multiply" />
       </motion.div>
 
       <WaveDivider position="bottom" fill="#e3e9fb" variant={4} />
