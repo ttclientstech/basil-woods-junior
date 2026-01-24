@@ -22,6 +22,9 @@ import ChemburMumbai from "@/assets/campuses/ChemburMumbai.webp";
 import Ahmedabad from "@/assets/campuses/ahmedabad.jpg";
 import AtkinsCampus from "@/assets/campuses/AtkinsCampus.jpg";
 
+import montessoriTreeImg from "@/assets/Images/montessori-tree-final.png";
+import montessoriBlocksImg from "@/assets/Images/montessori-blocks-final.png";
+
 /* Data */
 type Campus = {
     cityLabel: string;
@@ -160,6 +163,22 @@ const OtherCampuses: React.FC = () => {
                 </motion.div>
                 <motion.div className="absolute top-32 right-32 text-yellow-600 hidden md:block" animate={{ rotate: [0, 10, 0] }} transition={{ duration: 8, repeat: Infinity }}>
                     <DoodleSun className="w-16 h-16 opacity-80" />
+                </motion.div>
+
+
+
+                <motion.div 
+                    className="hidden lg:block absolute bottom-10 left-10 z-10 opacity-90"
+                    initial={{ opacity: 0, scale: 0.8, x: -50 }}
+                    animate={{ opacity: 1, scale: 1, x: 0, rotate: [0, 5, 0] }}
+                    transition={{ 
+                        opacity: { duration: 0.8 },
+                        scale: { duration: 0.8 },
+                        x: { duration: 0.8 },
+                        rotate: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+                    }}
+                >
+                    <img src={montessoriTreeImg} alt="Learning Tree" className="w-96 h-auto drop-shadow-lg mix-blend-multiply" />
                 </motion.div>
 
                 <div className="container mx-auto px-4 relative z-10 text-center">

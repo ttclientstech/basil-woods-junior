@@ -312,8 +312,8 @@ const ProgramsPage = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto relative">
             <motion.div
-              className="absolute -bottom-32 right-[-40px] md:right-[-100px] lg:right-[-160px] xl:right-[-240px] pointer-events-none opacity-80"
-              initial={{ opacity: 0, x: 50 }}
+              className="absolute -bottom-32 left-[-140px] md:left-[-200px] lg:left-[-260px] xl:left-[-340px] pointer-events-none opacity-80"
+              initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.8 }}

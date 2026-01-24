@@ -14,6 +14,7 @@ import { useSEO } from "@/hooks/useSEO";
 import { motion } from "framer-motion";
 import elephantImg from "@/assets/Images/elephant.png";
 import monkeyImg from "@/assets/Images/monkey.png";
+import montessoriBlocksImg from "@/assets/Images/montessori-blocks-final-careers.png";
 
 const CareersPage = () => {
   useSEO({
@@ -95,6 +96,16 @@ const CareersPage = () => {
         </motion.div>
         <motion.div className="hidden md:block absolute top-10 right-20 text-yellow-600" animate={{ rotate: [0, 20, 0] }} transition={{ duration: 7, repeat: Infinity }}>
           <DoodleSun className="w-24 h-24" />
+        </motion.div>
+
+        {/* Montessori Blocks Vector (Top Right) */}
+        <motion.div 
+            className="hidden lg:block absolute top-32 right-48 z-10 opacity-90"
+            initial={{ opacity: 0, scale: 0.8, y: -20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+        >
+            <img src={montessoriBlocksImg} alt="Building Blocks" className="w-72 h-auto drop-shadow-lg mix-blend-multiply" />
         </motion.div>
         <motion.div className="hidden md:block absolute bottom-32 left-32 text-green-700" animate={{ x: [0, 30, 0] }} transition={{ duration: 10, repeat: Infinity }}>
           <DoodleCloud className="w-40 h-24 opacity-60" />
@@ -350,35 +361,39 @@ const CareersPage = () => {
       </section>
 
       {/* CTA - "Join Family" */}
-      < section className="py-20 bg-white" >
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center bg-orange-50 rounded-[3rem] p-12 border-4 border-white shadow-xl outline outline-4 outline-orange-100">
-            <Heart className="w-12 h-12 text-orange-500 fill-current mx-auto mb-6" />
-            <h2 className="text-4xl font-black text-neutral-900 mb-4 font-handwriting">Ready to Join the Family?</h2>
-            <p className="text-lg text-neutral-600 mb-8 font-medium">
-              Send your resume to <span className="text-orange-600 font-bold">careers@basilwoods.in</span> or contact us directly.
-            </p>
+          <div className="max-w-4xl mx-auto mb-16 relative">
+            <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border-4 border-orange-100 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-orange-100 rounded-bl-full opacity-50" />
+              <div className="relative bg-white border-4 border-dashed border-[hsl(var(--premium-orange))] rounded-3xl p-10 text-center shadow-[12px_12px_0px_0px_hsl(var(--premium-orange))]">
+                <h2 className="text-3xl md:text-4xl font-black text-neutral-900 mb-4 font-handwriting">Ready to Join the Family?</h2>
+                <p className="text-lg text-neutral-600 mb-8 font-medium">
+                  Send your resume to <span className="text-orange-600 font-bold">careers@basilwoods.in</span> or contact us directly.
+                </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                onClick={() => window.open("mailto:careers@basilwoods.in")}
-                className="bg-green-600 hover:bg-green-700 text-white font-bold py-6 px-8 rounded-xl text-lg shadow-md"
-              >
-                <Send className="w-5 h-5 mr-2" />
-                Email Resume
-              </Button>
-              <Button
-                variant="outline"
-                className="border-2 border-green-600 text-green-600 hover:bg-green-50 font-bold py-6 px-8 rounded-xl text-lg"
-                onClick={() => (window.location.href = "tel:+918056179108")}
-              >
-                <Phone className="w-5 h-5 mr-2" />
-                Call HR
-              </Button>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button
+                    onClick={() => window.open("mailto:careers@basilwoods.in")}
+                    className="bg-green-500 hover:bg-green-600 text-white font-bold py-6 px-8 rounded-xl text-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]"
+                  >
+                    <Send className="w-5 h-5 mr-2" />
+                    Email Resume
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="border-2 border-[hsl(var(--premium-orange))] text-[hsl(var(--premium-orange))] hover:bg-orange-50 font-bold py-6 px-8 rounded-xl text-lg"
+                    onClick={() => (window.location.href = "tel:+918056179108")}
+                  >
+                    <Phone className="w-5 h-5 mr-2" />
+                    Call HR
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </section >
+      </section>
 
       <Footer />
     </div >

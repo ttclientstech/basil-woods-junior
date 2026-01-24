@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Star, Heart, Calendar, Phone, Target, Lightbulb, Shield, Award, Pin, MapPin, Sparkles, Building2, Trophy, Users, GraduationCap, Map } from "lucide-react";
+import { Star, Heart, Calendar, Phone, Target, Lightbulb, Shield, Award, Pin, MapPin, Sparkles, Building2, Trophy, Users, GraduationCap, Map, Puzzle, Box } from "lucide-react";
 import { DoodleBlob, DoodleLeaf, DoodleFlower, DoodleSparkle, DoodleWave, DoodleSun, DoodleCloud, DoodleBird } from "@/components/ui/doodles";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -20,6 +20,8 @@ import awardECA from "@/assets/Awards/early_childhood_association.png";
 import suvyaktaImg from "@/assets/Mentors/suvyakta-narasimha-dasa.jpeg";
 import schoolimg from "@/assets/Images/Exterior1.webp";
 import schoolBoyImg from "@/assets/Images/bgboy.png";
+
+import montessoriToysImg from "@/assets/Images/abacus-transparent.png";
 
 const phoneNumber = "918056179108";
 const handleWhatsAppRedirect = () => {
@@ -149,9 +151,13 @@ const AboutUsPage = () => {
         <div className="absolute inset-0 opacity-40 bg-[url('https://www.transparenttextures.com/patterns/notebook.png')]" />
         {/* Background Elements */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="hidden md:block absolute top-20 right-10 w-64 h-64 text-yellow-500/30 opacity-60 rotate-12">
+          <motion.div 
+            className="hidden md:block absolute top-10 right-0 w-[250px] h-[250px] text-[hsl(var(--brand-dark-green))] rotate-12"
+            animate={{ y: [0, -20, 0], rotate: [12, 15, 12] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          >
             <DoodleBlob fillColor="currentColor" />
-          </div>
+          </motion.div>
           {/* <div className="absolute bottom-10 left-10 w-72 h-72 text-pink-500/30 opacity-60 -rotate-12">
             <DoodleBlob fillColor="currentColor" />
           </div> */}
@@ -170,6 +176,25 @@ const AboutUsPage = () => {
             transition={{ duration: 5, repeat: Infinity }}
           >
             <DoodleFlower className="w-16 h-16 text-teal-700" />
+          </motion.div>
+
+          {/* Montessori Vectors */}
+
+
+          <motion.div
+            className="hidden md:block absolute top-1/3 right-1/4 text-blue-400"
+            animate={{ rotate: [0, 20, 0], scale: [1, 1.1, 1] }}
+            transition={{ duration: 5, repeat: Infinity }}
+          >
+            <Puzzle className="w-12 h-12 opacity-60" />
+          </motion.div>
+
+          <motion.div
+            className="hidden md:block absolute bottom-20 left-20 text-red-400"
+            animate={{ rotate: [0, -15, 0], y: [0, 10, 0] }}
+            transition={{ duration: 6, repeat: Infinity }}
+          >
+            <Box className="w-10 h-10 opacity-60" />
           </motion.div>
         </div>
 
@@ -283,7 +308,7 @@ const AboutUsPage = () => {
               <h2 className="text-4xl font-black text-[hsl(var(--brand-dark-green))] font-handwriting">
                 Early Learning with <br /> Values & Excellence
               </h2>
-              <div className="prose prose-lg text-neutral-700 font-medium leading-relaxed">
+              <div className="prose prose-lg text-neutral-700 font-medium leading-relaxed text-justify max-w-[90%] md:max-w-[70%] relative z-20">
                 <p>
                   ‘Basil Woods’ is an early learning initiative of the National Institute of Value Education (NIVE) to inculcate universal values and ethics along with imparting physical and cognitive learning.
                 </p>
@@ -309,7 +334,7 @@ const AboutUsPage = () => {
                 whileInView={{ x: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
-                className="absolute bottom-10 -right-4 md:-right-20 z-10 w-80 md:w-[600px] pointer-events-none"
+                className="absolute bottom-0 -right-8 md:-right-16 z-10 w-72 md:w-[550px] pointer-events-none"
               >
                 <img src={schoolBoyImg} alt="Child walking to school" className="w-full h-auto drop-shadow-xl transform scale-x-[-1]" />
               </motion.div>

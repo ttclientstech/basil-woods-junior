@@ -351,34 +351,36 @@ const GalleryPage = () => {
       {/* CTA - "Guestbook" */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto relative">
-            <div className="absolute inset-0 bg-teal-50 rounded-3xl transform rotate-1" />
-            <div className="relative bg-white border-2 border-teal-100 rounded-3xl p-10 text-center shadow-lg">
-              <div className="mb-6 inline-block p-4 bg-teal-100 rounded-full text-teal-600">
-                <ImageIcon className="w-8 h-8" />
-              </div>
+          <div className="max-w-4xl mx-auto mb-16 relative">
+            <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border-4 border-orange-100 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-orange-100 rounded-bl-full opacity-50" />
+              <div className="relative bg-white border-4 border-dashed border-[hsl(var(--premium-orange))] rounded-3xl p-10 text-center shadow-[12px_12px_0px_0px_hsl(var(--premium-orange))]">
+                <div className="mb-6 inline-block p-4 bg-orange-100 rounded-full text-orange-600">
+                  <ImageIcon className="w-8 h-8" />
+                </div>
 
-              <h2 className="text-3xl md:text-4xl font-black text-neutral-900 mb-4 font-handwriting">Want to See More?</h2>
-              <p className="text-lg text-neutral-600 mb-8 font-medium">
-                The best way to experience our vibrant community is to visit us in person.
-              </p>
+                <h2 className="text-3xl md:text-4xl font-black text-neutral-900 mb-4 font-handwriting">Want to See More?</h2>
+                <p className="text-lg text-neutral-600 mb-8 font-medium">
+                  The best way to experience our vibrant community is to visit us in person.
+                </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  onClick={() => (window.location.href = "tel:+918056179108")}
-                  className="bg-teal-500 hover:bg-[hsl(var(--brand-dark-green))] hover:text-white text-[hsl(var(--brand-dark-green))] font-bold py-6 px-8 rounded-xl text-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]"
-                >
-                  <Phone className="w-6 h-6 mr-2 " />
-                  Schedule a Visit
-                </Button>
-                <Button
-                  variant="outline"
-                  className="border-2 border-teal-500 font-bold py-6 px-8 rounded-xl text-lg"
-                  onClick={() => window.open("/brochure.pdf", "_blank")}
-                >
-                  <Download className="w-6 h-6 mr-2" />
-                  Download Brochure
-                </Button>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button
+                    onClick={() => (window.location.href = "tel:+918056179108")}
+                    className="bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-6 px-8 rounded-xl text-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]"
+                  >
+                    <Phone className="w-6 h-6 mr-2 " />
+                    Schedule a Visit
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="border-2 border-teal-500 font-bold py-6 px-8 rounded-xl text-lg"
+                    onClick={() => window.open("/brochure.pdf", "_blank")}
+                  >
+                    <Download className="w-6 h-6 mr-2" />
+                    Download Brochure
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
