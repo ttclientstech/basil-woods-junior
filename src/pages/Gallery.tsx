@@ -17,9 +17,12 @@ import interior6 from "../assets/Images/Interior6.webp";
 import interior9 from "../assets/Images/Interior9.webp";
 import interior13 from "../assets/Images/Interior13.webp";
 import picture1 from "../assets/Images/Picture1.webp";
+import picture2 from "../assets/Images/Picture2.webp";
 import picture3 from "../assets/Images/Picture3.webp";
+import picture4 from "../assets/Images/Picture4.webp";
 import picture5 from "../assets/Images/Picture5.webp";
 import tulsi from "../assets/Images/tulsi.webp";
+import interior3 from "../assets/Images/Interior3.webp";
 
 // Children's Day
 import cd2 from "../assets/Images/ChildrendayWorkShop/2.png";
@@ -86,9 +89,9 @@ const GalleryPage = () => {
     { src: picture3, title: "Art & Craft", category: "Creativity", description: "Children expressing through art", rotate: "rotate-2" },
     { src: picture5, title: "Learning by Doing", category: "Classroom", description: "Hands-on activities for better learning", rotate: "-rotate-1" },
     { src: tulsi, title: "Nature & Values", category: "Environment", description: "Teaching respect for plants and nature", rotate: "rotate-1" },
-    { src: picture1, title: "Festival Celebration", category: "Celebration", description: "Joyful traditional celebrations", rotate: "rotate-2" },
-    { src: picture3, title: "Annual Day", category: "Event", description: "Showcasing talents on stage", rotate: "-rotate-2" },
-    { src: interior2, title: "Grandparents Day", category: "Celebration", description: "Honoring our roots and family", rotate: "rotate-1" },
+    { src: picture2, title: "Interactive Play", category: "Play", description: "Engaging activities for kids", rotate: "rotate-2" },
+    { src: picture4, title: "Happy Learning", category: "Learning", description: "Joyful learning moments", rotate: "-rotate-2" },
+    { src: interior3, title: "Modern Infrastructure", category: "Campus", description: "Well-equipped facilities for children", rotate: "rotate-1" },
 
     // Children's Day
     { src: cd2, title: "Fun Workshop", category: "ChildrensDay", description: "Creative learning workshop", rotate: "rotate-2" },

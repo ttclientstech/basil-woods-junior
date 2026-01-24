@@ -362,11 +362,11 @@ const ContactUsPage: React.FC = () => {
 
           <div className="grid md:grid-cols-2 gap-6">
             {[
-              { q: "What curriculum?", a: "We follow the Cambridge curriculum." },
+              { q: "What curriculum?", a: "We follow the Cambridge Early Years." },
               { q: "Safety measures?", a: "CCTV, secure entry, and trained staff." },
               { q: "Outdoor play?", a: "Daily outdoor activities and motor skills." },
               { q: "Parent updates?", a: "Regular meetings and digital updates." },
-              { q: "Meals provided?", a: "Breakfast & snacks provided. Lunch optional." },
+              { q: "Meals provided?", a: "Mid-morning snacks – Meals Years." },
               { q: "Age groups?", a: "2 years to 6 years." },
             ].map((item, idx) => (
               <motion.div

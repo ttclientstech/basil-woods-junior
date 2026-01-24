@@ -22,10 +22,12 @@ import program1 from "../assets/Images/Program1.png";
 import program2 from "../assets/Images/Program2.png";
 import program3 from "../assets/Images/Program3.png";
 import program4 from "../assets/Images/Program4.png";
-import boySchoolImg from "@/assets/Images/boyschool.webp";
+import boySchoolImg from "@/assets/Images/boyschool.png";
 import calendarImg from "@/assets/Images/calender.png";
 import dayLifeVideo from "../assets/Images/daylife.mp4";
 import dayLifeThumbnail from "../assets/Images/Exterior1.webp";
+import toddlerBoysImg from "../assets/Images/playingboy.png";
+import toddlerGirlsImg from "../assets/Images/girlsplay.png";
 
 const ProgramsPage = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
@@ -52,7 +54,6 @@ const ProgramsPage = () => {
     {
       name: "Toddlers",
       age: "2 - 3 years",
-      capacity: "8-10 children",
       description: "Gentle introduction to learning through sensory play, basic social skills, and nurturing care.",
       features: ["Circle Time", "Sensory Play", "Basic Language", "Motor Skills"],
       color: "bg-green-100",
@@ -65,7 +66,6 @@ const ProgramsPage = () => {
     {
       name: "Mont1",
       age: "3 - 4 years",
-      capacity: "12-15 children",
       description: "Building independence with structured play, early learning concepts, and creative exploration.",
       features: ["Montessori", "Numeracy", "Storytelling", "Art & Craft"],
       color: "bg-blue-100",
@@ -78,7 +78,6 @@ const ProgramsPage = () => {
     {
       name: "Mont2",
       age: "4 - 5 years",
-      capacity: "15-18 children",
       description: "Pre-academic skills development with structured learning, cultural activities, and social skill building.",
       features: ["Language", "Cultural Connect", "Music", "Outdoor Play"],
       color: "bg-pink-100",
@@ -91,7 +90,6 @@ const ProgramsPage = () => {
     {
       name: "Mont3",
       age: "5 - 6 years",
-      capacity: "18-20 children",
       description: "School readiness program with advanced learning concepts, leadership development, and preparation.",
       features: ["Advanced Math", "Reading", "Leadership", "Science"],
       color: "bg-orange-100",
@@ -164,11 +162,22 @@ const ProgramsPage = () => {
           <DoodleSun className="w-16 h-16 opacity-80" />
         </motion.div>
 
+        {/* Calendar Vector */}
+        <motion.div
+          className="absolute top-1/4 left-10 hidden xl:block pointer-events-none opacity-80"
+          animate={{ rotate: [0, 5, 0], scale: [1, 1.05, 1] }}
+          transition={{ duration: 7, repeat: Infinity }}
+        >
+          <img src={calendarImg} alt="Calendar" className="w-80 drop-shadow-md" />
+        </motion.div>
+
+
         <div className="container mx-auto px-4 relative z-10 text-center">
           <Badge className="bg-yellow-100 text-yellow-800 border-2 border-yellow-400 px-4 py-1 text-sm font-bold rounded-full mb-6 shadow-sm">
             <Map className="w-4 h-4 mr-2 inline" />
             Curriculum Map
           </Badge>
+
           <h1 className="text-4xl md:text-7xl font-black text-[hsl(var(--brand-dark-green))] mb-6 font-handwriting leading-tight">
             Learning <span className="text-[hsl(var(--premium-orange))]">Adventures</span> <br />
             for Little Explorers
@@ -225,7 +234,7 @@ const ProgramsPage = () => {
                 <div className="w-full md:w-1/2 md:px-8 text-center md:text-left">
                   <h2 className={`text-4xl font-black ${program.textColor} font-handwriting mb-2`}>{program.name}</h2>
                   <div className="inline-block bg-neutral-100 px-3 py-1 rounded-full text-sm font-bold text-neutral-600 mb-4 border border-neutral-200">
-                    {program.age} • {program.capacity}
+                    {program.age}
                   </div>
                   <p className="text-lg text-neutral-700 mb-6 font-medium leading-relaxed">
                     {program.description}
@@ -249,24 +258,30 @@ const ProgramsPage = () => {
       {/* SPECIAL PROGRAMS - "Merit Badges" */}
       <section className="py-20 bg-[url('https://www.transparenttextures.com/patterns/canvas-orange.png')] bg-opacity-100 border-y-8 border-orange-200">
         <div className="container mx-auto px-4 relative z-10 text-center">
+          {/* Girls Chatting - Moved from Video Section */}
+          {/* <motion.div
+            className="absolute -top-40 -left-20 hidden xl:block pointer-events-none opacity-90"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+          >
+            <motion.img
+              src={toddlerGirlsImg}
+              alt="Girls Chatting"
+              className="w-96 h-auto drop-shadow-xl"
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </motion.div> */}
           {/* Boy School Vector */}
           <motion.div
-            className="absolute top-10 -right-20 hidden xl:block pointer-events-none opacity-80"
+            className="absolute top-10 -right-60 hidden xl:block pointer-events-none opacity-80"
             animate={{ y: [0, -10, 0], rotate: [0, -2, 0] }}
             transition={{ duration: 5, repeat: Infinity }}
           >
-            <img src={boySchoolImg} alt="Student" className="w-40 drop-shadow-md" />
+            <img src={boySchoolImg} alt="Student" className="w-80 drop-shadow-md" />
           </motion.div>
-
-          {/* Calendar Vector */}
-          <motion.div
-            className="absolute bottom-10 -left-20 hidden xl:block pointer-events-none opacity-80"
-            animate={{ rotate: [0, 5, 0], scale: [1, 1.05, 1] }}
-            transition={{ duration: 7, repeat: Infinity }}
-          >
-            <img src={calendarImg} alt="Calendar" className="w-32 drop-shadow-md" />
-          </motion.div>
-
           <Badge className="bg-white text-orange-600 border-2 border-orange-400 px-4 py-1 text-sm font-bold rounded-full mb-6 shadow-sm">
             Enrichment Activities
           </Badge>
@@ -296,6 +311,23 @@ const ProgramsPage = () => {
       <section className="py-20 bg-[#f4f7ff]">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto relative">
+            {/* Boys Playing - Right */}
+            <motion.div
+              className="absolute -bottom-20 -right-96 hidden xl:block pointer-events-none"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+            >
+              <motion.img
+                src={toddlerBoysImg}
+                alt="Boys Playing"
+                className="w-96 h-auto drop-shadow-xl"
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              />
+            </motion.div>
+
             {/* Clipboard Clip */}
             <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-32 h-12 bg-neutral-800 rounded-t-xl z-20 flex items-center justify-center">
               <div className="w-20 h-4 bg-neutral-600 rounded-full" />

@@ -10,7 +10,7 @@ import {
   ArrowRight
 } from "lucide-react";
 import { DoodlePeacockFeather, DoodleLotus, DoodleCloud, DoodleSun, DoodleSparkle } from "@/components/ui/doodles";
-import { RiFacebookCircleFill, RiInstagramFill, RiYoutubeFill } from "react-icons/ri";
+import { RiFacebookCircleFill, RiInstagramFill, RiYoutubeFill, RiLinkedinFill } from "react-icons/ri";
 
 const Footer = () => {
   const quickLinks = [
@@ -76,8 +76,7 @@ const Footer = () => {
             </motion.div>
 
             <div>
-              <h3 className="text-2xl font-black font-handwriting text-yellow-400 mb-2">BASIL WOODS</h3>
-              <p className="text-sm font-bold tracking-widest uppercase text-white/80">Juniors Chennai</p>
+              <h3 className="text-2xl font-black font-handwriting text-yellow-400 mb-2">BASIL WOODS JUNIORS</h3>
             </div>
 
             <p className="text-white/80 text-sm leading-relaxed font-medium">
@@ -156,6 +155,7 @@ const Footer = () => {
               {[
                 { icon: RiFacebookCircleFill, href: "https://www.facebook.com/people/Basil-Woods-Juniors-International-Pre-School-Day-Care-Chennai/61576063646448/?checkpoint_src=any", color: "text-blue-600" },
                 { icon: RiInstagramFill, href: "https://www.instagram.com/basilwoodsjuniors_chennai", color: "text-red-500" },
+                { icon: RiLinkedinFill, href: "", color: "text-blue-700" },
                 { icon: RiYoutubeFill, href: "https://www.youtube.com/@BWJChennai", color: "text-red-600" }
               ].map((social, i) => (
                 <motion.a

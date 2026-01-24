@@ -57,7 +57,7 @@ const Header = () => {
           </div>
           <div className="flex items-center gap-4">
             <span className="bg-white/10 px-3 py-1 rounded-full border border-white/20 uppercase tracking-wider">
-              Admissions Open
+              Admissions Open 2026-2027 
             </span>
           </div>
         </div>

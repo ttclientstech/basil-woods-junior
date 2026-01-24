@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Play, Sparkles, Star, Heart, ArrowRight, Calendar, Music, Palette, Puzzle } from "lucide-react";
+import WaveDivider from "@/components/ui/wave-divider";
 import { DoodleSun, DoodleCloud, DoodleBird, DoodlePencil, DoodleBook, DoodleRocket, DoodleBulb } from "@/components/ui/doodles";
 import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, animate, useInView } from "framer-motion";
 import { FaWhatsapp } from 'react-icons/fa';
@@ -69,7 +70,7 @@ const HeroSection = () => {
   }, [heroContent.length]);
 
   return (
-    <section className="relative min-h-[90vh] flex items-center  bg-blue-50 overflow-hidden pt-12 pb-12 md:pt-0 md:pb-0">
+    <section className="relative min-h-[90vh] flex items-center  bg-green-50 overflow-hidden pt-12 pb-16 md:pt-0 md:pb-16">
 
       {/* Marquee Banner */}
       <div className="absolute top-0 w-full bg-[hsl(var(--premium-yellow))] overflow-hidden py-2 border-b-2 border-black z-30">
@@ -83,7 +84,7 @@ const HeroSection = () => {
             <div key={i} className="flex items-center gap-8 px-4 text-black font-bold text-sm md:text-base font-handwriting tracking-wide">
               <span>Basil Woods Juniors International preschool & Day care @ Thiruvanmiyur, Chennai</span>
               {/* <span className="text-[hsl(var(--premium-orange))] font-extrabold">•</span> */}
-              <span className="uppercase text-[hsl(var(--brand-dark-green))]">Admissions Open</span>
+              <span className="uppercase text-[hsl(var(--brand-dark-green))]">Admissions Open 2026-2027</span>
               {/* <span className="text-[hsl(var(--premium-orange))] font-extrabold">•</span> */}
             </div>
           ))}
@@ -93,50 +94,6 @@ const HeroSection = () => {
 
       {/* Animated Background Elements - Emerging Vectors */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <motion.div
-          className="absolute top-20 hidden md:block left-10 text-[hsl(var(--premium-yellow))]"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          style={{ y: y2 }}
-        >
-          <DoodleSun className="w-20 h-20 text-yellow-500" strokeWidth={2} />
-        </motion.div>
-
-        {/* Floating Icons Array */}
-        {[
-          { Icon: DoodleBird, color: "text-blue-600", x: "20%", delay: 0, scale: 1 },
-          { Icon: DoodleCloud, color: "text-pink-600", x: "80%", delay: 2, scale: 1.5 },
-          { Icon: DoodleRocket, color: "text-yellow-600", x: "50%", delay: 1, scale: 0.8 },
-          { Icon: Heart, color: "text-red-600", x: "10%", delay: 3, scale: 1.2 },
-          { Icon: Music, color: "text-purple-600", x: "90%", delay: 1.5, scale: 1.1 },
-          { Icon: DoodlePencil, color: "text-orange-600", x: "30%", delay: 2.5, scale: 0.9 },
-          { Icon: DoodleBook, color: "text-green-600", x: "70%", delay: 0.5, scale: 1.3 },
-          { Icon: DoodleBulb, color: "text-primary", x: "15%", delay: 4, scale: 1 },
-          { Icon: Palette, color: "text-indigo-600", x: "40%", delay: 3.5, scale: 1 },
-          { Icon: Puzzle, color: "text-teal-600", x: "60%", delay: 1.8, scale: 1.2 },
-        ].map((item, index) => (
-          <motion.div
-            key={index}
-            className={`hidden md:block absolute -bottom-20 ${item.color} hover:opacity-100 transition-opacity duration-300 pointer-events-auto cursor-pointer`}
-            style={{ left: item.x }}
-            initial={{ y: 100, opacity: 0 }}
-            animate={{
-              y: [-100, -800], // Float up
-              x: [0, Math.sin(index) * 50, 0], // Gentle sway
-              rotate: [0, 360],
-              opacity: [1, 1, 0]
-            }}
-            transition={{
-              duration: 15 + index * 2,
-              repeat: Infinity,
-              delay: item.delay,
-              ease: "linear",
-            }}
-            whileHover={{ scale: item.scale * 1.5, rotate: 0, opacity: 1, y: -500 }} // Interactive pop
-          >
-            <item.Icon className="w-16 h-16 md:w-24 md:h-24 stroke-[2px] fill-current" />
-          </motion.div>
-        ))}
 
         {/* Blobs */}
         <div className="absolute -top-20 -right-20 w-96 h-96 bg-[hsl(var(--premium-pink)/0.4)] rounded-full blur-3xl" />
@@ -163,25 +120,17 @@ const HeroSection = () => {
 
           {/* Left Content */}
           <div className="flex-1 text-center lg:text-left space-y-4 md:space-y-8 relative">
-            {/* Mobile Happy Boy - Left of Badge */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5 }}
-              className="absolute -top-2 left-4 w-20 z-20 pointer-events-none block md:hidden"
-            >
-              <img src={happyBoyImg} alt="Happy School Boy" className="w-full h-auto drop-shadow-md transform scale-x-[-1]" />
-            </motion.div>
+
 
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ type: "spring", bounce: 0.5 }}
-              className="inline-block"
+              className="inline-block mt-8"
             >
               <div className="bg-white text-[hsl(var(--premium-orange))] px-4 py-1 md:px-6 md:py-2 rounded-full text-xs md:text-sm font-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-2 border-black mb-4 md:mb-6 inline-flex items-center gap-2 transform -rotate-2">
                 <Sparkles className="w-3 h-3 md:w-4 md:h-4" />
-                ADMISSIONS OPEN
+                ADMISSIONS OPEN 2026 - 2027
               </div>
             </motion.div>
 
@@ -250,54 +199,47 @@ const HeroSection = () => {
                 Watch Video
               </motion.button>
 
-              {/* Decorative Vector Image - Happy Boy (Repositioned) */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0, rotate: 20, y: 20 }}
-                animate={{
-                  opacity: 1,
-                  scale: 1,
-                  rotate: 0,
-                  y: [0, -10, 0] // Continuous floating motion
-                }}
-                transition={{
-                  opacity: { duration: 0.6, delay: 0.6 },
-                  scale: { duration: 0.6, delay: 0.6, type: "spring", bounce: 0.5 },
-                  rotate: { duration: 0.6, delay: 0.6 },
-                  y: {
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 1.2 // Start floating after entrance
-                  }
-                }}
-                className="absolute hidden md:block lg:block -right-10 md:-right-28 bottom-0 w-40 md:w-64 md:w-72 z-20 pointer-events-none"
-              >
-                <img src={happyBoyImg} alt="Happy School Boy" className="w-full h-auto drop-shadow-xl filter hover:brightness-110 transition-all duration-300" />
-              </motion.div>
+
             </motion.div>
 
 
 
-            {/* Trust Indicators */}
+            {/* Trust Indicators - Redesigned */}
             <motion.div
-              className="pt-4 md:pt-8 flex items-center justify-center lg:justify-start gap-4 md:gap-8"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
+              className="pt-6 md:pt-12 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
             >
-              <div className="text-center lg:text-left">
-                <div className="text-2xl md:text-3xl font-black text-[hsl(var(--brand-dark-green))] font-handwriting flex items-center justify-center lg:justify-start gap-1">
-                  <AnimatedCounter to={15} delay={0.5} />+
+              {/* Stat Card 1 */}
+              <div className="flex items-center bg-gradient-to-br from-green-100 to-green-200 gap-4 bg-white p-3 pr-6 rounded-2xl border-2 border-neutral-100 shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div className="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center border border-yellow-200 text-yellow-600">
+                  <Star className="w-6 h-6 fill-current" />
                 </div>
-                <div className="text-xs md:text-sm text-neutral-600 font-bold uppercase tracking-wide">Years of Joy</div>
-              </div>
-              <div className="w-0.5 h-8 md:h-12 bg-black/10 rotate-12" />
-              <div className="text-center lg:text-left">
-                <div className="text-2xl md:text-3xl font-black text-[hsl(var(--brand-dark-green))] font-handwriting flex items-center justify-center lg:justify-start gap-1">
-                  <AnimatedCounter to={500} delay={0.5} />+
+                <div>
+                  <div className="text-2xl font-black text-neutral-800 font-handwriting leading-none flex items-center">
+                    <AnimatedCounter to={15} delay={0.5} />+
+                  </div>
+                  <div className="text-xs font-bold text-neutral-500 uppercase tracking-wider mt-1">Years of Joy</div>
                 </div>
-                <div className="text-xs md:text-sm text-neutral-600 font-bold uppercase tracking-wide">Happy Families</div>
               </div>
+
+              {/* Divider */}
+              <div className="hidden sm:block w-px h-12 bg-neutral-200" />
+
+              {/* Stat Card 2 */}
+              <div className="flex items-center bg-gradient-to-br from-blue-100 to-blue-200 gap-4 bg-white p-3 pr-6 rounded-2xl border-2 border-neutral-100 shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div className="w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center border border-pink-200 text-pink-600">
+                  <Heart className="w-6 h-6 fill-current" />
+                </div>
+                <div>
+                  <div className="text-2xl font-black text-neutral-800 font-handwriting leading-none flex items-center">
+                    <AnimatedCounter to={500} delay={0.5} />+
+                  </div>
+                  <div className="text-xs font-bold text-neutral-500 uppercase tracking-wider mt-1">Happy Families</div>
+                </div>
+              </div>
+
             </motion.div>
           </div>
 
@@ -365,6 +307,25 @@ const HeroSection = () => {
         videoUrl="https://www.youtube.com/watch?v=w4WyoDOi460"
         title="Experience Basil Woods Juniors"
       />
+
+      {/* Universal Happy Boy Vector - Fixed Position Left */}
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        animate={{
+          opacity: 1,
+          x: -50,
+          y: [0, -15, 0]
+        }}
+        transition={{
+          opacity: { duration: 0.6, delay: 0.5 },
+          y: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+        }}
+        className="absolute left-0 bottom-4 md:bottom-0 w-28 md:w-56 lg:w-64 z-20 pointer-events-none"
+      >
+        <img src={happyBoyImg} alt="Happy School Boy" className="w-full h-auto drop-shadow-xl transform scale-x-[-1]" />
+      </motion.div>
+       <WaveDivider position="bottom" fill="#b3cee3ff" variant={4}  />
+
     </section>
   );
 };

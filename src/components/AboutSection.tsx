@@ -1,8 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Palette, Leaf, BookOpen, Sparkles, Star, Heart, Award, Pin } from "lucide-react";
-import { DoodleReadingBoy } from "@/components/ui/doodles";
 import mainImage from "../assets/Images/About.png";
+import busVector from "../assets/Images/busdemo.png";
 
 
 const AboutSection = () => {
@@ -23,11 +23,17 @@ const AboutSection = () => {
       />
       {/* Big Boy Doodle */}
       <motion.div
-        className="absolute bottom-10 left-10 pointer-events-none hidden lg:block z-30"
-        animate={{ y: [0, -15, 0], rotate: [6, 3, 6] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -bottom-20 left-10 z-30 hidden lg:block"
+        initial={{ x: -200, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.5, type: "spring", bounce: 0.2 }}
       >
-        <DoodleReadingBoy className="w-48 h-48 filter drop-shadow-md" />
+        <img
+          src={busVector}
+          alt="Basil Woods School Bus"
+          className="w-72 h-auto drop-shadow-xl"
+        />
       </motion.div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -110,7 +116,7 @@ const AboutSection = () => {
                 A perfect parenting partner offering a transformative early learning experience — blending world-class infrastructure, expert facilitators, and innovative curriculum with foundational Indian values.
               </p>
 
-             
+
             </div>
 
             {/* Feature Stickers */}

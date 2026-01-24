@@ -143,12 +143,12 @@ const CTA: React.FC<CTAProps> = ({
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="absolute -bottom-16 -left-4 md:-bottom-10 md:-left-72 z-20 pointer-events-none block xl:block"
+            className="absolute -bottom-10 -left-16 md:-bottom-14 md:-left-[340px] lg:-left-[420px] z-20 pointer-events-none block xl:block"
           >
             <img
               src={girlVectorImg}
               alt="School Girl"
-              className="w-[100px] md:w-[350px] lg:w-[400px] h-auto drop-shadow-lg mix-blend-multiply transform scale-x-[-1]"
+              className="w-[120px] md:w-[400px] lg:w-[480px] h-auto drop-shadow-lg mix-blend-multiply transform scale-x-[-1]"
             />
           </motion.div>
 
@@ -158,12 +158,12 @@ const CTA: React.FC<CTAProps> = ({
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="absolute -bottom-16 -right-4 md:-bottom-10 md:-right-72 z-20 pointer-events-none block xl:block"
+            className="absolute -bottom-10 -right-16 md:-bottom-14 md:-right-[340px] lg:-right-[420px] z-20 pointer-events-none block xl:block"
           >
             <img
               src={boyVectorImg}
               alt="School Boy"
-              className="w-[100px] md:w-[350px] lg:w-[400px] h-auto drop-shadow-lg mix-blend-multiply"
+              className="w-[120px] md:w-[400px] lg:w-[480px] h-auto drop-shadow-lg mix-blend-multiply"
             />
           </motion.div>
         </motion.div>

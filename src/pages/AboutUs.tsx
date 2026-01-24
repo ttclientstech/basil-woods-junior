@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Star, Heart, Calendar, Phone, Target, Lightbulb, Shield, Award, Pin, MapPin, Sparkles, Building2, Trophy, Users, GraduationCap, Map } from "lucide-react";
-import { DoodleBlob, DoodleLeaf, DoodleFlower, DoodleSparkle, DoodleWave } from "@/components/ui/doodles";
+import { DoodleBlob, DoodleLeaf, DoodleFlower, DoodleSparkle, DoodleWave, DoodleSun, DoodleCloud, DoodleBird } from "@/components/ui/doodles";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useRef } from "react";
@@ -19,6 +19,7 @@ import awardISA from "@/assets/Awards/international_school.png";
 import awardECA from "@/assets/Awards/early_childhood_association.png";
 import suvyaktaImg from "@/assets/Mentors/suvyakta-narasimha-dasa.jpeg";
 import schoolimg from "@/assets/Images/Exterior1.webp";
+import schoolBoyImg from "@/assets/Images/bgboy.png";
 
 const phoneNumber = "918056179108";
 const handleWhatsAppRedirect = () => {
@@ -51,35 +52,35 @@ const AboutUsPage = () => {
       title: "Love & Care",
       description: "Every child receives individual attention in a nurturing environment",
       color: "text-pink-600",
-      bg: "bg-pink-100",
-      border: "border-pink-400",
-      shadow: "shadow-pink-200"
+      bg: "bg-red-100",
+      border: "border-red-200",
+      shadow: "shadow-red-200"
     },
     {
       icon: <Target className="w-8 h-8" />,
       title: "Excellence",
       description: "Maintaining highest standards in early childhood education",
-      color: "text-orange-600",
-      bg: "bg-orange-100",
-      border: "border-orange-400",
-      shadow: "shadow-orange-200"
+      color: "text-blue-600",
+      bg: "bg-blue-100",
+      border: "border-blue-200",
+      shadow: "shadow-blue-200"
     },
     {
       icon: <Lightbulb className="w-8 h-8" />,
       title: "Innovation",
       description: "Creative teaching methods that make learning joyful",
-      color: "text-yellow-600",
-      bg: "bg-yellow-100",
-      border: "border-yellow-400",
-      shadow: "shadow-yellow-200"
+      color: "text-amber-600",
+      bg: "bg-amber-100",
+      border: "border-amber-200",
+      shadow: "shadow-amber-200"
     },
     {
       icon: <Shield className="w-8 h-8" />,
       title: "Safety",
       description: "Secure environment where children can explore freely",
-      color: "text-black-600",
-      bg: "bg-yellow-100",
-      border: "border-yellow-400",
+      color: "text-green-600",
+      bg: "bg-green-100",
+      border: "border-green-200",
       shadow: "shadow-green-200"
     }
   ];
@@ -301,22 +302,57 @@ const AboutUsPage = () => {
                   <span className="text-sm font-bold text-neutral-500">Happy Families</span>
                 </div>
               </div>
+
+              {/* Animated School Boy Vector */}
+              <motion.div
+                initial={{ x: 100, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+                className="absolute bottom-10 -right-4 md:-right-20 z-10 w-80 md:w-[600px] pointer-events-none"
+              >
+                <img src={schoolBoyImg} alt="Child walking to school" className="w-full h-auto drop-shadow-xl transform scale-x-[-1]" />
+              </motion.div>
             </div>
           </div>
         </div>
       </section>
 
       {/* MILESTONES - "The Visual Journey" */}
-      <section className="py-28 bg-[#fdfbf7] relative overflow-hidden">
-        {/* Organic Background Texture */}
-        <div className="absolute inset-0 opacity-40 pointer-events-none" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d6d3c9' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-        }} />
+      <section className="py-28 bg-gradient-to-br from-[#fffbeb] via-[#fff] to-[#e0f2fe] relative overflow-hidden">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <motion.div
+            className="absolute top-10 left-[-50px] text-yellow-300 opacity-60"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+          >
+            <DoodleSun className="w-48 h-48" />
+          </motion.div>
 
-        {/* Soft Blobs */}
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-          <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-green-100 rounded-full blur-[100px] opacity-30"></div>
-          <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-orange-100 rounded-full blur-[100px] opacity-30"></div>
+          <motion.div
+            className="absolute top-20 right-10 text-blue-200 opacity-50"
+            animate={{ x: [0, 50, 0] }}
+            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <DoodleCloud className="w-32 h-20" />
+          </motion.div>
+
+          <motion.div
+            className="absolute bottom-20 left-10 text-orange-200 opacity-40"
+            animate={{ x: [0, -30, 0], y: [0, -20, 0] }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <DoodleCloud className="w-40 h-24" />
+          </motion.div>
+
+          <motion.div
+            className="absolute top-1/3 right-1/4 text-purple-200 opacity-30"
+            animate={{ y: [0, -40, 0], rotate: [0, 10, 0] }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <DoodleBird className="w-24 h-24" />
+          </motion.div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -427,29 +463,93 @@ const AboutUsPage = () => {
 
 
       {/* VALUES - "Building Blocks" */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <Badge className="bg-pink-100 text-pink-700 border-2 border-pink-400 px-4 py-1 text-sm font-bold rounded-full mb-4">
-              Our Values
-            </Badge>
-            <h2 className="text-4xl font-black text-neutral-800 font-handwriting">What Drives Us</h2>
+      <section className="py-24 bg-gradient-to-b from-white to-[#fffdf5] relative overflow-hidden">
+        {/* Animated Background Doodles */}
+        <div className="absolute inset-0 pointer-events-none">
+          <motion.div
+            className="absolute top-10 left-10 text-yellow-200"
+            animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <DoodleSparkle className="w-16 h-16 opacity-40" />
+          </motion.div>
+          <motion.div
+            className="absolute bottom-20 right-10 text-pink-200"
+            animate={{ y: [0, 20, 0], rotate: [0, -10, 0] }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <DoodleFlower className="w-24 h-24 opacity-30" />
+          </motion.div>
+          <motion.div
+            className="absolute top-1/2 left-[-20px] text-teal-100"
+            animate={{ x: [0, 20, 0], rotate: [0, 5, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <DoodleLeaf className="w-32 h-32 opacity-40 transform -rotate-45" />
+          </motion.div>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-16 max-w-3xl mx-auto">
+            <span className="inline-block py-1 px-3 rounded-full bg-orange-100 text-orange-600 font-bold text-sm tracking-widest uppercase mb-4 border border-orange-200">
+              Our Core Values
+            </span>
+            <h2 className="text-4xl md:text-5xl font-black text-neutral-800 font-handwriting mb-6">
+              What Drives <span className="text-[hsl(var(--premium-orange))]">Us</span>?
+            </h2>
+            <p className="text-lg text-neutral-600 leading-relaxed font-medium">
+              At Basil Woods, our values are the roots that ground us and the wings that help our children fly.
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((v, i) => (
               <motion.div
                 key={i}
-                whileHover={{ y: -5 }}
-                className={`bg-white p-6 rounded-2xl border-2 ${v.border} shadow-[8px_8px_0px_0px_rgba(0,0,0,0.05)]`}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                animate={{ y: [0, -10, 0] }}
+                transition={{
+                  y: { duration: 3 + i, repeat: Infinity, ease: "easeInOut" },
+                  opacity: { duration: 0.5, delay: i * 0.1 }
+                }}
+                whileHover={{ scale: 1.03, y: -15, rotate: i % 2 === 0 ? 1 : -1 }}
+                className={`
+                  bg-white p-8 rounded-3xl h-full flex flex-col items-center text-center
+                  border-b-8 border-r-2 border-l-2 border-t-2 ${v.border}
+                  shadow-[0_10px_30px_-5px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-5px_rgba(0,0,0,0.1)] 
+                  transition-all duration-300 group
+                `}
               >
-                <div className={`w-16 h-16 ${v.bg} rounded-xl flex items-center justify-center mb-4 border-2 ${v.border} text-neutral-800`}>
-                  {v.icon}
+                <div className={`
+                  w-24 h-24 rounded-full ${v.bg} flex items-center justify-center mb-6
+                  transform transition-transform duration-500
+                  border-4 border-white shadow-lg
+                `}>
+                  <motion.div
+                    className={`${v.color}`}
+                    animate={{ rotate: [0, 5, 0, -5, 0] }}
+                    transition={{ duration: 4 + i, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    {v.icon}
+                  </motion.div>
                 </div>
-                <h3 className={`text-xl font-black ${v.color} mb-3`}>{v.title}</h3>
-                <p className="text-neutral-600 font-medium leading-relaxed">{v.description}</p>
+
+                <h3 className={`text-2xl font-black text-neutral-800 mb-3 font-handwriting`}>
+                  {v.title}
+                </h3>
+
+                <p className="text-neutral-500 font-medium leading-relaxed">
+                  {v.description}
+                </p>
               </motion.div>
             ))}
+          </div>
+
+          {/* Decorative Bottom */}
+          <div className="mt-20 flex justify-center opacity-60">
+            <div className="h-1 w-24 bg-neutral-200 rounded-full" />
           </div>
         </div>
       </section>

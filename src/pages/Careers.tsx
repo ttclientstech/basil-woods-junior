@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
-  MapPin, Phone, Users, Send, Heart, Star, Award, Target, Lightbulb, BookOpen, Sprout, Leaf, Flower2, Sun
+  MapPin, Phone, Users, Send, Heart, Star, Award, Target, Lightbulb, BookOpen, Sprout, Leaf, Flower2, Sun,
+  FileText, ScanSearch, MessagesSquare, PartyPopper, Sparkles
 } from "lucide-react";
 import { DoodleLeaf, DoodleFlower, DoodleSun, DoodleCloud } from "@/components/ui/doodles";
 import Header from "@/components/Header";
@@ -206,59 +207,147 @@ const CareersPage = () => {
       </section >
 
       {/* VALUES - "Roots of Success" */}
-      < section className="py-20 bg-white relative overflow-hidden" >
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-black text-[hsl(var(--brand-dark-green))] font-handwriting mb-2">Our Roots</h2>
-            <p className="text-neutral-600">The values that ground us</p>
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-20">
+            <span className="inline-block px-4 py-1 rounded-full bg-orange-100 text-orange-700 font-bold text-xs tracking-widest uppercase mb-4 border border-orange-200">
+              Core Philosophy
+            </span>
+            <h2 className="text-4xl md:text-5xl font-black text-[hsl(var(--brand-dark-green))] font-handwriting mb-4">Our Roots</h2>
+            <p className="text-lg text-neutral-600 max-w-2xl mx-auto">The fundamental values that ground every decision we make.</p>
           </div>
 
-          <div className="relative max-w-4xl mx-auto">
-            {/* Connecting Line (Roots) */}
-            <div className="absolute top-1/2 left-0 w-full h-1 bg-green-100 -translate-y-1/2 hidden md:block" />
+          <div className="relative max-w-6xl mx-auto h-[500px] md:h-[400px] flex items-center justify-center">
+            {/* Animated Root System (SVG) */}
+            <div className="absolute inset-x-0 bottom-0 top-1/2 -translate-y-1/2 hidden md:block z-0 opacity-40">
+              <svg className="w-full h-full" viewBox="0 0 800 300" preserveAspectRatio="none">
+                {/* Center Root */}
+                <motion.path d="M 400,300 L 400,150" stroke="#dcfce7" strokeWidth="8" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5 }} />
+                {/* Branch Left 1 */}
+                <motion.path d="M 400,150 Q 300,100 200,150" stroke="#dcfce7" strokeWidth="6" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5, delay: 0.5 }} />
+                {/* Branch Right 1 */}
+                <motion.path d="M 400,150 Q 500,100 600,150" stroke="#dcfce7" strokeWidth="6" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5, delay: 0.5 }} />
+                {/* Branch Left 2 */}
+                <motion.path d="M 200,150 Q 150,180 100,150" stroke="#dcfce7" strokeWidth="4" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5, delay: 1 }} />
+                {/* Branch Right 2 */}
+                <motion.path d="M 600,150 Q 650,180 700,150" stroke="#dcfce7" strokeWidth="4" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5, delay: 1 }} />
+              </svg>
+            </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 relative z-10">
-              {values.map((v, i) => (
-                <div key={i} className="bg-white p-6 rounded-full border-4 border-green-100 text-center aspect-square flex flex-col items-center justify-center shadow-sm hover:border-green-300 transition-colors">
-                  <h3 className="font-bold text-lg text-green-800 mb-1">{v.title}</h3>
-                  <p className="text-xs text-neutral-500">{v.desc}</p>
-                </div>
-              ))}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 w-full relative z-10">
+              {[
+                { title: "Passion", desc: "Genuine love for children", icon: Heart, color: "bg-red-50 text-red-500 border-red-200", delay: 0.2 },
+                { title: "Excellence", desc: "High-quality education", icon: Sparkles, color: "bg-yellow-50 text-yellow-500 border-yellow-200", delay: 0.4 },
+                { title: "Inclusion", desc: "Embracing diversity", icon: Users, color: "bg-blue-50 text-blue-500 border-blue-200", delay: 0.6 },
+                { title: "Growth", desc: "Continuous learning", icon: Sprout, color: "bg-green-50 text-green-500 border-green-200", delay: 0.8 },
+              ].map((v, i) => {
+                const Icon = v.icon;
+                return (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, scale: 0, y: 50 }}
+                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: v.delay, type: "spring", bounce: 0.4 }}
+                    className="flex flex-col items-center"
+                  >
+                    <motion.div
+                      animate={{ y: [0, -10, 0] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: i }}
+                      className={`w-40 h-40 rounded-full ${v.color} border-8 border-white shadow-2xl flex flex-col items-center justify-center p-4 text-center group cursor-pointer hover:scale-105 transition-transform`}
+                    >
+                      <Icon className="w-10 h-10 mb-2 transform group-hover:rotate-12 transition-transform" />
+                      <h3 className="font-bold text-lg leading-none mb-1">{v.title}</h3>
+                      <p className="text-[10px] font-bold opacity-70 uppercase tracking-wide">{v.desc}</p>
+                    </motion.div>
+                    {/* Stem for Mobile */}
+                    <div className="h-8 w-1 bg-green-200 md:hidden" />
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </div>
-      </section >
+      </section>
 
       {/* PROCESS - "Stepping Stones" */}
-      < section className="py-20 bg-[#f0fdf4]" >
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-black text-neutral-800 font-handwriting mb-2">How to Apply</h2>
-            <p className="text-neutral-600">Your path to joining us</p>
+      <section className="py-24 bg-[#f0fdf4] relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <motion.div className="absolute top-10 left-10 text-green-200" animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }} transition={{ duration: 5, repeat: Infinity }}>
+            <DoodleLeaf className="w-24 h-24 opacity-40" />
+          </motion.div>
+          <motion.div className="absolute bottom-10 right-10 text-green-200" animate={{ y: [0, 20, 0], rotate: [0, -10, 0] }} transition={{ duration: 6, repeat: Infinity }}>
+            <DoodleCloud className="w-32 h-20 opacity-40" />
+          </motion.div>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-16">
+            <span className="inline-block px-4 py-1 rounded-full bg-green-100 text-green-700 font-bold text-xs tracking-widest uppercase mb-4 border border-green-200">
+              Join The Family
+            </span>
+            <h2 className="text-4xl md:text-5xl font-black text-neutral-800 font-handwriting mb-4">Your Journey Starts Here</h2>
+            <p className="text-lg text-neutral-600 max-w-2xl mx-auto">Follow these simple steps to become part of the Basil Woods Juniors family.</p>
           </div>
 
-          <div className="max-w-4xl mx-auto">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-8 relative">
-              {/* Path Line */}
-              <div className="absolute top-1/2 left-0 w-full h-2 border-t-4 border-dotted border-green-300 -translate-y-1/2 hidden md:block z-0" />
+          <div className="max-w-5xl mx-auto">
+            <div className="relative">
+              {/* Desktop Connecting Line */}
+              <div className="hidden md:block absolute top-[60px] left-0 w-full h-24 overflow-visible pointer-events-none z-0">
+                <svg className="w-full h-full" preserveAspectRatio="none">
+                  <motion.path
+                    d="M 100,20 Q 300,80 500,20 T 900,20"
+                    fill="none"
+                    stroke="#86efac"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                    strokeDasharray="10 10"
+                    initial={{ pathLength: 0 }}
+                    whileInView={{ pathLength: 1 }}
+                    transition={{ duration: 2, ease: "easeInOut" }}
+                  />
+                </svg>
+              </div>
 
-              {[
-                { step: "1", text: "Apply" },
-                { step: "2", text: "Screening" },
-                { step: "3", text: "Interview" },
-                { step: "4", text: "Welcome" }
-              ].map((s, i) => (
-                <div key={i} className="relative z-10 flex flex-col items-center bg-[#f0fdf4] p-4">
-                  <div className="w-16 h-16 rounded-full bg-white border-4 border-green-400 flex items-center justify-center text-2xl font-black text-green-600 shadow-md mb-3">
-                    {s.step}
-                  </div>
-                  <span className="font-bold text-neutral-700">{s.text}</span>
-                </div>
-              ))}
+
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
+                {[
+                  { step: "1", text: "Apply", desc: "Send us your CV", icon: FileText, color: "bg-blue-100 text-blue-600 border-blue-300" },
+                  { step: "2", text: "Screening", desc: "We review your profile", icon: ScanSearch, color: "bg-purple-100 text-purple-600 border-purple-300" },
+                  { step: "3", text: "Interview", desc: "Let's get to know you", icon: MessagesSquare, color: "bg-orange-100 text-orange-600 border-orange-300" },
+                  { step: "4", text: "Welcome", desc: "Start your journey", icon: PartyPopper, color: "bg-green-100 text-green-600 border-green-300" }
+                ].map((s, i) => {
+                  const Icon = s.icon;
+                  return (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, y: 50 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.2, type: "spring", bounce: 0.5 }}
+                      className="flex flex-col items-center text-center group"
+                    >
+                      <motion.div
+                        whileHover={{ scale: 1.1, rotate: [0, -5, 5, 0] }}
+                        className={`w-28 h-28 rounded-full ${s.color} border-4 border-white shadow-xl flex items-center justify-center mb-6 relative`}
+                      >
+                        <Icon className="w-12 h-12" strokeWidth={1.5} />
+                        <div className="absolute -top-2 -right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md border border-neutral-100 font-bold text-neutral-400 text-sm">
+                          {s.step}
+                        </div>
+                      </motion.div>
+
+                      <h3 className="text-xl font-black text-neutral-800 font-handwriting mb-2">{s.text}</h3>
+                      <p className="text-sm text-neutral-500 font-medium">{s.desc}</p>
+                    </motion.div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
-      </section >
+      </section>
 
       {/* CTA - "Join Family" */}
       < section className="py-20 bg-white" >

@@ -2,7 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import WaveDivider from "@/components/ui/wave-divider";
-import { Star, Heart, Clock, Cloud, Sun, Sparkles, Music, Palette, Footprints } from "lucide-react";
+import { Star, Heart, Clock, Cloud, Sun, Sparkles, Music, Palette, Footprints, BookOpen, Users, Book, Bus, TreePine, Lightbulb, Paintbrush } from "lucide-react";
 
 // Import Images
 import ActivityPeriodImg from "../assets/Images/Interior13.webp";
@@ -21,6 +21,9 @@ const ProgramsSection = () => {
       time: "9:00 AM",
       description: "Our day begins with a warm welcome! Children transition from home to school with excitement, engaging in free play with puzzles, blocks, and sensory bins to settle in comfortably.",
       image: ActivityPeriodImg,
+      icon: Sparkles,
+      iconColor: "text-blue-600",
+      bubbleBg: "bg-gradient-to-br from-blue-100 to-blue-200",
       color: "bg-yellow-50",
       border: "border-yellow-400",
       text: "text-yellow-700"
@@ -30,6 +33,9 @@ const ProgramsSection = () => {
       time: "9:30 AM",
       description: "A time for connection! We gather to sing our 'Good Morning' songs, discuss the day's calendar, weather, and share special news, building confidence and social skills.",
       image: CircleTimeImg,
+      icon: Users,
+      iconColor: "text-green-600",
+      bubbleBg: "bg-gradient-to-br from-green-100 to-green-200",
       color: "bg-yellow-50",
       border: "border-yellow-400",
       text: "text-yellow-700"
@@ -39,6 +45,9 @@ const ProgramsSection = () => {
       time: "10:00 AM",
       description: "Unlock the magic of reading! We use the multi-sensory 'Jolly Phonics' method to explore sounds, letters, and blending, laying a strong foundation for early literacy.",
       image: PhonicsImg,
+      icon: BookOpen,
+      iconColor: "text-amber-600",
+      bubbleBg: "bg-gradient-to-br from-amber-100 to-amber-200",
       color: "bg-pink-50",
       border: "border-pink-400",
       text: "text-pink-700"
@@ -48,6 +57,9 @@ const ProgramsSection = () => {
       time: "10:30 AM",
       description: "Imaginations soar! Puppets and props bring stories to life, fostering a love for books, enhancing listening skills, and expanding vocabulary in a magical setting.",
       image: StoryTimeImg,
+      icon: Book,
+      iconColor: "text-rose-600",
+      bubbleBg: "bg-gradient-to-br from-rose-100 to-rose-200",
       color: "bg-yellow-50",
       border: "border-yellow-400",
       text: "text-yellow-700"
@@ -57,6 +69,9 @@ const ProgramsSection = () => {
       time: "11:00 AM",
       description: "Learning beyond walls! Carefully planned excursions to parks, museums, and local community helpers provide real-world experiences that spark curiosity and wonder.",
       image: FieldTripsImg,
+      icon: Bus,
+      iconColor: "text-blue-600",
+      bubbleBg: "bg-gradient-to-br from-blue-100 to-blue-200",
       color: "bg-yellow-50",
       border: "border-yellow-400",
       text: "text-yellow-700"
@@ -66,6 +81,9 @@ const ProgramsSection = () => {
       time: "11:30 AM",
       description: "Active bodies, happy minds! Running, climbing, and team games helps develop gross motor skills, coordination, and teamwork while enjoying the fresh air and sunshine.",
       image: OutdoorPlayImg,
+      icon: TreePine,
+      iconColor: "text-green-600",
+      bubbleBg: "bg-gradient-to-br from-green-100 to-green-200",
       color: "bg-yellow-50",
       border: "border-yellow-400",
       text: "text-yellow-700"
@@ -75,6 +93,9 @@ const ProgramsSection = () => {
       time: "12:00 PM",
       description: "Deep dives into discovery! We explore monthly themes like 'Space', 'Our Community', or 'Seasons' through interactive projects, science experiments, and role-play.",
       image: ThemeTimeImg,
+      icon: Lightbulb,
+      iconColor: "text-amber-600",
+      bubbleBg: "bg-gradient-to-br from-amber-100 to-amber-200",
       color: "bg-yellow-50",
       border: "border-yellow-400",
       text: "text-yellow-700"
@@ -84,6 +105,9 @@ const ProgramsSection = () => {
       time: "12:30 PM",
       description: "Creativity unleashed! Little hands get busy with paints, clay, collage, and recycled materials, expressing themselves and developing fine motor control with every masterpiece.",
       image: ArtCraftImg,
+      icon: Paintbrush,
+      iconColor: "text-rose-600",
+      bubbleBg: "bg-gradient-to-br from-rose-100 to-rose-200",
       color: "bg-yellow-50",
       border: "border-yellow-400",
       text: "text-yellow-700"
@@ -187,18 +211,15 @@ const ProgramsSection = () => {
                   transition={{ delay: index * 0.2 }}
                   className="relative pl-20 md:pl-32"
                 >
-                  {/* Time Bubble */}
+                  {/* Icon Bubble */}
                   <div className="absolute left-0 top-0 z-20">
-                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-white shadow-lg bg-blue-50 flex items-center justify-center text-center p-1 transform -rotate-12 hover:rotate-0 transition-transform duration-300">
-                      <div className="leading-none">
-                        <Clock className="w-4 h-4 mx-auto mb-1 text-blue-600" />
-                        <span className="block text-[10px] md:text-xs font-bold text-blue-800">{item.time}</span>
-                      </div>
+                    <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-white shadow-lg ${item.bubbleBg} flex items-center justify-center text-center p-1 transform -rotate-12 hover:rotate-0 hover:scale-110 transition-all duration-300`}>
+                      <item.icon className={`w-8 h-8 md:w-10 md:h-10 ${item.iconColor}`} strokeWidth={2} />
                     </div>
                   </div>
 
                   {/* Connector */}
-                  <div className="absolute left-16 top-8 w-8 md:w-16 h-1 bg-blue-200 border-t-2 border-dashed border-orange-300" />
+                  <div className="absolute left-16 top-8 w-8 md:w-16 h-1 bg-blue-200 border-t-2 border-dashed border-blue-300" />
 
                   {/* Card */}
                   <div className={`
@@ -244,13 +265,10 @@ const ProgramsSection = () => {
                   transition={{ delay: index * 0.2 }}
                   className="relative pl-20 md:pl-32"
                 >
-                  {/* Time Bubble */}
+                  {/* Icon Bubble */}
                   <div className="absolute left-0 top-0 z-20">
-                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-white shadow-lg bg-blue-50 flex items-center justify-center text-center p-1 transform rotate-6 hover:rotate-0 transition-transform duration-300">
-                      <div className="leading-none">
-                        <Clock className="w-4 h-4 mx-auto mb-1 text-blue-600" />
-                        <span className="block text-[10px] md:text-xs font-bold text-blue-800">{item.time}</span>
-                      </div>
+                    <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-white shadow-lg ${item.bubbleBg} flex items-center justify-center text-center p-1 transform rotate-6 hover:rotate-0 hover:scale-110 transition-all duration-300`}>
+                      <item.icon className={`w-8 h-8 md:w-10 md:h-10 ${item.iconColor}`} strokeWidth={2} />
                     </div>
                   </div>
 
