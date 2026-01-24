@@ -276,18 +276,18 @@ const ProgramsPage = () => {
           </motion.div> */}
           {/* Boy School Vector */}
           <motion.div
-            className="absolute top-10 -right-60 hidden xl:block pointer-events-none opacity-80"
+            className="absolute top-28 right-[-34px] md:top-36 md:right-[-74px] lg:top-44 lg:right-[-106px] xl:right-[-154px] pointer-events-none opacity-70 md:opacity-80"
             animate={{ y: [0, -10, 0], rotate: [0, -2, 0] }}
             transition={{ duration: 5, repeat: Infinity }}
           >
-            <img src={boySchoolImg} alt="Student" className="w-80 drop-shadow-md" />
+            <img src={boySchoolImg} alt="Student" className="w-32 md:w-48 lg:w-64 xl:w-80 drop-shadow-md" />
           </motion.div>
           <Badge className="bg-white text-orange-600 border-2 border-orange-400 px-4 py-1 text-sm font-bold rounded-full mb-6 shadow-sm">
             Enrichment Activities
           </Badge>
           <h2 className="text-4xl font-black text-[hsl(var(--brand-dark-green))] mb-12 font-handwriting drop-shadow-md">Earn Your Badges!</h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {specialPrograms.map((p, i) => {
               const Icon = p.icon;
               return (
@@ -311,9 +311,8 @@ const ProgramsPage = () => {
       <section className="py-20 bg-[#f4f7ff]">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto relative">
-            {/* Boys Playing - Right */}
             <motion.div
-              className="absolute -bottom-20 -right-96 hidden xl:block pointer-events-none"
+              className="absolute -bottom-32 right-[-40px] md:right-[-100px] lg:right-[-160px] xl:right-[-240px] pointer-events-none opacity-80"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -322,7 +321,7 @@ const ProgramsPage = () => {
               <motion.img
                 src={toddlerBoysImg}
                 alt="Boys Playing"
-                className="w-96 h-auto drop-shadow-xl"
+                className="w-48 md:w-64 lg:w-80 xl:w-96 h-auto drop-shadow-xl"
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
               />
