@@ -4,27 +4,29 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Play, Sparkles, Star, Heart, ArrowRight, Calendar, Music, Palette, Puzzle } from "lucide-react";
 import WaveDivider from "@/components/ui/wave-divider";
-import { DoodleSun, DoodleCloud, DoodleBird, DoodlePencil, DoodleBook, DoodleRocket, DoodleBulb } from "@/components/ui/doodles";
+import VideoModal from "@/components/ui/video-modal";
 import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, animate, useInView } from "framer-motion";
 import { FaWhatsapp } from 'react-icons/fa';
-import VideoModal from "@/components/ui/video-modal";
+import { DoodleSun, DoodleCloud, DoodleBird, DoodlePencil, DoodleBook, DoodleRocket, DoodleBulb, DoodleSparkle } from "@/components/ui/doodles";
+
+const phoneNumber = "918056179108";
 
 /* Import images */
+import happyBoyImg from "../assets/Images/demo.png";
 import picture1 from "../assets/Images/Hero1.png";
 import picture2 from "../assets/Images/Hero2.png";
 import picture3 from "../assets/Images/Hero3.png";
-import happyBoyImg from "../assets/Images/demo.png";
-
-const phoneNumber = "918056179108";
-const handleWhatsAppRedirect = () => {
-  window.open(`https://wa.me/${phoneNumber}`, "_blank");
-};
-
+import montessoriTree from "../assets/Images/montessori-tree-final.png";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 
 const HeroSection = () => {
   const navigate = useNavigate();
   const [isVideoOpen, setIsVideoOpen] = useState(false);
+  
+  const handleWhatsAppRedirect = () => {
+    window.open(`https://wa.me/${phoneNumber}`, "_blank");
+  };
+
   const heroContent = [
     {
       titlePrefix: "Where Little",
@@ -82,7 +84,7 @@ const HeroSection = () => {
         >
           {Array(2).fill(null).map((_, i) => (
             <div key={i} className="flex items-center gap-8 px-4 text-black font-bold text-sm md:text-base font-handwriting tracking-wide">
-              <span>Basil Woods Juniors International preschool & Day care @ Thiruvanmiyur, Chennai</span>
+              <span>Basil Woods Juniors International Preschool & Day care @ Thiruvanmiyur, Chennai</span>
               {/* <span className="text-[hsl(var(--premium-orange))] font-extrabold">•</span> */}
               <span className="uppercase text-[hsl(var(--brand-dark-green))]">Admissions Open 2026-2027</span>
               {/* <span className="text-[hsl(var(--premium-orange))] font-extrabold">•</span> */}
@@ -174,7 +176,7 @@ const HeroSection = () => {
             </div>
 
             <motion.div
-              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 md:gap-6 pt-6 lg:pt-24 relative"
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 md:gap-6 pt-6 lg:pt-24 relative lg:pl-40 pl-12"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -206,7 +208,7 @@ const HeroSection = () => {
 
             {/* Trust Indicators - Redesigned */}
             <motion.div
-              className="pt-6 md:pt-12 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6"
+              className="pt-6 md:pt-12 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 lg:pl-40 pl-12"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
@@ -278,8 +280,9 @@ const HeroSection = () => {
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               >
-                <div className="bg-[hsl(var(--light-pink))] p-2 md:p-3 rounded-full border-2 border-black">
+                <div className="bg-[hsl(var(--light-pink))] p-2 md:p-3 rounded-full border-2 border-black relative">
                   <Star className="w-4 h-4 md:w-6 md:h-6 text-yellow-400 fill-yellow-400" />
+                  <DoodleSparkle className="w-6 h-6 absolute -top-2 -right-2 text-yellow-400 animate-pulse" />
                 </div>
                 <div>
                   <div className="text-[10px] md:text-xs text-neutral-500 font-black uppercase tracking-wider">Rated #1</div>
@@ -287,13 +290,13 @@ const HeroSection = () => {
                 </div>
               </motion.div>
 
-              {/* Decorative Star */}
+              {/* Decorative Montessori Tree */}
               <motion.div
-                className="absolute -top-6 -right-6 md:-top-10 md:-right-10 text-yellow-400 z-20"
-                animate={{ rotate: [0, 180, 0], scale: [1, 1.2, 1] }}
-                transition={{ duration: 5, repeat: Infinity }}
+                className="absolute -top-12 -right-8 md:-top-20 md:-right-12 z-20 pointer-events-none"
+                animate={{ rotate: [0, 3, 0, -3, 0], scale: [1, 1.05, 1] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
               >
-                <Star className="w-20 h-20 fill-yellow-400 stroke-black stroke-2" />
+                <img src={montessoriTree} alt="Montessori Growth" className="w-28 h-28 md:w-40 md:h-40 drop-shadow-xl object-contain" />
               </motion.div>
             </motion.div>
           </div>
@@ -310,17 +313,17 @@ const HeroSection = () => {
 
       {/* Universal Happy Boy Vector - Fixed Position Left */}
       <motion.div
-        initial={{ opacity: 0, x: -50 }}
+        initial={{ opacity: 0, x: -20 }}
         animate={{
           opacity: 1,
-          x: -50,
+          x: 0,
           y: [0, -15, 0]
         }}
         transition={{
           opacity: { duration: 0.6, delay: 0.5 },
           y: { duration: 3, repeat: Infinity, ease: "easeInOut" }
         }}
-        className="absolute left-0 bottom-4 md:bottom-0 w-28 md:w-56 lg:w-64 z-20 pointer-events-none"
+        className="absolute left-2 md:left-4 bottom-4 md:bottom-0 w-24 md:w-56 lg:w-64 z-20 pointer-events-none"
       >
         <img src={happyBoyImg} alt="Happy School Boy" className="w-full h-auto drop-shadow-xl transform scale-x-[-1]" />
       </motion.div>

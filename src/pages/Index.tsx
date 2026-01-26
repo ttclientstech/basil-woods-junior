@@ -17,7 +17,7 @@ const Index = () => {
   useSEO({
     title: "Best Preschool & Daycare Chennai | Play-Based Learning",
     description: "Award-winning preschool in Chennai offering holistic child development for ages 18 months to 6 years. Play-based learning with Tamil cultural values. Admissions open 2025-26! 15+ years of excellence, 500+ happy families.",
-    keywords: "preschool Chennai, daycare Chennai, best preschool Chennai, kindergarten Chennai, play school Chennai, Tamil Nadu preschool, early childhood education Chennai, Basil Woods Juniors, playgroup Chennai, Montessori Chennai",
+    keywords: "Preschool Chennai, daycare Chennai, best preschool Chennai, kindergarten Chennai, play school Chennai, Tamil Nadu preschool, early childhood education Chennai, Basil Woods Juniors, playgroup Chennai, Montessori Chennai",
     canonical: "https://www.basilwoodschennai.in/"
   });
 

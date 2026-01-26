@@ -9,10 +9,10 @@ interface DoodleProps extends React.SVGProps<SVGSVGElement> {
 
 // --- NATURE ELEMENTS ---
 
-export const DoodleSun = ({ className, fillColor = "none", strokeColor = "currentColor", ...props }: DoodleProps) => (
+export const DoodleSun = ({ className, fillColor = "#FBBF24", strokeColor = "#FBBF24", ...props }: DoodleProps) => (
     <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className={cn("w-24 h-24", className)} {...props}>
-        <circle cx="50" cy="50" r="20" stroke={strokeColor} strokeWidth="3" fill={fillColor} strokeLinecap="round" />
-        <path d="M50 20V10M50 90V80M20 50H10M90 50H80M29 29L22 22M78 78L71 71M29 71L22 78M78 22L71 29" stroke={strokeColor} strokeWidth="3" strokeLinecap="round" />
+        <circle cx="50" cy="50" r="20" stroke={strokeColor} strokeWidth="5" fill={fillColor} strokeLinecap="round" />
+        <path d="M50 20V10M50 90V80M20 50H10M90 50H80M29 29L22 22M78 78L71 71M29 71L22 78M78 22L71 29" stroke={strokeColor} strokeWidth="6" strokeLinecap="round" />
     </svg>
 );
 
@@ -120,6 +120,44 @@ export const DoodleRocket = ({ className, ...props }: DoodleProps) => (
     </svg>
 );
 
+export const DoodleCar = ({ className, strokeColor = "currentColor", ...props }: DoodleProps) => (
+    <svg viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg" className={cn("w-28 h-20", className)} {...props}>
+        {/* Car Body - Rounder Hatchback/Van inspired by reference */}
+        <path 
+          d="M15 50 L 10 50 L 10 35 Q 10 20 30 15 L 50 10 Q 70 5 90 12 Q 105 18 105 35 L 105 50 L 100 50" 
+          stroke={strokeColor} 
+          strokeWidth="3" 
+          strokeLinecap="round" 
+          strokeLinejoin="round" 
+        />
+        <path d="M15 50 H 100" stroke={strokeColor} strokeWidth="3" />
+        
+        {/* Windows */}
+        <path d="M35 18 Q 60 12 85 18" stroke={strokeColor} strokeWidth="2.5" strokeLinecap="round" fill="none" opacity="0.6"/>
+        
+        {/* Wheels */}
+        <circle cx="30" cy="50" r="7" stroke={strokeColor} strokeWidth="3" />
+        <circle cx="85" cy="50" r="7" stroke={strokeColor} strokeWidth="3" />
+        
+        {/* Blue Waves Underneath */}
+        <path 
+           d="M 25 65 Q 40 75 55 60 T 85 65" 
+           stroke="#3B82F6" 
+           strokeWidth="3" 
+           strokeLinecap="round"
+           fill="none"
+        />
+        <path 
+           d="M 28 72 Q 43 82 58 67 T 88 72" 
+           stroke="#60A5FA" 
+           strokeWidth="3" 
+           strokeLinecap="round"
+           fill="none"
+           opacity="0.8"
+        />
+    </svg>
+);
+
 // --- VEDIC & CULTURAL MOTIFS ---
 
 export const DoodlePeacockFeather = ({ className, fillColor = "none", strokeColor = "currentColor", ...props }: DoodleProps) => (
@@ -205,5 +243,198 @@ export const DoodleReadingBoy = ({ className, ...props }: DoodleProps) => (
 
         {/* Pencil in Hand */}
         <path d="M134 165 L 130 145 L 135 140" stroke="#FBBF24" strokeWidth="4" strokeLinecap="round" />
+    </svg>
+);
+
+export const DoodleGraduationCap = ({ className, strokeColor = "currentColor", ...props }: DoodleProps) => (
+    <svg viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg" className={cn("w-20 h-16", className)} {...props}>
+        {/* Shadow layer for depth */}
+        <path d="M10 35 L 50 15 L 90 35 L 50 55 Z" fill="black" opacity="0.05" transform="translate(2, 2)" />
+        {/* Main Cap Top */}
+        <path d="M10 35 L 50 15 L 90 35 L 50 55 Z" fill="#1F2937" stroke={strokeColor} strokeWidth="2.5" />
+        {/* Bottom Part */}
+        <path d="M30 46 V 56 Q 50 62 70 56 V 46" fill="#374151" stroke={strokeColor} strokeWidth="2.5" strokeLinejoin="round" />
+        {/* Tassel */}
+        <path d="M50 35 L 90 35 L 95 60" stroke="#FBBF24" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+        <path d="M92 60 H 98 L 95 70 Z" fill="#FBBF24" stroke={strokeColor} strokeWidth="1" />
+    </svg>
+);
+
+export const DoodleSchoolBus = ({ className, strokeColor = "currentColor", ...props }: DoodleProps) => (
+    <svg viewBox="0 0 140 100" fill="none" xmlns="http://www.w3.org/2000/svg" className={cn("w-32 h-24", className)} {...props}>
+        {/* Bus Body */}
+        <path d="M10 70 V 30 Q 10 15 25 10 H 115 Q 130 10 130 25 V 70 H 10" fill="#FBBF24" stroke={strokeColor} strokeWidth="3" />
+        {/* Stripe */}
+        <path d="M10 50 H 130" stroke="#1F2937" strokeWidth="4" opacity="0.8" />
+        {/* Windows */}
+        <rect x="25" y="20" width="20" height="20" rx="3" fill="#BFDBFE" stroke={strokeColor} strokeWidth="2" />
+        <rect x="55" y="20" width="20" height="20" rx="3" fill="#BFDBFE" stroke={strokeColor} strokeWidth="2" />
+        <rect x="85" y="20" width="20" height="20" rx="3" fill="#BFDBFE" stroke={strokeColor} strokeWidth="2" />
+        {/* Lights */}
+        <circle cx="120" cy="60" r="4" fill="#EF4444" stroke={strokeColor} strokeWidth="1" />
+        <circle cx="20" cy="60" r="4" fill="#FDE68A" stroke={strokeColor} strokeWidth="1" />
+        {/* Wheels */}
+        <circle cx="40" cy="75" r="10" fill="#1F2937" stroke={strokeColor} strokeWidth="3" />
+        <circle cx="40" cy="75" r="4" fill="#9CA3AF" />
+        <circle cx="100" cy="75" r="10" fill="#1F2937" stroke={strokeColor} strokeWidth="3" />
+        <circle cx="100" cy="75" r="4" fill="#9CA3AF" />
+    </svg>
+);
+
+export const DoodleGlobe = ({ className, strokeColor = "currentColor", ...props }: DoodleProps) => (
+    <svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg" className={cn("w-24 h-28", className)} {...props}>
+        {/* Stand */}
+        <path d="M20 100 Q 10 110 50 110 Q 90 110 80 100" fill="#4B5563" stroke={strokeColor} strokeWidth="3" />
+        <path d="M50 110 V 90" stroke={strokeColor} strokeWidth="3" />
+        <path d="M15 50 A 35 35 0 0 0 85 50" stroke="#9CA3AF" strokeWidth="4" fill="none" opacity="0.3" transform="rotate(-30 50 50)" />
+        {/* Sphere */}
+        <circle cx="50" cy="50" r="35" fill="#BFDBFE" stroke={strokeColor} strokeWidth="3" />
+        {/* Continents (Simplified) */}
+        <path d="M30 35 Q 40 25 55 35 Q 65 45 45 60 Q 30 55 30 35" fill="#34D399" opacity="0.6" />
+        <path d="M65 55 Q 75 65 60 75 Q 50 65 65 55" fill="#34D399" opacity="0.6" />
+        {/* Axis */}
+        <line x1="50" y1="10" x2="50" y2="90" stroke={strokeColor} strokeWidth="2" transform="rotate(-23 50 50)" />
+    </svg>
+);
+
+export const DoodleMontessoriTower = ({ className, ...props }: DoodleProps) => (
+    <svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg" className={cn("w-32 h-40", className)} {...props}>
+        {/* Montessori Pink Tower - Stack of vibrant pink cubes */}
+        <rect x="40" y="10" width="20" height="20" rx="2" fill="#F472B6" stroke="#DB2777" strokeWidth="1" />
+        <rect x="35" y="30" width="30" height="25" rx="2" fill="#F472B6" stroke="#DB2777" strokeWidth="1" />
+        <rect x="30" y="55" width="40" height="30" rx="2" fill="#F472B6" stroke="#DB2777" strokeWidth="1" />
+        <rect x="25" y="85" width="50" height="35" rx="2" fill="#F472B6" stroke="#DB2777" strokeWidth="1" />
+        {/* Shading/Highlights */}
+        <rect x="42" y="12" width="6" height="16" fill="white" opacity="0.3" rx="1" />
+        <rect x="37" y="32" width="8" height="21" fill="white" opacity="0.3" rx="1" />
+        <rect x="32" y="57" width="10" height="26" fill="white" opacity="0.3" rx="1" />
+        <rect x="27" y="87" width="12" height="31" fill="white" opacity="0.3" rx="1" />
+    </svg>
+);
+
+export const DoodleMontessoriAbacus = ({ className, ...props }: DoodleProps) => (
+    <svg viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg" className={cn("w-32 h-24", className)} {...props}>
+        {/* Frame */}
+        <rect x="10" y="10" width="100" height="80" rx="5" stroke="#713F12" strokeWidth="4" />
+        <line x1="10" y1="30" x2="110" y2="30" stroke="#713F12" strokeWidth="2" />
+        <line x1="10" y1="50" x2="110" y2="50" stroke="#713F12" strokeWidth="2" />
+        <line x1="10" y1="70" x2="110" y2="70" stroke="#713F12" strokeWidth="2" />
+        {/* Beads */}
+        <circle cx="25" cy="30" r="5" fill="#EF4444" stroke="#B91C1C" strokeWidth="1" />
+        <circle cx="38" cy="30" r="5" fill="#EF4444" stroke="#B91C1C" strokeWidth="1" />
+        <circle cx="85" cy="50" r="5" fill="#3B82F6" stroke="#1D4ED8" strokeWidth="1" />
+        <circle cx="98" cy="50" r="5" fill="#3B82F6" stroke="#1D4ED8" strokeWidth="1" />
+        <circle cx="45" cy="70" r="5" fill="#F59E0B" stroke="#B45309" strokeWidth="1" />
+        <circle cx="58" cy="70" r="5" fill="#F59E0B" stroke="#B45309" strokeWidth="1" />
+        <circle cx="71" cy="70" r="5" fill="#F59E0B" stroke="#B45309" strokeWidth="1" />
+    </svg>
+);
+
+export const DoodleMontessoriShapes = ({ className, ...props }: DoodleProps) => (
+    <svg viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg" className={cn("w-24 h-20", className)} {...props}>
+        {/* Circle Inset */}
+        <rect x="5" y="15" width="40" height="40" rx="4" fill="#E5E7EB" stroke="#9CA3AF" strokeWidth="1" />
+        <circle cx="25" cy="35" r="12" fill="#3B82F6" stroke="#1D4ED8" strokeWidth="2" />
+        {/* Triangle Inset */}
+        <rect x="55" y="15" width="40" height="40" rx="4" fill="#E5E7EB" stroke="#9CA3AF" strokeWidth="1" />
+        <path d="M75 22 L 65 48 H 85 Z" fill="#EF4444" stroke="#B91C1C" strokeWidth="2" strokeLinejoin="round" />
+    </svg>
+);
+
+export const DoodleHotAirBalloon = ({ className, strokeColor = "currentColor", ...props }: DoodleProps) => (
+    <svg viewBox="0 0 100 130" fill="none" xmlns="http://www.w3.org/2000/svg" className={cn("w-24 h-32", className)} {...props}>
+        {/* Balloon */}
+        <path d="M50 5 C 20 5, 5 30, 5 55 C 5 80, 30 95, 42 100 L 44 110 H 56 L 58 100 C 70 95, 95 80, 95 55 C 95 30, 80 5, 50 5 Z" fill="#F472B6" stroke={strokeColor} strokeWidth="3" strokeLinejoin="round" />
+        
+        {/* Decorative Patterns */}
+        <path d="M50 5 V 100" stroke={strokeColor} strokeWidth="2" strokeDasharray="4 3" opacity="0.6" />
+        <path d="M12 40 Q 50 65 88 40" stroke={strokeColor} strokeWidth="2" fill="none" />
+        <path d="M8 60 Q 50 85 92 60" stroke={strokeColor} strokeWidth="2" fill="none" />
+        
+        {/* Ropes */}
+        <line x1="44" y1="110" x2="42" y2="120" stroke={strokeColor} strokeWidth="2" />
+        <line x1="56" y1="110" x2="58" y2="120" stroke={strokeColor} strokeWidth="2" />
+        
+        {/* Basket */}
+        <rect x="40" y="118" width="20" height="12" rx="2" fill="#D97706" stroke={strokeColor} strokeWidth="2.5" />
+        <line x1="40" y1="124" x2="60" y2="124" stroke={strokeColor} strokeWidth="1" opacity="0.5" />
+        
+        {/* Highlights */}
+        <path d="M25 25 Q 35 15 45 25" stroke="white" strokeWidth="3" opacity="0.4" fill="none" strokeLinecap="round" />
+    </svg>
+);
+
+export const DoodleNamasteBoy = ({ className, ...props }: DoodleProps) => (
+    <svg viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg" className={cn("w-64 h-80", className)} {...props}>
+        {/* Head */}
+        <circle cx="100" cy="55" r="30" fill="#FFE4C4" stroke="#1F2937" strokeWidth="3" />
+        
+        {/* Hair - Spiky/Neat */}
+        <path d="M70 50 C 70 20, 85 15, 100 15 C 115 15, 130 20, 130 50 C 130 50, 130 40, 120 35 C 110 45, 100 45, 100 45 C 100 45, 90 45, 80 35 C 70 40, 70 50, 70 50" fill="#1F2937" stroke="#1F2937" strokeWidth="3" strokeLinejoin="round" />
+
+        {/* Eyes (Smiling) */}
+        <path d="M88 60 Q 92 63, 96 60" stroke="#1F2937" strokeWidth="2.5" fill="none" />
+        <path d="M104 60 Q 108 63, 112 60" stroke="#1F2937" strokeWidth="2.5" fill="none" />
+        
+        {/* Mouth (Smile) */}
+        <path d="M92 72 Q 100 78, 108 72" stroke="#1F2937" strokeWidth="2" strokeLinecap="round" fill="none" />
+        
+        {/* Tilak */}
+        <path d="M100 45 L 100 52" stroke="#EF4444" strokeWidth="3" strokeLinecap="round" />
+
+        {/* Body - Traditional Kurta */}
+        <path d="M75 85 L 60 180 H 140 L 125 85 C 125 85, 115 90, 100 90 C 85 90, 75 85, 75 85" fill="#FDE047" stroke="#1F2937" strokeWidth="3" strokeLinejoin="round" />
+        
+        {/* Collar/Neck Design */}
+        <path d="M100 90 V 130" stroke="#1F2937" strokeWidth="2" />
+        <circle cx="100" cy="100" r="2" fill="#1F2937" />
+        <circle cx="100" cy="115" r="2" fill="#1F2937" />
+
+        {/* Sleeves */}
+        <path d="M75 90 L 50 130 L 70 140 L 85 105" fill="#FDE047" stroke="#1F2937" strokeWidth="3" strokeLinejoin="round" />
+        <path d="M125 90 L 150 130 L 130 140 L 115 105" fill="#FDE047" stroke="#1F2937" strokeWidth="3" strokeLinejoin="round" />
+
+        {/* Hands - Namaste Pose */}
+        <g transform="translate(100, 125)">
+             {/* Left Hand */}
+             <path d="M-5 25 C -15 20, -15 0, -5 -15 C 0 -20, 5 -15, 5 -15" fill="#FFE4C4" stroke="#1F2937" strokeWidth="2.5" />
+             {/* Right Hand */}
+             <path d="M5 25 C 15 20, 15 0, 5 -15" fill="#FFE4C4" stroke="#1F2937" strokeWidth="2.5" />
+             {/* Palms joined line */}
+             <path d="M0 -15 V 25" stroke="#1F2937" strokeWidth="2" opacity="0.6" />
+        </g>
+        
+        {/* Legs/Pajama */}
+        <path d="M70 180 L 70 230 H 95 L 95 180" fill="white" stroke="#1F2937" strokeWidth="3" />
+        <path d="M105 180 L 105 230 H 130 L 130 180" fill="white" stroke="#1F2937" strokeWidth="3" />
+
+        {/* Shoes */}
+        <path d="M70 230 H 98 V 235 Q 98 240, 90 240 H 70 V 230" fill="#4B5563" stroke="#1F2937" strokeWidth="2.5" />
+        <path d="M102 230 H 130 V 240 H 110 Q 102 240, 102 235 V 230" fill="#4B5563" stroke="#1F2937" strokeWidth="2.5" />
+
+    </svg>
+);
+
+export const DoodleMandala = ({ className, strokeColor = "currentColor", ...props }: DoodleProps) => (
+    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className={cn("w-full h-full", className)} {...props}>
+        {/* Outer Ring */}
+        <circle cx="100" cy="100" r="90" stroke={strokeColor} strokeWidth="1" strokeDasharray="4 4" opacity="0.5" />
+        <circle cx="100" cy="100" r="80" stroke={strokeColor} strokeWidth="0.5" />
+        
+        {/* Petals */}
+        <path d="M100 20 Q 120 60 100 100 Q 80 60 100 20" stroke={strokeColor} strokeWidth="1" opacity="0.6" />
+        <path d="M100 180 Q 120 140 100 100 Q 80 140 100 180" stroke={strokeColor} strokeWidth="1" opacity="0.6" />
+        <path d="M20 100 Q 60 80 100 100 Q 60 120 20 100" stroke={strokeColor} strokeWidth="1" opacity="0.6" />
+        <path d="M180 100 Q 140 80 100 100 Q 140 120 180 100" stroke={strokeColor} strokeWidth="1" opacity="0.6" />
+        
+        {/* Diagonal Petals */}
+        <path d="M43 43 Q 80 80 100 100 Q 60 100 43 43" stroke={strokeColor} strokeWidth="1" opacity="0.6" />
+        <path d="M157 157 Q 120 120 100 100 Q 140 100 157 157" stroke={strokeColor} strokeWidth="1" opacity="0.6" />
+        <path d="M43 157 Q 80 120 100 100 Q 60 100 43 157" stroke={strokeColor} strokeWidth="1" opacity="0.6" />
+        <path d="M157 43 Q 120 80 100 100 Q 140 100 157 43" stroke={strokeColor} strokeWidth="1" opacity="0.6" />
+
+        {/* Center Details */}
+        <circle cx="100" cy="100" r="15" stroke={strokeColor} strokeWidth="2" />
+        <circle cx="100" cy="100" r="5" fill={strokeColor} />
     </svg>
 );

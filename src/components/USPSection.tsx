@@ -1,7 +1,7 @@
 
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
-import { Building2, Building, MapPin, BookOpen, Trophy, GraduationCap, Sprout, Star, Heart } from "lucide-react";
+import { Building2, Building, MapPin, BookOpen, Trophy, GraduationCap, Sprout, Star, Heart, Sparkles } from "lucide-react";
 import WaveDivider from "@/components/ui/wave-divider";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import playingChildrenImg from "../assets/Images/boyplay.png";
@@ -10,9 +10,9 @@ import { StarDoodle, DoodleCloud, DoodleSun, DoodlePencil, DoodleSparkle, Doodle
 
 const USPSection = () => {
   const stats = [
-    { value: 11, suffix: "", label: "Preschools" },
-    { value: 6, suffix: "", label: "Cities" },
-    { value: 4, suffix: "", label: "States" },
+    { value: 11, suffix: "", label: "Preschools", rotate: "-rotate-3", icon: Star, iconColor: "text-yellow-400" },
+    { value: 6, suffix: "", label: "Cities", rotate: "rotate-2", icon: Heart, iconColor: "text-pink-400" },
+    { value: 4, suffix: "", label: "States", rotate: "-rotate-3", icon: Sparkles, iconColor: "text-blue-400" },
   ];
 
   const advantages = [
@@ -27,7 +27,7 @@ const USPSection = () => {
     },
     {
       title: "Award-Winning Program",
-      description: "Consistently recognized among India's top preschools by Education Today, achieving excellence in early childhood education through our unwavering commitment to quality, safety, and holistic growth.",
+      description: "Consistently recognized among India's top Preschools by Education Today, achieving excellence in early childhood education through our unwavering commitment to quality, safety, and holistic growth.",
       icon: Trophy,
       color: "bg-yellow-100",
       borderColor: "border-yellow-400",
@@ -61,7 +61,7 @@ const USPSection = () => {
       {/* Background Doodles - Enhanced & Visible */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <motion.div
-          className="absolute top-10 left-[5%] text-orange-400 opacity-60"
+          className="absolute top-10 left-[5%] opacity-100"
           animate={{ rotate: 360 }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         >
@@ -119,15 +119,21 @@ const USPSection = () => {
         </div>
 
         {/* Floating Stats Badges */}
-        <div className="flex flex-col md:flex-row flex-wrap justify-center gap-6 md:gap-16 mb-16 md:mb-20">
+        <div className="flex flex-col md:flex-row flex-wrap justify-center gap-12 md:gap-16 mb-16 md:mb-20 relative">
+          
+          {/* Mobile Connector Line */}
+          <div className="md:hidden absolute top-4 bottom-4 left-1/2 w-1 border-l-2 border-dashed border-[hsl(var(--premium-orange))] opacity-30 z-0 transform -translate-x-1/2" />
+
           {stats.map((stat, i) => (
             <motion.div
               key={i}
-              className={`relative w-40 h-40 md:w-56 md:h-56 rounded-full bg-white border-4 border-black flex flex-col items-center justify-center text-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform hover:scale-105 mx-auto`}
+              className={`relative w-40 h-40 md:w-56 md:h-56 rounded-full bg-white border-4 border-black flex flex-col items-center justify-center text-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform hover:scale-105 mx-auto z-10 ${stat.rotate}`}
               initial={{ y: 20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1, transition: { delay: i * 0.1, duration: 0.5 } }}
               viewport={{ once: true }}
             >
+
+
               <div className="text-5xl md:text-7xl text-[#EA580C] font-black leading-none mb-2 md:mb-3 flex items-baseline justify-center font-handwriting">
                 <AnimatedCounter to={stat.value} duration={2} delay={0.2 * i} />
                 {stat.suffix && <span>{stat.suffix}</span>}
@@ -177,7 +183,7 @@ const USPSection = () => {
             rotate: { duration: 0.8, delay: 0.5 },
             y: { duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }
           }}
-          className="absolute -right-8 w-32 md:w-64 lg:w-80 z-20 block lg:block pointer-events-none transform translate-x-4 md:translate-x-12 top-0 md:top-auto"
+          className="absolute right-0 md:-right-8 w-32 md:w-64 lg:w-80 z-20 block lg:block pointer-events-none top-0 md:top-auto"
         >
           <img src={playingChildrenImg} alt="Kids Playing" className="w-full h-auto drop-shadow-xl" />
         </motion.div>

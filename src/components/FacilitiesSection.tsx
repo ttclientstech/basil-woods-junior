@@ -248,20 +248,14 @@ const FacilitiesSection = () => {
       </div>
 
       {/* Animated Vectors */}
-      {/* <motion.div
-        className="absolute bottom-32 left-0 z-20 pointer-events-none hidden xl:block"
-        animate={{ x: [-200, 1500] }}
-        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-      >
-        <img src={busImg} alt="School Bus" className="w-64 drop-shadow-lg" />
-      </motion.div> */}
+
 
       <motion.div
-        className="absolute -top-5 -left-5 md:top-10 md:-left-5 z-20 pointer-events-none block xl:block"
+        className="absolute top-20 left-8 z-20 pointer-events-none hidden xl:block"
         animate={{ y: [0, -15, 0], rotate: [0, 5, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       >
-        <img src={astronomyKidsImg} alt="Astronomy Kids" className="w-[150px] md:w-[400px] drop-shadow-md mix-blend-multiply" />
+        <img src={astronomyKidsImg} alt="Astronomy Kids" className="w-72 drop-shadow-md mix-blend-multiply" />
       </motion.div>
 
       <WaveDivider position="bottom" fill="#e3e9fb" variant={4} />

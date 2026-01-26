@@ -41,7 +41,7 @@ const Footer = () => {
       {/* Background Doodles */}
       <div className="absolute inset-0 pointer-events-none opacity-30">
         <div className="absolute top-10 left-10 text-white transform -rotate-12">
-          <DoodleSun className="w-24 h-24 text-yellow-200" strokeWidth={1.5} />
+          {/* <DoodleSun className="w-24 h-24 text-yellow-200" strokeWidth={1.5} /> */}
         </div>
         <div className="absolute bottom-20 right-10 text-white transform rotate-12">
           <DoodleLotus className="w-32 h-24 text-pink-200" strokeWidth={1.5} />

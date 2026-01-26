@@ -4,9 +4,9 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
   MapPin, Phone, Users, Send, Heart, Star, Award, Target, Lightbulb, BookOpen, Sprout, Leaf, Flower2, Sun,
-  FileText, ScanSearch, MessagesSquare, PartyPopper, Sparkles
+  FileText, ScanSearch, MessagesSquare, PartyPopper, Sparkles, Mail
 } from "lucide-react";
-import { DoodleLeaf, DoodleFlower, DoodleSun, DoodleCloud } from "@/components/ui/doodles";
+import { DoodleLeaf, DoodleFlower, DoodleSun, DoodleCloud, DoodleNamasteBoy, DoodleMandala, DoodleSparkle } from "@/components/ui/doodles";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { FaWhatsapp } from "react-icons/fa";
@@ -15,6 +15,7 @@ import { motion } from "framer-motion";
 import elephantImg from "@/assets/Images/elephant.png";
 import monkeyImg from "@/assets/Images/monkey.png";
 import montessoriBlocksImg from "@/assets/Images/montessori-blocks-final-careers.png";
+import namasteBoy3d from "@/assets/Images/namaste-boy-3d.png";
 
 const CareersPage = () => {
   useSEO({
@@ -360,36 +361,84 @@ const CareersPage = () => {
         </div>
       </section>
 
-      {/* CTA - "Join Family" */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto mb-16 relative">
-            <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border-4 border-orange-100 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-orange-100 rounded-bl-full opacity-50" />
-              <div className="relative bg-white border-4 border-dashed border-[hsl(var(--premium-orange))] rounded-3xl p-10 text-center shadow-[12px_12px_0px_0px_hsl(var(--premium-orange))]">
-                <h2 className="text-3xl md:text-4xl font-black text-neutral-900 mb-4 font-handwriting">Ready to Join the Family?</h2>
-                <p className="text-lg text-neutral-600 mb-8 font-medium">
-                  Send your resume to <span className="text-orange-600 font-bold">careers@basilwoods.in</span> or contact us directly.
-                </p>
+          <div className="max-w-6xl mx-auto relative">
+            <div className="bg-[hsl(var(--brand-dark-green))] rounded-[3rem] p-8 md:p-16 shadow-2xl overflow-hidden relative min-h-[550px] flex items-center">
+              
+              {/* Background Shapes */}
+              <div className="absolute top-0 right-0 w-full h-full overflow-hidden pointer-events-none opacity-20">
+                 <DoodleMandala className="absolute -right-20 -top-20 w-[600px] h-[600px] text-white/30 animate-spin-slow origin-center" />
+              </div>
 
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button
-                    onClick={() => window.open("mailto:careers@basilwoods.in")}
-                    className="bg-green-500 hover:bg-green-600 text-white font-bold py-6 px-8 rounded-xl text-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]"
-                  >
-                    <Send className="w-5 h-5 mr-2" />
-                    Email Resume
-                  </Button>
-                  <Button
-                    variant="outline"
-                    className="border-2 border-[hsl(var(--premium-orange))] text-[hsl(var(--premium-orange))] hover:bg-orange-50 font-bold py-6 px-8 rounded-xl text-lg"
-                    onClick={() => (window.location.href = "tel:+918056179108")}
-                  >
-                    <Phone className="w-5 h-5 mr-2" />
-                    Call HR
-                  </Button>
+              <div className="grid md:grid-cols-2 gap-12 items-center relative z-10 w-full">
+                {/* Left: Text & Buttons */}
+                <div className="text-white space-y-8 text-center md:text-left relative z-20">
+                  <div className="flex flex-col items-center md:items-start">
+                    <div className="flex items-center gap-2 mb-4">
+                       <DoodleSparkle className="w-10 h-10 text-yellow-300 animate-pulse" />
+                    </div>
+                    <h2 className="text-4xl md:text-6xl font-black font-handwriting mb-6 leading-tight">Ready to Join the Family?</h2>
+                    <p className="text-xl text-white/90 font-medium max-w-lg mx-auto md:mx-0 leading-relaxed">
+                      Start your journey with us. Send your resume to <span className="font-bold text-yellow-300">careers@basilwoods.in</span> or call us today!
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row gap-5 justify-center md:justify-start pt-2">
+                     <button 
+                       onClick={() => window.open("mailto:careers@basilwoods.in", "_blank")}
+                       className="bg-white hover:bg-neutral-100 text-[hsl(var(--brand-dark-green))] font-black py-4 px-10 rounded-2xl shadow-[6px_6px_0px_0px_rgba(0,0,0,0.2)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)] hover:translate-x-[4px] hover:translate-y-[4px] flex items-center justify-center gap-3 transition-all text-lg border-2 border-transparent"
+                     >
+                        <Send className="w-6 h-6" />
+                        Email Resume
+                     </button>
+                     
+                     <button 
+                       onClick={() => window.location.href = "tel:+918056179108"}
+                       className="bg-transparent text-white hover:bg-white/10 border-2 border-white font-black py-4 px-10 rounded-2xl shadow-none hover:shadow-lg flex items-center justify-center gap-3 transition-all text-lg"
+                     >
+                        <Phone className="w-6 h-6" />
+                        Call HR
+                     </button>
+                  </div>
+                </div>
+
+                {/* Right: Boy Vector & Animation */}
+                <div className="relative flex justify-center items-end h-[500px] md:h-full">
+                   {/* Rotating Mandala Background */}
+                   <div className="absolute inset-x-0 bottom-0 top-20 flex items-center justify-center pointer-events-none">
+                      <motion.div 
+                        className="w-[500px] h-[500px] md:w-[700px] md:h-[700px] text-white/5 opacity-40 absolute"
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+                      >
+                         <DoodleMandala className="w-full h-full" />
+                      </motion.div>
+                      <motion.div 
+                        className="w-[350px] h-[350px] md:w-[500px] md:h-[500px] text-white/10 opacity-30 absolute"
+                        animate={{ rotate: -360 }}
+                        transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+                      >
+                         <DoodleMandala className="w-full h-full" />
+                      </motion.div>
+                   </div>
+
+                   {/* Boy Character - UPSIZED */}
+                   <motion.div
+                     initial={{ scale: 0.9, opacity: 0, y: 50 }}
+                     whileInView={{ scale: 1, opacity: 1, y: 0 }}
+                     transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
+                     className="relative z-10 w-full flex justify-center"
+                   >
+                     <img 
+                       src={namasteBoy3d} 
+                       alt="Namaste Boy" 
+                       className="w-[300px] md:w-[450px] lg:w-[500px] h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform translate-y-8 md:translate-y-12" 
+                     />
+                   </motion.div>
                 </div>
               </div>
+
             </div>
           </div>
         </div>

@@ -13,6 +13,7 @@ import FieldTripsImg from "../assets/Images/Exterior1.webp"; // Using Exterior1 
 import OutdoorPlayImg from "../assets/Images/Exterior2.webp";
 import ThemeTimeImg from "../assets/Images/Program3.png";
 import ArtCraftImg from "../assets/Images/Program2.png";
+import { DoodleHotAirBalloon, DoodleSun, DoodleCloud } from "@/components/ui/doodles";
 
 const ProgramsSection = () => {
   const activities = [
@@ -125,14 +126,14 @@ const ProgramsSection = () => {
       {/* Background Doodles */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Top Area */}
-        <div className="absolute top-[5%] left-[5%] transform -rotate-12 text-orange-200 opacity-60">
-          <Star className="w-24 h-24 fill-current" strokeWidth={1.5} />
+        <div className="absolute top-[2%] left-[2%] md:top-[5%] md:left-[5%] transform -rotate-12 opacity-90 text-pink-400">
+          <DoodleHotAirBalloon className="w-24 h-32 md:w-32 md:h-40" />
         </div>
-        <div className="absolute top-[8%] right-[10%] text-yellow-300 opacity-60">
-          <Sun className="w-20 h-20" strokeWidth={1.5} />
+        <div className="absolute top-[8%] right-[10%] text-yellow-400 opacity-80">
+          <DoodleSun className="w-20 h-20 md:w-24 md:h-24" />
         </div>
-        <div className="absolute top-[15%] left-[30%] text-blue-100 opacity-80">
-          <Cloud className="w-32 h-32 fill-current" strokeWidth={1} />
+        <div className="absolute top-[15%] left-[30%] text-blue-200 opacity-60">
+          <DoodleCloud className="w-24 h-16 md:w-32 md:h-20" />
         </div>
 
         {/* Middle Area Left */}
