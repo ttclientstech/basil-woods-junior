@@ -49,14 +49,14 @@ const AboutSection = () => {
       
       {/* Montessori Boy Graphic - Raised higher and adjusted to avoid text overlap */}
       <motion.div
-        className="absolute top-2 right-0 md:-top-6 md:right-0 lg:right-4 opacity-100 z-20"
+        className="absolute -top-20 -right-2 md:-top-6 md:right-0 lg:right-4 opacity-100 z-20"
         animate={{ y: [0, -10, 0], rotate: [0, 2, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       >
         <img 
           src={montessoriBoy} 
           alt="Child with Montessori Blocks" 
-          className="w-24 h-24 md:w-48 md:h-48 lg:w-60 lg:h-60 object-contain mr-2" 
+          className="w-20 h-20 md:w-48 md:h-48 lg:w-60 lg:h-60 object-contain mr-2" 
         />
       </motion.div>
 
@@ -94,11 +94,11 @@ const AboutSection = () => {
       {/* Book - Right Side middle */}
       {/* Bead Stair - Replacing Book/Cylinder & Bulb */}
       <motion.div
-        className="absolute top-[35%] -right-8 opacity-100 hidden lg:block z-10"
+        className="absolute top-[15%] -right-4 md:top-[35%] md:-right-8 opacity-100 z-10"
         animate={{ y: [0, 15, 0], rotate: [0, 5, 0] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
       >
-        <MontessoriBeadStairVector className="w-60 h-60" />
+        <MontessoriBeadStairVector className="w-24 h-24 md:w-60 md:h-60" />
       </motion.div>
 
       {/* Bird Flock - Shifted to Left Side for balance */}

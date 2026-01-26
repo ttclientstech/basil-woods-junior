@@ -126,7 +126,7 @@ const ProgramsSection = () => {
       {/* Background Doodles */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Top Area */}
-        <div className="absolute top-[2%] left-[2%] md:top-[5%] md:left-[5%] transform -rotate-12 opacity-90 text-pink-400">
+        <div className="absolute top-[5%] left-[2%] md:top-[5%] md:left-[5%] transform -rotate-12 opacity-90 text-pink-400">
           <DoodleHotAirBalloon className="w-24 h-32 md:w-32 md:h-40" />
         </div>
         <div className="absolute top-[8%] right-[10%] text-yellow-400 opacity-80">

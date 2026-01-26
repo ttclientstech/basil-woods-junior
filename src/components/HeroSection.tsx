@@ -292,7 +292,7 @@ const HeroSection = () => {
 
               {/* Decorative Montessori Tree */}
               <motion.div
-                className="absolute -top-12 -right-8 md:-top-20 md:-right-12 z-20 pointer-events-none"
+                className="absolute -top-16 -right-8 md:-top-20 md:-right-12 z-20 pointer-events-none"
                 animate={{ rotate: [0, 3, 0, -3, 0], scale: [1, 1.05, 1] }}
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
               >
