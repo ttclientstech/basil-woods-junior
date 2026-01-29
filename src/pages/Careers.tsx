@@ -15,7 +15,7 @@ import { motion } from "framer-motion";
 import elephantImg from "@/assets/Images/elephant.png";
 import monkeyImg from "@/assets/Images/monkey.png";
 import montessoriBlocksImg from "@/assets/Images/montessori-blocks-final-careers.png";
-import namasteBoy3d from "@/assets/Images/namaste-boy-3d.png";
+import namasteBoy from "@/assets/Images/namaste-boy.png";
 
 const CareersPage = () => {
   useSEO({
@@ -368,7 +368,6 @@ const CareersPage = () => {
               
               {/* Background Shapes */}
               <div className="absolute top-0 right-0 w-full h-full overflow-hidden pointer-events-none opacity-20">
-                 <DoodleMandala className="absolute -right-20 -top-20 w-[600px] h-[600px] text-white/30 animate-spin-slow origin-center" />
               </div>
 
               <div className="grid md:grid-cols-2 gap-12 items-center relative z-10 w-full">
@@ -406,18 +405,12 @@ const CareersPage = () => {
                 {/* Right: Boy Vector & Animation */}
                 <div className="relative flex justify-center items-end h-[500px] md:h-full">
                    {/* Rotating Mandala Background */}
-                   <div className="absolute inset-x-0 bottom-0 top-20 flex items-center justify-center pointer-events-none">
+                   {/* Rotating Mandala Background */}
+                   <div className="absolute inset-x-0 bottom-0 top-0 flex items-center justify-center pointer-events-none">
                       <motion.div 
-                        className="w-[500px] h-[500px] md:w-[700px] md:h-[700px] text-white/5 opacity-40 absolute"
+                        className="w-[350px] h-[350px] md:w-[600px] md:h-[600px] text-white/20 opacity-80 absolute"
                         animate={{ rotate: 360 }}
                         transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-                      >
-                         <DoodleMandala className="w-full h-full" />
-                      </motion.div>
-                      <motion.div 
-                        className="w-[350px] h-[350px] md:w-[500px] md:h-[500px] text-white/10 opacity-30 absolute"
-                        animate={{ rotate: -360 }}
-                        transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
                       >
                          <DoodleMandala className="w-full h-full" />
                       </motion.div>
@@ -431,7 +424,7 @@ const CareersPage = () => {
                      className="relative z-10 w-full flex justify-center"
                    >
                      <img 
-                       src={namasteBoy3d} 
+                       src={namasteBoy} 
                        alt="Namaste Boy" 
                        className="w-[300px] md:w-[450px] lg:w-[500px] h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform translate-y-8 md:translate-y-12" 
                      />

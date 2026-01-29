@@ -86,7 +86,7 @@ const GalleryPage = () => {
     { src: interior9, title: "Creative Corner", category: "Classroom", description: "Children exploring creativity and crafts", rotate: "-rotate-2" },
     { src: interior13, title: "Storytelling Zone", category: "Learning", description: "Kids enjoying stories and discussions", rotate: "rotate-1" },
     { src: picture1, title: "Group Activity", category: "Play", description: "Collaborative and interactive fun", rotate: "-rotate-3" },
-    { src: picture3, title: "Art & Craft", category: "Creativity", description: "Children expressing through art", rotate: "rotate-2" },
+    { src: picture3, title: "Art and Crafts", category: "Creativity", description: "Children expressing through art", rotate: "rotate-2" },
     { src: picture5, title: "Learning by Doing", category: "Classroom", description: "Hands-on activities for better learning", rotate: "-rotate-1" },
     { src: tulsi, title: "Nature & Values", category: "Environment", description: "Teaching respect for plants and nature", rotate: "rotate-1" },
     { src: picture2, title: "Interactive Play", category: "Play", description: "Engaging activities for kids", rotate: "rotate-2" },
@@ -127,10 +127,10 @@ const GalleryPage = () => {
     { src: class3, title: "Interactive Class", category: "Classroom", description: "Participating in class activities", rotate: "rotate-2" },
 
     // Art & Crafts
-    { src: art12, title: "Creative Art", category: "Creativity", description: "Expressing through art", rotate: "rotate-2" },
-    { src: art9, title: "Fun Crafts", category: "Creativity", description: "Hands-on crafting", rotate: "-rotate-1" },
-    { src: art2396, title: "Artistic Joy", category: "Creativity", description: "Joy of creating", rotate: "rotate-1" },
-    { src: art2400, title: "Masterpiece", category: "Creativity", description: "Proud of their work", rotate: "-rotate-2" },
+    { src: art12, title: "Art and Crafts", category: "Creativity", description: "Expressing through art", rotate: "rotate-2" },
+    { src: art9, title: "Art and Crafts", category: "Creativity", description: "Hands-on crafting", rotate: "-rotate-1" },
+    { src: art2396, title: "Art and Crafts", category: "Creativity", description: "Joy of creating", rotate: "rotate-1" },
+    { src: art2400, title: "Art and Crafts", category: "Creativity", description: "Proud of their work", rotate: "-rotate-2" },
   ];
 
   const achievements = [
@@ -304,7 +304,9 @@ const GalleryPage = () => {
 
                 <div className="mt-4 text-center">
                   <h3 className="font-handwriting text-2xl font-bold text-neutral-800">{image.title}</h3>
-                  <p className="text-xs font-mono text-neutral-500 uppercase tracking-widest">{image.category}</p>
+                  {image.category !== "Creativity" && (
+                    <p className="text-xs font-mono text-neutral-500 uppercase tracking-widest">{image.category}</p>
+                  )}
                 </div>
               </motion.div>
             ))}

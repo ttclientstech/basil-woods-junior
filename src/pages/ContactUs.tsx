@@ -366,7 +366,7 @@ const ContactUsPage: React.FC = () => {
               { q: "Safety measures?", a: "CCTV, secure entry, and trained staff." },
               { q: "Outdoor play?", a: "Daily outdoor activities and motor skills." },
               { q: "Parent updates?", a: "Regular meetings and digital updates." },
-              { q: "Meals provided?", a: "Mid-morning snacks – Meals Years." },
+              { q: "Meals provided?", a: "Mid-morning snacks – Meals." },
               { q: "Age groups?", a: "2 years to 6 years." },
             ].map((item, idx) => (
               <motion.div
