@@ -10,58 +10,8 @@ import { useSEO } from "@/hooks/useSEO";
 import { motion } from "framer-motion";
 import { FaWhatsapp } from 'react-icons/fa';
 
-// importing images
-import exterior1 from "../assets/Images/Exterior1.webp";
-import interior2 from "../assets/Images/Interior2.webp";
-import interior6 from "../assets/Images/Interior6.webp";
-import interior9 from "../assets/Images/Interior9.webp";
-import interior13 from "../assets/Images/Interior13.webp";
-import picture1 from "../assets/Images/Picture1.webp";
-import picture2 from "../assets/Images/Picture2.webp";
-import picture3 from "../assets/Images/Picture3.webp";
-import picture4 from "../assets/Images/Picture4.webp";
-import picture5 from "../assets/Images/Picture5.webp";
-import tulsi from "../assets/Images/tulsi.webp";
-import interior3 from "../assets/Images/Interior3.webp";
+// importing images handled via public path
 
-// Children's Day
-import cd2 from "../assets/Images/ChildrendayWorkShop/2.png";
-import cd8 from "../assets/Images/ChildrendayWorkShop/8.png";
-import cd10 from "../assets/Images/ChildrendayWorkShop/10.png";
-import cd12 from "../assets/Images/ChildrendayWorkShop/12.png";
-
-// Dossara
-import das1 from "../assets/Images/Dassara/1.JPG";
-import das2 from "../assets/Images/Dassara/2.JPG";
-import das5 from "../assets/Images/Dassara/5.JPG";
-import das6 from "../assets/Images/Dassara/6.JPG";
-
-// Free Play
-import fp1 from "../assets/Images/Free Day Play/1.png";
-import fp2 from "../assets/Images/Free Day Play/2.png";
-import fp3 from "../assets/Images/Free Day Play/3.png";
-import fp4 from "../assets/Images/Free Day Play/4.png";
-
-// Beach Events
-import beach1 from "../assets/Images/beach events/1.JPG";
-import beach2 from "../assets/Images/beach events/2.JPG";
-import beach3 from "../assets/Images/beach events/3.jpeg";
-import beach4 from "../assets/Images/beach events/4.jpeg";
-
-// Outdoor Play
-import outdoor1 from "../assets/Images/outdoor/1.jpg";
-import outdoor2 from "../assets/Images/outdoor/2.jpeg";
-
-// Classroom Activities
-import class1 from "../assets/Images/classroom/1.jpg";
-import class2 from "../assets/Images/classroom/2.JPG";
-import class3 from "../assets/Images/classroom/3.JPG";
-
-// Art & Crafts
-import art12 from "../assets/Images/arts/12.png";
-import art9 from "../assets/Images/arts/9.png";
-import art2396 from "../assets/Images/arts/IMG_2396.JPG";
-import art2400 from "../assets/Images/arts/IMG_2400.JPG";
 
 const GalleryPage = () => {
   useSEO({
@@ -73,64 +23,75 @@ const GalleryPage = () => {
 
   const chips = [
     { name: "All", color: "bg-green-500 text-white" },
-    { name: "Classroom Activities", mapTo: ["Classroom", "Learning"], color: "bg-green-500 text-white" },
-    { name: "Outdoor Play", mapTo: ["Activities", "Play", "Environment", "Campus"], color: "bg-green-500 text-white" },
-    { name: "Art & Crafts", mapTo: ["Creativity"], color: "bg-green-500 text-white" },
-    { name: "Celebrations & Events", mapTo: ["Celebration", "Event", "ChildrensDay", "Dassara", "FreePlay", "BeachDay"], color: "bg-green-500 text-white" },
+    { name: "Art and Craft", color: "bg-green-500 text-white" },
+    { name: "Creative Corner", color: "bg-green-500 text-white" },
+    { name: "Events", color: "bg-green-500 text-white", hasSubfolders: true },
+    { name: "Learning Space", color: "bg-green-500 text-white" },
+    { name: "Play Area", color: "bg-green-500 text-white" },
+    { name: "Story Telling Zone", color: "bg-green-500 text-white" },
   ];
 
   const galleryImages = [
-    { src: exterior1, title: "School Entrance", category: "Campus", description: "Welcoming environment with a safe entrance", rotate: "rotate-2" },
-    { src: interior2, title: "Learning Space", category: "Classroom", description: "Bright and engaging classroom setup", rotate: "-rotate-1" },
-    { src: interior6, title: "Play Area", category: "Activities", description: "Fun indoor play and learning together", rotate: "rotate-3" },
-    { src: interior9, title: "Creative Corner", category: "Classroom", description: "Children exploring creativity and crafts", rotate: "-rotate-2" },
-    { src: interior13, title: "Storytelling Zone", category: "Learning", description: "Kids enjoying stories and discussions", rotate: "rotate-1" },
-    { src: picture1, title: "Group Activity", category: "Play", description: "Collaborative and interactive fun", rotate: "-rotate-3" },
-    { src: picture3, title: "Art and Crafts", category: "Creativity", description: "Children expressing through art", rotate: "rotate-2" },
-    { src: picture5, title: "Learning by Doing", category: "Classroom", description: "Hands-on activities for better learning", rotate: "-rotate-1" },
-    { src: tulsi, title: "Nature & Values", category: "Environment", description: "Teaching respect for plants and nature", rotate: "rotate-1" },
-    { src: picture2, title: "Interactive Play", category: "Play", description: "Engaging activities for kids", rotate: "rotate-2" },
-    { src: picture4, title: "Happy Learning", category: "Learning", description: "Joyful learning moments", rotate: "-rotate-2" },
-    { src: interior3, title: "Modern Infrastructure", category: "Campus", description: "Well-equipped facilities for children", rotate: "rotate-1" },
+    // art and craft
+    { src: "/assets/gallery-new/art and craft/12.png", title: "Creative Art", category: "Art and Craft" },
+    { src: "/assets/gallery-new/art and craft/9.png", title: "Handmade Craft", category: "Art and Craft" },
+    { src: "/assets/gallery-new/art and craft/IMG_2396.JPG", title: "Art Activity", category: "Art and Craft" },
+    { src: "/assets/gallery-new/art and craft/IMG_2400.JPG", title: "School Project", category: "Art and Craft" },
+    
+    // creative corner
+    { src: "/assets/gallery-new/creative corner/Classroom.jpg", title: "Classroom Creativity", category: "Creative Corner" },
+    { src: "/assets/gallery-new/creative corner/IMG_1091.JPG", title: "Creative Work", category: "Creative Corner" },
+    { src: "/assets/gallery-new/creative corner/IMG_1120.JPG", title: "Kids Art", category: "Creative Corner" },
 
-    // Children's Day
-    { src: cd2, title: "Fun Workshop", category: "ChildrensDay", description: "Creative learning workshop", rotate: "rotate-2" },
-    { src: cd8, title: "Art Time", category: "ChildrensDay", description: "Expressing through colors", rotate: "-rotate-1" },
-    { src: cd10, title: "Group Fun", category: "ChildrensDay", description: "Learning together with joy", rotate: "rotate-1" },
-    { src: cd12, title: "Happy Smiles", category: "ChildrensDay", description: "Celebrating childhood", rotate: "-rotate-2" },
+    // events - beach event
+    { src: "/assets/gallery-new/events/beach event/IMG_1050.JPG", title: "Beach Activity", category: "Events", subCategory: "Beach Event" },
+    { src: "/assets/gallery-new/events/beach event/IMG_1066.JPG", title: "Sand Play", category: "Events", subCategory: "Beach Event" },
+    { src: "/assets/gallery-new/events/beach event/WhatsApp Image 2025-07-01 at 9.53.32 AM.jpeg", title: "Beach Fun", category: "Events", subCategory: "Beach Event" },
+    { src: "/assets/gallery-new/events/beach event/WhatsApp Image 2025-07-01 at 9.53.35 AM (1).jpeg", title: "Ocean Day", category: "Events", subCategory: "Beach Event" },
+    { src: "/assets/gallery-new/events/beach event/WhatsApp Image 2025-07-01 at 9.53.36 AM (1).jpeg", title: "Group Photo", category: "Events", subCategory: "Beach Event" },
+    { src: "/assets/gallery-new/events/beach event/WhatsApp Image 2025-07-01 at 9.53.36 AM.jpeg", title: "Fun at Beach", category: "Events", subCategory: "Beach Event" },
 
-    // Dossara
-    { src: das1, title: "Dossara Celebration", category: "Dassara", description: "Traditional festivities", rotate: "rotate-2" },
-    { src: das2, title: "Cultural Dress", category: "Dassara", description: "Kids in traditional attire", rotate: "-rotate-1" },
-    { src: das5, title: "Festival Joy", category: "Dassara", description: "Celebrating culture and values", rotate: "rotate-1" },
-    { src: das6, title: "Divine Moments", category: "Dassara", description: "Seeking blessings", rotate: "-rotate-2" },
+    // events - Childrens day workshop
+    { src: "/assets/gallery-new/events/Childrens day workshop/10.png", title: "Workshop Joy", category: "Events", subCategory: "Childrens Day Workshop" },
+    { src: "/assets/gallery-new/events/Childrens day workshop/12.png", title: "Learning Fun", category: "Events", subCategory: "Childrens Day Workshop" },
+    { src: "/assets/gallery-new/events/Childrens day workshop/13.png", title: "Activity Time", category: "Events", subCategory: "Childrens Day Workshop" },
+    { src: "/assets/gallery-new/events/Childrens day workshop/2.png", title: "Happy Kids", category: "Events", subCategory: "Childrens Day Workshop" },
+    { src: "/assets/gallery-new/events/Childrens day workshop/4.png", title: "Creative Session", category: "Events", subCategory: "Childrens Day Workshop" },
+    { src: "/assets/gallery-new/events/Childrens day workshop/5.png", title: "Group Activity", category: "Events", subCategory: "Childrens Day Workshop" },
+    { src: "/assets/gallery-new/events/Childrens day workshop/6.png", title: "Painting Day", category: "Events", subCategory: "Childrens Day Workshop" },
+    { src: "/assets/gallery-new/events/Childrens day workshop/8.png", title: "Art Workshop", category: "Events", subCategory: "Childrens Day Workshop" },
 
-    // Free Play
-    { src: fp1, title: "Free Play Time", category: "FreePlay", description: "Unstructured fun and games", rotate: "rotate-2" },
-    { src: fp2, title: "Playground Fun", category: "FreePlay", description: "Active outdoor play", rotate: "-rotate-1" },
-    { src: fp3, title: "Buddies", category: "FreePlay", description: "Making new friends", rotate: "rotate-1" },
-    { src: fp4, title: "Happy Moments", category: "FreePlay", description: "Joy of playing together", rotate: "-rotate-2" },
+    // events - Dassara camp
+    { src: "/assets/gallery-new/events/Dassara camp/IMG_2282.JPG", title: "Dassara Celebration", category: "Events", subCategory: "Dassara Camp" },
+    { src: "/assets/gallery-new/events/Dassara camp/IMG_2329.JPG", title: "Festive Spirit", category: "Events", subCategory: "Dassara Camp" },
+    { src: "/assets/gallery-new/events/Dassara camp/IMG_2335.JPG", title: "Camp Activity", category: "Events", subCategory: "Dassara Camp" },
+    { src: "/assets/gallery-new/events/Dassara camp/IMG_2371.JPG", title: "Tradition", category: "Events", subCategory: "Dassara Camp" },
+    { src: "/assets/gallery-new/events/Dassara camp/IMG_2400.JPG", title: "Kids Celebration", category: "Events", subCategory: "Dassara Camp" },
+    { src: "/assets/gallery-new/events/Dassara camp/IMG_2461.JPG", title: "Cultural Event", category: "Events", subCategory: "Dassara Camp" },
+    { src: "/assets/gallery-new/events/Dassara camp/IMG_2493.JPG", title: "Joyful Moments", category: "Events", subCategory: "Dassara Camp" },
 
-    // Beach Day
-    { src: beach1, title: "Beach Day Out", category: "BeachDay", description: "Fun day at the beach", rotate: "rotate-2" },
-    { src: beach2, title: "Sand Castles", category: "BeachDay", description: "Building creativity with sand", rotate: "-rotate-1" },
-    { src: beach3, title: "Splash Time", category: "BeachDay", description: "Enjoying the waves", rotate: "rotate-1" },
-    { src: beach4, title: "Beach Games", category: "BeachDay", description: "Active games by the shore", rotate: "-rotate-2" },
+    // events - free play day
+    { src: "/assets/gallery-new/events/free play day/1.png", title: "Free Play", category: "Events", subCategory: "Free Play Day" },
+    { src: "/assets/gallery-new/events/free play day/2.png", title: "Outdoor Fun", category: "Events", subCategory: "Free Play Day" },
+    { src: "/assets/gallery-new/events/free play day/3.png", title: "Playground", category: "Events", subCategory: "Free Play Day" },
+    { src: "/assets/gallery-new/events/free play day/4.png", title: "Joyful Play", category: "Events", subCategory: "Free Play Day" },
+    { src: "/assets/gallery-new/events/free play day/5.png", title: "Kids Energy", category: "Events", subCategory: "Free Play Day" },
+    { src: "/assets/gallery-new/events/free play day/7.png", title: "Active Kids", category: "Events", subCategory: "Free Play Day" },
 
-    // Outdoor Play
-    { src: outdoor1, title: "Green Campus", category: "Play", description: "Exploring our lush green campus", rotate: "rotate-2" },
-    { src: outdoor2, title: "Outdoor Fun", category: "Play", description: "Engaging in outdoor activities", rotate: "-rotate-1" },
+    // learning space
+    { src: "/assets/gallery-new/learning space/WhatsApp Image 2025-09-18 at 10.29.33 AM (1).jpeg", title: "Learning Zone", category: "Learning Space" },
+    { src: "/assets/gallery-new/learning space/WhatsApp Image 2025-12-11 at 2.58.38 PM.jpeg", title: "Classroom Environment", category: "Learning Space" },
+    { src: "/assets/gallery-new/learning space/WhatsApp Image 2025-12-11 at 2.58.58 PM.jpeg", title: "Space for Learning", category: "Learning Space" },
+    { src: "/assets/gallery-new/learning space/WhatsApp Image 2025-12-11 at 2.58.59 PM (1).jpeg", title: "Modern Classroom", category: "Learning Space" },
+    { src: "/assets/gallery-new/learning space/WhatsApp Image 2025-12-11 at 2.58.59 PM.jpeg", title: "Bright Learning", category: "Learning Space" },
 
-    // Classroom Activities
-    { src: class1, title: "Engaged Learning", category: "Classroom", description: "Focused on learning activities", rotate: "rotate-1" },
-    { src: class2, title: "Group Session", category: "Classroom", description: "Collaborative learning environment", rotate: "-rotate-2" },
-    { src: class3, title: "Interactive Class", category: "Classroom", description: "Participating in class activities", rotate: "rotate-2" },
+    // play area
+    { src: "/assets/gallery-new/play area/20251211_142022.jpg", title: "Playground Fun", category: "Play Area" },
+    { src: "/assets/gallery-new/play area/WhatsApp Image 2025-09-18 at 10.29.29 AM (1).jpeg", title: "Active Play", category: "Play Area" },
 
-    // Art & Crafts
-    { src: art12, title: "Art and Crafts", category: "Creativity", description: "Expressing through art", rotate: "rotate-2" },
-    { src: art9, title: "Art and Crafts", category: "Creativity", description: "Hands-on crafting", rotate: "-rotate-1" },
-    { src: art2396, title: "Art and Crafts", category: "Creativity", description: "Joy of creating", rotate: "rotate-1" },
-    { src: art2400, title: "Art and Crafts", category: "Creativity", description: "Proud of their work", rotate: "-rotate-2" },
+    // story telling zone
+    { src: "/assets/gallery-new/story telling zone/20251211_141851.jpg", title: "Story Time", category: "Story Telling Zone" },
+    { src: "/assets/gallery-new/story telling zone/P1211662.JPG", title: "Listening Zone", category: "Story Telling Zone" },
   ];
 
   const achievements = [
@@ -141,23 +102,21 @@ const GalleryPage = () => {
   ];
 
   const [activeChip, setActiveChip] = React.useState<string>("All");
-  const [activeSubChip, setActiveSubChip] = React.useState<string>("All Events");
+  const [activeSubChip, setActiveSubChip] = React.useState<string>("All");
 
 
 
   const eventSubChips = [
-    { name: "All Events", mapTo: ["Celebration", "Event", "ChildrensDay", "Dassara", "FreePlay", "BeachDay"], color: "bg-blue-500 text-white" },
-    { name: "Children's Day", mapTo: ["ChildrensDay"], color: "bg-green-500 text-white" },
-    { name: "Dassara", mapTo: ["Dassara"], color: "bg-green-500 text-white" },
-    { name: "Free Day Play", mapTo: ["FreePlay"], color: "bg-green-500 text-white" },
-    { name: "Beach Events", mapTo: ["BeachDay"], color: "bg-green-500 text-white" },
+    { name: "All", color: "bg-blue-500 text-white" },
+    { name: "Beach Event", color: "bg-green-500 text-white" },
+    { name: "Childrens Day Workshop", color: "bg-green-500 text-white" },
+    { name: "Dassara Camp", color: "bg-green-500 text-white" },
+    { name: "Free Play Day", color: "bg-green-500 text-white" },
   ];
 
   // Reset sub-chip when main chip changes
   React.useEffect(() => {
-    if (activeChip !== "Celebrations & Events") {
-      setActiveSubChip("All Events");
-    }
+    setActiveSubChip("All");
   }, [activeChip]);
 
   const filteredImages = React.useMemo(() => {
@@ -165,20 +124,12 @@ const GalleryPage = () => {
 
     // 1. Filter by Main Category
     if (activeChip !== "All") {
-      const chip = chips.find((c) => c.name === activeChip);
-      if (chip) {
-        const mapTo = chip.mapTo || [activeChip];
-        images = images.filter((img) => mapTo.includes(img.category));
-      }
+      images = images.filter((img) => img.category === activeChip);
     }
 
     // 2. Filter by Sub Category (if in Events)
-    if (activeChip === "Celebrations & Events" && activeSubChip !== "All Events") {
-      const subChip = eventSubChips.find((c) => c.name === activeSubChip);
-      if (subChip) {
-        const mapTo = subChip.mapTo || [activeSubChip];
-        images = images.filter((img) => mapTo.includes(img.category));
-      }
+    if (activeChip === "Events" && activeSubChip !== "All") {
+      images = images.filter((img) => img.subCategory === activeSubChip);
     }
 
     return images;
@@ -258,7 +209,7 @@ const GalleryPage = () => {
             </div>
 
             {/* Sub Filters for Events */}
-            {activeChip === "Celebrations & Events" && (
+            {activeChip === "Events" && (
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -303,10 +254,9 @@ const GalleryPage = () => {
                 </div>
 
                 <div className="mt-4 text-center">
-                  <h3 className="font-handwriting text-2xl font-bold text-neutral-800">{image.title}</h3>
-                  {image.category !== "Creativity" && (
-                    <p className="text-xs font-mono text-neutral-500 uppercase tracking-widest">{image.category}</p>
-                  )}
+                  <h3 className="font-handwriting text-2xl font-bold text-neutral-800">
+                    {image.subCategory || image.category}
+                  </h3>
                 </div>
               </motion.div>
             ))}
