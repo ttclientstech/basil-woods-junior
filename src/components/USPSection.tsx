@@ -10,7 +10,7 @@ import { StarDoodle, DoodleCloud, DoodleSun, DoodlePencil, DoodleSparkle, Doodle
 
 const USPSection = () => {
   const stats = [
-    { value: 11, suffix: "", label: "Preschools", rotate: "-rotate-3", icon: Star, iconColor: "text-yellow-400" },
+    { value: 12, suffix: "", label: "Preschools", rotate: "-rotate-3", icon: Star, iconColor: "text-yellow-400" },
     { value: 6, suffix: "", label: "Cities", rotate: "rotate-2", icon: Heart, iconColor: "text-pink-400" },
     { value: 4, suffix: "", label: "States", rotate: "-rotate-3", icon: Sparkles, iconColor: "text-blue-400" },
   ];

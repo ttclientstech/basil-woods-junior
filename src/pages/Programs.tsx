@@ -64,7 +64,7 @@ const ProgramsPage = () => {
       image: program1,
     },
     {
-      name: "Mont1",
+      name: "EYP 1",
       age: "3 - 4 years",
       description: "Building independence with structured play, early learning concepts, and creative exploration.",
       features: ["Montessori", "Numeracy", "Storytelling", "Art & Craft"],
@@ -76,7 +76,7 @@ const ProgramsPage = () => {
       image: program2,
     },
     {
-      name: "Mont2",
+      name: "EYP 2",
       age: "4 - 5 years",
       description: "Pre-academic skills development with structured learning, cultural activities, and social skill building.",
       features: ["Language", "Cultural Connect", "Music", "Outdoor Play"],
@@ -88,7 +88,7 @@ const ProgramsPage = () => {
       image: program3,
     },
     {
-      name: "Mont3",
+      name: "EYP 3",
       age: "5 - 6 years",
       description: "School readiness program with advanced learning concepts, leadership development, and preparation.",
       features: ["Advanced Math", "Reading", "Leadership", "Science"],

@@ -5,6 +5,7 @@ import { Star, Quote, Pin, Cloud, Heart, Sun, Bird, Music, Pencil, BookOpen, Pal
 
 import Testimonial1 from "@/assets/Images/ved-parent.jpg";
 import Testimonial2 from "@/assets/Images/eka-parent.jpg";
+import Testimonial3 from "@/assets/Images/eka-family.jpg";
 
 const playgroundTestimonials = [
   {
@@ -19,13 +20,23 @@ const playgroundTestimonials = [
   },
   {
     text: "Basil Woods stood out for its age-appropriate tools and warm staff. For working parents, the flexible daycare and safety-proofing—especially the indoor sandpit—provide immense peace of mind. Eka absolutely loves her time here, and we're delighted to see her enjoy the free play environment. It's truly an excellent choice.",
-    name: "Eka's Parents",
+    name: "Eka's Mother",
     role: "Parent",
     rating: 5,
     color: "bg-yellow-50",
     shadow: "shadow-yellow-400",
     rotation: "rotate-1",
     image: Testimonial2
+  },
+  {
+    text: "My daughter Eka truly enjoys the environment at Basil Woods. Within a short span of time, she's formed a lovely bond with her teachers and support staff which is delightful to watch. She enjoys the variety of activities exposed to and has learnt a lot in a such a short span of time. Their safety standards are also a major highlight and I definitely recommend Basil Woods for a great preschool experience.",
+    name: "Eka's Father",
+    role: "Parent",
+    rating: 5,
+    color: "bg-blue-50",
+    shadow: "shadow-blue-400",
+    rotation: "rotate-1",
+    image: Testimonial3
   }
 ];
 

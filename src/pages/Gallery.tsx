@@ -51,24 +51,24 @@ const GalleryPage = () => {
     { src: "/assets/gallery-new/events/beach event/WhatsApp Image 2025-07-01 at 9.53.36 AM (1).jpeg", title: "Group Photo", category: "Events", subCategory: "Beach Event" },
     { src: "/assets/gallery-new/events/beach event/WhatsApp Image 2025-07-01 at 9.53.36 AM.jpeg", title: "Fun at Beach", category: "Events", subCategory: "Beach Event" },
 
-    // events - Childrens day workshop
-    { src: "/assets/gallery-new/events/Childrens day workshop/10.png", title: "Workshop Joy", category: "Events", subCategory: "Childrens Day Workshop" },
-    { src: "/assets/gallery-new/events/Childrens day workshop/12.png", title: "Learning Fun", category: "Events", subCategory: "Childrens Day Workshop" },
-    { src: "/assets/gallery-new/events/Childrens day workshop/13.png", title: "Activity Time", category: "Events", subCategory: "Childrens Day Workshop" },
-    { src: "/assets/gallery-new/events/Childrens day workshop/2.png", title: "Happy Kids", category: "Events", subCategory: "Childrens Day Workshop" },
-    { src: "/assets/gallery-new/events/Childrens day workshop/4.png", title: "Creative Session", category: "Events", subCategory: "Childrens Day Workshop" },
-    { src: "/assets/gallery-new/events/Childrens day workshop/5.png", title: "Group Activity", category: "Events", subCategory: "Childrens Day Workshop" },
-    { src: "/assets/gallery-new/events/Childrens day workshop/6.png", title: "Painting Day", category: "Events", subCategory: "Childrens Day Workshop" },
-    { src: "/assets/gallery-new/events/Childrens day workshop/8.png", title: "Art Workshop", category: "Events", subCategory: "Childrens Day Workshop" },
+    // events - Children's day workshop
+    { src: "/assets/gallery-new/events/Childrens day workshop/10.png", title: "Workshop Joy", category: "Events", subCategory: "Children's Day Workshop" },
+    { src: "/assets/gallery-new/events/Childrens day workshop/12.png", title: "Learning Fun", category: "Events", subCategory: "Children's Day Workshop" },
+    { src: "/assets/gallery-new/events/Childrens day workshop/13.png", title: "Activity Time", category: "Events", subCategory: "Children's Day Workshop" },
+    { src: "/assets/gallery-new/events/Childrens day workshop/2.png", title: "Happy Kids", category: "Events", subCategory: "Children's Day Workshop" },
+    { src: "/assets/gallery-new/events/Childrens day workshop/4.png", title: "Creative Session", category: "Events", subCategory: "Children's Day Workshop" },
+    { src: "/assets/gallery-new/events/Childrens day workshop/5.png", title: "Group Activity", category: "Events", subCategory: "Children's Day Workshop" },
+    { src: "/assets/gallery-new/events/Childrens day workshop/6.png", title: "Painting Day", category: "Events", subCategory: "Children's Day Workshop" },
+    { src: "/assets/gallery-new/events/Childrens day workshop/8.png", title: "Art Workshop", category: "Events", subCategory: "Children's Day Workshop" },
 
-    // events - Dassara camp
-    { src: "/assets/gallery-new/events/Dassara camp/IMG_2282.JPG", title: "Dassara Celebration", category: "Events", subCategory: "Dassara Camp" },
-    { src: "/assets/gallery-new/events/Dassara camp/IMG_2329.JPG", title: "Festive Spirit", category: "Events", subCategory: "Dassara Camp" },
-    { src: "/assets/gallery-new/events/Dassara camp/IMG_2335.JPG", title: "Camp Activity", category: "Events", subCategory: "Dassara Camp" },
-    { src: "/assets/gallery-new/events/Dassara camp/IMG_2371.JPG", title: "Tradition", category: "Events", subCategory: "Dassara Camp" },
-    { src: "/assets/gallery-new/events/Dassara camp/IMG_2400.JPG", title: "Kids Celebration", category: "Events", subCategory: "Dassara Camp" },
-    { src: "/assets/gallery-new/events/Dassara camp/IMG_2461.JPG", title: "Cultural Event", category: "Events", subCategory: "Dassara Camp" },
-    { src: "/assets/gallery-new/events/Dassara camp/IMG_2493.JPG", title: "Joyful Moments", category: "Events", subCategory: "Dassara Camp" },
+    // events - Dasara camp
+    { src: "/assets/gallery-new/events/Dassara camp/IMG_2282.JPG", title: "Dasara Celebration", category: "Events", subCategory: "Dasara Camp" },
+    { src: "/assets/gallery-new/events/Dassara camp/IMG_2329.JPG", title: "Festive Spirit", category: "Events", subCategory: "Dasara Camp" },
+    { src: "/assets/gallery-new/events/Dassara camp/IMG_2335.JPG", title: "Camp Activity", category: "Events", subCategory: "Dasara Camp" },
+    { src: "/assets/gallery-new/events/Dassara camp/IMG_2371.JPG", title: "Tradition", category: "Events", subCategory: "Dasara Camp" },
+    { src: "/assets/gallery-new/events/Dassara camp/IMG_2400.JPG", title: "Kids Celebration", category: "Events", subCategory: "Dasara Camp" },
+    { src: "/assets/gallery-new/events/Dassara camp/IMG_2461.JPG", title: "Cultural Event", category: "Events", subCategory: "Dasara Camp" },
+    { src: "/assets/gallery-new/events/Dassara camp/IMG_2493.JPG", title: "Joyful Moments", category: "Events", subCategory: "Dasara Camp" },
 
     // events - free play day
     { src: "/assets/gallery-new/events/free play day/1.png", title: "Free Play", category: "Events", subCategory: "Free Play Day" },
@@ -109,8 +109,8 @@ const GalleryPage = () => {
   const eventSubChips = [
     { name: "All", color: "bg-blue-500 text-white" },
     { name: "Beach Event", color: "bg-green-500 text-white" },
-    { name: "Childrens Day Workshop", color: "bg-green-500 text-white" },
-    { name: "Dassara Camp", color: "bg-green-500 text-white" },
+    { name: "Children's Day Workshop", color: "bg-green-500 text-white" },
+    { name: "Dasara Camp", color: "bg-green-500 text-white" },
     { name: "Free Play Day", color: "bg-green-500 text-white" },
   ];
 

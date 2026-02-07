@@ -2,8 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Download, Play, Sparkles, Star } from "lucide-react";
-import boyVectorImg from "@/assets/Images/boy.png";
-import girlVectorImg from "@/assets/Images/girl.png";
+import boyVectorImg from "@/assets/Images/toddler_boy_school_vector.png";
+import girlVectorImg from "@/assets/Images/toddler_girl_school_vector.png";
 
 const WaveTop = ({ fill = "#e9eefc" }) => (
   <div className="absolute top-0 left-0 w-full overflow-hidden leading-none rotate-180">

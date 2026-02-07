@@ -301,23 +301,23 @@ const AboutUsPage = () => {
             </motion.div>
 
             {/* Handwritten Text */}
-            <div className="space-y-6">
+            <div className="space-y-6 relative">
               <Badge className="bg-orange-100 text-orange-700 border-2 border-orange-400 px-4 py-1 text-sm font-bold rounded-full">
                 Our Journey
               </Badge>
-              <h2 className="text-4xl font-black text-[hsl(var(--brand-dark-green))] font-handwriting">
+              <h2 className="text-4xl font-black text-[hsl(var(--brand-dark-green))] font-handwriting max-w-[85%] md:max-w-full">
                 Early Learning with <br /> Values & Excellence
               </h2>
-              <div className="prose prose-lg text-neutral-700 font-medium leading-relaxed text-justify max-w-[90%] md:max-w-[70%] relative z-20">
+              <div className="prose prose-lg text-neutral-700 font-medium leading-relaxed text-justify max-w-[85%] md:max-w-[70%] relative z-20">
                 <p>
-                  ‘Basil Woods’ is an early learning initiative of the National Institute of Value Education (NIVE) to inculcate universal values and ethics along with imparting physical and cognitive learning.
+                  'Basil Woods' is an early learning initiative of the National Institute of Value Education (NIVE) to inculcate universal values and ethics along with imparting physical and cognitive learning.
                 </p>
                 <p>
                   We currently run preschools and daycare centers across Bangalore and Hyderabad, providing children with a nurturing environment that blends modern educational practices with timeless values.
                 </p>
               </div>
 
-              <div className="flex gap-4 pt-4">
+              <div className="flex gap-4 pt-4 max-w-[85%] md:max-w-full">
                 <div className="bg-white px-6 py-3 rounded-xl border-2 border-teal-400 shadow-[4px_4px_0px_0px_hsl(var(--premium-teal))]">
                   <span className="block text-3xl font-black text-teal-600">15+</span>
                   <span className="text-sm font-bold text-neutral-500">Years Excellence</span>
@@ -328,17 +328,28 @@ const AboutUsPage = () => {
                 </div>
               </div>
 
-              {/* Animated School Boy Vector */}
+              {/* Animated School Boy Vector - Hidden on mobile, shown below on mobile separately */}
               <motion.div
                 initial={{ x: 100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
-                className="absolute bottom-0 -right-8 md:-right-16 z-10 w-72 md:w-[550px] pointer-events-none"
+                className="hidden md:block absolute bottom-0 -right-32 lg:-right-40 z-30 w-[550px] pointer-events-none"
               >
                 <img src={schoolBoyImg} alt="Child walking to school" className="w-full h-auto drop-shadow-xl transform scale-x-[-1]" />
               </motion.div>
             </div>
+
+            {/* Boy image for mobile - shown below the grid */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="md:hidden w-80 mx-auto pointer-events-none mt-8"
+            >
+              <img src={schoolBoyImg} alt="Child walking to school" className="w-full h-auto drop-shadow-xl transform scale-x-[-1]" />
+            </motion.div>
           </div>
         </div>
       </section>

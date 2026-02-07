@@ -8,7 +8,7 @@ import {
   Cloud, Sun, Sparkles, Plane, Download
 } from "lucide-react";
 import { DoodleBird, DoodleCloud, DoodleSparkle, DoodlePencil } from "@/components/ui/doodles";
-import boyVectorImg from "@/assets/Images/boy vector.webp";
+import tulsiMascot from "@/assets/Images/contact_uscartoon.png";
 
 
 import Header from "@/components/Header";
@@ -158,17 +158,26 @@ const ContactUsPage: React.FC = () => {
                 {/* Background Pattern for Form */}
                 <div className="absolute top-0 left-0 w-full h-full opacity-20 bg-[url('https://www.transparenttextures.com/patterns/notebook.png')]" />
 
-                <h2 className="text-4xl font-black text-neutral-800 font-handwriting mb-3 relative z-10">Send us a Message</h2>
-                <p className="text-neutral-600 mb-10 text-lg relative z-10">Fill out the form below and we'll get back to you shortly.</p>
-
-                {/* Animated Boy Vector */}
+                {/* Animated Plant Mascot - Mobile: Above form, Desktop: Side */}
                 <motion.div
-                  className="absolute bottom-10 -right-10 pointer-events-none z-0 opacity-20 lg:opacity-100 lg:right-5 lg:bottom-20"
-                  animate={{ y: [0, -10, 0], rotate: [0, 5, 0] }}
+                  className="block md:hidden mb-6 relative z-10 text-center"
+                  animate={{ y: [0, -9, 0] }}
                   transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                 >
-                  <img src={boyVectorImg} alt="Student" className="w-48 drop-shadow-lg" />
+                  <img src={tulsiMascot} alt="Plant Mascot" className="w-32 mx-auto drop-shadow-lg" />
                 </motion.div>
+
+                {/* Desktop Plant Mascot - Hidden on mobile */}
+                <motion.div
+                  className="hidden md:block absolute bottom-2 -right-10 pointer-events-none z-0 opacity-30 lg:opacity-100 lg:right-5 lg:bottom-8"
+                  animate={{ y: [0, -9, 0], rotate: [0, 5, 0] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <img src={tulsiMascot} alt="Plant Mascot" className="w-40 lg:w-48 drop-shadow-lg" />
+                </motion.div>
+
+                <h2 className="text-4xl font-black text-neutral-800 font-handwriting mb-3 relative z-10">Send us a Message</h2>
+                <p className="text-neutral-600 mb-10 text-lg relative z-10">Fill out the form below and we'll get back to you shortly.</p>
 
                 <form className="space-y-6 relative z-10" onSubmit={handleSubmit}>
                   <div className="grid md:grid-cols-2 gap-6">
@@ -321,7 +330,9 @@ const ContactUsPage: React.FC = () => {
 
             {/* Download Brochure - Green */}
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="h-full">
-              <Button className="w-full h-full min-h-[100px] bg-[#22c55e] hover:bg-[#16a34a] text-white rounded-2xl shadow-lg flex flex-col items-center justify-center gap-2 py-6">
+              <Button 
+                onClick={() => window.open("/brochure.pdf", "_blank")}
+                className="w-full h-full min-h-[100px] bg-[#22c55e] hover:bg-[#16a34a] text-white rounded-2xl shadow-lg flex flex-col items-center justify-center gap-2 py-6">
                 <Send className="w-8 h-8 mb-1 -rotate-45" />
                 <span className="text-lg font-bold">Brochure</span>
               </Button>
@@ -366,7 +377,7 @@ const ContactUsPage: React.FC = () => {
               { q: "Safety measures?", a: "CCTV, secure entry, and trained staff." },
               { q: "Outdoor play?", a: "Daily outdoor activities and motor skills." },
               { q: "Parent updates?", a: "Regular meetings and digital updates." },
-              { q: "Meals provided?", a: "Mid-morning snacks – Meals." },
+              { q: "Meals provided?", a: "Mid-morning snacks provided." },
               { q: "Age groups?", a: "2 years to 6 years." },
             ].map((item, idx) => (
               <motion.div

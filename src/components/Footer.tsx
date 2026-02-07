@@ -76,7 +76,7 @@ const Footer = () => {
             </motion.div>
 
             <div>
-              <h3 className="text-2xl font-black font-handwriting text-yellow-400 mb-2">BASIL WOODS JUNIORS</h3>
+              <h3 className="text-2xl font-black font-handwriting text-yellow-400 mb-2">BASIL WOODS JUNIORS INTERNATIONAL PRESCHOOL AND DAYCARE</h3>
             </div>
 
             <p className="text-white/80 text-sm leading-relaxed font-medium">
